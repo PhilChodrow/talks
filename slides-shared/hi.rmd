@@ -1,0 +1,29 @@
+---
+
+class: split-two
+
+.column.bg-main1[.content[
+
+## Hi! I'm Phil Chodrow.
+
+<br>
+I look like this $\rightarrow$
+
+Things I .alert[like]:]
+
+- Computation and theory for complex systems
+  - Network data analysis
+  - Modeling social systems
+  - Machine learning
+- Effective pedagogy
+- Tea
+- Memes
+- *Star Trek: Deep Space 9*  
+- Traditional martial arts
+]
+
+.column[.content.center[<br><br><br><br> 
+<img src="../img-shared/phil.jpg" width=90%>]
+
+
+]
