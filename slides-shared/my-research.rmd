@@ -157,7 +157,7 @@ layout:
     ### Data Science and Social Responsibility
   ]].column[.content[<br>
 - How can data science serve the study of .alert[inequality], .alert[segregation], and .alert[injustice]? 
-- How can we actively use our quantitative powers for .alert[social change]? 
+- How can we actively use our quantitative and computational powers for .alert[social change]? 
   ]]
 ]
 ]
