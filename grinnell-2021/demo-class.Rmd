@@ -58,7 +58,7 @@ Things I .alert[like]:]
 ]
 
 .column[.content.center[.stretch[<br><br><br>
-<img src="../img-shared/star-wars-trek.png" width=100%>]]
+<img src="../img-lib/star-wars-trek.png" width=100%>]]
 
 
 ]
@@ -66,7 +66,7 @@ Things I .alert[like]:]
 ---
 
 class: bg-main1 
-background-image: url("../img-shared/geo-intro.png")
+background-image: url("../img-lib/geo-intro.png")
 background-size: contain
  
 # My Journey

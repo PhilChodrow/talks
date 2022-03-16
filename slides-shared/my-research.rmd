@@ -1,6 +1,6 @@
 ---
 
-background-image: url("../img-shared/karate-graph-fade.png")
+background-image: url("../img-lib/karate-graph-fade.png")
 class:  
 
 <br><br><br><br>
@@ -18,8 +18,8 @@ layout:
   .split-40[.column.bg-main1[
       ### Foundations of Network Data Science
     ].column[
-      <img src="../img-shared/heatmap-thumbnail.png" height=170px> 
-      <img src="../img-shared/contact-clustering-excerpt.png" height=170px> 
+      <img src="../img-lib/heatmap-thumbnail.png" height=170px> 
+      <img src="../img-lib/contact-clustering-excerpt.png" height=170px> 
       <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/error_matrices.png" height=170px>  -->
       <img src="https://www.philchodrow.com/assets/img/thumbnails/configuration-hypergraphs.png" height=170px> 
     ]
@@ -29,9 +29,9 @@ layout:
   .split-40[.column.bg-main2[.content[
     ### Models of Biosocial Systems
   ]].column[.content[
-    <img src="../img-shared/karate-graph.png" height=160px>
-    <img src="../img-shared/mxhierarchy-flows.png" height=170px> 
-    <img src="../img-shared/dynamics-thumbnail.png" height=170px> 
+    <img src="../img-lib/karate-graph.png" height=160px>
+    <img src="../img-lib/mxhierarchy-flows.png" height=170px> 
+    <img src="../img-lib/dynamics-thumbnail.png" height=170px> 
     <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/avm.png" height=150px>  -->
   ]]
 ]
@@ -40,9 +40,9 @@ layout:
   .split-40[.column.bg-main3[.content[
     ### Data Science and Social Responsibility
   ]].column[.content[
-    <img src="../img-shared/sentencing-processing-thumbnail.png" height=170px> 
-    <!-- <img src="../img-shared/mgp-thumbnail.png" height=170px>  -->
-    <img src="../img-shared/no2-thumbnail.png" height=170px> 
+    <img src="../img-lib/sentencing-processing-thumbnail.png" height=170px> 
+    <!-- <img src="../img-lib/mgp-thumbnail.png" height=170px>  -->
+    <img src="../img-lib/no2-thumbnail.png" height=170px> 
     <img src="https://www.philchodrow.com/assets/img/thumbnails/structure-and-information.png" height=170px> 
   ]]
 ]
@@ -67,9 +67,9 @@ layout:
   .split-40[.column.bg-main2[.content[
     ### Models of Biosocial Systems
   ]].column[.content[
-    <img src="../img-shared/karate-graph.png" height=160px>
-    <img src="../img-shared/mxhierarchy-flows.png" height=170px> 
-    <img src="../img-shared/dynamics-thumbnail.png" height=170px> 
+    <img src="../img-lib/karate-graph.png" height=160px>
+    <img src="../img-lib/mxhierarchy-flows.png" height=170px> 
+    <img src="../img-lib/dynamics-thumbnail.png" height=170px> 
     <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/avm.png" height=150px>  -->
   ]]
 ]
@@ -78,9 +78,9 @@ layout:
   .split-40[.column.bg-main3[.content[
     ### Data Science and Social Responsibility
   ]].column[.content[
-    <img src="../img-shared/sentencing-processing-thumbnail.png" height=170px> 
-    <!-- <img src="../img-shared/mgp-thumbnail.png" height=170px>  -->
-    <img src="../img-shared/no2-thumbnail.png" height=170px> 
+    <img src="../img-lib/sentencing-processing-thumbnail.png" height=170px> 
+    <!-- <img src="../img-lib/mgp-thumbnail.png" height=170px>  -->
+    <img src="../img-lib/no2-thumbnail.png" height=170px> 
     <img src="https://www.philchodrow.com/assets/img/thumbnails/structure-and-information.png" height=170px> 
   ]]
 ]
@@ -95,8 +95,8 @@ layout:
   .split-40[.column.bg-main1[.content[
       ### Foundations of Network Data Science
     ]].column[.content[
-      <img src="../img-shared/heatmap-thumbnail.png" height=170px> 
-      <img src="../img-shared/contact-clustering-excerpt.png" height=170px> 
+      <img src="../img-lib/heatmap-thumbnail.png" height=170px> 
+      <img src="../img-lib/contact-clustering-excerpt.png" height=170px> 
       <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/error_matrices.png" height=170px>  -->
       <img src="https://www.philchodrow.com/assets/img/thumbnails/configuration-hypergraphs.png" height=170px> 
     ]]
@@ -116,9 +116,9 @@ layout:
   .split-40[.column.bg-main3[.content[
     ### Data Science and Social Responsibility
   ]].column[.content[
-    <img src="../img-shared/sentencing-processing-thumbnail.png" height=170px> 
-    <!-- <img src="../img-shared/mgp-thumbnail.png" height=170px>  -->
-    <img src="../img-shared/no2-thumbnail.png" height=170px> 
+    <img src="../img-lib/sentencing-processing-thumbnail.png" height=170px> 
+    <!-- <img src="../img-lib/mgp-thumbnail.png" height=170px>  -->
+    <img src="../img-lib/no2-thumbnail.png" height=170px> 
     <img src="https://www.philchodrow.com/assets/img/thumbnails/structure-and-information.png" height=170px> 
   ]]
 ]
@@ -134,8 +134,8 @@ layout:
   .split-40[.column.bg-main1[.content[
       ### Foundations of Network Data Science
     ]].column[.content[
-      <img src="../img-shared/heatmap-thumbnail.png" height=170px> 
-      <img src="../img-shared/contact-clustering-excerpt.png" height=170px> 
+      <img src="../img-lib/heatmap-thumbnail.png" height=170px> 
+      <img src="../img-lib/contact-clustering-excerpt.png" height=170px> 
       <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/error_matrices.png" height=170px>  -->
       <img src="https://www.philchodrow.com/assets/img/thumbnails/configuration-hypergraphs.png" height=170px> 
     ]]
@@ -145,9 +145,9 @@ layout:
   .split-40[.column.bg-main2[.content[
     ### Models of Biosocial Systems
   ]].column[.content[
-    <img src="../img-shared/karate-graph.png" height=160px>
-    <img src="../img-shared/mxhierarchy-flows.png" height=170px> 
-    <img src="../img-shared/dynamics-thumbnail.png" height=170px> 
+    <img src="../img-lib/karate-graph.png" height=160px>
+    <img src="../img-lib/mxhierarchy-flows.png" height=170px> 
+    <img src="../img-lib/dynamics-thumbnail.png" height=170px> 
     <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/avm.png" height=150px>  -->
   ]]
 ]
@@ -171,8 +171,8 @@ layout:
   .split-40[.column.bg-main1[
       ### Foundations of Network Data Science
     ].column[
-      <img src="../img-shared/heatmap-thumbnail.png" height=170px> 
-      <img src="../img-shared/contact-clustering-excerpt.png" height=170px> 
+      <img src="../img-lib/heatmap-thumbnail.png" height=170px> 
+      <img src="../img-lib/contact-clustering-excerpt.png" height=170px> 
       <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/error_matrices.png" height=170px>  -->
       <img src="https://www.philchodrow.com/assets/img/thumbnails/configuration-hypergraphs.png" height=170px> 
     ]
@@ -182,9 +182,9 @@ layout:
   .split-40[.column.bg-main2[.content[
     ### Models of Biosocial Systems
   ]].column[.content[
-    <img src="../img-shared/karate-graph.png" height=160px>
-    <img src="../img-shared/mxhierarchy-flows.png" height=170px> 
-    <img src="../img-shared/dynamics-thumbnail.png" height=170px> 
+    <img src="../img-lib/karate-graph.png" height=160px>
+    <img src="../img-lib/mxhierarchy-flows.png" height=170px> 
+    <img src="../img-lib/dynamics-thumbnail.png" height=170px> 
     <!-- <img src="https://www.philchodrow.com/assets/img/thumbnails/avm.png" height=150px>  -->
   ]]
 ]
@@ -193,9 +193,9 @@ layout:
   .split-40[.column.bg-main3[.content[
     ### Data Science and Social Responsibility
   ]].column[.content[
-    <img src="../img-shared/sentencing-processing-thumbnail.png" height=170px> 
-    <!-- <img src="../img-shared/mgp-thumbnail.png" height=170px>  -->
-    <img src="../img-shared/no2-thumbnail.png" height=170px> 
+    <img src="../img-lib/sentencing-processing-thumbnail.png" height=170px> 
+    <!-- <img src="../img-lib/mgp-thumbnail.png" height=170px>  -->
+    <img src="../img-lib/no2-thumbnail.png" height=170px> 
     <img src="https://www.philchodrow.com/assets/img/thumbnails/structure-and-information.png" height=170px> 
   ]]
 ]

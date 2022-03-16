@@ -60,7 +60,7 @@ class: split-two
 ]]
 
 .column[.content.center[
-<img src="../img-shared/cartoon-avatar-no-bg.png" width=80%>]
+<img src="../img-lib/cartoon-avatar-no-bg.png" width=80%>]
 
 .font_medium[*Artist's rendering of me from back when haircuts were a thing.*] <br>
 *Image via [Picrew.me](https://picrew.me/image_maker/634561)*
@@ -71,7 +71,7 @@ class: split-two
 ---
 
 class: bg-main1 
-background-image: url("../img-shared/geo-intro.png")
+background-image: url("../img-lib/geo-intro.png")
 background-size: contain
  
 
@@ -153,7 +153,7 @@ class: split-two
 
 .content.font_large[.font_large[
 .content.center[
-<img src="../img-shared/cartoon-avatar-no-bg.png" width=80%> 
+<img src="../img-lib/cartoon-avatar-no-bg.png" width=80%> 
 ]]]]
 
 .column[.content.vmiddle[.font_large[

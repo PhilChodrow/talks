@@ -16,7 +16,7 @@ What .alert[mathematical challenges] arise from these questions?
 .column[.split-four[
   .row[.split-20[.column[ 
   <div class="thumbnail"> 
-  <img src="../img-shared/heatmap-thumbnail.png" width=130px> 
+  <img src="../img-lib/heatmap-thumbnail.png" width=130px> 
   </div>
   ].column[
   <div class="compress">
@@ -29,7 +29,7 @@ What .alert[mathematical challenges] arise from these questions?
 ]
   .row[.split-20[.column[
     <div class="thumbnail"> 
-    <img src="../img-shared/contact-clustering-excerpt.png" width=110px> 
+    <img src="../img-lib/contact-clustering-excerpt.png" width=110px> 
     </div>
     ].column[
     <div class="compress">
@@ -91,7 +91,7 @@ What can we .alert[prove] or .alert[approximate] about the behavior of these mod
 .column[.split-four[
   .row[.split-20[.column[
   <div class="thumbnail"> 
-  <img src="../img-shared/karate-graph.png" width=130px> 
+  <img src="../img-lib/karate-graph.png" width=130px> 
   </div>
   ].column[
   <div class="compress">
@@ -104,7 +104,7 @@ What can we .alert[prove] or .alert[approximate] about the behavior of these mod
 ]
 .row[.split-20[.column[
   <div class="thumbnail"> 
-  <img src="../img-shared/mxhierarchy-flows.png" width=130px> 
+  <img src="../img-lib/mxhierarchy-flows.png" width=130px> 
   </div>
   ].column[
   <div class="compress">
@@ -117,7 +117,7 @@ What can we .alert[prove] or .alert[approximate] about the behavior of these mod
 ]
   .row[.split-20[.column[
     <div class="thumbnail"> 
-    <img src="../img-shared/dynamics-thumbnail.png" width=110px> 
+    <img src="../img-lib/dynamics-thumbnail.png" width=110px> 
     </div>
     ].column[
     <div class="compress">
@@ -163,7 +163,7 @@ How can we model the history (and future?) of .alert[representation] in academia
 .column[.split-four[
   .row[.split-20[.column[
     <div class="thumbnail"> 
-    <img src="../img-shared/sentencing-processing-thumbnail.png" width=110px> 
+    <img src="../img-lib/sentencing-processing-thumbnail.png" width=110px> 
     </div>
     ].column[
     <div class="compress">
@@ -176,7 +176,7 @@ How can we model the history (and future?) of .alert[representation] in academia
 ]  
 .row[.split-20[.column[
   <div class="thumbnail"> 
-    <img src="../img-shared/mgp-thumbnail.png" width=110px> 
+    <img src="../img-lib/mgp-thumbnail.png" width=110px> 
     </div>
     ].column[
     <div class="compress">
@@ -189,7 +189,7 @@ How can we model the history (and future?) of .alert[representation] in academia
   ]
   .row[.split-20[.column[
   <div class="thumbnail"> 
-  <img src="../img-shared/no2-thumbnail.png" width=130px> 
+  <img src="../img-lib/no2-thumbnail.png" width=130px> 
   </div>
   ].column[
   <div class="compress">
