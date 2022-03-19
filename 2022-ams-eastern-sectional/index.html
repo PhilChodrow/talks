@@ -71,6 +71,66 @@ layout: false
 
 ---
 
+class: bg-main1
+layout: false
+
+
+.font_larger[.font_larger[&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+  *"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+
+---
+
+class: split-40
+layout: true
+
+
+.column.bg-main1[
+
+## Opinion Models
+&lt;br&gt; &lt;br&gt; &lt;br&gt; 
+- Each agent `\(i\)` has an opinion `\(x_i\)`. 
+- Agent `\(i\)` interacts with other agents `\(j_1,\ldots,j_k\)`. 
+- Agent `\(i\)` updates opinion `\(x_j\)` as a function of `\(x_{j_1},\ldots,x_{j_k}\)`. 
+- Interactions often structured by a social network. 
+
+Updates are usually **nonstrategic**, unlike in evolutionary games on graphs.  
+
+]
+
+.column[.vmiddle[
+  {{content}}
+  
+]]
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-1.jpeg" width=100%&gt;&lt;/img&gt; 
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%&gt;&lt;/img&gt; 
+
+---
+
+class: split-40
+layout: false
+
+
+.column.bg-main1[
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+According to the NYT, this is a violation of Riker's ***fundamental right*** to have his toxic opinions platformed at all times. 
+
+]
+
+.column[.vmiddle[
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%&gt;&lt;/img&gt; 
+]]
+
+---
+
 class: split-two
 layout: true
 
@@ -81,7 +141,7 @@ layout: true
 &lt;br&gt; 
 Each agent `\(i\)` has opinion `\(x_i \in [-1, 1]\)`. 
 
-For today, we'll assume two .alert2[zealots] `\(x_- = -1\)` and `\(x_+ = 1\)` whose opinions don't change (thick borders). 
+For today, we'll assume two .alert2[zealots] `\(x_- = -1\)` and `\(x_+ = 1\)` whose opinions don't change. 
 
 Continuous-time update: 
 
@@ -109,9 +169,14 @@ Set `\(w(x_i, x_j) = 1\)`, giving
 
 `$$\dot{x}_i = \frac{1}{d_i}\sum_{j \sim i}(x_j - x_i)\;.$$`
 
-**Harmonic extension theorem**: there is a unique, stable stationary state. 
 
-&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=90%&gt;
+Unique, stable stationary state (harmonic function with poles at zealots). 
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=70%&gt;
+
+&lt;div class="footnote-padded"&gt;    
+R. P. Abelson (1964), Mathematical models of the distribution of attitudes under controversy, &lt;i&gt;Contributions to Mathematical Psychology&lt;/i&gt;.
+&lt;/div&gt;
 
 ---
 
@@ -132,6 +197,10 @@ Agents only interact with other agents if they are sufficiently close in opinion
 
 This is **continuous-time Hegselmann-Krause (HK) dynamics.**
 
+&lt;div class="footnote-padded"&gt;    
+R. Hegselmann and U. Krause (2019), Consensus and fragmentation of opinions with a focus on bounded confidence, &lt;i&gt;The American Mathematical Monthly&lt;/i&gt;. 
+&lt;/div&gt;
+
 ---
 
 class: 
@@ -151,6 +220,27 @@ $$
 **Arbitrarily many** neutrally stable states for small `\(c\)`. 
 
 &lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%&gt;
+
+
+---
+
+class: 
+
+## A Limitation
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+
+- Consensus dynamics: no entrenched disagreement. 
+- HK dynamics: lots of neutrally stable stationary states, can be arbitrarily poorly aligned with network structure. 
+
+
+&lt;div class="footnote-padded"&gt;
+  Still possible to tell some stories about fragmentation, see e.g. &lt;br&gt; &lt;br&gt; 
+
+  H. Z. Brooks and M. A. Porter (2020), A model for the influence of media on the ideology of content in online social networks, &lt;i&gt;Physical Review Research&lt;/i&gt;. 
+&lt;/div&gt;
 
 
 ---
@@ -196,9 +286,9 @@ class: split-40
 ---
 class: bg-main1
 
-# Questions for Today
+# Technical Questions
 
-&lt;br&gt; 
+
 .font_large[
 1. For .alert[small] `\(\color{#FFE1A8}{\gamma}\)`, do the stationary states resemble those of consensus dynamics? 
 {{content}}
@@ -210,14 +300,18 @@ class: bg-main1
 1. For &lt;span class="alert"&gt;large&lt;/span&gt; `\(\color{#FFE1A8}{\gamma}\)`, do the stationary states resemble those of Hegselmann-Krause? 
 {{content}}
 --
-  - Mostly?  
+  - Mostly!  
 {{content}}
 --
 3. What happens &lt;span class="alert2"&gt; in between&lt;/span&gt;?
 {{content}}
 --
   - Fun stuff!  
+{{content}}
+--
+  - Including some special cases that speak to the stability/echo chamber question. 
 ---
+
 
 
 ## Small `\(\gamma\)` behaves like consensus dynamics
@@ -227,7 +321,7 @@ class: bg-main1
 .font_large[
 **Theorem (HZB, PSC, MAP '22)**: For sufficiently small `\(\gamma \geq 0\)`, there is a unique stationary state `\(\mathbf{\bar{x}}(\gamma)\)`, and this state is continuous as a function of `\(\gamma\)`. 
 
-**Proof**: Direct implication from the implicit function theorem. 
+**Proof**: Direct  from  implicit function theorem (everything in sight is smooth). 
 ]
 
 ---
@@ -245,9 +339,10 @@ background-size: contain
 .font_large[
 **Theorem (HZB, PSC, MAP '22)**: As `\(\gamma \rightarrow \infty\)`, it holds that any stationary state of our model can be made arbitrarily close to some HK stationary state. 
 
-**Proof**: Relies on the fact that the dynamical update operator is continuous in both `\(\gamma\)` and the opinion state vector `\(\mathbf{x}\)`. 
+**Lemma (HZB, PSC, MAP '22)**: Only HK states in which each node has a neighbor within opinion distance `\(\sqrt{\delta}\)` can be approximated by ***stable*** stationary states of our model. 
 
-***We're not sure*** whether any HK stationary state can be approximated this way. 
+
+
 ]
 
 
@@ -297,46 +392,14 @@ class:
 
 ---
 
-class: split-two
-layout: true
+class: bg-main1 middle
+layout: false  
 
-.column.bg-main1[
-## Opinion States and Graph Structure
-&lt;br&gt; 
 
 .font_large[
-*"The stability of an opinion state depends in part on its alignment with the underlying graph topology."* 
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
 ]
 
-This *feels right*, but is .alert[surprisingly difficult to express] in common models. 
-
-]
-.column[
-
-{{content}}
-
-]
-
----
-
----
-class: 
-
-&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
-
-Consensus dynamics: only one stationary state, question is moot. 
-
-&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=90%&gt;
- 
----
-
-&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
-
-Bounded confidence (HK): most stationary states are *neutrally stable*.
-
-&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%&gt;
-
-Also, lots of stable states that don't align with graph topology. 
 
 ---
 
@@ -381,6 +444,32 @@ layout: false
 
 ---
 
+class: split-20 
+layout: false  
+
+.row[
+.font_large[&lt;br&gt; 
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+.row[.split-50[
+  .column[
+    &lt;br&gt;&lt;br&gt;&lt;br&gt; 
+
+  In our model, in this special case, when opinion groupings are aligned with graph topology; 
+
+  1. The consensus solution is linearly unstable in the direction of polarization in a larger region of parameter space. 
+  2. There are more stable polarized solutions in larger regions of parameter space. 
+
+
+    ]
+  .column[.centered-image[.stretch[
+    &lt;img src="../img-lib/nonlinear-opinion-dynamics/aligned-excerpt.png" width=100%&gt;
+    ]]]
+]
+]
+
+---
+
 class: split-40
 
 .column.bg-main1[
@@ -416,8 +505,8 @@ class: split-40
 .column.bg-main1[
 # Summing Up
 
-&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-This interpolation allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
 ]
 
 .column[&lt;br&gt;&lt;br&gt;&lt;br&gt;
@@ -426,6 +515,7 @@ This interpolation allows analytic treatment of the relationship between .alert[
 ]
 ]
 
+
 ---
 
 class: split-40
@@ -433,8 +523,8 @@ class: split-40
 .column.bg-main1[
 # Summing Up
 
-&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-This interpolation allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
 
 There's some complex structure in the equilibria of even simple cases. Lots more to learn! 
 ]
@@ -454,13 +544,13 @@ class: split-50
 
 
 
-.alert[Awesome organizers]
+.alert[Awesome organizers]:
 
 - Olivia Chu
 - Daniel Cooney
 - Chadi Saad-Roy
 
-.alert[Awesome collaborators]
+.alert[Awesome collaborators]:
 
 .split-two[
 .column[.lil-stretch[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;

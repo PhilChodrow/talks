@@ -109,6 +109,16 @@ h4 { padding-left: .7em; padding-right: .7em }
 	padding-left: 0.1em;
 }
 
+.footnote-padded{
+	position: absolute;
+	bottom: 1em;
+	padding-right: 2em;
+	padding-left: 2em;
+	padding-bottom: 2em;
+	font-size: 70%;
+	text-align: left;
+}
+
   .remark-slide-number {
 	display: none;
   }

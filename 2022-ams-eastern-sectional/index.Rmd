@@ -68,6 +68,66 @@ layout: false
 
 ---
 
+class: bg-main1
+layout: false
+
+
+.font_larger[.font_larger[<br> <br> <br> <br> <br> <br> 
+  *"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+
+---
+
+class: split-40
+layout: true
+
+
+.column.bg-main1[
+
+## Opinion Models
+<br> <br> <br> 
+- Each agent $i$ has an opinion $x_i$. 
+- Agent $i$ interacts with other agents $j_1,\ldots,j_k$. 
+- Agent $i$ updates opinion $x_j$ as a function of $x_{j_1},\ldots,x_{j_k}$. 
+- Interactions often structured by a social network. 
+
+Updates are usually **nonstrategic**, unlike in evolutionary games on graphs.  
+
+]
+
+.column[.vmiddle[
+  {{content}}
+  
+]]
+
+---
+
+<img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-1.jpeg" width=100%></img> 
+
+---
+
+<img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%></img> 
+
+---
+
+class: split-40
+layout: false
+
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+According to the NYT, this is a violation of Riker's ***fundamental right*** to have his toxic opinions platformed at all times. 
+
+]
+
+.column[.vmiddle[
+  <img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%></img> 
+]]
+
+---
+
 class: split-two
 layout: true
 
@@ -78,7 +138,7 @@ layout: true
 <br> 
 Each agent $i$ has opinion $x_i \in [-1, 1]$. 
 
-For today, we'll assume two .alert2[zealots] $x_- = -1$ and $x_+ = 1$ whose opinions don't change (thick borders). 
+For today, we'll assume two .alert2[zealots] $x_- = -1$ and $x_+ = 1$ whose opinions don't change. 
 
 Continuous-time update: 
 
@@ -106,9 +166,14 @@ Set $w(x_i, x_j) = 1$, giving
 
 $$\dot{x}_i = \frac{1}{d_i}\sum_{j \sim i}(x_j - x_i)\;.$$
 
-**Harmonic extension theorem**: there is a unique, stable stationary state. 
 
-<img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=90%>
+Unique, stable stationary state (harmonic function with poles at zealots). 
+
+<img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=70%>
+
+<div class="footnote-padded">    
+R. P. Abelson (1964), Mathematical models of the distribution of attitudes under controversy, <i>Contributions to Mathematical Psychology</i>.
+</div>
 
 ---
 
@@ -129,6 +194,10 @@ Agents only interact with other agents if they are sufficiently close in opinion
 
 This is **continuous-time Hegselmann-Krause (HK) dynamics.**
 
+<div class="footnote-padded">    
+R. Hegselmann and U. Krause (2019), Consensus and fragmentation of opinions with a focus on bounded confidence, <i>The American Mathematical Monthly</i>. 
+</div>
+
 ---
 
 class: 
@@ -148,6 +217,27 @@ $$
 **Arbitrarily many** neutrally stable states for small $c$. 
 
 <img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%>
+
+
+---
+
+class: 
+
+## A Limitation
+
+<br> <br> <br>
+
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+
+- Consensus dynamics: no entrenched disagreement. 
+- HK dynamics: lots of neutrally stable stationary states, can be arbitrarily poorly aligned with network structure. 
+
+
+<div class="footnote-padded">
+  Still possible to tell some stories about fragmentation, see e.g. <br> <br> 
+
+  H. Z. Brooks and M. A. Porter (2020), A model for the influence of media on the ideology of content in online social networks, <i>Physical Review Research</i>. 
+</div>
 
 
 ---
@@ -193,9 +283,9 @@ class: split-40
 ---
 class: bg-main1
 
-# Questions for Today
+# Technical Questions
 
-<br> 
+
 .font_large[
 1. For .alert[small] $\color{#FFE1A8}{\gamma}$, do the stationary states resemble those of consensus dynamics? 
 {{content}}
@@ -207,14 +297,18 @@ class: bg-main1
 1. For <span class="alert">large</span> $\color{#FFE1A8}{\gamma}$, do the stationary states resemble those of Hegselmann-Krause? 
 {{content}}
 --
-  - Mostly?  
+  - Mostly!  
 {{content}}
 --
 3. What happens <span class="alert2"> in between</span>?
 {{content}}
 --
   - Fun stuff!  
+{{content}}
+--
+  - Including some special cases that speak to the stability/echo chamber question. 
 ---
+
 
 
 ## Small $\gamma$ behaves like consensus dynamics
@@ -224,7 +318,7 @@ class: bg-main1
 .font_large[
 **Theorem (HZB, PSC, MAP '22)**: For sufficiently small $\gamma \geq 0$, there is a unique stationary state $\mathbf{\bar{x}}(\gamma)$, and this state is continuous as a function of $\gamma$. 
 
-**Proof**: Direct implication from the implicit function theorem. 
+**Proof**: Direct  from  implicit function theorem (everything in sight is smooth). 
 ]
 
 ---
@@ -242,9 +336,10 @@ background-size: contain
 .font_large[
 **Theorem (HZB, PSC, MAP '22)**: As $\gamma \rightarrow \infty$, it holds that any stationary state of our model can be made arbitrarily close to some HK stationary state. 
 
-**Proof**: Relies on the fact that the dynamical update operator is continuous in both $\gamma$ and the opinion state vector $\mathbf{x}$. 
+**Lemma (HZB, PSC, MAP '22)**: Only HK states in which each node has a neighbor within opinion distance $\sqrt{\delta}$ can be approximated by ***stable*** stationary states of our model. 
 
-***We're not sure*** whether any HK stationary state can be approximated this way. 
+
+
 ]
 
 
@@ -294,46 +389,14 @@ class:
 
 ---
 
-class: split-two
-layout: true
+class: bg-main1 middle
+layout: false  
 
-.column.bg-main1[
-## Opinion States and Graph Structure
-<br> 
 
 .font_large[
-*"The stability of an opinion state depends in part on its alignment with the underlying graph topology."* 
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
 ]
 
-This *feels right*, but is .alert[surprisingly difficult to express] in common models. 
-
-]
-.column[
-
-{{content}}
-
-]
-
----
-
----
-class: 
-
-<br> <br> <br> <br> 
-
-Consensus dynamics: only one stationary state, question is moot. 
-
-<img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=90%>
- 
----
-
-<br> <br> <br> <br> 
-
-Bounded confidence (HK): most stationary states are *neutrally stable*.
-
-<img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%>
-
-Also, lots of stable states that don't align with graph topology. 
 
 ---
 
@@ -378,6 +441,32 @@ layout: false
 
 ---
 
+class: split-20 
+layout: false  
+
+.row[
+.font_large[<br> 
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+.row[.split-50[
+  .column[
+    <br><br><br> 
+
+  In our model, in this special case, when opinion groupings are aligned with graph topology; 
+
+  1. The consensus solution is linearly unstable in the direction of polarization in a larger region of parameter space. 
+  2. There are more stable polarized solutions in larger regions of parameter space. 
+
+
+    ]
+  .column[.centered-image[.stretch[
+    <img src="../img-lib/nonlinear-opinion-dynamics/aligned-excerpt.png" width=100%>
+    ]]]
+]
+]
+
+---
+
 class: split-40
 
 .column.bg-main1[
@@ -413,8 +502,8 @@ class: split-40
 .column.bg-main1[
 # Summing Up
 
-<br><br><br><br>
-This interpolation allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+<br><br><br><br><br> 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
 ]
 
 .column[<br><br><br>
@@ -423,6 +512,7 @@ This interpolation allows analytic treatment of the relationship between .alert[
 ]
 ]
 
+
 ---
 
 class: split-40
@@ -430,8 +520,8 @@ class: split-40
 .column.bg-main1[
 # Summing Up
 
-<br><br><br><br>
-This interpolation allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+<br><br><br><br><br> 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
 
 There's some complex structure in the equilibria of even simple cases. Lots more to learn! 
 ]
@@ -451,13 +541,13 @@ class: split-50
 
 
 
-.alert[Awesome organizers]
+.alert[Awesome organizers]:
 
 - Olivia Chu
 - Daniel Cooney
 - Chadi Saad-Roy
 
-.alert[Awesome collaborators]
+.alert[Awesome collaborators]:
 
 .split-two[
 .column[.lil-stretch[<br><br><br><br><br><br><br><br><br><br><br><br><br>
