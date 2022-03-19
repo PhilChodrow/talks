@@ -169,7 +169,7 @@ $$\dot{x}_i = \frac{1}{d_i}\sum_{j \sim i}(x_j - x_i)\;.$$
 
 Unique, stable stationary state (harmonic function with poles at zealots). 
 
-<img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=70%>
+<img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=70% class="centered">
 
 <div class="footnote-padded">    
 R. P. Abelson (1964), Mathematical models of the distribution of attitudes under controversy, <i>Contributions to Mathematical Psychology</i>.
@@ -565,6 +565,10 @@ class: split-50
 
 .column[<br><br><br><br><br><br><br><br>
 # Questions?
+
+.footnote[
+  Preprint coming, uh...sometime. Soon? Let's say soon!
+]
 ]
 
 
