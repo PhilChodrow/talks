@@ -10,7 +10,7 @@ output:
     seal: true   
     self_contained: false  
     nature: 
-      ratio: "16:10"
+      ratio: "3:2"
       highlightStyle: github     
       highlightLines: true 
       countIncrementalSlides: false  
@@ -91,7 +91,7 @@ layout: false
 ### .alert[Punch] fascists.*
 
 <br> <br> 
-*People who value control over life. 
+*People who value control more than life. 
 
 ---
 
@@ -100,7 +100,7 @@ layout: false
 
 .column.bg-main1[
 .content[ 
-  ## Graphs and Hypergraphs 
+  # Graphs and Hypergraphs 
  
   <br> 
   A .alert[graph] consists of a set of nodes $\mathcal{N}$ and a set of edges $\mathcal{E}$. Each edge in $\mathcal{E}$ is a set of two nodes. 
@@ -124,7 +124,7 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
   
 
@@ -142,11 +142,11 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 <br> <br> 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
   
 
 ]
@@ -162,12 +162,14 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 <br> <br> 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
-  - .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  <br>
+  
+  .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
   
 
 ]
@@ -183,19 +185,58 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 <br> <br> 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
-  - .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
-  - .alert[**Co-presence**]: nodes are chemical compounds, edges are drugs formed from those compounds.
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  <br>
+
+  .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
+  <br>
+
+  .alert[**Co-presence**]: nodes are chemical compounds, edges are drugs formed from those compounds.
 
 ]
 
 .column.bg-main4[.vmiddle[
   <img src="../img-lib/mccoy.png" width=100%></img>  
 ]]
+
+---
+
+class: split-two
+layout: false
+
+.column.bg-main1[.content[ 
+  ## How would you generalize...
+ 
+ ### ...the degree of a node? 
+]]
+
+.column[
+  .vmiddle[
+  <img src="../img-lib/graph-hypergraph.png" width=100%></img>
+  ] 
+]
+
+---
+
+class: split-two
+layout: false
+
+.column.bg-main1[.content[ 
+  ## How would you generalize...
+ 
+ ### ...the degree of a node? 
+ ### ...the adjacency matrix? 
+]]
+
+.column[
+  .vmiddle[
+  <img src="../img-lib/graph-hypergraph.png" width=100%></img>
+  ] 
+]
 
 ---
 
@@ -243,11 +284,11 @@ layout: false
 class: split-two
 
 .column.bg-main1[
+  
   ### The Hypergraph Clustering Problem 
-
-  Given some hypergraph data, assign each node to a .alert[*cluster*] of "related" nodes. 
-  <br> <br>
-  "*Related*": often interpreted as "*densely interconnected.*"
+  <br>
+    
+  Given some hypergraph data, assign each node to a .alert[*cluster*] of related nodes. 
   <br> <br>
   Applications in social network analysis, drug discovery, image processing, data visualization...
   <br> <br> 
@@ -360,6 +401,32 @@ $\gamma$ here is a *resolution parameter* that allows $Q_\gamma$ to find smaller
 .footnote[
   Newman, "Equivalence between modularity optimization and maximum likelihood methods for community detection." *PRE*, 2016
 ]
+
+---
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+  ### The Hypergraph Clustering Problem 
+
+<br><br> 
+  Given some hypergraph data, assign each node to a .alert[*cluster*] of "related" nodes. 
+  <br> <br>
+  Applications in social network analysis, drug discovery, image processing, data visualization...
+  <br> <br> 
+  Modularity is a handy way to do these kinds of problems, but how should it be generalized for hypergraphs?
+
+  .footnote[
+  One review in: <br> <b>PSC</b>, N. Veldt, A. R. Benson (2021). Generative hypergraph clustering: from blockmodels to modularity, <i>Science Advances</i>, 7:eabh1303
+]
+
+  
+]
+.column[.content.vmiddle[.stretch[
+  <img src="../img-lib/detection-1.png" width=100%>
+]]]
+
 
 ---
 
@@ -499,7 +566,7 @@ $$\Omega(\color{#ff5252}{\bullet} \color{#ff5252}{\bullet} \color{#ff5252}{\bull
 
 ...we get a modularity function for hypergraphs! 
 
-$$Q \triangleq \sum_k \color{#ff5252}{\beta_k} \left[(\text{# homogeneous }k\text{-edges}) - \color{#21728f}{\gamma_k}\sum_{\ell} (\text{total degrees of nodes in cluster } \ell)^k\right]$$
+$$Q \triangleq \sum_k \color{#ff5252}{\beta_k} \left[(\text{# homogeneous }k\text{-edges}) - \color{#21728f}{\gamma_k}\sum_{\ell} (\text{total degrees in cluster } \ell)^k\right]$$
 
 $\color{#ff5252}{\beta_k} \triangleq \log \omega_{k1} - \log \omega_{k0}$ is the *relative importance* of edges of size $k$.  <br>
 $\color{#21728f}{\gamma_k} \triangleq \frac{1}{\beta_k}(\omega_{k1} - \omega_{k0})$ is the resolution parameter for edges of size $k$.
@@ -575,9 +642,9 @@ layout: false
 
 .column[
 
-### This doesn't **always** work well...
+## This doesn't **always** work well...
 
-<br> <br> <br>
+<br> 
 <img src="../img-lib/testbed-narrow.png" width=100%>   
 ]
 
@@ -603,7 +670,7 @@ class: split-two
   ## But that's the next paper!
 
   .stretch[
-.center[ <br> <br> 
+.center[ <br>
 <img src="../img-lib/4-heatmaps-2.png" width=100%>
 ]
 ]
@@ -636,9 +703,4 @@ class: bg-main1
 
 ### .alert[Fight] for the vulnerable.
 
-### .alert[Punch] fascists.*
-
-<br> <br> 
-*People who value control over life. 
-
-
+### .alert[Punch] fascists.

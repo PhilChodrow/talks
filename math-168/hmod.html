@@ -94,7 +94,7 @@ layout: false
 ### .alert[Punch] fascists.*
 
 &lt;br&gt; &lt;br&gt; 
-*People who value control over life. 
+*People who value control more than life. 
 
 ---
 
@@ -103,7 +103,7 @@ layout: false
 
 .column.bg-main1[
 .content[ 
-  ## Graphs and Hypergraphs 
+  # Graphs and Hypergraphs 
  
   &lt;br&gt; 
   A .alert[graph] consists of a set of nodes `\(\mathcal{N}\)` and a set of edges `\(\mathcal{E}\)`. Each edge in `\(\mathcal{E}\)` is a set of two nodes. 
@@ -127,7 +127,7 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
   
 
@@ -145,11 +145,11 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 &lt;br&gt; &lt;br&gt; 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
   
 
 ]
@@ -165,12 +165,14 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 &lt;br&gt; &lt;br&gt; 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
-  - .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  &lt;br&gt;
+  
+  .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
   
 
 ]
@@ -186,19 +188,58 @@ layout: false
 
 .column.bg-main1[
   
-  ### Hypergraph Data
+  # Hypergraph Data
 
 &lt;br&gt; &lt;br&gt; 
 
-  - .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
-  - .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
-  - .alert[**Co-presence**]: nodes are chemical compounds, edges are drugs formed from those compounds.
+  .alert[**Interaction**]: nodes are agents, edges are interaction events (socializing in groups, attending events).
+  &lt;br&gt;
+
+  .alert[**Collaboration**]: nodes are collaborators, edges are projects or teams (scholarly papers, legislation, etc). 
+  &lt;br&gt;
+
+  .alert[**Co-presence**]: nodes are chemical compounds, edges are drugs formed from those compounds.
 
 ]
 
 .column.bg-main4[.vmiddle[
   &lt;img src="../img-lib/mccoy.png" width=100%&gt;&lt;/img&gt;  
 ]]
+
+---
+
+class: split-two
+layout: false
+
+.column.bg-main1[.content[ 
+  ## How would you generalize...
+ 
+ ### ...the degree of a node? 
+]]
+
+.column[
+  .vmiddle[
+  &lt;img src="../img-lib/graph-hypergraph.png" width=100%&gt;&lt;/img&gt;
+  ] 
+]
+
+---
+
+class: split-two
+layout: false
+
+.column.bg-main1[.content[ 
+  ## How would you generalize...
+ 
+ ### ...the degree of a node? 
+ ### ...the adjacency matrix? 
+]]
+
+.column[
+  .vmiddle[
+  &lt;img src="../img-lib/graph-hypergraph.png" width=100%&gt;&lt;/img&gt;
+  ] 
+]
 
 ---
 
@@ -246,11 +287,11 @@ layout: false
 class: split-two
 
 .column.bg-main1[
+  
   ### The Hypergraph Clustering Problem 
-
-  Given some hypergraph data, assign each node to a .alert[*cluster*] of "related" nodes. 
-  &lt;br&gt; &lt;br&gt;
-  "*Related*": often interpreted as "*densely interconnected.*"
+  &lt;br&gt;
+    
+  Given some hypergraph data, assign each node to a .alert[*cluster*] of related nodes. 
   &lt;br&gt; &lt;br&gt;
   Applications in social network analysis, drug discovery, image processing, data visualization...
   &lt;br&gt; &lt;br&gt; 
@@ -363,6 +404,32 @@ Then, we place `\(A_{ij}\)` edges between `\(i\)` and `\(j\)`, where
 .footnote[
   Newman, "Equivalence between modularity optimization and maximum likelihood methods for community detection." *PRE*, 2016
 ]
+
+---
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+  ### The Hypergraph Clustering Problem 
+
+&lt;br&gt;&lt;br&gt; 
+  Given some hypergraph data, assign each node to a .alert[*cluster*] of "related" nodes. 
+  &lt;br&gt; &lt;br&gt;
+  Applications in social network analysis, drug discovery, image processing, data visualization...
+  &lt;br&gt; &lt;br&gt; 
+  Modularity is a handy way to do these kinds of problems, but how should it be generalized for hypergraphs?
+
+  .footnote[
+  One review in: &lt;br&gt; &lt;b&gt;PSC&lt;/b&gt;, N. Veldt, A. R. Benson (2021). Generative hypergraph clustering: from blockmodels to modularity, &lt;i&gt;Science Advances&lt;/i&gt;, 7:eabh1303
+]
+
+  
+]
+.column[.content.vmiddle[.stretch[
+  &lt;img src="../img-lib/detection-1.png" width=100%&gt;
+]]]
+
 
 ---
 
@@ -502,7 +569,7 @@ Let `\(e\)` be a hyperedge of size `\(k\)`:
 
 ...we get a modularity function for hypergraphs! 
 
-`$$Q \triangleq \sum_k \color{#ff5252}{\beta_k} \left[(\text{# homogeneous }k\text{-edges}) - \color{#21728f}{\gamma_k}\sum_{\ell} (\text{total degrees of nodes in cluster } \ell)^k\right]$$`
+`$$Q \triangleq \sum_k \color{#ff5252}{\beta_k} \left[(\text{# homogeneous }k\text{-edges}) - \color{#21728f}{\gamma_k}\sum_{\ell} (\text{total degrees in cluster } \ell)^k\right]$$`
 
 `\(\color{#ff5252}{\beta_k} \triangleq \log \omega_{k1} - \log \omega_{k0}\)` is the *relative importance* of edges of size `\(k\)`.  &lt;br&gt;
 `\(\color{#21728f}{\gamma_k} \triangleq \frac{1}{\beta_k}(\omega_{k1} - \omega_{k0})\)` is the resolution parameter for edges of size `\(k\)`.
@@ -578,9 +645,9 @@ layout: false
 
 .column[
 
-### This doesn't **always** work well...
+## This doesn't **always** work well...
 
-&lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;br&gt; 
 &lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;   
 ]
 
@@ -606,7 +673,7 @@ class: split-two
   ## But that's the next paper!
 
   .stretch[
-.center[ &lt;br&gt; &lt;br&gt; 
+.center[ &lt;br&gt;
 &lt;img src="../img-lib/4-heatmaps-2.png" width=100%&gt;
 ]
 ]
@@ -639,15 +706,12 @@ class: bg-main1
 
 ### .alert[Fight] for the vulnerable.
 
-### .alert[Punch] fascists.*
-
-&lt;br&gt; &lt;br&gt; 
-*People who value control over life.
+### .alert[Punch] fascists.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"ratio": "16:10",
+"ratio": "3:2",
 "highlightStyle": "github",
 "highlightLines": true,
 "countIncrementalSlides": false
