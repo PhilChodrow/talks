@@ -118,7 +118,7 @@ layout: false
   <br> 
   A .alert[graph] consists of a set of nodes $\mathcal{N}$ and a set of edges $\mathcal{E}$. Each edge in $\mathcal{E}$ is a set of two nodes. 
 
-<br> <br> <br> <br> <br> <br>
+<br> <br> <br> <br> 
   In .alert[hypergraphs], edges in $\mathcal{E}$ can contain *any number* of nodes.     
 
 
