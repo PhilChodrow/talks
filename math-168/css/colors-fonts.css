@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300;1,400&family=Titillium+Web:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+
+.title-slide h1 {font-size: 2.5em; padding-bottom: 45px}
+.title-slide h2 {font-size: 1.7em; padding-bottom: 35px}
+.title-slide h3 {font-size: 1.7em; padding-top: 20px}
+  
+:root {
+    --main-color1: #62354e;
+    --main-color2: #FFE1A8;
+    --main-color3: #f5f7fa;
+    --main-color4: #FFFCF2;
+    --main-color5: #C9CBA3;
+    --alert-color1: #36a9ab;
+    --alert-color2: #114B5F;
+    --alert-color3: #FFE1A8;   
+    --text-color1: #fffefc;
+    --text-color2: main-color1;
+    --text-color3: main-color1;
+}
+
+body{
+	font-family: 'Lato';
+	font-weight: 300;
+}
+
+h1, h2, h3{
+	font-family: "Titillium Web";
+}

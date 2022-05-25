@@ -14,25 +14,31 @@ world_map <- maps::map("state", fill = TRUE)
 world <- sf::st_as_sf(world_map)
 
 coords <- tibble(
-	city = c("", "Staunton", "Swarthmore", "Oslo", "Boston", "Los Angeles"),
-	years = c("0", "17 years", "4 years", "1 year", "7 years", "1 year"),
-	state = c("", "VA", "PA", "Norway", "MA", "CA"),
-	lat  = c(0, 38.1496, 39.9526, 50, 42.3601, 34.0522),
-	lon  = c(0, -79.0717, -75.1652, -65, -71.0589, -118.2437),
-	label_lat = c(0, 37.3, 43.9526, 54, 40.7601, 37.5522),
-	label_lon = c(0, -79.3717, -75.1652, -65, -59, -118.2437),
-	arrow_offset_lat = c(0, 0, 0, .2, -.4, .1),
-	arrow_offset_lon = c(0, -1, -1, .85, .8, .1),
+	city = c("", "Staunton", "Swarthmore", "Boston", "Los Angeles", "Middlebury"),
+	years = c("0", "17 years", "4 years",  "7 years", "2 years", "0 years"),
+	state = c("", "VA", "PA",  "MA", "CA", "VT"),
+	lat  = c(0, 38.1496, 39.9526,  42.3601, 34.0522, 44.00822),
+	lon  = c(0, -79.0717, -75.1652 , -71.0589, -118.2437, -73.17585),
+	label_lat = c(0, 37.3, 43.4926 , 40.3601, 31.2522, 47.60822),
+	label_lon = c(0, -79.3717, -75,  -62.5, -125.2437, -62.17585),
+	arrow_offset_lat = c(0, 0, 0,  -.4, .4, NA),
+	arrow_offset_lon = c(0, -1, -1, 1, -1.2, NA),
 	description = c("",
-									"Grew up!<br>Chess<br>Taekwondo",
-									"College (math + philosophy)<br>Met wife<br>Shenanigans",
-									"Fulbright scholarship<br>Smoked fish<br>Adventures",
-									"Married!<br>Work (nonprofit)<br>PhD<br>Aikido",
-									"Teaching<br>Avocados<br>Pandemic =(")
+									"Grew up!",
+									"College<br>Shenanigans",
+									"Married!<br>Nonprofit<br>PhD<br>Aikido",
+									"Sunshine<br>Avocados<br>Pandemic =(",
+									"Hi!<br>New friends"),
+	highlight = c(.4, .4, .4,  .4, .4, 1.5), 
+	fill = c("#a8cff1", "#a8cff1",  "#a8cff1", "#a8cff1", "#a8cff1", "#002f6c"),
+	color = c("black", "black", "black",  "black", "black", "white")
 )
 
 coords <- coords %>%
-	mutate(label = glue::glue("**{city}, {state}** ({years})<br>*{description}*"))
+	mutate(label = glue::glue("**{city}, {state}**<br>*{description}*"))
+
+
+
 
 coord_cxns <- coords %>%
 	mutate(
@@ -44,7 +50,7 @@ coord_cxns <- coords %>%
 		label_lat_next = lead(label_lat),
 		label_lon_next = lead(label_lon),
 		# label to show in plot, styled using ggtext ---
-		label = glue::glue("**{city}, {state}** ({years} yrs)<br>*{description}*"),
+		label = glue::glue("**{city}, {state}**<br>*{description}*"),
 		# label of next location ----
 		label_next = lead(label)
 	)
@@ -64,14 +70,14 @@ coord_cxns <- coord_cxns %>%
 		# combine with all other residences ----
 	bind_rows(coord_cxns) %>%
 		# last (7th) row irrelevant ----
-	slice(1:6) %>%
-		# keep what we neeed ----
-	dplyr::select(city_order, lat, lon, label_lat, label_lon, lat_next, lon_next, label_lat_next, label_lon_next, label_next, arrow_offset_lat, arrow_offset_lon) %>%
+	slice(1:8) %>%
+		# keep what we need ----
+	dplyr::select(city_order, lat, lon, label_lat, label_lon, lat_next, lon_next, label_lat_next, label_lon_next, label_next, arrow_offset_lat, arrow_offset_lon, highlight, fill) %>%
 	mutate(fact = row_number())
 
 
 plot <- ggplot(data = world) +
-	geom_sf(fill = "#b1ccbe") +
+	geom_sf(fill = "#b1ccbe", color = "grey55") +
 	xlab("Longitude") + ylab("Latitude") +
 	geom_curve(data = coord_cxns %>% slice(-1),
 						 aes(y = lat,
@@ -79,19 +85,14 @@ plot <- ggplot(data = world) +
 						 		yend = lat_next + arrow_offset_lat,
 						 		xend = lon_next + arrow_offset_lon,
 						 		group = seq_along(city_order)),
-						 color = "white",
-						 curvature = -0.5,
+						 color = "gray30",
+						 curvature = -0.47,
 						 arrow = arrow(type = "closed", length = unit(0.02, "npc")),
 						 size  = 0.5) +
 	geom_point(data = coords,
-						 aes(x = lon, y = lat, fill = city),
+						 aes(x = lon, y = lat, fill = fill, color = color),
 						 size = 4,
 						 pch = 21) +
-	# geom_segment(data = coords,
-	# 						 aes(x = lon, xend = lon, y = lat, yend = lat + 0.5),
-	# 						 color = "#181818",
-	# 						 size = 1) +
-
 	geom_richtext(
 		data = coords,
 		aes(
@@ -102,20 +103,21 @@ plot <- ggplot(data = world) +
 			hjust = ifelse(label_lon < -100, 0, 1),
 			# group is used to create the transition ----
 			# group = seq_along(city_order),
-			fill = city
+			fill = fill, 
+			color = color
 		),
-		size = 2,
+		size = 2.6,
 		# R ladies purple ----
 		# R ladies font used in xaringan theme ----
-		family = "Lato",
-		alpha = 1.0
+		family = "Lato"
 	) +
 	xlim(-125, -60) +
 	ylim(25, 55) +
 	guides(color = FALSE, fill = FALSE) +
-	scale_color_brewer(palette = "Set3") +
-	scale_fill_brewer(palette = "Set3") 
+	scale_color_identity() +
+	scale_fill_identity() 
 
 plot
 
-ggsave("geo-intro.png", width = 6, height = 4, bg = "transparent")
+ggsave("geo-intro-light-bg.png", width = 6, height = 4, bg = "transparent")
+# ggsave("geo-intro.png", width = 6, height = 4, bg = "transparent")
