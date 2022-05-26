@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(https://fonts.googleapis.com/css?family=fira+sans);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
 
 /******************
@@ -62,10 +62,11 @@ p {
 	font-family: monospace;
 }
 
-.title-slide h1 { padding-top: 15%; font-size: 4em;}
+.title-slide h1 { padding-top: 5%; font-size: 3em;}
 .title-slide h3 {font-size: 2em;}
 .title-slide h2 {
 	padding-bottom: 30px;
+	padding-top: 30px;
 	color: var(--text-color1);
 	border-bottom: 2px solid var(--main-color5);
 	width: 100%;
@@ -107,8 +108,8 @@ p {
 .remark-code-line-highlighted { background-color: var(--code-highlight); }
 
 
-h1, h2, h3, body{
-	font-family: 'Yanone Kaffeesatz';
+h1, h2, h3, h4, body{
+	font-family: 'Fira sans';
 	font-weight: normal;
 	padding-left: 15px;
 }
@@ -130,14 +131,25 @@ h1, h2, h3, h4 {
 	font-weight: 400;
 	margin-bottom: 0;
 	margin-top: 10px;
-	padding-left: 15px;
+	padding-left: 30px;
+	margin-left: 10px;
 }
+
+body { padding-left: 30px; margin-left: 10px;}
+
 h1 { font-size: 3.5em; }
 h2 { font-size: 3em; }
 h3 { font-size: 1.6em; }
-h4 { font-size: 1em; }
+h4 { font-size: 1.2em; }
+
+body { font-size: 1em;}
 
 a { color: var(--link-color); text-decoration: none; }
+
+.image-caption-left h4, body {
+	margin-left: 10px;
+	padding-left: 10px;
+}
 
 
 
