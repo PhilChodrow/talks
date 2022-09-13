@@ -58,6 +58,35 @@ class: split-two
   <img src="../img-lib/detection-1.png" width=100%>
 ]]]
 
+---
+
+class: split-two 
+
+
+.column.bg-main1[
+  # Today 
+
+  1. Spectral clustering for general, .alert[nonuniform hypergraphs] based on a nonbacktracking operator. 
+  2. Limitations and an extension to a .alert[belief-propagation approximation]. 
+  3. Conjectures on the .alert[fundamental limits] of community-detection in hypergraphs.  
+
+Nonbacktracking clustering, detectability is well-understood for $k$-uniform hypergraphs. Nonuniform hypergraphs are surprisingly much trickier! 
+]
+
+
+.column[
+
+# &nbsp;
+
+.font_smaller[ 
+- Krzakala et al. (2013) "Spectral redemption in clustering sparse networks," *PNAS* <br> 
+- Bordenave et al. (2018): Non-backtracking spectrum of random graphs: community detection and non-regular Ramanujan graphs. *Annals of Probability*. <br> 
+- Mossel et al. (2018) A proof of the blockmodel threshold conjecture, *Combinatorica*. <br>
+- Angelini et al. (2015) Spectral detection on sparse hypergraphs. *Allerton Conference*. 
+- Stephan and Zhu (2022) Sparse random hypergraphs: Non-backtracking spectra and community detection, <i> arXiv:2203.07346</i>
+]
+]
+
 
 ---
 
@@ -238,7 +267,7 @@ such that $\mathbf{v}$ is correlated with clusters.
 
 .footnote[
     Stronger version for uniform hypergraphs proven by <br> 
-    Stephan et al. (2022) Sparse random hypergraphs: Non-backtracking spectra and community detection, <i> arXiv:2203.07346</i>
+    Stephan and Zhu (2022) Sparse random hypergraphs: Non-backtracking spectra and community detection, <i> arXiv:2203.07346</i>
 ]
 ]
 
