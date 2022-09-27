@@ -81,13 +81,12 @@ $$\frac{1}{2}\frac{(a - b)^2}{a + b} > 1\;.$$
 ]
 .column[.content.stretch[
   <br> 
-  <img src="img/SBM.png" width=90%>
+  <img src="img/SBM.png" width=85%>
   <img src="img/detectability-threshold.png" width=90%>
   
 ]
 .footnote[
-  Images from Nadakuditi + Newman, *PRE* 2012 <br>  
-  Abbe et al., *IEEE Trans. Info. Theory* 2014. 
+  Images from Nadakuditi + Newman, *PRE* 2012 <br> Abbe et al., *IEEE Trans. Info. Theory* 2014. 
 ]
 ]
 
