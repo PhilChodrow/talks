@@ -1,0 +1,1191 @@
+---
+title: "Hypergraph Data Science: <br>Challenges and Opportunities"
+subtitle: "Joint Math Meetings  |  Jan 5th, 2023"  
+date: ""
+author: 'Dr. <span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B" 
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/pink.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+ 
+##  {.bg2}
+
+
+<br> <br> <br> <br> 
+[This is a talk about [what I have learned]{.alert} and  [what I am excited about]{.alert-2} in the mathematics of hypergraph data science.]{.font-larger}
+
+[This talk is unapologetically:]{.font-larger} 
+
+
+[Personal]{.fragment .font-larger}<br>
+[Biased]{.fragment .font-larger}<br>
+
+
+##  {.bg1}
+
+
+<br> <br> <br> <br> 
+[This is a talk about [what I have learned]{.alert} and  [what I am excited about]{.alert-2} in the mathematics of hypergraph data science.]{.font-larger}
+
+[This talk is unapologetically:]{.font-larger} 
+
+
+[Personal]{.font-larger}<br>
+[Biased]{.font-larger}<br>
+[Pink]{.font-larger .alert}
+
+
+
+
+
+
+## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> <br> 
+ 
+### A [hypergraph]{.alert} is a <br> set of sets. 
+
+:::
+
+::: {.column .bg0}
+
+::: {.center}
+
+<img src="img/hypergraph-example.png" width=450 class="center">  
+
+:::
+
+[Image created using the `xgi` package: [https://xgi.readthedocs.io/en/latest/](https://xgi.readthedocs.io)]{.footnote}
+
+:::
+
+
+## {.split-66}
+
+::: {.column .bg0}
+
+![](img/mrc-collab.jpeg){.fragment .absolute top=50 left=50 width="500"}
+
+![](img/sx-question.png){.fragment .absolute top=250 left=50 width="600"}
+
+![](img/sociopatterns-sensor.jpeg){.fragment .absolute top=100 left=150 width="450"}
+
+:::
+
+::: {.column .bg1}
+
+### Hypergraph Data
+
+[Natural hypergraphs]{.alert}: multiway interactions between nodes. 
+
+[Induced hypergraphs]{.alert-2}: nodes don't interact directly, but are co-present in events, categories, etc. 
+
+[Sampled graphs]{.alert-3}: dyadic interactions sampled from underlying polyadic phenomena. 
+ 
+:::
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Some Hypergraph Data Science Questions
+
+
+[Community detection, core-periphery]{.alert} <br>
+Does this hypergraph have meaningful clusters/communities/modules?
+
+[Centrality]{.alert} <br> Are some nodes/edges in this hypergraph more structurally important than others? 
+
+[Link prediction]{.alert} <br> Can we predict where future hyperedges might appear? 
+
+[Hypergraph recovery]{.alert} <br> If our data comes to us as a dyadic graph, can we infer the presence of latent hyperedges? 
+
+:::
+
+::: {.column .bg0}
+
+<!-- ::: {.center} -->
+
+<img src="img/hypergraph-example.png" width=650 class="center">  
+
+<!-- ::: -->
+
+[Image created using the `xgi` package: [https://xgi.readthedocs.io/en/latest/](https://xgi.readthedocs.io)]{.footnote}
+
+:::
+
+
+## {background-image="img/change-my-mind.jpeg" background-size="contain"}
+
+## {.bg1}
+
+### Graph Projections
+
+One very natural thing to do is to work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br>
+
+<img src="img/clique-projection.png" width=650 class="center">  
+
+This is often reasonable and performant, but is Boring™ and can lead to poor results when not carefully checked against the data. 
+
+
+
+[**PSC** (2020). Configuration models of random hypergraphs. *Journal of Complex Networks*, 8(3):cnaa018]{.footnote}
+
+
+
+<!-- ### So, we have to get past this:  -->
+
+
+<!-- <br> <br> -->
+<!-- <img src="img/change-my-mind.jpeg" width=650 class="center">   -->
+
+<!-- ![](img/change-my-mind.jpeg){.absolute top=75 left=150 width=800} -->
+
+
+<!-- ## {.split-50}
+
+::: {.column .bg1}
+
+##### What makes a model "higher order"?
+
+Consider an edge-independent generative model, where $\mathbf{x} \in \mathbb{R}^n$ is some vector of attributes and $p_R(\mathbf{x})$ is the probability of a hyperedge forming on a tuple $R \subseteq \mathcal{N}$. 
+
+Suppose that $p_R$ is linear: $p_R(\mathbf{x}) = \mathbf{b}_R\cdot \mathbf{x}$. 
+
+What's the expected number of edges $A_{ij}$ incident to the pair $i,j \in \mathcal{N}$? 
+
+$$
+\begin{aligned}
+\mathbb{E}[A_{ij}] &= \sum_{R: i,j \in R} \mathbf{b}_R \cdot \mathbf{x} \\ 
+                   &= \left[\sum_{R: i,j \in R} \mathbf{b}_R\right] \cdot \mathbf{x}
+\end{aligned}
+$$ 
+
+
+:::
+
+::: {.column .bg0}
+
+##### [What makes a model "higher order"?]{.hide}
+
+This is the same expectation as if we had done a dyadic graph model with $p_{ij}(\mathbf{x}) = \mathbf{b}_{ij}\cdot \mathbf{x} \triangleq \left[\sum_{R: i,j \in R} \mathbf{b}_R\right]\cdot \mathbf{x}$. 
+
+
+
+**[Rule of thumb]{.alert-2}**: higher-order interactions matter when hyperedges reflect *nonlinear* interaction patterns between nodes. 
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+Consider an edge-independent generative model, where $\mathbf{x} \in \mathbb{R}^n$ is some vector of attributes and $p_R(\mathbf{x})$ is the probability of a hyperedge forming on a tuple $R \subseteq \mathcal{N}$. 
+
+Ok, let's just allow $p_R$ to be nonlinear. Problem solved? Well, if $p_R$ is smooth....
+
+:::
+
+::: {.column .bg0}
+
+$p_R(\mathbf{x}) = p_R(\mathbf{x}_0) + \nabla p_R(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0) + \cdots$ 
+
+
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+##### It is surprisingly difficult to escape linearity
+
+- Markovian random walks on nodes? [Linear]{.fragment}
+- Most forms of Laplacian dynamics and diffusion? [Linear]{.fragment}
+- Any dynamics near a fixed point? [Linear]{.fragment}
+
+Ok, so what about some general 
+
+
+
+
+:::
+
+::: {.column .bg0}
+:::
+
+
+
+ -->
+
+
+
+
+
+## {background-image="img/going-to.jpeg" background-size="contain" }
+
+
+
+### So you want to "really" use hypergraphs...<br> 
+
+
+<!-- ![](img/going-to.jpeg){.fragment .fade-in-then-out .absolute top=120 left=75 width="900"} -->
+
+![](img/sx-question.png){.fragment .fade-in-then-out .absolute top=120 left=50 width="900"}
+
+![](img/sx-question-answer.png){.fragment .fade-up .absolute top=250 left=25 width="1450"}
+<!-- 
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Absurdly General Objects Need Absurd Numbers of Parameters
+
+Consider an additive, optimization-based community detection problem: determine a label vector $\mathbf{z} \in \mathcal{Z}^{n}$ such that 
+
+$$
+Q(\mathbf{z}) = \sum_{e \in \text{edges}} q(\mathbf{z}_e) 
+$$
+
+is large. 
+
+We don't know the functions $q$, so we need to estimate their values from data as we also estimate $\mathbf{z}$. 
+
+:::
+
+::: {.column .bg0}
+
+##### [Absurdly General Objects Need Absurd Numbers of Parameters]{.hide}
+
+Suppose we are looking at a $k$-uniform hypergraph with $\ell$ possible communities. 
+
+How many values of $q(z_e)$ do we need to estimate? 
+
+[In complete generality: $\ell^k$]{.fragment} 
+
+[Ignoring node labels: still $\Theta(\ell^k)$]{.fragment} 
+
+[Ignoring cluster labels (focusing only on sizes of groups): \# of unordered partitions of $k$]{.fragment}
+
+
+::: -->
+
+<!-- 
+## {.bg1}
+
+### Problems with Overparameterization
+
+<br> 
+
+#####  Too many parameters to estimate $\implies$
+
+[Long runtimes]{.font-larger}
+
+[Optimization methods trapped in poor local optima]{.font-larger}
+
+[Interpretability challenges]{.font-larger}
+
+##### [So, we need to use *assumptions* about our problem structure to reduce the number of parameters needed.]{.fragment} -->
+<!-- 
+## {.split-50}
+
+::: {.column .bg1}
+
+#### We want methods that...
+
+[...Are "[real]{.alert}" hypergraph methods (not graph methods in disguise).]{.fragment}
+
+[...Rely on the "[right]{.alert}" structure to avoid combinatorial explosion of parameters.]{.fragment} 
+
+[...Perform "[better]{.alert}" than comparable graph methods on tasks we care about.]{.fragment} 
+
+[We also want *[principled understanding]{.alert}* of when hypergraph methods should be expected to outperform graph methods.]{.fragment} 
+
+:::
+
+::: {.column .bg0}
+
+<!-- ::: {.center} -->
+
+<!-- <img src="img/hypergraph-example.png" width=650 class="center">   -->
+
+<!-- ::: -->
+
+<!-- [Image created using the `xgi` package: [https://xgi.readthedocs.io/en/latest/](https://xgi.readthedocs.io)]{.footnote} -->
+
+<!-- :::  -->
+
+
+
+
+##
+
+::: {.split-33}
+:::{.column .bg1}
+
+<br> <br> <br> <br> <br> 
+
+### By the End of This Talk...
+
+:::
+
+::: {.column .bg0}
+<br> 
+
+[...You'll reason about some of the tradeoffs of addressing the absurd generality of hypergraph data. ]{.fragment .font-larger}
+
+[...You'll describe at least one reason *why* it is hard to beat graph methods.]{.fragment .font-larger}
+
+
+[...You'll know (my take on) interesting future directions for network data science with hypergraphs.]{.fragment .font-larger}
+
+:::
+:::
+
+<!-- 
+## {.bg2}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### [Part I]{.alert} <br> Your Method Is a Graph Method
+
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Why it's so hard 
+
+Consider a hypergraph $\mathcal{H} = (\mathcal{N}, \mathcal{E})$. 
+
+Suppose I have some function $F:\mathbb{R}^n \rightarrow \mathbb{R}^{h}$ of the form 
+
+$$
+F(\mathbf{x}) = \sum_{e \in \mathcal{E}} f_e(\mathbf{x})
+$$
+
+$h = n$, [dynamics]{.alert}: diffusion, opinion dynamics, signal processing, sparse belief-propagation. 
+
+$h = 1$, [optimization]{.alert}: maximum-likelihood algorithms: community detection, core-periphery, role-detection. 
+
+:::
+
+::: {.column .bg0}
+
+##### Linearity strikes again
+
+Suppose that $f_e$ is linear:
+
+$$
+f_e(\mathbf{x}_e) = \mathbf{A}_e \mathbf{x}
+$$
+
+Then, 
+$$F(\mathbf{x}) = \left[\sum_{e \in E} \mathbf{A}_e\right]\mathbf{x}\;.$$
+
+
+
+which can equivalently be defined on a graph with adjacency structure $\sum_{e \in E} \mathbf{A}_e$
+
+
+
+:::
+ -->
+
+
+## {.bg2}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### [Part I]{.alert} <br> Your Model Is Too Complicated 
+
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Hypergraph Community Detection
+
+<br> 
+
+[Problem]{.alert}: assign a discrete label vector $\mathbf{z} \in \mathcal{Z}^n$ to the nodes of a hypergraph in a way that reflects "meaningful" structure. 
+
+Also called "clustering" or "partitioning."
+
+We often do this with a [stochastic blockmodel]{.alert} (SBM), which expresses a probability distribution over hypergraphs with cluster structure. 
+
+[Review in <br> **PSC**, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. *Science Advances*, 7:eabh1303]{.footnote}
+
+
+:::
+
+::: {.column .bg0}
+
+<br> 
+
+![](img/detection-1.png)
+
+:::
+
+## {.split-50} 
+
+::: {.column .bg1}
+
+#### [Canonical]{.alert} SBM
+
+Specifies a [**probabilistic rate**]{.alert-2} at which edges form on sets of nodes with specified labels. 
+
+
+
+[$\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})$]{.font-larger} 
+
+$=$
+
+(Normalized) [**expected \# of edges**]{.alert-2} on sets of 6 nodes with $\color{#FFD447 }{3 \bullet}$, $\color{#59C9A5}{2 \bullet}$, and $\color{#23395B}{1\bullet}$. 
+
+Usually estimated through either maximum likelihood or Bayesian methods, once a labeling is chosen. 
+
+[Degree-corrected SBMs for hypergraphs introduced by <br> <br> Ke, Shi, and Xia (2020), Community Detection for Hypergraph Networks via
+Regularized Tensor Power Iteration, *arXiv*]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+#### [Microcanonical]{.alert-2} SBM
+
+Specifies an [**exact number of times**]{.alert} that an edge is present on a set of nodes with specified labels. 
+
+
+
+[$\Lambda(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})$]{.font-larger} 
+
+$=$
+
+[**Exact \# of edges**]{.alert} on sets of 6 nodes with $\color{#FFD447 }{3 \bullet}$, $\color{#59C9A5}{2 \bullet}$, and $\color{#23395B}{1\bullet}$. 
+
+Can be read off from data (once a candidate labeling is chosen). 
+
+[Amburg et al. (2023), "An Information Theoretic Framework for Hypergraph Clustering", *In preparation*]{.footnote}
+
+:::
+
+## {.split-66}
+
+::: {.column .bg1}
+
+#### Example
+
+In the canonical degree-corrected hypergraph SBM, an approximation of the maximum-likelihood inference objective is: 
+
+::: {.font-larger}
+$$
+Q(\mathbf{z}) = \sum_{\mathbf{z} \in 2^\mathcal{Z}}\left[ \mathbf{cut}(\mathbf{z}) \log \Omega(\mathbf{z}) - \mathbf{vol}(\mathbf{z}) \Omega(\mathbf{z}) \right]
+$$
+:::
+
+Here, $\mathbf{cut}(\mathbf{z})$ and $\mathbf{vol}(\mathbf{z})$ quantify the alignment of the label vector $\mathbf{z}$ with the hyperedge structure. 
+
+To make $Q(\mathbf{z})$ small, we need to alternate: 
+
+1. Minimize with respect to $\mathbf{z}$. 
+2. Re-estimate the value of $\Omega(\mathbf{z})$ *for each $\mathbf{z}$*. 
+
+[Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, *Science Advances*]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+[How many parameters are we estimating in Step 2?]{.fragment .fade-in .font-larger}
+
+:::
+
+
+## {.bg1}
+
+### Parameter Counts in SBMs
+
+The general number of parameters we need for an edge of size $k$ and $\ell$ possible cluster labels is: 
+
+::: {.font-larger}
+$$
+q(k, \ell) \triangleq \ell!\sum_{\mathbf{p} \in \mathcal{P}_k} \frac{1}{(\ell - \lvert\mathbf{p}\rvert)!}\;,
+$$
+
+:::
+
+where $\mathcal{P}_{k}$ is the set of integer partitions of $k$. 
+
+[Example]{.alert}: $k = 6$, $\ell = 10$:
+
+$$
+q(6, 10) = 10!\left[\frac{1}{4!} + \frac{1}{5!} + 2\frac{1}{6!} + 3\frac{1}{7!} + 3\frac{1}{8!} + \frac{1}{9!}\right] = 193,960. 
+$$
+
+
+[😑]{.fragment .beeg .absolute top=25 left=250} 
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+### Parameter Reduction
+
+We can reduce the number of parameters required for these models by imposing structure on the rate $\Omega$. For example, if we ignore *group labels*, we can treat $\Omega$ as a function of sorted partition vectors (group size counts): 
+
+$$
+\begin{aligned}
+\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet}) &= \omega(\mathbf{p}(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})) \\ 
+&= \omega(3, 2, 1)
+\end{aligned}
+$$
+
+So, 
+
+$$
+\begin{aligned}
+\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet}) 
+= 
+\Omega(\color{#59C9A5 }{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet}\color{#23395B}{\bullet}\color{#FFD447}{\bullet})
+\end{aligned}
+$$
+
+etc. 
+
+:::
+
+::: {.column .bg0}
+
+
+### Some Candidates
+
+<br>
+
+$\omega_1(\mathbf{p}) = \begin{cases}
+  \omega_1 &\quad p_1 = k  \\ 
+  \omega_0 &\quad \text{otherwise} \\ 
+\end{cases}$
+
+$\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})$
+
+$\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})$
+
+$\omega_4(\mathbf{p}) = w(p_2/k)$
+
+Just $O(k_{\text{max}}^2)$ parameters needed to specify these functions. 
+
+[These intensity functions are closely related to *splitting functions* in the terminology of: <br><br> Veldt et al. (2022). Hypergraph cuts with general splitting functions, *SIAM Review*]{.footnote}
+
+
+:::
+
+## {.split-50}
+
+::: {.column .bg2}
+
+### Discuss! 
+
+::: {.font_larger .semi-fade-out .fragment}
+
+Which of the following hyperedges are "favored" (have higher scores) under each of the four candidate intensity functions? 
+
+1. $(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet})$
+
+2. $(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet})$
+
+3. $(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet})$
+
+4. $(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#EF476F}{\bullet}\color{#EF476F}{\bullet})$
+
+:::
+
+
+[Which function would you choose? What assumptions are you making about the kinds of edges you'd see in your data?]{.fragment .fade-in}
+
+:::
+
+::: {.column .bg0}
+
+### Some Candidates
+
+<br>
+
+$\omega_1(\mathbf{p}) = \begin{cases}
+  \omega_1 &\quad p_1 = k  \\ 
+  \omega_0 &\quad \text{otherwise} \\ 
+\end{cases}$
+
+$\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})$
+
+$\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})$
+
+$\omega_4(\mathbf{p}) = w(p_2/k)$
+
+Just $O(k_{\text{max}}^2)$ parameters needed to specify these functions. 
+
+[These intensity functions are closely related to *splitting functions* in the terminology of: <br><br> Veldt et al. (2022). Hypergraph cuts with general splitting functions, *SIAM Review*]{.footnote}
+
+:::
+
+## {.split-50}
+
+::: {.column .bg2}
+
+### Discuss! 
+
+::: {.font_larger .incremental}
+
+
+[$\omega_1$ favors homogeneous edges. <br>]{.fragment .fade-in-then-semi-out}
+[Booking [hotels]{.alert} in the [same country]{.alert-2}]{.fragment}
+
+[$\omega_2$ favors edges with few distinct group labels. <br>]{.fragment .fade-in-then-semi-out}
+[[Friend groups]{.alert} between [grades]{.alert-2} in a primary school]{.fragment}
+
+[$\omega_3$ favors edges with balanced diversity. <br>]{.fragment .fade-in-then-semi-out}
+[[Types]{.alert-2} of [ingredients]{.alert} in recipes?]{.fragment}
+
+[$\omega_4$ favors edges with two balanced groups. <br>]{.fragment .fade-in-then-semi-out}
+[[Party]{.alert-2} of [members]{.alert} of US congressional committees.]{.fragment}
+
+[Examples (except recipes) from <br> <br>  Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, *Science Advances*]{.footnote}
+
+:::
+
+:::
+
+::: {.column .bg0}
+
+### Some Candidates
+
+<br>
+
+$\omega_1(\mathbf{p}) = \begin{cases}
+  \omega_1 &\quad p_1 = k  \\ 
+  \omega_0 &\quad \text{otherwise} \\ 
+\end{cases}$
+
+$\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})$
+
+$\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})$
+
+$\omega_4(\mathbf{p}) = w(p_2/k)$
+
+Just $O(k_{\text{max}}^2)$ parameters needed to specify these functions. 
+
+[These intensity functions are closely related to *splitting functions* in the terminology of: <br><br> Veldt et al. (2022). Hypergraph cuts with general splitting functions, *SIAM Review*]{.footnote}
+
+:::
+
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+
+##### Hooray!
+
+So, we can make assumptions about the [*kind*]{.alert} of structure in our data, and in doing so reduce the number of parameters we need to estimate. 
+
+$$
+\begin{aligned}
+q_{\mathbf{p}}(\mathbf{z}) &= \mathbf{cut}_{\mathbf{p}}(\mathbf{z}) \log \omega(\mathbf{p}) - \mathbf{vol}_{\mathbf{p}}(\mathbf{z})\omega(\mathbf{p}) \\ 
+Q(\mathbf{z}) &= \sum_{\mathbf{p} \in \mathcal{P}}q_{\mathbf{p}}(\mathbf{z})
+\end{aligned}
+$$
+
+- $\mathbf{cut}_{\mathbf{p}}(\mathbf{z})$ and $\mathbf{vol}_{\mathbf{p}}(\mathbf{z})$ are structural terms that describe how edges align to the candidate label vector $\mathbf{z}$. 
+- $\mathcal{P}$ is the set of all valid integer partitions up to the size of the largest edge present. 
+
+
+[Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, *Science Advances*]{.footnote}
+
+
+:::
+
+::: {.column .bg0}
+
+::: {.fragment .fade-in}
+
+##### But...
+
+This is where algorithmic considerations come into play. 
+
+Different affinity functions are better for different types of data; however...
+
+
+::: {.fragment .fade-in}
+
+We only know scalable algorithms for this one: 
+
+$\omega_1(\mathbf{p}) = \begin{cases}
+  \omega_1 &\quad p_1 = k  \\ 
+  \omega_0 &\quad \text{otherwise} \\ 
+\end{cases}$
+
+This works well...sometimes.  
+:::
+
+:::
+:::
+
+## {background-image="img/contact-clustering.png" background-size="contain"}
+
+## {background-image="img/senate-bills.jpeg" background-size="contain"}
+
+
+## {.bg1}
+
+### Your model is too complicated... 
+
+<br>
+
+[...but choosing parameterizations can help to simplify it.]{.font-larger}
+
+[These parameterizations always imply *[assumptions]{.alert}* about how the structure you are looking for expresses itself in hypergraph edges.]{.font-larger}
+
+[They should be expected to work well when the assumptions are approximately correct for the data, and not otherwise. ]{.font-larger}
+
+
+
+## {.bg2}
+
+
+<br> <br> <br> <br> <br> <br> 
+
+### [Part II]{.alert} <br> Your Model Loses to Graph Methods
+
+## {background-image="img/change-my-mind.jpeg" background-size="contain"}
+
+<!-- ## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> 
+[We want to do Very Original Higher-Order stuff, but...]{.font-larger}
+
+:::
+
+::: {.column .bg0}
+
+![](img/on-graphs.jpeg){.fragment .absolute top=0 left=50 width="550"}
+
+::: -->
+
+## {background-image="img/contact-clustering-graph-highlight.png" background-size="contain"}  
+
+
+## {.bg2}
+
+
+<br> <br> <br> <br> <br> <br> 
+
+### [Part II]{.alert} <br> [Your Model Loses to Graph Methods]{.fragment .strike}
+
+#### [[When and why]{.alert-2} does your model lose to graph methods?]{.fragment}
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+##### When and why is it hard to beat graph methods?
+
+<br> 
+
+Your model will often tell you!
+
+In our modularity paper, we considered an easily-optimizable objective where the intensity function $\Omega$ only cares about whether an edge is fully homogeneous or not. 
+
+[Chodrow, Veldt, and Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. *Science Advances*, 7:eabh1303]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+$$
+\begin{aligned}
+Q(\mathbf{z})   &\triangleq -\sum_{k\in \mathcal{K}} \color{#59C9A5}{\beta_k} q_k(\mathbf{z}) \\ 
+q_k(\mathbf{z}) &\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\gamma_k} \sum_{\ell \in \mathcal{Z}}\mathbf{vol}(\ell; \mathbf{z})^k
+\end{aligned}
+$$
+
+[$\beta_k$]{.alert-2}: relative strength of community signal in edges of size $k$, **inferred from data**. 
+
+[$\gamma_k$]{.alert-3}: resolution parameter for edges of size $k$, **inferred from data**. 
+
+$\mathbf{cut}_k(\mathbf{z})$: number of homogeneous $k$-edges under labeling $\mathbf{z}$. 
+
+$\mathbf{vol}(\ell; \mathbf{z})$: sum of degrees of nodes contained on community $\ell$ under labeling $\mathbf{z}$.  
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+##### When and why is it hard to beat graph methods?
+
+<br> 
+
+Projecting a $k$-edge into a $k$-clique generates $\binom{k}{2}$ 2-edges. 
+
+If [$\beta_k$]{.alert-2} $\propto \binom{k}{2}$, then the signal preserved by this projection won't depend strongly on $k$ -- and we might expect a graph method to pick it up well. 
+
+If not, we might expect projection to lose signal $\implies$ hypergraph methods should do better. 
+
+
+[**PSC**, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. *Science Advances*, 7:eabh1303]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+$$
+\begin{aligned}
+Q(\mathbf{z})   &\triangleq -\sum_{k\in \mathcal{K}} \color{#59C9A5}{\beta_k} q_k(\mathbf{z}) \\ 
+q_k(\mathbf{z}) &\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\gamma_k} \sum_{\ell \in \mathcal{Z}}\mathbf{vol}(\ell; \mathbf{z})^k
+\end{aligned}
+$$
+
+[$\beta_k$]{.alert-2}: relative strength of community signal in edges of size $k$, **inferred from data**. 
+
+[$\gamma_k$]{.alert-3}: resolution parameter for edges of size $k$, **inferred from data**. 
+
+$\mathbf{cut}_k(\mathbf{z})$: number of homogeneous $k$-edges under labeling $\mathbf{z}$. 
+
+$\mathbf{vol}(\ell; \mathbf{z})$: sum of degrees of nodes contained on community $\ell$ under labeling $\mathbf{z}$.  
+
+:::
+
+
+## {background-image="img/beta-structure-comparisons.png" background-size="contain"}  
+
+
+## {background-image="img/contact-senate-spectral.png" background-size="contain"}  
+
+[[hypergraph wins]{.bg1}]{.fragment .absolute left=450}
+
+[[varying signal strength<br> with edge-size]{.bg1}]{.fragment .absolute left=750 top=275}
+
+[[graph wins]{.bg2}]{.fragment .absolute left=450 top=400}
+
+[[constant signal strength<br> with edge-size]{.bg2}]{.fragment .absolute left=750 top=645}
+
+## {.split-60}
+
+
+
+::: {.column .bg1}
+
+### Your model loses to graph methods
+
+[Incorporating higher-order structure doesn't always help!]{.font-larger} 
+
+[Hypergraph methods outperform graph methods when [edges of different sizes]{.alert} carry [different signal]{.alert} about the structure you care about.]{.fragment .font-larger}
+
+
+::: {.fragment}
+
+[]{.font-larger}
+
+[Every optimization-based graph/hypergraph algorithm is equally bad when averaged over possible data inputs. <br> <br>
+  Peel, Larremore, and Clauset (2017). The ground truth about metadata and community detection in networks. *Science Advances*]{.footnote}
+:::
+
+::: 
+
+::: {.column .bg0}
+
+![](img/truth.jpeg){.stretch .absolute left=0 top=0 width=419}
+
+:::
+
+
+
+## {.bg2}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### [Part I]{.alert} <br> Your Model Is Too Complicated
+
+## {.bg2}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### [Part III]{.alert} <br> Your Model Is Too [~~Complicated~~]{.fragment .semi-fade-out} Simple
+
+## {.split-66}
+
+::: {.column .bg1}
+
+
+##### Most Generative Models Have Independent Edges
+
+<br> 
+
+$$
+\mathbb{P}(\mathcal{E};\boldsymbol{\theta}) = \prod_k\prod_{R \in \binom{[n]}{k}} p_R(\boldsymbol{\theta})^{\mathbb{1}(R \in \mathcal{E})}(1-p_R(\boldsymbol{\theta}))^{\mathbb{1}(R \notin \mathcal{E})}
+$$
+
+
+"If the parameters $\boldsymbol{\theta}$ are known, then the probability of edge $e$ being present in $\mathcal{H}$ is independent of the presence of any other edges."
+
+This is [extremely convenient]{.alert} for inference tasks, including maximum-likelihood (easy optimization) and Bayesian methods (easy integrals). 
+ 
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> <br> <br> <br> <br>
+
+##### But hyperedges in real-world data appear highly dependent!
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Example: Scholarly Collaboration
+
+I have by now written two papers with Dr. Nicole Eikmeier at Grinnell College. 
+
+![](img/eikmeier.png){.fragment .center}
+
+[I knew that she's an outstanding collaborator who shares my interests [because]{.alert} of that first paper we worked on together.]{.fragment}
+
+:::
+
+::: {.column .bg0}
+
+
+##### [Example: Scholarly Collaboration]{.hide}
+
+::: {.fragment}
+
+
+
+If we model scholarly collaboration networks as hypergraphs (nodes are scholars, edges are projects), then the presence of one edge makes the presence of other edges more or less likely: the edges are not independent. 
+
+$$
+\mathbb{P}(\text{paper}_1, \text{paper}_2) \neq \mathbb{P}(\text{paper}_1)\mathbb{P}(\text{paper}_2)
+$$
+
+
+Generalized Erdős–Rényi models, stochastic blockmodels, sparse configuration models, etc. all fail to capture this mechanism, which poses problems for [**link prediction**]{.alert}.  
+
+:::
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Predictive Models 
+
+![](img/simplicial-closure-diagram.png){.absolute left=15 top=150}
+
+<br> <br> <br> <br> 
+
+::: {.fragment}
+
+$$
+\begin{aligned}
+&\mathbb{P}(\text{edge on node tuple } R \text{ at time } t) \\
+&= \\ 
+&f(\text{edges on node tuples } S \text{ by time } t\\ 
+&\;\;\text{ such that } S\cap R \neq \emptyset)
+\end{aligned}
+$$
+
+Possible to explicitly model this dependence using statistical models (not interpretably generative). 
+
+[Image from $\implies$]{.footnote}
+
+:::
+
+:::
+
+::: {.column .bg0} 
+
+[![](img/simplicial-closure.png)]{.stretch .absolute width=545 left=0 top=0}
+
+:::
+
+## {.split-33}
+
+::: {.column .bg2}
+
+#### Modeling Considerations
+
+<br> <br> 
+
+[Would you expect the likelihood of an edge forming to depend on the presence of prior edges if...]{.font-larger}
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> 
+
+[Nodes are chemical compounds, edges are medically useful drugs in which those compounds are ingredients.]{.font-larger .fragment .fade-in-then-semi-out}
+
+[Nodes are food ingredients, and edges are recognized recipes in which those ingredients are used.]{.font-larger .fragment .fade-in-then-semi-out}
+
+[Nodes are hashtags, and edges are posts that involve all those hashtags.]{.font-larger .fragment .fade-in}
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+### Your model is too simple...
+
+<br> <br>
+
+[...because it models independent hyperedges.]{.font-larger}
+
+[I'm excited about [interpretable]{.alert2} models that include [inferrable]{.alert} mechanisms for edge correlations in hypergraphs.]{.font-larger .fragment}
+
+
+
+
+:::
+
+::: {.column .bg0}
+
+<br> 
+
+[Neural-network based methods with intriguing performance:]{.fade} <br> <br> 
+Yadati et al. (2020), NHP: Neural Hypergraph Link Prediction. *CIKM 2020*.
+<br> <br> 
+[A null-model statistical approach:]{.fade}
+<br> <br> 
+Juul, Benson, and Kleinberg (2022), Hypergraph patterns and collaboration structure. *arXiv:2210.02163*
+
+
+[A generative model with some important restrictions:]{.fade}
+<br> <br> 
+Benson, Kumar, and Tomkins. (2018) Sequences of sets. *KDD 2018*
+
+
+
+
+:::
+
+
+## {.split-66}
+
+::: {.column .bg1}
+
+#### Summing Up
+
+Hypergraph data is [absurdly general]{.alert}. 
+
+Finding structure in absurd generality requires asking ourselves careful questions about our [modeling assumptions]{.alert} and whether they match our reasonable expectations about the data. 
+
+Hypergraph methods are preferable to graph methods when the [polyadic structure carries signal]{.alert} about your question that gets lost upon graph projections. 
+
+Hyperedges can fail to be independent in much richer ways than dyadic edges can -- [we should model that]{.alert}! 
+
+::: 
+
+::: {.column .bg0}
+
+::: {.center}
+
+![](img/hypergraph-example-skinny.png){.absolute left=0, top=0, width=270}
+ 
+<!-- <img src="img/hypergraph-example.png" width=450 class="center">   -->
+
+:::
+
+[Image created using `xgi`: [https://xgi.readthedocs.io/en/latest/](https://xgi.readthedocs.io)]{.footnote}
+
+:::
+
+
+
+## {.split-66} 
+
+::: {.column .bg1}
+
+### Thanks!
+
+::: {.fragment .semi-fade-out}
+
+I have made a bibliography with some of my favorite references on hypergraph network data science: 
+
+Find it [at this link](https://www.philchodrow.com/posts/2022-12-20-hypergraph-refs/) or under the January 2023 news at [www.philchodrow.com](https://www.philchodrow.com).    
+
+:::
+
+<br> 
+
+[What are [you]{.alert} excited about in hypergraph network data science?]{.fragment .font-larger}
+
+
+::: 
+
+::: {.column .bg0}
+
+
+![](img/nsf.png){.absolute top=15 left=20 width=300}
+![](img/ams.png){.absolute top=350 left=20 width=300} 
+![](img/mrc.jpeg){.absolute top=450 left=20 width=300}
+
+::: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

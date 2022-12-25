@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.38">
+
+  <meta name="author" content="Dr.&nbsp;Phil Chodrow  Department of Computer Science Middlebury College">
+  <title>Hypergraph Data Science:  Challenges and Opportunities</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#23395B" data-background-opacity="0.0" class="center">
+  <h1 class="title">Hypergraph Data Science: <br>Challenges and Opportunities</h1>
+  <p class="subtitle">Joint Math Meetings | Jan 5th, 2023</p>
+  <p class="author">Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College</p>
+</section>
+
+<section id="section" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <span class="font-larger">This is a talk about <span class="alert">what I have learned</span> and <span class="alert-2">what I am excited about</span> in the mathematics of hypergraph data science.</span></p>
+<p><span class="font-larger">This talk is unapologetically:</span></p>
+<p><span class="fragment font-larger">Personal</span><br> <span class="fragment font-larger">Biased</span><br></p>
+</section>
+<section id="section-1" class="slide level2 bg1">
+<h2></h2>
+<p><br> <br> <br> <br> <span class="font-larger">This is a talk about <span class="alert">what I have learned</span> and <span class="alert-2">what I am excited about</span> in the mathematics of hypergraph data science.</span></p>
+<p><span class="font-larger">This talk is unapologetically:</span></p>
+<p><span class="font-larger">Personal</span><br> <span class="font-larger">Biased</span><br> <span class="font-larger alert">Pink</span></p>
+</section>
+<section id="section-2" class="slide level2 split-33">
+<h2></h2>
+<div class="column bg1">
+<p><br> <br> <br> <br> <br> <br></p>
+<h3 id="a-hypergraph-is-a-set-of-sets.">A <span class="alert">hypergraph</span> is a <br> set of sets.</h3>
+</div>
+<div class="column bg0">
+<div class="center">
+<p><img src="img/hypergraph-example.png" width="450" class="center"></p>
+</div>
+<p><span class="footnote">Image created using the <code>xgi</code> package: <a href="https://xgi.readthedocs.io">https://xgi.readthedocs.io/en/latest/</a></span></p>
+</div>
+</section>
+<section id="section-3" class="slide level2 split-66">
+<h2></h2>
+<div class="column bg0">
+<p><img data-src="img/mrc-collab.jpeg" class="fragment absolute" style="top: 50px; left: 50px; width: 500px; "></p>
+<p><img data-src="img/sx-question.png" class="fragment absolute" style="top: 250px; left: 50px; width: 600px; "></p>
+<p><img data-src="img/sociopatterns-sensor.jpeg" class="fragment absolute" style="top: 100px; left: 150px; width: 450px; "></p>
+</div>
+<div class="column bg1">
+<h3 id="hypergraph-data">Hypergraph Data</h3>
+<p><span class="alert">Natural hypergraphs</span>: multiway interactions between nodes.</p>
+<p><span class="alert-2">Induced hypergraphs</span>: nodes don’t interact directly, but are co-present in events, categories, etc.</p>
+<p><span class="alert-3">Sampled graphs</span>: dyadic interactions sampled from underlying polyadic phenomena.</p>
+</div>
+</section>
+<section id="section-4" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h4 id="some-hypergraph-data-science-questions">Some Hypergraph Data Science Questions</h4>
+<p><span class="alert">Community detection, core-periphery</span> <br> Does this hypergraph have meaningful clusters/communities/modules?</p>
+<p><span class="alert">Centrality</span> <br> Are some nodes/edges in this hypergraph more structurally important than others?</p>
+<p><span class="alert">Link prediction</span> <br> Can we predict where future hyperedges might appear?</p>
+<p><span class="alert">Hypergraph recovery</span> <br> If our data comes to us as a dyadic graph, can we infer the presence of latent hyperedges?</p>
+</div>
+<div class="column bg0">
+<!-- ::: {.center} -->
+<p><img src="img/hypergraph-example.png" width="650" class="center"></p>
+<!-- ::: -->
+<p><span class="footnote">Image created using the <code>xgi</code> package: <a href="https://xgi.readthedocs.io">https://xgi.readthedocs.io/en/latest/</a></span></p>
+</div>
+</section>
+<section id="section-5" class="slide level2" data-background-image="img/change-my-mind.jpeg" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-6" class="slide level2 bg1">
+<h2></h2>
+<h3 id="graph-projections">Graph Projections</h3>
+<p>One very natural thing to do is to work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br></p>
+
+<img src="img/clique-projection.png" width="650" class="center r-stretch"><p>This is often reasonable and performant, but is Boring™ and can lead to poor results when not carefully checked against the data.</p>
+<p><span class="footnote"><strong>PSC</strong> (2020). Configuration models of random hypergraphs. <em>Journal of Complex Networks</em>, 8(3):cnaa018</span></p>
+<!-- ### So, we have to get past this:  -->
+<!-- <br> <br> -->
+<!-- <img src="img/change-my-mind.jpeg" width=650 class="center">   -->
+<!-- ![](img/change-my-mind.jpeg){.absolute top=75 left=150 width=800} -->
+<!-- ## {.split-50}
+
+::: {.column .bg1}
+
+##### What makes a model "higher order"?
+
+Consider an edge-independent generative model, where $\mathbf{x} \in \mathbb{R}^n$ is some vector of attributes and $p_R(\mathbf{x})$ is the probability of a hyperedge forming on a tuple $R \subseteq \mathcal{N}$. 
+
+Suppose that $p_R$ is linear: $p_R(\mathbf{x}) = \mathbf{b}_R\cdot \mathbf{x}$. 
+
+What's the expected number of edges $A_{ij}$ incident to the pair $i,j \in \mathcal{N}$? 
+
+
+
+$$
+\begin{aligned}
+\mathbb{E}[A_{ij}] &= \sum_{R: i,j \in R} \mathbf{b}_R \cdot \mathbf{x} \\ 
+                   &= \left[\sum_{R: i,j \in R} \mathbf{b}_R\right] \cdot \mathbf{x}
+\end{aligned}
+$$ 
+
+
+
+
+:::
+
+::: {.column .bg0}
+
+##### [What makes a model "higher order"?]{.hide}
+
+This is the same expectation as if we had done a dyadic graph model with $p_{ij}(\mathbf{x}) = \mathbf{b}_{ij}\cdot \mathbf{x} \triangleq \left[\sum_{R: i,j \in R} \mathbf{b}_R\right]\cdot \mathbf{x}$. 
+
+
+
+**[Rule of thumb]{.alert-2}**: higher-order interactions matter when hyperedges reflect *nonlinear* interaction patterns between nodes. 
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+Consider an edge-independent generative model, where $\mathbf{x} \in \mathbb{R}^n$ is some vector of attributes and $p_R(\mathbf{x})$ is the probability of a hyperedge forming on a tuple $R \subseteq \mathcal{N}$. 
+
+Ok, let's just allow $p_R$ to be nonlinear. Problem solved? Well, if $p_R$ is smooth....
+
+:::
+
+::: {.column .bg0}
+
+$p_R(\mathbf{x}) = p_R(\mathbf{x}_0) + \nabla p_R(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0) + \cdots$ 
+
+
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+##### It is surprisingly difficult to escape linearity
+
+- Markovian random walks on nodes? [Linear]{.fragment}
+- Most forms of Laplacian dynamics and diffusion? [Linear]{.fragment}
+- Any dynamics near a fixed point? [Linear]{.fragment}
+
+Ok, so what about some general 
+
+
+
+
+:::
+
+::: {.column .bg0}
+:::
+
+
+
+ -->
+</section>
+<section id="section-7" class="slide level2" data-background-image="img/going-to.jpeg" data-background-size="contain">
+<h2></h2>
+<h3 id="so-you-want-to-really-use-hypergraphs">So you want to “really” use hypergraphs…<br></h3>
+<!-- ![](img/going-to.jpeg){.fragment .fade-in-then-out .absolute top=120 left=75 width="900"} -->
+<p><img data-src="img/sx-question.png" class="fragment fade-in-then-out absolute" style="top: 120px; left: 50px; width: 900px; "></p>
+<p><img data-src="img/sx-question-answer.png" class="fragment fade-up absolute" style="top: 250px; left: 25px; width: 1450px; "> <!-- 
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Absurdly General Objects Need Absurd Numbers of Parameters
+
+Consider an additive, optimization-based community detection problem: determine a label vector $\mathbf{z} \in \mathcal{Z}^{n}$ such that 
+
+
+
+$$
+Q(\mathbf{z}) = \sum_{e \in \text{edges}} q(\mathbf{z}_e) 
+$$
+
+
+
+is large. 
+
+We don't know the functions $q$, so we need to estimate their values from data as we also estimate $\mathbf{z}$. 
+
+:::
+
+::: {.column .bg0}
+
+##### [Absurdly General Objects Need Absurd Numbers of Parameters]{.hide}
+
+Suppose we are looking at a $k$-uniform hypergraph with $\ell$ possible communities. 
+
+How many values of $q(z_e)$ do we need to estimate? 
+
+[In complete generality: $\ell^k$]{.fragment} 
+
+[Ignoring node labels: still $\Theta(\ell^k)$]{.fragment} 
+
+[Ignoring cluster labels (focusing only on sizes of groups): \# of unordered partitions of $k$]{.fragment}
+
+
+::: --></p>
+<!-- 
+## {.bg1}
+
+### Problems with Overparameterization
+
+<br> 
+
+#####  Too many parameters to estimate $\implies$
+
+[Long runtimes]{.font-larger}
+
+[Optimization methods trapped in poor local optima]{.font-larger}
+
+[Interpretability challenges]{.font-larger}
+
+##### [So, we need to use *assumptions* about our problem structure to reduce the number of parameters needed.]{.fragment} -->
+<!-- 
+## {.split-50}
+
+::: {.column .bg1}
+
+#### We want methods that...
+
+[...Are "[real]{.alert}" hypergraph methods (not graph methods in disguise).]{.fragment}
+
+[...Rely on the "[right]{.alert}" structure to avoid combinatorial explosion of parameters.]{.fragment} 
+
+[...Perform "[better]{.alert}" than comparable graph methods on tasks we care about.]{.fragment} 
+
+[We also want *[principled understanding]{.alert}* of when hypergraph methods should be expected to outperform graph methods.]{.fragment} 
+
+:::
+
+::: {.column .bg0}
+
+<!-- ::: {.center} -->
+<!-- <img src="img/hypergraph-example.png" width=650 class="center">   -->
+<!-- ::: -->
+<!-- [Image created using the `xgi` package: [https://xgi.readthedocs.io/en/latest/](https://xgi.readthedocs.io)]{.footnote} -->
+<!-- :::  -->
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="split-33">
+<div class="column bg1">
+<p><br> <br> <br> <br> <br></p>
+<h3 id="by-the-end-of-this-talk">By the End of This Talk…</h3>
+</div>
+<div class="column bg0">
+<p><br></p>
+<p><span class="fragment font-larger">…You’ll reason about some of the tradeoffs of addressing the absurd generality of hypergraph data.</span></p>
+<p><span class="fragment font-larger">…You’ll describe at least one reason <em>why</em> it is hard to beat graph methods.</span></p>
+<p><span class="fragment font-larger">…You’ll know (my take on) interesting future directions for network data science with hypergraphs.</span></p>
+</div>
+</div>
+<!-- 
+## {.bg2}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### [Part I]{.alert} <br> Your Method Is a Graph Method
+
+## {.split-50}
+
+::: {.column .bg1}
+
+##### Why it's so hard 
+
+Consider a hypergraph $\mathcal{H} = (\mathcal{N}, \mathcal{E})$. 
+
+Suppose I have some function $F:\mathbb{R}^n \rightarrow \mathbb{R}^{h}$ of the form 
+
+
+
+$$
+F(\mathbf{x}) = \sum_{e \in \mathcal{E}} f_e(\mathbf{x})
+$$
+
+
+
+$h = n$, [dynamics]{.alert}: diffusion, opinion dynamics, signal processing, sparse belief-propagation. 
+
+$h = 1$, [optimization]{.alert}: maximum-likelihood algorithms: community detection, core-periphery, role-detection. 
+
+:::
+
+::: {.column .bg0}
+
+##### Linearity strikes again
+
+Suppose that $f_e$ is linear:
+
+
+
+$$
+f_e(\mathbf{x}_e) = \mathbf{A}_e \mathbf{x}
+$$
+
+
+
+Then, 
+
+
+$$F(\mathbf{x}) = \left[\sum_{e \in E} \mathbf{A}_e\right]\mathbf{x}\;.$$
+
+
+
+
+
+which can equivalently be defined on a graph with adjacency structure $\sum_{e \in E} \mathbf{A}_e$
+
+
+
+:::
+ -->
+</section>
+<section id="section-9" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="part-i-your-model-is-too-complicated"><span class="alert">Part I</span> <br> Your Model Is Too Complicated</h3>
+</section>
+<section id="section-10" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h5 id="hypergraph-community-detection">Hypergraph Community Detection</h5>
+<p><br></p>
+<p><span class="alert">Problem</span>: assign a discrete label vector <span class="math inline">\(\mathbf{z} \in \mathcal{Z}^n\)</span> to the nodes of a hypergraph in a way that reflects “meaningful” structure.</p>
+<p>Also called “clustering” or “partitioning.”</p>
+<p>We often do this with a <span class="alert">stochastic blockmodel</span> (SBM), which expresses a probability distribution over hypergraphs with cluster structure.</p>
+<p><span class="footnote">Review in <br> <strong>PSC</strong>, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. <em>Science Advances</em>, 7:eabh1303</span></p>
+</div>
+<div class="column bg0">
+<p><br></p>
+<p><img data-src="img/detection-1.png"></p>
+</div>
+</section>
+<section id="section-11" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h4 id="canonical-sbm"><span class="alert">Canonical</span> SBM</h4>
+<p>Specifies a <span class="alert-2"><strong>probabilistic rate</strong></span> at which edges form on sets of nodes with specified labels.</p>
+<p><span class="font-larger"><span class="math inline">\(\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})\)</span></span></p>
+<p><span class="math inline">\(=\)</span></p>
+<p>(Normalized) <span class="alert-2"><strong>expected # of edges</strong></span> on sets of 6 nodes with <span class="math inline">\(\color{#FFD447 }{3 \bullet}\)</span>, <span class="math inline">\(\color{#59C9A5}{2 \bullet}\)</span>, and <span class="math inline">\(\color{#23395B}{1\bullet}\)</span>.</p>
+<p>Usually estimated through either maximum likelihood or Bayesian methods, once a labeling is chosen.</p>
+<p><span class="footnote">Degree-corrected SBMs for hypergraphs introduced by <br> <br> Ke, Shi, and Xia (2020), Community Detection for Hypergraph Networks via Regularized Tensor Power Iteration, <em>arXiv</em></span></p>
+</div>
+<div class="column bg0">
+<h4 id="microcanonical-sbm"><span class="alert-2">Microcanonical</span> SBM</h4>
+<p>Specifies an <span class="alert"><strong>exact number of times</strong></span> that an edge is present on a set of nodes with specified labels.</p>
+<p><span class="font-larger"><span class="math inline">\(\Lambda(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})\)</span></span></p>
+<p><span class="math inline">\(=\)</span></p>
+<p><span class="alert"><strong>Exact # of edges</strong></span> on sets of 6 nodes with <span class="math inline">\(\color{#FFD447 }{3 \bullet}\)</span>, <span class="math inline">\(\color{#59C9A5}{2 \bullet}\)</span>, and <span class="math inline">\(\color{#23395B}{1\bullet}\)</span>.</p>
+<p>Can be read off from data (once a candidate labeling is chosen).</p>
+<p><span class="footnote">Amburg et al.&nbsp;(2023), “An Information Theoretic Framework for Hypergraph Clustering”, <em>In preparation</em></span></p>
+</div>
+</section>
+<section id="section-12" class="slide level2 split-66">
+<h2></h2>
+<div class="column bg1">
+<h4 id="example">Example</h4>
+<p>In the canonical degree-corrected hypergraph SBM, an approximation of the maximum-likelihood inference objective is:</p>
+<div class="font-larger">
+<p><span class="math display">\[
+Q(\mathbf{z}) = \sum_{\mathbf{z} \in 2^\mathcal{Z}}\left[ \mathbf{cut}(\mathbf{z}) \log \Omega(\mathbf{z}) - \mathbf{vol}(\mathbf{z}) \Omega(\mathbf{z}) \right]
+\]</span></p>
+</div>
+<p>Here, <span class="math inline">\(\mathbf{cut}(\mathbf{z})\)</span> and <span class="math inline">\(\mathbf{vol}(\mathbf{z})\)</span> quantify the alignment of the label vector <span class="math inline">\(\mathbf{z}\)</span> with the hyperedge structure.</p>
+<p>To make <span class="math inline">\(Q(\mathbf{z})\)</span> small, we need to alternate:</p>
+<ol type="1">
+<li>Minimize with respect to <span class="math inline">\(\mathbf{z}\)</span>.</li>
+<li>Re-estimate the value of <span class="math inline">\(\Omega(\mathbf{z})\)</span> <em>for each <span class="math inline">\(\mathbf{z}\)</span></em>.</li>
+</ol>
+<p><span class="footnote">Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, <em>Science Advances</em></span></p>
+</div>
+<div class="column bg0">
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<p><span class="fragment fade-in font-larger">How many parameters are we estimating in Step 2?</span></p>
+</div>
+</section>
+<section id="section-13" class="slide level2 bg1">
+<h2></h2>
+<h3 id="parameter-counts-in-sbms">Parameter Counts in SBMs</h3>
+<p>The general number of parameters we need for an edge of size <span class="math inline">\(k\)</span> and <span class="math inline">\(\ell\)</span> possible cluster labels is:</p>
+<div class="font-larger">
+<p><span class="math display">\[
+q(k, \ell) \triangleq \ell!\sum_{\mathbf{p} \in \mathcal{P}_k} \frac{1}{(\ell - \lvert\mathbf{p}\rvert)!}\;,
+\]</span></p>
+</div>
+<p>where <span class="math inline">\(\mathcal{P}_{k}\)</span> is the set of integer partitions of <span class="math inline">\(k\)</span>.</p>
+<p><span class="alert">Example</span>: <span class="math inline">\(k = 6\)</span>, <span class="math inline">\(\ell = 10\)</span>:</p>
+<p><span class="math display">\[
+q(6, 10) = 10!\left[\frac{1}{4!} + \frac{1}{5!} + 2\frac{1}{6!} + 3\frac{1}{7!} + 3\frac{1}{8!} + \frac{1}{9!}\right] = 193,960.
+\]</span></p>
+<p><span class="fragment beeg absolute" style="top: 25px; left: 250px; ">😑</span></p>
+</section>
+<section id="section-14" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h3 id="parameter-reduction">Parameter Reduction</h3>
+<p>We can reduce the number of parameters required for these models by imposing structure on the rate <span class="math inline">\(\Omega\)</span>. For example, if we ignore <em>group labels</em>, we can treat <span class="math inline">\(\Omega\)</span> as a function of sorted partition vectors (group size counts):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet}) &amp;= \omega(\mathbf{p}(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})) \\
+&amp;= \omega(3, 2, 1)
+\end{aligned}
+\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Omega(\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet})
+=
+\Omega(\color{#59C9A5 }{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#23395B}{\bullet}\color{#23395B}{\bullet}\color{#FFD447}{\bullet})
+\end{aligned}
+\]</span></p>
+<p>etc.</p>
+</div>
+<div class="column bg0">
+<h3 id="some-candidates">Some Candidates</h3>
+<p><br></p>
+<p><span class="math inline">\(\omega_1(\mathbf{p}) = \begin{cases}  \omega_1 &amp;\quad p_1 = k \\  \omega_0 &amp;\quad \text{otherwise} \\ \end{cases}\)</span></p>
+<p><span class="math inline">\(\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})\)</span></p>
+<p><span class="math inline">\(\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})\)</span></p>
+<p><span class="math inline">\(\omega_4(\mathbf{p}) = w(p_2/k)\)</span></p>
+<p>Just <span class="math inline">\(O(k_{\text{max}}^2)\)</span> parameters needed to specify these functions.</p>
+<p><span class="footnote">These intensity functions are closely related to <em>splitting functions</em> in the terminology of: <br><br> Veldt et al.&nbsp;(2022). Hypergraph cuts with general splitting functions, <em>SIAM Review</em></span></p>
+</div>
+</section>
+<section id="section-15" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg2">
+<h3 id="discuss">Discuss!</h3>
+<div class="font_larger semi-fade-out fragment">
+<p>Which of the following hyperedges are “favored” (have higher scores) under each of the four candidate intensity functions?</p>
+<ol type="1">
+<li><p><span class="math inline">\((\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet})\)</span></p></li>
+<li><p><span class="math inline">\((\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet})\)</span></p></li>
+<li><p><span class="math inline">\((\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet})\)</span></p></li>
+<li><p><span class="math inline">\((\color{#FFD447 }{\bullet}\color{#FFD447}{\bullet}\color{#59C9A5}{\bullet}\color{#59C9A5}{\bullet}\color{#EF476F}{\bullet}\color{#EF476F}{\bullet})\)</span></p></li>
+</ol>
+</div>
+<p><span class="fragment fade-in">Which function would you choose? What assumptions are you making about the kinds of edges you’d see in your data?</span></p>
+</div>
+<div class="column bg0">
+<h3 id="some-candidates-1">Some Candidates</h3>
+<p><br></p>
+<p><span class="math inline">\(\omega_1(\mathbf{p}) = \begin{cases}  \omega_1 &amp;\quad p_1 = k \\  \omega_0 &amp;\quad \text{otherwise} \\ \end{cases}\)</span></p>
+<p><span class="math inline">\(\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})\)</span></p>
+<p><span class="math inline">\(\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})\)</span></p>
+<p><span class="math inline">\(\omega_4(\mathbf{p}) = w(p_2/k)\)</span></p>
+<p>Just <span class="math inline">\(O(k_{\text{max}}^2)\)</span> parameters needed to specify these functions.</p>
+<p><span class="footnote">These intensity functions are closely related to <em>splitting functions</em> in the terminology of: <br><br> Veldt et al.&nbsp;(2022). Hypergraph cuts with general splitting functions, <em>SIAM Review</em></span></p>
+</div>
+</section>
+<section id="section-16" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg2">
+<h3 id="discuss-1">Discuss!</h3>
+<div class="font_larger">
+<p><span class="fragment fade-in-then-semi-out"><span class="math inline">\(\omega_1\)</span> favors homogeneous edges. <br></span> <span class="fragment">Booking <span class="alert">hotels</span> in the <span class="alert-2">same country</span></span></p>
+<p><span class="fragment fade-in-then-semi-out"><span class="math inline">\(\omega_2\)</span> favors edges with few distinct group labels. <br></span> <span class="fragment"><span class="alert">Friend groups</span> between <span class="alert-2">grades</span> in a primary school</span></p>
+<p><span class="fragment fade-in-then-semi-out"><span class="math inline">\(\omega_3\)</span> favors edges with balanced diversity. <br></span> <span class="fragment"><span class="alert-2">Types</span> of <span class="alert">ingredients</span> in recipes?</span></p>
+<p><span class="fragment fade-in-then-semi-out"><span class="math inline">\(\omega_4\)</span> favors edges with two balanced groups. <br></span> <span class="fragment"><span class="alert-2">Party</span> of <span class="alert">members</span> of US congressional committees.</span></p>
+<p><span class="footnote">Examples (except recipes) from <br> <br> Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, <em>Science Advances</em></span></p>
+</div>
+</div>
+<div class="column bg0">
+<h3 id="some-candidates-2">Some Candidates</h3>
+<p><br></p>
+<p><span class="math inline">\(\omega_1(\mathbf{p}) = \begin{cases}  \omega_1 &amp;\quad p_1 = k \\  \omega_0 &amp;\quad \text{otherwise} \\ \end{cases}\)</span></p>
+<p><span class="math inline">\(\omega_2(\mathbf{p}) = w(\lVert \mathbf{p} \rVert_{1})\)</span></p>
+<p><span class="math inline">\(\omega_3(\mathbf{p}) = w(\sum_{h} p_{h}^{-2})\)</span></p>
+<p><span class="math inline">\(\omega_4(\mathbf{p}) = w(p_2/k)\)</span></p>
+<p>Just <span class="math inline">\(O(k_{\text{max}}^2)\)</span> parameters needed to specify these functions.</p>
+<p><span class="footnote">These intensity functions are closely related to <em>splitting functions</em> in the terminology of: <br><br> Veldt et al.&nbsp;(2022). Hypergraph cuts with general splitting functions, <em>SIAM Review</em></span></p>
+</div>
+</section>
+<section id="section-17" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h5 id="hooray">Hooray!</h5>
+<p>So, we can make assumptions about the <span class="alert"><em>kind</em></span> of structure in our data, and in doing so reduce the number of parameters we need to estimate.</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_{\mathbf{p}}(\mathbf{z}) &amp;= \mathbf{cut}_{\mathbf{p}}(\mathbf{z}) \log \omega(\mathbf{p}) - \mathbf{vol}_{\mathbf{p}}(\mathbf{z})\omega(\mathbf{p}) \\
+Q(\mathbf{z}) &amp;= \sum_{\mathbf{p} \in \mathcal{P}}q_{\mathbf{p}}(\mathbf{z})
+\end{aligned}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathbf{cut}_{\mathbf{p}}(\mathbf{z})\)</span> and <span class="math inline">\(\mathbf{vol}_{\mathbf{p}}(\mathbf{z})\)</span> are structural terms that describe how edges align to the candidate label vector <span class="math inline">\(\mathbf{z}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{P}\)</span> is the set of all valid integer partitions up to the size of the largest edge present.</li>
+</ul>
+<p><span class="footnote">Chodrow, Veldt, and Benson (2021), Generative hypergraph clustering: from blockmodels to modularity, <em>Science Advances</em></span></p>
+</div>
+<div class="column bg0">
+<div class="fragment fade-in">
+<!-- -->
+<h5 id="but">But…</h5>
+<p>This is where algorithmic considerations come into play.</p>
+<p>Different affinity functions are better for different types of data; however…</p>
+<div class="fragment fade-in">
+<p>We only know scalable algorithms for this one:</p>
+<p><span class="math inline">\(\omega_1(\mathbf{p}) = \begin{cases}  \omega_1 &amp;\quad p_1 = k \\  \omega_0 &amp;\quad \text{otherwise} \\ \end{cases}\)</span></p>
+<p>This works well…sometimes.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-18" class="slide level2" data-background-image="img/contact-clustering.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-19" class="slide level2" data-background-image="img/senate-bills.jpeg" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-20" class="slide level2 bg1">
+<h2></h2>
+<h3 id="your-model-is-too-complicated">Your model is too complicated…</h3>
+<p><br></p>
+<p><span class="font-larger">…but choosing parameterizations can help to simplify it.</span></p>
+<p><span class="font-larger">These parameterizations always imply <em><span class="alert">assumptions</span></em> about how the structure you are looking for expresses itself in hypergraph edges.</span></p>
+<p><span class="font-larger">They should be expected to work well when the assumptions are approximately correct for the data, and not otherwise.</span></p>
+</section>
+<section id="section-21" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br></p>
+<h3 id="part-ii-your-model-loses-to-graph-methods"><span class="alert">Part II</span> <br> Your Model Loses to Graph Methods</h3>
+</section>
+<section id="section-22" class="slide level2" data-background-image="img/change-my-mind.jpeg" data-background-size="contain">
+<h2></h2>
+<!-- ## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> 
+[We want to do Very Original Higher-Order stuff, but...]{.font-larger}
+
+:::
+
+::: {.column .bg0}
+
+![](img/on-graphs.jpeg){.fragment .absolute top=0 left=50 width="550"}
+
+::: -->
+</section>
+<section id="section-23" class="slide level2" data-background-image="img/contact-clustering-graph-highlight.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-24" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br></p>
+<h3 id="part-ii-your-model-loses-to-graph-methods-1"><span class="alert">Part II</span> <br> <span class="fragment strike">Your Model Loses to Graph Methods</span></h3>
+<h4 id="when-and-why-does-your-model-lose-to-graph-methods"><span class="fragment"><span class="alert-2">When and why</span> does your model lose to graph methods?</span></h4>
+</section>
+<section id="section-25" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h5 id="when-and-why-is-it-hard-to-beat-graph-methods">When and why is it hard to beat graph methods?</h5>
+<p><br></p>
+<p>Your model will often tell you!</p>
+<p>In our modularity paper, we considered an easily-optimizable objective where the intensity function <span class="math inline">\(\Omega\)</span> only cares about whether an edge is fully homogeneous or not.</p>
+<p><span class="footnote">Chodrow, Veldt, and Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. <em>Science Advances</em>, 7:eabh1303</span></p>
+</div>
+<div class="column bg0">
+<p><span class="math display">\[
+\begin{aligned}
+Q(\mathbf{z})   &amp;\triangleq -\sum_{k\in \mathcal{K}} \color{#59C9A5}{\beta_k} q_k(\mathbf{z}) \\
+q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\gamma_k} \sum_{\ell \in \mathcal{Z}}\mathbf{vol}(\ell; \mathbf{z})^k
+\end{aligned}
+\]</span></p>
+<p><span class="alert-2"><span class="math inline">\(\beta_k\)</span></span>: relative strength of community signal in edges of size <span class="math inline">\(k\)</span>, <strong>inferred from data</strong>.</p>
+<p><span class="alert-3"><span class="math inline">\(\gamma_k\)</span></span>: resolution parameter for edges of size <span class="math inline">\(k\)</span>, <strong>inferred from data</strong>.</p>
+<p><span class="math inline">\(\mathbf{cut}_k(\mathbf{z})\)</span>: number of homogeneous <span class="math inline">\(k\)</span>-edges under labeling <span class="math inline">\(\mathbf{z}\)</span>.</p>
+<p><span class="math inline">\(\mathbf{vol}(\ell; \mathbf{z})\)</span>: sum of degrees of nodes contained on community <span class="math inline">\(\ell\)</span> under labeling <span class="math inline">\(\mathbf{z}\)</span>.</p>
+</div>
+</section>
+<section id="section-26" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h5 id="when-and-why-is-it-hard-to-beat-graph-methods-1">When and why is it hard to beat graph methods?</h5>
+<p><br></p>
+<p>Projecting a <span class="math inline">\(k\)</span>-edge into a <span class="math inline">\(k\)</span>-clique generates <span class="math inline">\(\binom{k}{2}\)</span> 2-edges.</p>
+<p>If <span class="alert-2"><span class="math inline">\(\beta_k\)</span></span> <span class="math inline">\(\propto \binom{k}{2}\)</span>, then the signal preserved by this projection won’t depend strongly on <span class="math inline">\(k\)</span> – and we might expect a graph method to pick it up well.</p>
+<p>If not, we might expect projection to lose signal <span class="math inline">\(\implies\)</span> hypergraph methods should do better.</p>
+<p><span class="footnote"><strong>PSC</strong>, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. <em>Science Advances</em>, 7:eabh1303</span></p>
+</div>
+<div class="column bg0">
+<p><span class="math display">\[
+\begin{aligned}
+Q(\mathbf{z})   &amp;\triangleq -\sum_{k\in \mathcal{K}} \color{#59C9A5}{\beta_k} q_k(\mathbf{z}) \\
+q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\gamma_k} \sum_{\ell \in \mathcal{Z}}\mathbf{vol}(\ell; \mathbf{z})^k
+\end{aligned}
+\]</span></p>
+<p><span class="alert-2"><span class="math inline">\(\beta_k\)</span></span>: relative strength of community signal in edges of size <span class="math inline">\(k\)</span>, <strong>inferred from data</strong>.</p>
+<p><span class="alert-3"><span class="math inline">\(\gamma_k\)</span></span>: resolution parameter for edges of size <span class="math inline">\(k\)</span>, <strong>inferred from data</strong>.</p>
+<p><span class="math inline">\(\mathbf{cut}_k(\mathbf{z})\)</span>: number of homogeneous <span class="math inline">\(k\)</span>-edges under labeling <span class="math inline">\(\mathbf{z}\)</span>.</p>
+<p><span class="math inline">\(\mathbf{vol}(\ell; \mathbf{z})\)</span>: sum of degrees of nodes contained on community <span class="math inline">\(\ell\)</span> under labeling <span class="math inline">\(\mathbf{z}\)</span>.</p>
+</div>
+</section>
+<section id="section-27" class="slide level2" data-background-image="img/beta-structure-comparisons.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-28" class="slide level2" data-background-image="img/contact-senate-spectral.png" data-background-size="contain">
+<h2></h2>
+<p><span class="fragment absolute" style="left: 450px; "><span class="bg1">hypergraph wins</span></span></p>
+<p><span class="fragment absolute" style="top: 275px; left: 750px; "><span class="bg1">varying signal strength<br> with edge-size</span></span></p>
+<p><span class="fragment absolute" style="top: 400px; left: 450px; "><span class="bg2">graph wins</span></span></p>
+<p><span class="fragment absolute" style="top: 645px; left: 750px; "><span class="bg2">constant signal strength<br> with edge-size</span></span></p>
+</section>
+<section id="section-29" class="slide level2 split-60">
+<h2></h2>
+<div class="column bg1">
+<h3 id="your-model-loses-to-graph-methods">Your model loses to graph methods</h3>
+<p><span class="font-larger">Incorporating higher-order structure doesn’t always help!</span></p>
+<p><span class="fragment font-larger">Hypergraph methods outperform graph methods when <span class="alert">edges of different sizes</span> carry <span class="alert">different signal</span> about the structure you care about.</span></p>
+<div class="fragment">
+<p><span class="font-larger"></span></p>
+<p><span class="footnote">Every optimization-based graph/hypergraph algorithm is equally bad when averaged over possible data inputs. <br> <br> Peel, Larremore, and Clauset (2017). The ground truth about metadata and community detection in networks. <em>Science Advances</em></span></p>
+</div>
+</div>
+<div class="column bg0">
+<p><img data-src="img/truth.jpeg" class="stretch absolute" style="top: 0px; left: 0px; width: 419px; "></p>
+</div>
+</section>
+<section id="section-30" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="part-i-your-model-is-too-complicated-1"><span class="alert">Part I</span> <br> Your Model Is Too Complicated</h3>
+</section>
+<section id="section-31" class="slide level2 bg2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="part-iii-your-model-is-too-complicated-simple"><span class="alert">Part III</span> <br> Your Model Is Too <span class="fragment semi-fade-out"><del>Complicated</del></span> Simple</h3>
+</section>
+<section id="section-32" class="slide level2 split-66">
+<h2></h2>
+<div class="column bg1">
+<h5 id="most-generative-models-have-independent-edges">Most Generative Models Have Independent Edges</h5>
+<p><br></p>
+<p><span class="math display">\[
+\mathbb{P}(\mathcal{E};\boldsymbol{\theta}) = \prod_k\prod_{R \in \binom{[n]}{k}} p_R(\boldsymbol{\theta})^{\mathbb{1}(R \in \mathcal{E})}(1-p_R(\boldsymbol{\theta}))^{\mathbb{1}(R \notin \mathcal{E})}
+\]</span></p>
+<p>“If the parameters <span class="math inline">\(\boldsymbol{\theta}\)</span> are known, then the probability of edge <span class="math inline">\(e\)</span> being present in <span class="math inline">\(\mathcal{H}\)</span> is independent of the presence of any other edges.”</p>
+<p>This is <span class="alert">extremely convenient</span> for inference tasks, including maximum-likelihood (easy optimization) and Bayesian methods (easy integrals).</p>
+</div>
+<div class="column bg0">
+<p><br> <br> <br> <br> <br> <br></p>
+<h5 id="but-hyperedges-in-real-world-data-appear-highly-dependent">But hyperedges in real-world data appear highly dependent!</h5>
+</div>
+</section>
+<section id="section-33" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h5 id="example-scholarly-collaboration">Example: Scholarly Collaboration</h5>
+<p>I have by now written two papers with Dr.&nbsp;Nicole Eikmeier at Grinnell College.</p>
+<p><img data-src="img/eikmeier.png" class="fragment center"></p>
+<p><span class="fragment">I knew that she’s an outstanding collaborator who shares my interests <span class="alert">because</span> of that first paper we worked on together.</span></p>
+</div>
+<div class="column bg0">
+<h5 id="example-scholarly-collaboration-1"><span class="hide">Example: Scholarly Collaboration</span></h5>
+<div class="fragment">
+<p>If we model scholarly collaboration networks as hypergraphs (nodes are scholars, edges are projects), then the presence of one edge makes the presence of other edges more or less likely: the edges are not independent.</p>
+<p><span class="math display">\[
+\mathbb{P}(\text{paper}_1, \text{paper}_2) \neq \mathbb{P}(\text{paper}_1)\mathbb{P}(\text{paper}_2)
+\]</span></p>
+<p>Generalized Erdős–Rényi models, stochastic blockmodels, sparse configuration models, etc. all fail to capture this mechanism, which poses problems for <span class="alert"><strong>link prediction</strong></span>.</p>
+</div>
+</div>
+</section>
+<section id="section-34" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h4 id="predictive-models">Predictive Models</h4>
+<p><img data-src="img/simplicial-closure-diagram.png" class="absolute" style="top: 150px; left: 15px; "></p>
+<p><br> <br> <br> <br></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\mathbb{P}(\text{edge on node tuple } R \text{ at time } t) \\
+&amp;= \\
+&amp;f(\text{edges on node tuples } S \text{ by time } t\\
+&amp;\;\;\text{ such that } S\cap R \neq \emptyset)
+\end{aligned}
+\]</span></p>
+<p>Possible to explicitly model this dependence using statistical models (not interpretably generative).</p>
+<p><span class="footnote">Image from <span class="math inline">\(\implies\)</span></span></p>
+</div>
+</div>
+<div class="column bg0">
+<p><span class="stretch absolute" style="top: 0px; left: 0px; width: 545px; "><img data-src="img/simplicial-closure.png"></span></p>
+</div>
+</section>
+<section id="section-35" class="slide level2 split-33">
+<h2></h2>
+<div class="column bg2">
+<h4 id="modeling-considerations">Modeling Considerations</h4>
+<p><br> <br></p>
+<p><span class="font-larger">Would you expect the likelihood of an edge forming to depend on the presence of prior edges if…</span></p>
+</div>
+<div class="column bg0">
+<p><br> <br></p>
+<p><span class="font-larger fragment fade-in-then-semi-out">Nodes are chemical compounds, edges are medically useful drugs in which those compounds are ingredients.</span></p>
+<p><span class="font-larger fragment fade-in-then-semi-out">Nodes are food ingredients, and edges are recognized recipes in which those ingredients are used.</span></p>
+<p><span class="font-larger fragment fade-in">Nodes are hashtags, and edges are posts that involve all those hashtags.</span></p>
+</div>
+</section>
+<section id="section-36" class="slide level2 split-50">
+<h2></h2>
+<div class="column bg1">
+<h3 id="your-model-is-too-simple">Your model is too simple…</h3>
+<p><br> <br></p>
+<p><span class="font-larger">…because it models independent hyperedges.</span></p>
+<p><span class="font-larger fragment">I’m excited about <span class="alert2">interpretable</span> models that include <span class="alert">inferrable</span> mechanisms for edge correlations in hypergraphs.</span></p>
+</div>
+<div class="column bg0">
+<p><br></p>
+<p><span class="fade">Neural-network based methods with intriguing performance:</span> <br> <br> Yadati et al.&nbsp;(2020), NHP: Neural Hypergraph Link Prediction. <em>CIKM 2020</em>. <br> <br> <span class="fade">A null-model statistical approach:</span> <br> <br> Juul, Benson, and Kleinberg (2022), Hypergraph patterns and collaboration structure. <em>arXiv:2210.02163</em></p>
+<p><span class="fade">A generative model with some important restrictions:</span> <br> <br> Benson, Kumar, and Tomkins. (2018) Sequences of sets. <em>KDD 2018</em></p>
+</div>
+</section>
+<section id="section-37" class="slide level2 split-66">
+<h2></h2>
+<div class="column bg1">
+<h4 id="summing-up">Summing Up</h4>
+<p>Hypergraph data is <span class="alert">absurdly general</span>.</p>
+<p>Finding structure in absurd generality requires asking ourselves careful questions about our <span class="alert">modeling assumptions</span> and whether they match our reasonable expectations about the data.</p>
+<p>Hypergraph methods are preferable to graph methods when the <span class="alert">polyadic structure carries signal</span> about your question that gets lost upon graph projections.</p>
+<p>Hyperedges can fail to be independent in much richer ways than dyadic edges can – <span class="alert">we should model that</span>!</p>
+</div>
+<div class="column bg0">
+<div class="center">
+<p><img data-src="img/hypergraph-example-skinny.png" class="absolute" style="top: 0,; left: 0,; width: 270px; "></p>
+<!-- <img src="img/hypergraph-example.png" width=450 class="center">   -->
+</div>
+<p><span class="footnote">Image created using <code>xgi</code>: <a href="https://xgi.readthedocs.io">https://xgi.readthedocs.io/en/latest/</a></span></p>
+</div>
+</section>
+<section id="section-38" class="slide level2 split-66">
+<h2></h2>
+<div class="column bg1">
+<h3 id="thanks">Thanks!</h3>
+<div class="fragment semi-fade-out">
+<p>I have made a bibliography with some of my favorite references on hypergraph network data science:</p>
+<p>Find it <a href="https://www.philchodrow.com/posts/2022-12-20-hypergraph-refs/">at this link</a> or under the January 2023 news at <a href="https://www.philchodrow.com">www.philchodrow.com</a>.</p>
+</div>
+<p><br></p>
+<p><span class="fragment font-larger">What are <span class="alert">you</span> excited about in hypergraph network data science?</span></p>
+</div>
+<div class="column bg0">
+<p><img data-src="img/nsf.png" class="absolute" style="top: 15px; left: 20px; width: 300px; "> <img data-src="img/ams.png" class="absolute" style="top: 350px; left: 20px; width: 300px; "> <img data-src="img/mrc.jpeg" class="absolute" style="top: 450px; left: 20px; width: 300px; "></p>
+</div>
+<div class="footer footer-default">
+
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
