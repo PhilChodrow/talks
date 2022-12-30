@@ -385,9 +385,9 @@
 <section id="section-6" class="slide level2 bg1">
 <h2></h2>
 <h3 id="graph-projections">Graph Projections</h3>
-<p>One very natural thing to do is to work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br></p>
+<p>We can work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br></p>
 
-<img src="img/clique-projection.png" width="650" class="center r-stretch"><p>This is often reasonable and performant, but is Boring™ and can lead to poor results when not carefully checked against the data.</p>
+<img src="img/clique-projection.png" width="650" class="center r-stretch"><p>This is Mathematically Uninteresting™, but (unfortunately?) often hard to beat.</p>
 <p><span class="footnote"><strong>PSC</strong> (2020). Configuration models of random hypergraphs. <em>Journal of Complex Networks</em>, 8(3):cnaa018</span></p>
 <!-- ### So, we have to get past this:  -->
 <!-- <br> <br> -->
@@ -473,6 +473,7 @@ Ok, so what about some general
 </section>
 <section id="section-7" class="slide level2" data-background-image="img/going-to.jpeg" data-background-size="contain">
 <h2></h2>
+<p><br></p>
 <h3 id="so-you-want-to-really-use-hypergraphs">So you want to “really” use hypergraphs…<br></h3>
 <!-- ![](img/going-to.jpeg){.fragment .fade-in-then-out .absolute top=120 left=75 width="900"} -->
 <p><img data-src="img/sx-question.png" class="fragment fade-in-then-out absolute" style="top: 120px; left: 50px; width: 900px; "></p>
@@ -565,9 +566,9 @@ How many values of $q(z_e)$ do we need to estimate?
 </div>
 <div class="column bg0">
 <p><br></p>
-<p><span class="fragment font-larger">…You’ll reason about some of the tradeoffs of addressing the absurd generality of hypergraph data.</span></p>
-<p><span class="fragment font-larger">…You’ll describe at least one reason <em>why</em> it is hard to beat graph methods.</span></p>
-<p><span class="fragment font-larger">…You’ll know (my take on) interesting future directions for network data science with hypergraphs.</span></p>
+<p><span class="fragment font-larger fade-in-then-semi-out">…You’ll reason about some of the tradeoffs of addressing the <span class="alert-2"><strong>absurd generality</strong></span> of hypergraph data.</span></p>
+<p><span class="fragment font-larger fade-in-then-semi-out">…You’ll describe at least one reason <span class="alert-2"><strong><em>why</em> it’s hard to beat graph methods</strong>.</span></span></p>
+<p><span class="fragment font-larger">…You’ll know (my take on) one interesting <span class="alert-2"><strong>future direction</strong></span> for network data science with hypergraphs.</span></p>
 </div>
 </div>
 <!-- 
@@ -898,7 +899,7 @@ q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\ga
 <p>Projecting a <span class="math inline">\(k\)</span>-edge into a <span class="math inline">\(k\)</span>-clique generates <span class="math inline">\(\binom{k}{2}\)</span> 2-edges.</p>
 <p>If <span class="alert-2"><span class="math inline">\(\beta_k\)</span></span> <span class="math inline">\(\propto \binom{k}{2}\)</span>, then the signal preserved by this projection won’t depend strongly on <span class="math inline">\(k\)</span> – and we might expect a graph method to pick it up well.</p>
 <p>If not, we might expect projection to lose signal <span class="math inline">\(\implies\)</span> hypergraph methods should do better.</p>
-<p><span class="footnote"><strong>PSC</strong>, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. <em>Science Advances</em>, 7:eabh1303</span></p>
+<p><span class="footnote">Chodrow, Veldt, and Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. <em>Science Advances</em>, 7:eabh1303</span></p>
 </div>
 <div class="column bg0">
 <p><span class="math display">\[
@@ -946,7 +947,7 @@ q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\ga
 <section id="section-31" class="slide level2 bg2">
 <h2></h2>
 <p><br> <br> <br> <br> <br> <br> <br></p>
-<h3 id="part-iii-your-model-is-too-complicated-simple"><span class="alert">Part III</span> <br> Your Model Is Too <span class="fragment semi-fade-out"><del>Complicated</del></span> Simple</h3>
+<h3 id="part-iii-your-model-is-too-complicated-simple"><span class="alert">Part III</span> <br> Your Model Is Too <span class="fragment semi-fade-out"><del>Complicated</del></span> <span class="fragment">Simple</span></h3>
 </section>
 <section id="section-32" class="slide level2 split-66">
 <h2></h2>
@@ -956,7 +957,7 @@ q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\ga
 <p><span class="math display">\[
 \mathbb{P}(\mathcal{E};\boldsymbol{\theta}) = \prod_k\prod_{R \in \binom{[n]}{k}} p_R(\boldsymbol{\theta})^{\mathbb{1}(R \in \mathcal{E})}(1-p_R(\boldsymbol{\theta}))^{\mathbb{1}(R \notin \mathcal{E})}
 \]</span></p>
-<p>“If the parameters <span class="math inline">\(\boldsymbol{\theta}\)</span> are known, then the probability of edge <span class="math inline">\(e\)</span> being present in <span class="math inline">\(\mathcal{H}\)</span> is independent of the presence of any other edges.”</p>
+<p>“If the parameters <span class="math inline">\(\boldsymbol{\theta}\)</span> are known, then the probability of edge on node tuple <span class="math inline">\(R\)</span> being present in <span class="math inline">\(\mathcal{H}\)</span> is independent of the presence of any other edges.”</p>
 <p>This is <span class="alert">extremely convenient</span> for inference tasks, including maximum-likelihood (easy optimization) and Bayesian methods (easy integrals).</p>
 </div>
 <div class="column bg0">
@@ -1030,7 +1031,7 @@ q_k(\mathbf{z}) &amp;\triangleq \mathbf{cut}_k(\mathbf{z}) + \color{#EF476F}{\ga
 </div>
 <div class="column bg0">
 <p><br></p>
-<p><span class="fade">Neural-network based methods with intriguing performance:</span> <br> <br> Yadati et al.&nbsp;(2020), NHP: Neural Hypergraph Link Prediction. <em>CIKM 2020</em>. <br> <br> <span class="fade">A null-model statistical approach:</span> <br> <br> Juul, Benson, and Kleinberg (2022), Hypergraph patterns and collaboration structure. <em>arXiv:2210.02163</em></p>
+<p><span class="fade">Neural-network based methods with intriguing performance:</span> <br> <br> Yadati et al.&nbsp;(2020), NHP: Neural hypergraph link prediction. <em>CIKM 2020</em>. <br> <br> <span class="fade">A null-model statistical approach:</span> <br> <br> Juul, Benson, and Kleinberg (2022), Hypergraph patterns and collaboration structure. <em>arXiv:2210.02163</em></p>
 <p><span class="fade">A generative model with some important restrictions:</span> <br> <br> Benson, Kumar, and Tomkins. (2018) Sequences of sets. <em>KDD 2018</em></p>
 </div>
 </section>

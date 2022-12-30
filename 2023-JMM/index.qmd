@@ -139,11 +139,11 @@ Does this hypergraph have meaningful clusters/communities/modules?
 
 ### Graph Projections
 
-One very natural thing to do is to work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br>
+We can work on graphs induced from the the hypergraph, such as the clique-projection or bipartite representation. <br><br>
 
 <img src="img/clique-projection.png" width=650 class="center">  
 
-This is often reasonable and performant, but is Boring™ and can lead to poor results when not carefully checked against the data. 
+This is Mathematically Uninteresting™, but (unfortunately?) often hard to beat. 
 
 
 
@@ -241,6 +241,7 @@ Ok, so what about some general
 ## {background-image="img/going-to.jpeg" background-size="contain" }
 
 
+<br> 
 
 ### So you want to "really" use hypergraphs...<br> 
 
@@ -348,12 +349,11 @@ How many values of $q(z_e)$ do we need to estimate?
 ::: {.column .bg0}
 <br> 
 
-[...You'll reason about some of the tradeoffs of addressing the absurd generality of hypergraph data. ]{.fragment .font-larger}
+[...You'll reason about some of the tradeoffs of addressing the  [**absurd generality**]{.alert-2}  of hypergraph data. ]{.fragment .font-larger .fade-in-then-semi-out}
 
-[...You'll describe at least one reason *why* it is hard to beat graph methods.]{.fragment .font-larger}
+[...You'll describe at least one reason [***why* it's hard to beat graph methods**.]{.alert-2}]{.fragment .font-larger .fade-in-then-semi-out}
 
-
-[...You'll know (my take on) interesting future directions for network data science with hypergraphs.]{.fragment .font-larger}
+[...You'll know (my take on) one interesting [**future direction**]{.alert-2} for network data science with hypergraphs.]{.fragment .font-larger}
 
 :::
 :::
@@ -412,7 +412,8 @@ which can equivalently be defined on a graph with adjacency structure $\sum_{e \
 
 <br> <br> <br> <br> <br> <br> <br> 
 
-### [Part I]{.alert} <br> Your Model Is Too Complicated 
+### [Part I]{.alert} <br> Your Model Is Too Complicated
+
 
 ## {.split-50}
 
@@ -854,7 +855,7 @@ If [$\beta_k$]{.alert-2} $\propto \binom{k}{2}$, then the signal preserved by th
 If not, we might expect projection to lose signal $\implies$ hypergraph methods should do better. 
 
 
-[**PSC**, N. Veldt, and A. R. Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. *Science Advances*, 7:eabh1303]{.footnote}
+[Chodrow, Veldt, and Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. *Science Advances*, 7:eabh1303]{.footnote}
 
 :::
 
@@ -932,7 +933,7 @@ $\mathbf{vol}(\ell; \mathbf{z})$: sum of degrees of nodes contained on community
 
 <br> <br> <br> <br> <br> <br> <br> 
 
-### [Part III]{.alert} <br> Your Model Is Too [~~Complicated~~]{.fragment .semi-fade-out} Simple
+### [Part III]{.alert} <br> Your Model Is Too [~~Complicated~~]{.fragment .semi-fade-out} [Simple]{.fragment}
 
 ## {.split-66}
 
@@ -948,7 +949,7 @@ $$
 $$
 
 
-"If the parameters $\boldsymbol{\theta}$ are known, then the probability of edge $e$ being present in $\mathcal{H}$ is independent of the presence of any other edges."
+"If the parameters $\boldsymbol{\theta}$ are known, then the probability of edge on node tuple $R$ being present in $\mathcal{H}$ is independent of the presence of any other edges."
 
 This is [extremely convenient]{.alert} for inference tasks, including maximum-likelihood (easy optimization) and Bayesian methods (easy integrals). 
  
@@ -1080,7 +1081,7 @@ Possible to explicitly model this dependence using statistical models (not inter
 <br> 
 
 [Neural-network based methods with intriguing performance:]{.fade} <br> <br> 
-Yadati et al. (2020), NHP: Neural Hypergraph Link Prediction. *CIKM 2020*.
+Yadati et al. (2020), NHP: Neural hypergraph link prediction. *CIKM 2020*.
 <br> <br> 
 [A null-model statistical approach:]{.fade}
 <br> <br> 
