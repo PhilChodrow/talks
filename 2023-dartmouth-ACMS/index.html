@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Nonbacktracking Spectral Clustering of Nonuniform Hypergraphs</title>
+    <title>Generative Hypergraph Clustering: Scalable Heuristics and Sparse Thresholds</title>
     <meta charset="utf-8" />
     <meta name="author" content="Phil Chodrow   Department of Computer Science   Middlebury College" />
     <link rel="stylesheet" href="../assets/ninpo.css" type="text/css" />
@@ -14,7 +14,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Nonbacktracking Spectral Clustering of Nonuniform Hypergraphs
+# Generative Hypergraph Clustering: <span style="color:lightgrey;"><i>Scalable Heuristics and</i></span> <b>Sparse Thresholds</b>
 ## Dartmouth University <br> January 24th, 2023
 ### <span class="author-highlight">Phil Chodrow</span> <br> Department of Computer Science <br> Middlebury College
 
@@ -61,6 +61,35 @@ class: split-two
 
 ---
 
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+### The Generative Approach
+
+We treat this problem as (approximate) inference in a *stochastic blockmodel*. 
+
+- Nodes have true label vector `\(\mathbf{z} \in \mathcal{Z}^n\)`, where `\(\mathcal{Z}\)` is a discrete label alphabet.
+- Edges form on subset `\(R \subset 2^\mathcal{N}\)` of nodes with rate `\(\Omega(\mathbf{z}_R)\)`, where `\(\Omega\)` is an *affinity* function that encodes dependence of edges on node labels. 
+
+For example, we might expect edges to form at higher rates between nodes with the same label:  
+
+$$\Omega(\color{#ff5252}{\bullet}, \color{#ff5252}{\bullet}, \color{#ff5252}{\bullet}) &gt; \Omega(\color{#ff5252}{\bullet}, \color{#6CAE75}{\bullet}, \color{#FFD740}{\bullet}) $$
+  
+  
+]
+
+  
+]
+.column[.content.vmiddle[.stretch[
+  &lt;img src="../img-lib/detection-1.png" width=100%&gt;
+]]]
+
+
+
+---
+
 class: 
 
 ### A Testbed for Sparse Hypergraph Clustering
@@ -75,7 +104,7 @@ layout: true
 
 .column[
 
-## Synthetic Testbed
+## 
 
 &lt;br&gt; &lt;br&gt;
 &lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;   
@@ -312,7 +341,7 @@ class: split-two
 .column.bg-main1[
 
 &lt;br&gt; &lt;br&gt; 
-**.alert[Theorem] (PSC, JH, NE '22)**: In a random graph (stochastic blockmodel) with two equal-sized clusters, within-cluster `\(k\)`-degree `\(a_k^{\mathrm{in}}\)` and between-cluster `\(k\)`-degree `\(b_k^{\mathrm{out}}\)`, the nonbacktracking operator `\(\mathbf{B}\)` has, in expectation, an eigenpair `\((\beta, \mathbf{v})\)` where 
+**.alert[Theorem] (PSC, JH, NE '22)**: In a random graph (stochastic blockmodel) with two equal-sized clusters, within-cluster `\(k\)`-degree `\(a_k\)` and between-cluster `\(k\)`-degree `\(b_k\)`, the nonbacktracking operator `\(\mathbf{B}\)` has, in expectation, an eigenpair `\((\beta, \mathbf{v})\)` where 
 
 $$
 \beta = \frac{1}{2}\sum_{k \in \text{edge sizes}} (a_k - b_k)\;,
