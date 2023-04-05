@@ -13,6 +13,7 @@ $alert-color-2: #59C9A5;
 $alert-color-3: #23395B;
 $alert-color-4: #e56d89;
 $background-color: #000000;
+
 // $link-color: #42affa;
 
 /*-- scss:rules --*/
@@ -129,6 +130,14 @@ $background-color: #000000;
 }
 
 .bg0 .alert-2 {
+    color: $alert-color-2;
+}
+
+.bg0 .highlight {
+    color: $alert-color;
+}
+
+.bg0 .highlight-2 {
     color: $alert-color-2;
 }
 

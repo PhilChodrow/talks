@@ -1,0 +1,1008 @@
+---
+title: "Math Models of Hierarchy: Dominance, Dynamics, and Data"
+subtitle: "Smith College |  April 6th, 2023"  
+date: ""
+author: 'Dr. <span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B" 
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/pink.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+## {.split-33}
+
+
+
+::: {.column .bg1}
+
+#### Hi! I'm Phil. 
+
+I am an <br> [applied mathematician]{.alert} <br> and <br> [STEM educator]{.alert-2}.  
+
+
+
+I like...
+
+- Mathematics of complex systems
+- Network science
+- Ethics and technology
+- Traditional martial arts
+- Tea
+- *Star Trek: Deep Space 9*
+- Effective pedagogy 
+
+:::
+
+::: {.column .bg0}
+
+<br> 
+
+I'm a new professor in the department of computer science at Middlebury College in Middlebury, Vermont. 
+
+![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
+
+I teach machine learning, discrete math, introductory computing, and network science. 
+
+:::
+
+## {.bg1}
+
+### My Journey
+
+::: {.hidden}
+$$
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\mX}{\mathbf{X}}
+\newcommand{\mA}{\mathbf{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\mP}{\mathbf{P}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vq}{\mathbf{q}}
+\newcommand{\vs}{\mathbf{s}}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\vkappa}{\boldsymbol{\kappa}}
+\newcommand{\bracket}[1]{\langle #1 \rangle}
+\newcommand{\paren}[1]{\left( #1 \right)}
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+$$
+
+:::
+
+![](img/geo-intro-light-bg.png)
+
+
+##  {.bg1}
+
+
+
+<br> <br> <br> <br> <br> 
+
+### This is a talk about [hierarchy]{.alert} 
+
+*the classification of a group of people according to ability or to economic, social, or professional [standing]{.alert}* 
+
+*a [graded]{.alert} or [ranked]{.alert} series*
+
+[- [Merriam Webster](https://www.merriam-webster.com/dictionary/hierarchy)]{.footnote}
+
+## {.split-33}
+
+::: {.column .bg1}
+
+#### Examples of hierarchies
+
+<br> 
+
+Standings in competitions
+
+Rankings of colleges, PhD programs, etc. 
+
+Popularity 
+
+Dominance in animal societies
+
+
+
+
+:::
+
+::: {.column .bg0}
+
+![](img/nba-rankings.png){.fragment .absolute top="20" left="50" width="500"}
+
+![](img/math-phd-rankings.png){.fragment .absolute top="150" left="50" width="450"}
+
+![](img/mean-girls.jpeg){.fragment .absolute top="200" left="150" width="300"}
+
+![](img/macaque-dominance.jpeg){.fragment .absolute bottom="200" right="50" width="350"}
+
+:::
+
+## {.split-50 .bg0}
+
+
+::: {.column .bg0}
+
+#### Some hierarchies are helpful 
+
+::: {.stretch}
+![](img/tibbets-et-al.png){.fragment}
+<br> <br> <br> <br> <br> <br>
+![](img/tibbets-et-al-zoom.png){.fragment}
+:::
+
+:::
+
+::: {.column .bg0}
+
+#### Others are Fake and Toxic [ttttttt ttttttt ttttt]{.hide}
+
+::: {.stretch}
+![](img/math-phd-rankings.png){.fragment}
+:::
+
+:::
+
+## {.bg1}
+
+<br> <br> <br> 
+
+#### 1. Can hierarchies sustain themselves on the basis of nothing but [prestige]{.alert}? 
+
+<br> 
+
+#### 2. Can we infer how agents [interact]{.alert} with hierarchies from data? {.fragment}
+
+<br> 
+
+#### 3. What makes science [joyful]{.alert-2} (for me)? {.fragment}
+
+
+## {.split-50}
+
+::: {.column .bg0}
+
+::: {.stretch}
+![](img/proof-math.png)
+:::
+
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> 
+
+::: {.stretch .fragment}
+<img src="img/heart-cookies.jpg" width=32%>
+<img src="img/book.jpg" width=32%>
+<img src="img/apollo.jpg" width=32%>
+<img src="img/yes.GIF" width=65%>
+<img src="img/so-pumped.png" width=32%>
+<img src="img/obama.png" width=33%>
+<img src="img/two-cats.jpeg" width=32%>
+<img src="img/page-rank.png" width=30%> 
+:::
+:::
+
+
+
+## {.bg0 background-color="white"}
+
+#### Collaboration Origin Story
+
+[Complex Networks Winter Workshop 2019]{.fragment .absolute width=500 left=75 top=120}
+
+![](img/monastere.jpeg){.fragment .absolute width=500 left=75 top=150}
+![](img/cnww-19-group.jpeg){.fragment .absolute left=100 top=175}
+![](img/cnww-19-group-marked.jpeg){.fragment .absolute left=100 top=175}
+
+![](img/systematic-inequality-paper.png){.fragment .absolute width=350 right=50 top=125}
+
+![](img/empirical-network-flows.png){.absolute .fragment width=350 right=50 top=250}
+
+![](img/cnww-19-group-marked-team.jpeg){.fragment .absolute left=100 top=175}
+![](img/cnww-19-group-marked-proposal.jpeg){.fragment .absolute left=100 top=175}
+
+
+![](img/cat-cafe.jpeg){.fragment .absolute left=100 width=750 top=140}
+![](img/cats.jpeg){.fragment .absolute left=150 width=300 top=165}
+![](img/cats-2.jpeg){.fragment .absolute left=500 width=300 top=365}
+![](img/cat.jpeg){.fragment .absolute left=325 width=300 top=265}
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+### 18 Months Later...
+
+<br> 
+
+<br> 
+
+[![](img/mari_portrait.jpeg) <br> Mari Kawakatsu <br> UPenn and Princeton]{.absolute width=160 left=10}
+[![](img/nicole_portrait.png) <br> Nicole Eikmeier <br> Grinnell]{.absolute width=160 left=185}
+[![](img/dan_portrait.jpeg) <br> Dan Larremore <br> CU Boulder]{.absolute width=158 left=360}
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+![](img/pnas.png)
+:::
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### A model of prestige-based hierarchy
+
+We have $n$ agents. 
+
+These agents can "[endorse]{.alert}" each other. 
+
+When agent $i$ endorses agent $j$, we interpret this as agent $i$ signalling that agent $j$ is of high prestige. 
+
+"Endorsements:"
+
+- Player $i$ loses a match to player $j$. 
+- University $i$ hires a scholar trained at university $j$. 
+- Individual $i$ claims that $j$ is their friend. 
+- ...
+
+::: 
+
+::: {.column .bg0}
+
+<br> <br> 
+
+
+
+:::
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### A model of prestige-based hierarchy
+
+A state of the model is a matrix $\mathbf{A}^{(t)} \in \mathbb{R}^{n\times n}$ of *endorsements*. 
+
+$a_{ij}^{(t)}$ is the *weighted* number times that $i$ has endorsed $j$. 
+
+At each timestep, we update $\mathbf{A}^{(t)}$: 
+$$
+\mathbf{A}^{(t+1)} = \lambda \mathbf{A}^{(t)} + (1-\lambda) \Delta^{(t)}
+$$
+where $\Delta^{(t)}$ is the matrix of *new* endorsements. 
+
+[$\lambda$ acts as the rate of exponentially decaying system memory.]{.footnote}
+:::
+
+::: {.column .bg0}
+
+<br> <br> 
+
+![](img/fig_1.png)
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### New Endorsements
+
+Agents endorse other agents that they perceive as being of high prestige. 
+
+Prestige is measured by a *score function* $\sigma: \mathbf{A}^{(t)} \mapsto \mathbf{r}^{(t)} \in \mathbb{R}^n$. 
+
+Each agent $i$ computes a *utility* of endorsing agent $j$ in terms of the score vector $\mathbf{r}^{(t)}$. Our utility is: 
+$$
+u_{ij}(\mathbf{r}) = \beta_1 s_j + \beta_2 (r_i - r_j)^2. 
+$$
+
+Agent $i$ endorses $j$ at time $t+1$ with probability 
+$$
+p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
+$$
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> 
+
+![](img/fig_1.png)
+
+
+[All new endorsements get collected into update matrix $\Delta^{(t)}$. Then we do our main update: 
+$$
+\mathbf{A}^{(t+1)} = \lambda \mathbf{A}^{(t)} + (1-\lambda) \Delta^{(t)}\;.
+$$]{.fragment}
+
+:::
+
+[We allow $m\in \Z$ endorsements per round.]{.footnote}
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### New Endorsements
+
+Agents endorse other agents that they perceive as being of high prestige. 
+
+Prestige is measured by a *score function* $\sigma: \mathbf{A}^{(t)} \mapsto \mathbf{r}^{(t)} \in \mathbb{R}^n$. 
+
+Each agent $i$ computes a *utility* of endorsing agent $j$ in terms of the score vector $\mathbf{r}^{(t)}$. Our utility is: 
+$$
+u_{ij}(\mathbf{r}) = \color{#FFD447}{\beta_1} s_j + \color{#59C9A5}{\beta_2} (r_i - r_j)^2. 
+$$
+
+Agent $i$ endorses $j$ at time $t+1$ with probability 
+$$
+p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
+$$
+
+[We allow $m\in \Z$ endorsements per round.]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> <br> <br> 
+
+[$\beta_1$]{.highlight} encodes a preference to endorse high-prestige agents. Higher value: more likely for endorsements to concentrate at the top. 
+
+
+
+[$\beta_2$]{.highlight-2} encodes a preference to endorse agents that are similar in prestige to you. Negative value: more likely for endorsements to "travel" only a little way up the hierarchy. 
+
+
+:::
+
+
+
+
+
+
+
+## {.split-50}
+
+::: {.column .bg0}
+
+::: {.stretch} 
+![](img/make-it-linear-algebra.jpeg)
+:::
+
+The [**score function**]{.alert} $\sigma$ maps the matrix of endorsements $\mathbf{A} \in \mathbb{R}^{n\times n}$ to a vector of scores $\mathbf{s} \in \mathbb{R}^n$. There are lots of choices! 
+
+:::
+
+::: {.column .bg1}
+
+
+::: {.font_smaller}
+
+##### In-Degree 
+
+$s_i$ is the number of times that agent $i$ h as been endorsed: $\mathbf{r} = \mathbb{1}^T\mathbf{A}$
+
+##### PageRank 
+
+$\mathbf{r}$ is the eigenvector with eigenvalue $1$ of the matrix $\mathbf{P}$ with entries 
+$$
+p_{ij} = (1-\alpha)\frac{a_{ij}}{d_i} + \frac{\alpha}{n} 
+$$
+
+
+##### SpringRank 
+
+$\mathbf{r}$ is the unique solution of the system 
+$$
+\left[\mathbf{L} - \alpha \mathbf{I}\right]\mathbf{r} = \mathbf{D}^{\mathrm{in}} - \mathbf{D}^{\mathrm{out}}
+$$
+
+[$\mathbf{D}^{\mathrm{in}} = \mathrm{diag}(\mathbb{1}^T\mA)$ and $\mathbf{D}^{\mathrm{out}} = \mathrm{diag}(\mA\mathbb{1})$]{.footnote}
+
+:::
+
+:::
+
+## {.bg1}
+
+<br> <br> <br> <br> <br> <br> 
+
+#### 1. Can hierarchies sustain themselves on the basis of nothing but [prestige]{.alert}? 
+
+[Yes, and there is a phase transition (qualitative behavior shift) depending on the parameters.]{.fragment}
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Model do?
+
+[$\beta_1$]{.alert} preference for prestige. 
+
+- $\beta_1$ small: fluctuating egalitarianism.
+- $\beta_1$ large: emergence of time-varying hierarchies. 
+
+[$\beta_2$]{.alert-2} preference for proximity. 
+
+- $\beta_2 < 0$: stabilization of hierarchical ranks. 
+
+:::
+
+::: {.column .bg0}
+::: {.stretch}
+<br> 
+![](img/dynamics_examples.png)
+:::
+:::
+
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Two math problems
+
+<br> <br> 
+
+**[Dynamics]{.alert}**: can we mathematically characterize when we observe egalitarianism and when we observe hierarchy in terms of the score function, $\beta_1$, and $\beta_2$?
+
+[**[Data science]{.alert-2}**: can we determine which score functions and parameters best describe the behavior of *real systems*?]{.fragment .semi-fade-out}  
+
+
+:::
+
+::: {.column .bg0}
+::: {.stretch}
+<br> 
+![](img/dynamics_examples.png)
+:::
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+::: {.stretch}
+<br> 
+![](img/dynamics_examples.png)
+:::
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+
+#### Linear Stability
+
+Heuristically, a fixed point $\mathbf{x}_0$ of some dynamics is **stable** if, when you perturb the the system to some nearby point, it eventually comes back to $\mathbf{x}_0$. 
+
+<img src="img/stability.jpg" width=90%> 
+*Image credit: [Desmond Winterborne](https://www.sciencedirect.com/topics/engineering/stable-equilibrium)*
+
+:::
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+
+#### Linear Stability
+
+Here, stability of the egalitarian fixed point of $\mathbf{f}$ is governed by the **Jacobian matrix** of partial derivatives: 
+
+$$\mathbf{J} = \left[\begin{matrix}\frac{\partial f_1}{\partial r_1} & \frac{\partial f_1}{\partial r_2} & \cdots  & \frac{\partial f_1}{\partial r_n}  \\ 
+\frac{\partial f_2}{\partial r_1} & \frac{\partial f_2}{\partial r_2} & \cdots  & \frac{\partial f_2}{\partial r_n} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+\frac{\partial f_n}{\partial r_1} & \frac{\partial f_n}{\partial r_2} & \cdots  & \frac{\partial f_n}{\partial r_n}
+\end{matrix}\right]$$
+
+
+Fixed point is **linearly stable** if $\mathbf{J}$ only has eigenvalues with negative real part. 
+
+So, we can assess the stability of egalitarianism in this system with calculus + linear algebra. 
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+![](img/proof-math.png)
+
+:::
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+
+<br> <br> <br> <br> 
+
+![](img/bifurcations_with_curves.png)
+
+:::
+:::
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Theorem: KCEL '21
+
+Consider the deterministic function 
+$$\mathbf{f}(\mathbf{r}, \mathbf{A}) = \lim_{\lambda \rightarrow 1} \frac{\mathbb{E}[\mathbf{r}|\mathbf{A}] - \mathbf{r}}{1 - \lambda}\;.$$
+
+This function has an egalitarian fixed point, where all ranks are the same.  This point fixed point is [linearly stable]{.alert} iff $\beta_1 < \beta_1^c$: 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+
+:::
+
+::: {.column .bg0}
+
+#### Learnings
+
+<br> <br>
+
+1. The stability of egalitarianism depends on the prestige preference $\beta_1$ but not on the proximity preference $\beta_2$. 
+2. The stability of egalitarianism also depends on the score function used. 
+3. In some score functions, in some parameter regimes, egalitarianism and hierarchy are both possible (bistability). 
+
+:::
+
+## {.bg1}
+
+<br> <br> <br> <br> <br> <br> 
+
+#### 2. Can we infer how agents [interact]{.alert} with hierarchies from data? 
+
+[Yes: we can find most likely parameters and score functions.]{.fragment}
+
+
+## {.split-50}
+
+::: {.column .bg0}
+
+<br> <br> 
+
+![](img/make-it-data-science.png)
+
+[Because of the specific form of the probability $p_{ij}^{(t)}$, this boils down to logistic regression.]{.footnote .fragment}
+
+:::
+
+::: {.column .bg1}
+
+Recall that we had this funny looking function that defined a probability of agent $i$ endorsing agent $j$: 
+
+$$
+p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
+$$
+
+This lets us assign a *likelihood* to the observed data as a function of the parameters: 
+
+$$\mathcal{L}(\lambda, \beta) = \sum_{t = 0}\sum_{i, j \in \mathcal{N}}a_{ij}^{(t)} \log p_{ij}^{(t)}$$
+
+
+[Method of maximum-likelihood]{.alert}: find $\lambda$ and $\beta$ to make this function large. 
+
+:::
+
+## {.split-50}
+
+::: {.column .bg0}
+
+### Data: 
+
+**Math PhD Exchange**¹: University *A* "endorses" *B* by hiring a PhD trained at *B*, over 50 years. <br>
+**Monk Parakeets**²: Parakeet *A* "endorses" *B* by losing a fight to *B*, over 4 observation periods.  <br>
+**Newcomb Fraternity**³: Fraternity brother *A* "endorses" *B* by stating that they like *B* on a survey, over a semester (15 weeks).
+
+[¹D. Taylor, S. A. Meyers, A. Clauset, M. A. Porter, P. J. Mucha, Eigenvector-based centrality measures for temporal networks. *Multiscale Model. Simul.* 15, 537–574 (2017). <br> 
+North Dakota State University Department of Mathematics, Data from “The Mathematics Genealogy Project.”  ([link](https://www.genealogy.math.ndsu.nodak.edu/index.php.)) <br> 
+²E. A. Hobson, S. DeDeo, Social feedback and the emergence of rank in animal society. *PLoS Comput. Biol.* 11, e1004411 (2015) <br> 
+³T. Newcomb, *The Acquaintance Process* (Holt, Reinhard, and Winston, New York, NY, 1961).]{.footnote}
+
+:::
+
+::: {.column .bg1}
+
+Recall that we had this funny looking function that defined a probability of agent $i$ endorsing agent $j$: 
+
+$$
+p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
+$$
+
+This lets us assign a *likelihood* to the observed data as a function of the parameters: 
+
+$$\mathcal{L}(\lambda, \beta) = \sum_{t = 0}\sum_{i, j \in \mathcal{N}}a_{ij}^{(t)} \log p_{ij}^{(t)}$$
+
+
+[Method of maximum-likelihood]{.alert}: find $\lambda$ and $\beta$ to make this function large. 
+
+:::
+
+## {.split-50}
+
+::: {.column .bg0}
+
+### Data: 
+
+**Math PhD Exchange**¹: University *A* "endorses" *B* by hiring a PhD trained at *B*, over 50 years. <br>
+**Monk Parakeets**²: Parakeet *A* "endorses" *B* by losing a fight to *B*, over 4 observation periods.  <br>
+**Newcomb Fraternity**³: Fraternity brother *A* "endorses" *B* by stating that they like *B* on a survey, over a semester (15 weeks).
+
+[¹D. Taylor, S. A. Meyers, A. Clauset, M. A. Porter, P. J. Mucha, Eigenvector-based centrality measures for temporal networks. *Multiscale Model. Simul.* 15, 537–574 (2017). <br> 
+North Dakota State University Department of Mathematics, Data from “The Mathematics Genealogy Project.”  ([link](https://www.genealogy.math.ndsu.nodak.edu/index.php.)) <br> 
+²E. A. Hobson, S. DeDeo, Social feedback and the emergence of rank in animal society. *PLoS Comput. Biol.* 11, e1004411 (2015) <br> 
+³T. Newcomb, *The Acquaintance Process* (Holt, Reinhard, and Winston, New York, NY, 1961).]{.footnote}
+
+:::
+
+::: {.column .bg0}
+
+<br> <br> 
+<img src="img/inference-table.png" width=100%> 
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+#### Are we in the hierarchical regime?
+
+**Theorem from before**: Egalitarianism is stable iff $\beta_1 < \beta_1^c$, where 
+
+$$\beta_1^c = \begin{cases}
+  2\sqrt{\frac{n}{m}} &\quad \text{Root-Degree} \\ 
+  1/\alpha_p &\quad \text{PageRank} \\ 
+  2 + \alpha_s\frac{n}{m} &\quad \text{SpringRank}.
+\end{cases}$$
+<br> 
+
+Math PhD exchange: [**bistable**]{.alert-2} $-$ both egalitarianism and hierarchy are possible. 
+
+Parakeets + Newcomb Frat: [**hierarchical**]{.alert}. 
+
+::: 
+
+::: {.column .bg0}
+<br> <br> 
+<img src="img/criticality-table.png" width=100%> 
+:::
+
+## {.split-33}
+
+::: {.column .bg1}
+
+##### It matters how we compute the ranks! <br><br>
+
+**Placement share, Root-Degree, and PageRank**: MIT dominates, esp. recently. 
+
+**SpringRank**: Favors Harvard, Stanford, Princeton, and Berkeley (based on prestigious placements of their graduates).
+
+Different estimates of fluidity in ranks.  
+
+:::
+
+::: {.column .bg0}
+
+<br> 
+<img src="img/phd-exchange.png" width=100%> 
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+### Ranks [⟳]{.alert} Decisions
+
+<br> 
+
+We wrote a simple [math model]{.alert} of hierarchies emerging from feedback loops.
+
+Feedback loops can generate stable hierarchies, even when are [no meaningful differences]{.alert} between agents.
+
+Some systems are [near criticality]{.alert}: small interventions could help to promote equality and equity. 
+
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+<img src="img/pnas.png" width=100%> 
+:::
+
+:::
+
+## {.split-40}
+
+::: {.column .bg1}
+
+### Two Ways to Start Projects
+
+##### Idea First
+
+*"Here's a cool idea! <br>What/who do I need to do in order to achieve this?"*
+
+##### People First
+
+*"Here are some people I like! <br> What cool things can we achieve together?"*
+
+
+[I do both of these, but I have the most fun when I [start with people]{.alert}.]{.fragment}
+
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+<img src="img/dinner.jpg" width=48%>
+<img src="img/ezra.jpg" width=48%>
+
+<img src="img/cats.jpeg" width=65%>
+<img src="img/cinnamon-rolls.jpg" width=32%>
+<img src="img/mari-mp.png" width=62%>
+<img src="img/ready.jpg" width=35%> 
+:::
+
+:::
+
+## {.split-40}
+
+::: {.column .bg1}
+
+##### Reflections on [interdisciplinary applied math]{.fragment .strike .semi-fade-out} [being a human in science]{.fragment}
+
+Find people worth your trust, and trust them. 
+
+Be thankful, and say so. 
+
+Check in often. 
+
+Work with your heart, not just your brain. 
+
+Take time to see things from multiple angles. 
+
+Laugh. A lot. 
+
+:::
+
+
+::: {.column .bg0}
+
+::: {.stretch}
+<img src="img/dinner.jpg" width=48%>
+<img src="img/ezra.jpg" width=48%>
+
+<img src="img/cats.jpeg" width=65%>
+<img src="img/cinnamon-rolls.jpg" width=32%>
+<img src="img/mari-mp.png" width=62%>
+<img src="img/ready.jpg" width=35%> 
+:::
+
+:::
+
+## {.split-50}
+
+::: {.column .bg1}
+
+### Thanks!
+
+##### Awesome Collaborators
+
+[![](img/mari_portrait.jpeg) <br> Mari Kawakatsu <br> UPenn and Princeton]{.absolute width=160 left=10}
+[![](img/nicole_portrait.png) <br> Nicole Eikmeier <br> Grinnell]{.absolute width=160 left=185}
+[![](img/dan_portrait.jpeg) <br> Dan Larremore <br> CU Boulder]{.absolute width=158 left=360}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> 
+
+##### Complex Networks Winter Workshop 2019
+
+
+
+##### And Most Importantly...
+
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+![](img/pnas.png)
+:::
+
+:::
+
+## {background-image=img/cats-acknowledgement.png background-size=contain}
+
+
+
+
+
+
+<!-- ## {.split-75}
+
+::: {.column .bg1}
+
+### Modeling Hierarchies
+
+
+##### [Position vector]{.alert} $\vr \in \R^n$: 
+
+- $r_i > r_j$ $\implies$ agent $i$ ranked higher than agent $j$. 
+
+##### [Interaction matrix]{.alert-2} $\mA \in \Z^{n\times n}$: 
+
+- $a_{ij}$ is the number of times that agent $i$ "wins" against agent $j$. 
+- Often represented as a directed graph/network of interactions. 
+
+##### Two directions
+
+**Forward** $\implies$: simulate hierarchical interactions by generating $\mA$ from $\vr$. 
+
+**Backward** $\impliedby$: Infer latent hierarchy by learning $\vr$ from observations of $\mA$. 
+ 
+:::
+
+::: {.column .bg0}
+
+::: {.stretch}
+![](img/network-linear-hierarchy-single.png){width=170}
+:::
+
+:::
+
+## {background-image="img/both-is-good-both.gif"}
+
+
+## {.split-50}
+
+::: {.column .bg1}
+
+#### Agenda For Today
+
+<br> <br> 
+
+Forwards-backwards problem: simulate a set of agents who 
+
+1. Interact according to a latent hierarchy and       
+2. Update the hierarchy in response to interactions. 
+
+:::
+
+::: {.column .bg0}
+
+:::
+
+
+ -->

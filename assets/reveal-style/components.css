@@ -11,12 +11,15 @@
 }
 
 .column li { 
-    margin-left: 2rem;
+    margin-left: 2.5rem;
+    margin-right: 1rem;
+    padding-left: 0;
     list-style-position: outside;
 }
 
 li { 
-    margin-left: 2rem;
+    padding-left: 1rem;
+    margin-left: 3rem;
     list-style-position: outside;
 }
 
