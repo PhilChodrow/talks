@@ -45,7 +45,7 @@ class: split-two
   <br> <br>
   Emphasis for today: .alert[spectral algorithms] and conjectured .alert[theoretical limits]. 
 
-  .alert2[Just published last week!!] <br>
+  .alert2[Just published last month!!] <br>
   <b>PSC</b>, N. Eikmeier, J. Haddock, (2023). Nonbacktracking spectral clustering of nonuniform hypergraphs
   <br> <i>SIAM Journal on Mathematics of Data Science</i>
 
