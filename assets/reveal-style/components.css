@@ -112,10 +112,10 @@ li {
 
 .footnote {
 	position: absolute;
-	bottom: 1em;
+	bottom: 2em;
 	padding-right: 2em;
 	padding-left: 0.0em;
-	padding-bottom: 2em;
+	padding-bottom: 4em;
 	font-size: 70%;
 	text-align: left;
   }
@@ -129,3 +129,23 @@ li {
     margin-left: auto;
     margin-right: auto;
   }
+
+.fragment.blur {
+filter: blur(15px);
+}
+.fragment.blur.visible {
+filter: none;
+}
+.reveal .slides section .fragment.bold {
+opacity: 1;
+visibility: inherit;
+}
+
+.reveal .slides section .fragment.bold.current-fragment{
+    font-weight: bold;
+}
+
+.split-40 >.column p {
+    margin-left: 1rem;
+    padding-left: 1rem;
+}

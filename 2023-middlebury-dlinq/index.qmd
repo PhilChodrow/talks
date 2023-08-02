@@ -1,0 +1,141 @@
+---
+title: "A <span style='color:#EF476F'>Critical Citizen's</span> Guide to Large Language Models"  
+subtitle: "Middlebury College DLINQ |  August 21st, 2023"  
+date: ""
+author: 'Dr. <span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B"  
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/simple.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+## {.split-40} 
+
+::: {.column .bg0}  
+     
+#### Hi! I'm Phil. 
+
+I am an  [applied mathematician]{.alert}, <br>[data scientist]{.alert-2},<br> and [STEM educator]{.alert-3}.  
+
+I like...
+
+- Math models of social systems
+- Statistics and machine learning
+- Equity-oriented data science
+- [Critical lenses on tech]{.fragment .bold}
+- Traditional martial arts
+- Tea
+- *Star Trek: Deep Space 9*
+- Effective pedagogy 
+
+:::
+
+::: {.column .bg0}
+
+
+![](fig/70602821648__C050864A-B18E-45C2-9EA5-AC8C0721565D.jpeg){.absolute top=-10 left=100 bottom=-20 height=940}
+
+:::
+
+## {.bg0}
+
+### Outline
+
+Introduction: 
+
+- Me
+- The phenomenon of LLMs
+
+How LLMs work
+
+- Next token prediction
+- RLHF
+
+Hype-people are lying to you
+
+- Bengali
+- MIT curriculum
+- Lawyer
+
+Social Impacts
+
+- Labor
+- Environment
+- Artistic production
+- Cultural representation
+
+Think of commercial AI products as fossil fuels. 
+
+- Fossil fuels are powerful but corrosive to the environmental fabric. 
+- AI products are powerful but corrosive to the social fabric
+
+Resist
+
+- How can we teach students to resist the systems of power that are reinforced by AI systems?
+- How can we teach students to be critical synthesizers of information in a world of disinformation?
+
+
+
+
+## {.bg0} 
+
+
+<br> <br> <br> <br> <br> <br> 
+
+::: {.center}
+
+[In]{.fragment .highlight-current-red .blur .big} &nbsp; 
+[winter]{.fragment .highlight-current-red .blur .big} &nbsp;
+[I]{.fragment .highlight-current-red .blur .big} &nbsp;
+[like]{.fragment .highlight-current-red .blur .big} &nbsp;
+[to]{.fragment .highlight-current-red .blur .big} &nbsp;
+[drink]{.fragment .highlight-current-red .blur .big} &nbsp;
+[hot]{.fragment .highlight-current-red .blur .big} &nbsp;
+[coco]{.fragment .highlight-current-red .blur .big} &nbsp;   
+
+:::  
+
+## {.split-33 .bg0}  
+
+::: {.column}
+
+![](fig/water.jpeg)
+
+:::
+
+::: {.column}
+
+<br> 
+
+[*ChatGPT needs to “drink” a **500ml bottle of [[fresh]]{.alert} water** for a simple conversation of roughly 20-50 questions and answers, depending on when and where ChatGPT is deployed*.]{.font-larger .fragment .semi-fade-out}
+
+[Roughly 1B visitors interacted with with the ChatGPT website in July.]{.fragment}  
+
+[If each one submitted **one query**, that's roughly 350K-850K liters of water per day.]{.fragment} 
+
+[This is the drinking water need for roughly 100K-300K people.]{.fragment} 
+
+
+[Li et al, arXiv preprint (2023)<br>
+[https://www.similarweb.com/website/chat.openai.com/#overview](https://www.similarweb.com/website/chat.openai.com/#overview)]{.footnote}
+:::
+
+
+
+<!-- ::: {.column .bg0}  -->
+<!-- more -->
+<!-- ::: -->
