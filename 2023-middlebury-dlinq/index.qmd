@@ -47,7 +47,94 @@ I like...
 ::: {.column .bg0}
 
 
-![](fig/70602821648__C050864A-B18E-45C2-9EA5-AC8C0721565D.jpeg){.absolute top=-10 left=100 bottom=-20 height=940}
+![](fig/phil.jpeg){.absolute top=-10 left=100 bottom=-20 height=940}
+
+:::
+
+## {.split-50}
+
+
+::: {.column}
+
+![](fig/perceptron-nyt.jpeg){width=600}
+
+\- NYT, 1958
+
+:::
+
+:::: {.column}
+
+<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
+
+\- Herbert Simon, 1958 -->
+
+
+
+::: {.fragment}
+
+<br> 
+
+![](fig/linear-classifier.png)
+
+*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
+
+:::
+
+::::
+
+## Large Language Models
+
+A **language model** is an algorithm that aims to generate [constructive]{.alert} [human-like]{.alert-2} text via two primary mechanisms: 
+
+- **[Next-token prediction]{.alert-2}**
+- **[Reinforcement learning with human feedback (RLHF)]{.alert}**
+
+A language model is "large" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
+
+## Next-Token Prediction
+
+<br> <br> <br> <br> <br> <br> 
+
+::: {.center}
+
+[In]{.fragment .highlight-current-red .blur .big} &nbsp; 
+[winter]{.fragment .highlight-current-red .blur .big} &nbsp;
+[I]{.fragment .highlight-current-red .blur .big} &nbsp;
+[like]{.fragment .highlight-current-red .blur .big} &nbsp;
+[to]{.fragment .highlight-current-red .blur .big} &nbsp;
+[drink]{.fragment .highlight-current-red .blur .big} &nbsp;
+[hot]{.fragment .highlight-current-red .blur .big} &nbsp;
+[coco]{.fragment .highlight-current-red .blur .big} &nbsp;   
+
+:::
+
+
+<!-- ## {background-iframe="https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/"} -->
+
+
+##  
+
+![](fig/wapo-jobs.png)
+
+## {.split-50}
+
+![](fig/the%20future-comic.jpeg) 
+
+\@siyann_stuff
+
+## {.split-40}
+
+::: {.column}
+
+<br> <br> <br> 
+
+*ChatGPT seems so human because it was trained by an AI that was mimicking humans who were rating an AI that was mimicking humans who were pretending to be a better version of an AI that was trained on human writing.*
+
+:::
+
+::: {.column}
+
+![](fig/ai-is-work-verge.png){height = 800}
 
 :::
 
@@ -123,7 +210,7 @@ Resist
 
 [*ChatGPT needs to “drink” a **500ml bottle of [[fresh]]{.alert} water** for a simple conversation of roughly 20-50 questions and answers, depending on when and where ChatGPT is deployed*.]{.font-larger .fragment .semi-fade-out}
 
-[Roughly 1B visitors interacted with with the ChatGPT website in July.]{.fragment}  
+[Roughly 1B visitors interacted with with the ChatGPT website in July, for 7 mins on average.]{.fragment}  
 
 [If each one submitted **one query**, that's roughly 350K-850K liters of water per day.]{.fragment} 
 
@@ -133,6 +220,31 @@ Resist
 [Li et al, arXiv preprint (2023)<br>
 [https://www.similarweb.com/website/chat.openai.com/#overview](https://www.similarweb.com/website/chat.openai.com/#overview)]{.footnote}
 :::
+
+## {.split-33}
+
+::: {.column}
+
+*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
+
+:::
+
+
+::: {.column}
+
+![](fig/lazar-nelson.png){width=500}
+
+<!--  -->
+:::
+
+
+## Powerful People are Lying To You
+
+![](fig/bar-performance.png)
+
+## 
+
+![](fig/bengali.png)
 
 
 
