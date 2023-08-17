@@ -339,6 +339,7 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 </section>
 <section id="section" class="slide level2 split-40">
 <h2></h2>
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
 <div class="column bg0">
 <h4 id="hi-im-phil.">Hi! I’m Phil.</h4>
 <p>I am an <span class="alert">applied mathematician</span>, <br><span class="alert-2">data scientist</span>,<br> and <span class="alert-3">STEM educator</span>.</p>
@@ -358,6 +359,14 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><img data-src="fig/phil.jpeg" class="absolute" style="top: -10px; left: 100px; bottom: -20px; height: 940px; "></p>
 </div>
 </section>
+<section id="animating-questions-for-today" class="slide level2">
+<h2>Animating Questions for Today</h2>
+<ol type="1">
+<li>What are large language models <strong>actually trained to do</strong>?</li>
+<li>Who is <strong>harmed</strong> by large language models?</li>
+<li>Who <strong>benefits</strong> from LLMs? Who benefits from <em>you</em> believing <strong>hype</strong> about LLMs?</li>
+</ol>
+</section>
 <section id="section-1" class="slide level2 split-50">
 <h2></h2>
 <div class="column">
@@ -372,34 +381,130 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><br></p>
 <p><img data-src="fig/linear-classifier.png"></p>
 <p><em>Image credit: <a href="https://en.wikipedia.org/wiki/Linear_classifier">Wikipedia</a></em></p>
+<p><em>This model is called the <strong>perceptron</strong></em>.</p>
 </div>
 </div>
 </section>
-<section id="large-language-models" class="slide level2">
-<h2>Large Language Models</h2>
+<section id="section-2" class="slide level2 split-60">
+<h2></h2>
+<div class="column">
+<h3 id="large-language-models">Large Language Models</h3>
+<p><br></p>
+<div class="font-larger">
 <p>A <strong>language model</strong> is an algorithm that aims to generate <span class="alert">constructive</span> <span class="alert-2">human-like</span> text via two primary mechanisms:</p>
 <ul>
 <li><strong><span class="alert-2">Next-token prediction</span></strong></li>
 <li><strong><span class="alert">Reinforcement learning with human feedback (RLHF)</span></strong></li>
 </ul>
 <p>A language model is “large” when it is difficult to explain all of its behaviors purely in terms of structure and training (“<em>emergence</em>”).</p>
+</div>
+</div>
+<div class="column">
+<p><img data-src="fig/mayo.jpeg"></p>
+</div>
 </section>
 <section id="next-token-prediction" class="slide level2">
 <h2>Next-Token Prediction</h2>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br></p>
 <div class="center">
-<p><span class="fragment highlight-current-red blur big">In</span> &nbsp; <span class="fragment highlight-current-red blur big">winter</span> &nbsp; <span class="fragment highlight-current-red blur big">I</span> &nbsp; <span class="fragment highlight-current-red blur big">like</span> &nbsp; <span class="fragment highlight-current-red blur big">to</span> &nbsp; <span class="fragment highlight-current-red blur big">drink</span> &nbsp; <span class="fragment highlight-current-red blur big">hot</span> &nbsp; <span class="fragment highlight-current-red blur big">coco</span> &nbsp;</p>
+<table class="table-borderless" style="width:100%;">
+<caption></caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>&nbsp;</td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="2">artichoke</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="3">the</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="4">subtract</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="5">college</span></td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="6">black</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="7">paint</span></td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="2">boldly</span></td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="3">a</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="4">small</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="5">but</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="6">pinch</span></td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="7">pepper</span></td>
+</tr>
+<tr class="odd">
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="1">Now</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="2">bubble</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="3">Phil</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="4">more</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="5">add</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="6">drink</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="7">river</span></td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="2">triangle</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="3">draw</span></td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="4">bit</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="5">raisin</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="6">cumin</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="7">pinch</span></td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="2">add</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="2">escape</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="4">lies</span></td>
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="5">of</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="6">jogging</span></td>
+<td><span class="fragment semi-fade-out font-larger" data-fragment-index="7">ice</span></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="fragment highlight-current-red font-larger" data-fragment-index="1">Now</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="2">add</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="3">a</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="4">bit</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="5">of</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="6">black</span></td>
+<td><span class="fragment fade-in font-larger" data-fragment-index="7">pepper</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 <!-- ## {background-iframe="https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/"} -->
 </section>
-<section id="section-2" class="slide level2">
+<section id="which-response-is-better" class="slide level2">
+<h2>Which response is better?</h2>
+<p><br></p>
+<p><span class="fragment fade-in font-larger">“<em>First, whisk the eggs</em>.”</span></p>
+<p><br></p>
+<p><span class="font-larger">1. “Now add a bit of black <span class="alert"><strong>pepper</strong></span>”</span></p>
+<p><span class="font-larger">2. “Now add a bit of black <span class="alert-2"><strong>paint</strong></span>”</span></p>
+<p><span class="fragment fade-in font-larger">Reinforcement learning with human feedback (RLHF) encourages the model distinguish high-quality (helpful, non-offensive) responses.</span></p>
+</section>
+<section id="section-3" class="slide level2">
 <h2></h2>
 
-<img data-src="fig/wapo-jobs.png" class="r-stretch"></section>
-<section id="section-3" class="slide level2 split-50">
-<h2></h2>
-
-<img data-src="fig/the%20future-comic.jpeg" class="r-stretch"><p>@siyann_stuff</p>
+<img data-src="fig/1-chatgpt-training.png" class="r-stretch"><p><em>Image source: <a href="https://huyenchip.com/2023/05/02/rlhf.html">Chip Huyen</a></em></p>
 </section>
 <section id="section-4" class="slide level2 split-40">
 <h2></h2>
@@ -411,7 +516,23 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><img data-src="fig/ai-is-work-verge.png">{height = 800}</p>
 </div>
 </section>
-<section id="section-5" class="slide level2 bg0">
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br></p>
+<div class="center">
+<p><span class="font-larger">LLMs use next-token prediction to construct human-appearing sentences. RLHF steers those sentences towards being desirable (relevant, helpful, non-harmful).</span></p>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/the%20future-comic.jpeg" class="absolute" style="top: 50px; left: 300px; height: 600px; "></p>
+<p>@siyann_stuff</p>
+<p><img data-src="fig/wapo-jobs.png" class="fragment absolute" style="top: 20px; " data-fragment-index="2"></p>
+<p><img data-src="fig/eating-disorder-1.png" class="fragment absolute" style="top: 20px; width: 800px; " data-fragment-index="3"></p>
+<p><img data-src="fig/eating-disorder-2.png" class="fragment absolute" style="top: 300px; width: 800px; " data-fragment-index="3"></p>
+<p><img data-src="fig/eating-disorder-3.png" class="fragment absolute" style="top: 450px; width: 800px; " data-fragment-index="3"></p>
+</section>
+<section id="section-7" class="slide level2 bg0">
 <h2></h2>
 <h3 id="outline">Outline</h3>
 <p>Introduction:</p>
@@ -448,14 +569,7 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <li>How can we teach students to be critical synthesizers of information in a world of disinformation?</li>
 </ul>
 </section>
-<section id="section-6" class="slide level2 bg0">
-<h2></h2>
-<p><br> <br> <br> <br> <br> <br></p>
-<div class="center">
-<p><span class="fragment highlight-current-red blur big">In</span> &nbsp; <span class="fragment highlight-current-red blur big">winter</span> &nbsp; <span class="fragment highlight-current-red blur big">I</span> &nbsp; <span class="fragment highlight-current-red blur big">like</span> &nbsp; <span class="fragment highlight-current-red blur big">to</span> &nbsp; <span class="fragment highlight-current-red blur big">drink</span> &nbsp; <span class="fragment highlight-current-red blur big">hot</span> &nbsp; <span class="fragment highlight-current-red blur big">coco</span> &nbsp;</p>
-</div>
-</section>
-<section id="section-7" class="slide level2 split-33 bg0">
+<section id="section-8" class="slide level2 split-33 bg0">
 <h2></h2>
 <div class="column">
 <p><img data-src="fig/water.jpeg"></p>
@@ -469,7 +583,7 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><span class="footnote">Li et al, arXiv preprint (2023)<br> <a href="https://www.similarweb.com/website/chat.openai.com/#overview">https://www.similarweb.com/website/chat.openai.com/#overview</a></span></p>
 </div>
 </section>
-<section id="section-8" class="slide level2 split-33">
+<section id="section-9" class="slide level2 split-33">
 <h2></h2>
 <div class="column">
 <p><em>Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.</em></p>
@@ -483,7 +597,7 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <h2>Powerful People are Lying To You</h2>
 
 <img data-src="fig/bar-performance.png" class="r-stretch"></section>
-<section id="section-9" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 
 <!-- ::: {.column .bg0}  -->

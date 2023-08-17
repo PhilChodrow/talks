@@ -23,7 +23,11 @@ cache: true
 from: markdown+emoji
 ---
 
+
+
 ## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
 
 ::: {.column .bg0}  
      
@@ -50,6 +54,16 @@ I like...
 ![](fig/phil.jpeg){.absolute top=-10 left=100 bottom=-20 height=940}
 
 :::
+
+## Animating Questions for Today
+
+1. What are large language models **actually trained to do**? 
+2. Who is **harmed** by large language models? 
+3. Who **benefits** from LLMs? Who benefits from *you* believing **hype** about LLMs? 
+
+
+
+
 
 ## {.split-50}
 
@@ -78,11 +92,23 @@ I like...
 
 *Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
 
+*This model is called the **perceptron***. 
+
+
 :::
 
 ::::
 
-## Large Language Models
+
+## {.split-60}
+
+:::: {.column}
+
+### Large Language Models
+
+<br>
+
+:::{.font-larger} 
 
 A **language model** is an algorithm that aims to generate [constructive]{.alert} [human-like]{.alert-2} text via two primary mechanisms: 
 
@@ -91,36 +117,61 @@ A **language model** is an algorithm that aims to generate [constructive]{.alert
 
 A language model is "large" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
 
-## Next-Token Prediction
+:::
+::::
 
-<br> <br> <br> <br> <br> <br> 
+::: {.column}
 
-::: {.center}
-
-[In]{.fragment .highlight-current-red .blur .big} &nbsp; 
-[winter]{.fragment .highlight-current-red .blur .big} &nbsp;
-[I]{.fragment .highlight-current-red .blur .big} &nbsp;
-[like]{.fragment .highlight-current-red .blur .big} &nbsp;
-[to]{.fragment .highlight-current-red .blur .big} &nbsp;
-[drink]{.fragment .highlight-current-red .blur .big} &nbsp;
-[hot]{.fragment .highlight-current-red .blur .big} &nbsp;
-[coco]{.fragment .highlight-current-red .blur .big} &nbsp;   
+![](fig/mayo.jpeg)
 
 :::
 
+## Next-Token Prediction
+
+<br> 
+
+::: {.center}
+
+||||||
+-|-|-|-|-|-|-
+&nbsp;    | [artichoke]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[the]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[subtract]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[college]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[black]{.fragment .highlight-current-red fragment-index=6 .font-larger}   | [paint]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [boldly]{.fragment .semi-fade-out fragment-index=2 .font-larger} | [a]{.fragment .highlight-current-red fragment-index=3 .font-larger}  |[small]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[but]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[pinch]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [pepper]{.fragment .highlight-current-red fragment-index=7 .font-larger} 
+[Now]{.fragment .highlight-current-red fragment-index=1 .font-larger}  | [bubble]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[Phil]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[more]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[add]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[drink]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [river]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [triangle]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[draw]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[bit]{.fragment .highlight-current-red fragment-index=4 .font-larger}  |[raisin]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[cumin]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [pinch]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [add]{.fragment .highlight-current-red fragment-index=2 .font-larger} | [escape]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[lies]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[of]{.fragment .highlight-current-red fragment-index=5 .font-larger}  |[jogging]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [ice]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+: {.borderless}
+
+<br> 
+
+||||||
+-|-|-|-|-|-|-
+[Now]{.fragment .highlight-current-red fragment-index=1 .font-larger}  | [add]{.fragment .fade-in  fragment-index=2 .font-larger} |[a]{.fragment .fade-in  fragment-index=3 .font-larger} |[bit]{.fragment .fade-in  fragment-index=4 .font-larger} |[of]{.fragment .fade-in  fragment-index=5 .font-larger} |[black]{.fragment .fade-in  fragment-index=6 .font-larger} | [pepper]{.fragment .fade-in  fragment-index=7 .font-larger} 
+
+:::
 
 <!-- ## {background-iframe="https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/"} -->
 
+## Which response is better?
 
-##  
 
-![](fig/wapo-jobs.png)
+<br> 
 
-## {.split-50}
+["*First, whisk the eggs*."]{.fragment .fade-in .font-larger}
 
-![](fig/the%20future-comic.jpeg) 
+<br> 
 
-\@siyann_stuff
+[1. "Now add a bit of black [**pepper**]{.alert}"]{.font-larger}
+
+[2. "Now add a bit of black [**paint**]{.alert-2}"]{.font-larger}
+
+
+[Reinforcement learning with human feedback (RLHF) encourages the model distinguish high-quality (helpful, non-offensive) responses.]{.fragment .fade-in .font-larger}
+
+## 
+
+![](fig/1-chatgpt-training.png)
+
+*Image source: [Chip Huyen](https://huyenchip.com/2023/05/02/rlhf.html)*
 
 ## {.split-40}
 
@@ -137,6 +188,40 @@ A language model is "large" when it is difficult to explain all of its behaviors
 ![](fig/ai-is-work-verge.png){height = 800}
 
 :::
+
+## 
+
+<br> <br> <br> <br> <br> <br> 
+
+::: {.center}
+
+[LLMs use next-token prediction to construct human-appearing sentences. RLHF steers those sentences towards being desirable (relevant, helpful, non-harmful).]{.font-larger}
+
+:::
+
+
+
+
+
+
+
+
+## 
+
+
+
+![](fig/the%20future-comic.jpeg){.absolute top=50 left=300 height=600 }  
+
+\@siyann_stuff
+
+![](fig/wapo-jobs.png){.fragment .absolute top=20 fragment-index=2}
+
+![](fig/eating-disorder-1.png){.fragment .absolute top=20 width=800 fragment-index=3}
+
+![](fig/eating-disorder-2.png){.fragment .absolute top=300 width=800 fragment-index=3}
+
+![](fig/eating-disorder-3.png){.fragment .absolute top=450 width=800 fragment-index=3}
+
 
 ## {.bg0}
 
@@ -177,24 +262,6 @@ Resist
 
 
 
-
-## {.bg0} 
-
-
-<br> <br> <br> <br> <br> <br> 
-
-::: {.center}
-
-[In]{.fragment .highlight-current-red .blur .big} &nbsp; 
-[winter]{.fragment .highlight-current-red .blur .big} &nbsp;
-[I]{.fragment .highlight-current-red .blur .big} &nbsp;
-[like]{.fragment .highlight-current-red .blur .big} &nbsp;
-[to]{.fragment .highlight-current-red .blur .big} &nbsp;
-[drink]{.fragment .highlight-current-red .blur .big} &nbsp;
-[hot]{.fragment .highlight-current-red .blur .big} &nbsp;
-[coco]{.fragment .highlight-current-red .blur .big} &nbsp;   
-
-:::  
 
 ## {.split-33 .bg0}  
 
