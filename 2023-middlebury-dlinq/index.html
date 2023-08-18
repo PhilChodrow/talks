@@ -359,48 +359,53 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><img data-src="fig/phil.jpeg" class="absolute" style="top: -10px; left: 100px; bottom: -20px; height: 940px; "></p>
 </div>
 </section>
-<section id="animating-questions-for-today" class="slide level2">
-<h2>Animating Questions for Today</h2>
-<ol type="1">
-<li>What are large language models <strong>actually trained to do</strong>?</li>
-<li>Who is <strong>harmed</strong> by large language models?</li>
-<li>Who <strong>benefits</strong> from LLMs? Who benefits from <em>you</em> believing <strong>hype</strong> about LLMs?</li>
-</ol>
-</section>
 <section id="section-1" class="slide level2 split-50">
 <h2></h2>
+<h3 id="towards-a-critical-view">Towards a Critical View</h3>
+<p><strong>Situation</strong>: Large language models (LLMs) are now powerful and widely available.</p>
 <div class="column">
-<p><img data-src="fig/perceptron-nyt.jpeg" width="600"></p>
-<p>- NYT, 1958</p>
+<p><br> <br> <br> <br> <br> <span class="fragment semi-fade-out" data-fragment-index="1">Are students going to use this technology to cheat?</span></p>
+<p><span class="fragment semi-fade-out" data-fragment-index="1">Should I create assignments involving LLMs?</span></p>
+<p><span class="fragment semi-fade-out" data-fragment-index="1">How can I use this in my scholarship?</span></p>
+<p><span class="fragment semi-fade-out" data-fragment-index="1">Should Middlebury leverage LLMs in developing our scholarly identity in the languages?</span></p>
 </div>
 <div class="column">
-<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
-
-\- Herbert Simon, 1958 -->
-<div class="fragment">
-<p><br></p>
-<p><img data-src="fig/linear-classifier.png"></p>
-<p><em>Image credit: <a href="https://en.wikipedia.org/wiki/Linear_classifier">Wikipedia</a></em></p>
-<p><em>This model is called the <strong>perceptron</strong></em>.</p>
-</div>
+<p><br> <br> <br> <br> <br> <span class="fragment fade-in" data-fragment-index="2">Why? Who benefits from the spread of artificial text generators?</span></p>
+<p><span class="fragment fade-in" data-fragment-index="3">What information can I trust about the abilities of these models?</span></p>
+<p><span class="fragment fade-in" data-fragment-index="4">What is the actual social impact of LLMs? How does it compare to the rhetoric of motivated actors?</span></p>
+<p><span class="fragment fade-in" data-fragment-index="5">How can we help students cultivate critical perspectives on the role of technology in society and in their learning?</span></p>
 </div>
 </section>
-<section id="section-2" class="slide level2 split-60">
+<section id="my-claims-for-you-today" class="slide level2">
+<h2>My Claims For You Today</h2>
+<p><br> <br> <br></p>
+<p><span class="fragment fade-in-then-semi-out">Large language models are trained to <span class="alert"><strong>generate constructive, human-like text</strong></span> via prediction and reinforcement.</span></p>
+<p><span class="fragment fade-in-then-semi-out">People with profit and power motives are <span class="alert-2"><strong>routinely lying to you</strong></span> about their capabilities.</span></p>
+<p><span class="fragment fade-in-then-semi-out">These models are driving <span class="alert-3"><strong>large-scale degradation</strong></span> in online information ecosystems, labor stability, care resources, artistic production, and the environment.</span></p>
+<p><span class="fragment fade-in-then-semi-out"><strong>LLMs are not inevitable</strong>. Critical scholars – especially women of color – are showing the way towards a responsible, critical, and social relationship with technology.</span></p>
+</section>
+<section id="section-2" class="slide level2" data-background-color="#EF476F">
+<h2></h2>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="large-language-models-are-trained-to-generate-constructive-human-like-text-via-prediction-and-reinforcement.">Large language models are trained to <span class="alert"><strong>generate constructive, human-like text</strong></span> via prediction and reinforcement.</h3>
+</section>
+<section id="section-3" class="slide level2 split-60">
 <h2></h2>
 <div class="column">
 <h3 id="large-language-models">Large Language Models</h3>
 <p><br></p>
 <div class="font-larger">
-<p>A <strong>language model</strong> is an algorithm that aims to generate <span class="alert">constructive</span> <span class="alert-2">human-like</span> text via two primary mechanisms:</p>
+<p>A (generative) <strong><em>language model</em></strong> is an algorithm that generates text in partially random ways.</p>
+<p>A language model is “<strong><em>large</em></strong>” when it is difficult to explain all of its behaviors purely in terms of structure and training (“<em>emergence</em>”).</p>
+<p>Most language models aim to produce text that is <span class="alert-2">human-like</span> and <span class="alert">constructive</span>, using:</p>
 <ul>
 <li><strong><span class="alert-2">Next-token prediction</span></strong></li>
 <li><strong><span class="alert">Reinforcement learning with human feedback (RLHF)</span></strong></li>
 </ul>
-<p>A language model is “large” when it is difficult to explain all of its behaviors purely in terms of structure and training (“<em>emergence</em>”).</p>
 </div>
 </div>
 <div class="column">
-<p><img data-src="fig/mayo.jpeg"></p>
+<p><img data-src="fig/google-search.png" class="absolute" style="top: 100px; left: 0px; width: 600px; "></p>
 </div>
 </section>
 <section id="next-token-prediction" class="slide level2">
@@ -499,65 +504,193 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <p><br></p>
 <p><span class="font-larger">1. “Now add a bit of black <span class="alert"><strong>pepper</strong></span>”</span></p>
 <p><span class="font-larger">2. “Now add a bit of black <span class="alert-2"><strong>paint</strong></span>”</span></p>
+<p><br></p>
 <p><span class="fragment fade-in font-larger">Reinforcement learning with human feedback (RLHF) encourages the model distinguish high-quality (helpful, non-offensive) responses.</span></p>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 
 <img data-src="fig/1-chatgpt-training.png" class="r-stretch"><p><em>Image source: <a href="https://huyenchip.com/2023/05/02/rlhf.html">Chip Huyen</a></em></p>
 </section>
-<section id="section-4" class="slide level2 split-40">
+<section id="section-5" class="slide level2 split-40">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
 <p><em>ChatGPT seems so human because it was trained by an AI that was mimicking humans who were rating an AI that was mimicking humans who were pretending to be a better version of an AI that was trained on human writing.</em></p>
+<p>Google research estimates “<strong>millions</strong>” of annotation workers.</p>
 </div>
 <div class="column">
-<p><img data-src="fig/ai-is-work-verge.png">{height = 800}</p>
+<p><img data-src="fig/ai-is-work-verge.png"></p>
 </div>
+<p><img data-src="fig/wsj-moderation-workforce.png" class="fragment absolute" style="top: 0px; "></p>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <p><br> <br> <br> <br> <br> <br></p>
 <div class="center">
 <p><span class="font-larger">LLMs use next-token prediction to construct human-appearing sentences. RLHF steers those sentences towards being desirable (relevant, helpful, non-harmful).</span></p>
 </div>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-7" class="slide level2" data-background-color="#EF476F">
 <h2></h2>
-<p><img data-src="fig/the%20future-comic.jpeg" class="absolute" style="top: 50px; left: 300px; height: 600px; "></p>
-<p>@siyann_stuff</p>
-<p><img data-src="fig/wapo-jobs.png" class="fragment absolute" style="top: 20px; " data-fragment-index="2"></p>
-<p><img data-src="fig/eating-disorder-1.png" class="fragment absolute" style="top: 20px; width: 800px; " data-fragment-index="3"></p>
-<p><img data-src="fig/eating-disorder-2.png" class="fragment absolute" style="top: 300px; width: 800px; " data-fragment-index="3"></p>
-<p><img data-src="fig/eating-disorder-3.png" class="fragment absolute" style="top: 450px; width: 800px; " data-fragment-index="3"></p>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="people-with-profit-motives-are-routinely-lying-to-you-about-the-capabilities-of-llms.">People with profit motives are <span class="alert"><strong>routinely lying to you</strong></span> about the capabilities of LLMs.</h3>
 </section>
-<section id="section-7" class="slide level2 bg0">
+<section id="section-8" class="slide level2">
 <h2></h2>
-<h3 id="outline">Outline</h3>
-<p>Introduction:</p>
-<ul>
-<li>Me</li>
-<li>The phenomenon of LLMs</li>
-</ul>
-<p>How LLMs work</p>
-<ul>
-<li>Next token prediction</li>
-<li>RLHF</li>
-</ul>
-<p>Hype-people are lying to you</p>
-<ul>
-<li>Bengali</li>
-<li>MIT curriculum</li>
-<li>Lawyer</li>
-</ul>
-<p>Social Impacts</p>
-<ul>
-<li>Labor</li>
-<li>Environment</li>
-<li>Artistic production</li>
-<li>Cultural representation</li>
-</ul>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="yes-llms-are-extremely-impressive">Yes, LLMs are extremely impressive</h3>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/peanut-butter-sandwich.png" class="absolute" style="top: 0px; left: 50px; "></p>
+</section>
+<section id="section-10" class="slide level2 split-50">
+<h2></h2>
+<div class="column">
+<p><img data-src="fig/perceptron-nyt.jpeg" width="600"></p>
+<p>- NYT, 1958</p>
+</div>
+<div class="column">
+<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
+
+\- Herbert Simon, 1958 -->
+<div class="fragment">
+<p><br></p>
+<p><img data-src="fig/linear-classifier.png"></p>
+<p><em>Image credit: <a href="https://en.wikipedia.org/wiki/Linear_classifier">Wikipedia</a></em></p>
+<p><em>This model is called the <strong>perceptron</strong></em>.</p>
+</div>
+</div>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/bar-performance.png" class="absolute" style="top: 20px; height: 700px; "></p>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+
+<img data-src="fig/mit-curriculum.png" class="r-stretch"></section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/impossible-question.png" class="absolute" style="top: 150px; left: 50px; width: 400px; "></p>
+<p><img data-src="fig/raunak-chowdhuri.png" class="fragment absolute" style="top: 150px; left: 450px; width: 500px; "></p>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/bengali-1.png" class="absolute" style="top: 20px; left: 300px; width: 400px; "> <img data-src="fig/bengali-2.png" class="absolute fragment" style="top: 20px; left: 300px; width: 400px; "></p>
+</section>
+<section id="section-15" class="slide level2 split-33">
+<h2></h2>
+<div class="column">
+<p><br> <br> <br></p>
+<p><em>Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.</em></p>
+</div>
+<div class="column">
+<p><img data-src="fig/lazar-nelson.png" width="500"></p>
+<!--  -->
+</div>
+</section>
+<section id="section-16" class="slide level2" data-background-color="#EF476F">
+<h2></h2>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="llms-are-driving-large-scale-degradation-in-online-information-ecosystems-labor-stability-care-resources-artistic-production-and-the-environment.">LLMs are driving <span class="alert"><strong>large-scale degradation</strong></span> in online information ecosystems, labor stability, care resources, artistic production, and the environment.</h3>
+</section>
+<section id="section-17" class="slide level2" data-background-image="fig/openai-governance-doc.png">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <img data-src="fig/openai-governance-excerpt.png" class="absolute" style="left: 0px; width: 1500px; "></p>
+</section>
+<section id="online-information" class="slide level2">
+<h2>Online Information</h2>
+<p><img data-src="fig/stack-overflow-question.png"> <img data-src="fig/stack-overflow-answer.png" class="fragment absolute" style="top: 100px; left: 10px; "></p>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<p><img data-src="fig/stack-overflow-traffic.png" class="absolute" style="left: 100px; width: 800px; "></p>
+<p><span class="absolute" style="left: 300px; "><em>Data visualization by <a href="https://observablehq.com/@ayhanfuat/the-fall-of-stack-overflow">Ayhan Fuat Çelik</a></em></span></p>
+</section>
+<section id="labor-stability" class="slide level2">
+<h2>Labor Stability</h2>
+<p><img data-src="fig/longer-vacations.png" class="absolute fragment fade-out" style="top: 100px; left: 150px; height: 600px; "></p>
+<!-- ![](fig/the%20future-comic.jpeg){.absolute top=50 left=600 height=600 }   -->
+<!-- \@siyann_stuff -->
+<p><img data-src="fig/wapo-jobs.png" class="fragment absolute" style="top: 70px; left: 150px; " data-fragment-index="2"></p>
+<!-- ![](fig/threatened-jobs.png){.fragment .absolute top=70 left=150 fragment-index=3} -->
+</section>
+<section id="care-resources" class="slide level2">
+<h2>Care Resources</h2>
+<p><img data-src="fig/altman-tweet.png" class="absolute" style="left: 150px; width: 650px; "></p>
+</section>
+<section id="care-resources-1" class="slide level2">
+<h2>Care Resources</h2>
+<p><br> <br></p>
+
+<img data-src="fig/eating-disorder-1.png" class="r-stretch"></section>
+<section id="artistic-production-clarkesworld" class="slide level2">
+<h2>Artistic Production: Clarkesworld</h2>
+
+<img data-src="fig/clarkesworld.png" class="r-stretch"><p><em>All of this nonsense has cost us time, money, and mental health.</em> - Neil Clarke</p>
+</section>
+<section id="section-19" class="slide level2 split-33 bg0">
+<h2></h2>
+<div class="column">
+<p><img data-src="fig/water.jpeg"></p>
+</div>
+<div class="column">
+<p><br></p>
+<p><span class="font-larger fragment semi-fade-out"><em>ChatGPT needs to “drink” a <strong>500ml bottle of <span class="alert">[fresh]</span> water</strong> for a simple conversation of roughly 20-50 questions and answers, depending on when and where ChatGPT is deployed</em>.</span></p>
+<p><span class="fragment">Roughly 1B visitors interacted with with the ChatGPT website in July, for 7 mins on average.</span></p>
+<p><span class="fragment">If each user submitted <strong>one query</strong>, that’s roughly 350K-850K liters of water per day.</span></p>
+<p><span class="fragment">This is daily drinking water for roughly 100K-300K people.</span></p>
+<p><span class="footnote">Li et al, arXiv preprint (2023)<br> <a href="https://www.similarweb.com/website/chat.openai.com/#overview">https://www.similarweb.com/website/chat.openai.com/#overview</a></span></p>
+</div>
+</section>
+<section id="section-20" class="slide level2" data-background-color="#EF476F">
+<h2></h2>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="an-llm-future-is-not-inevitable."><strong>An LLM future is <span class="alert">not inevitable</span>.</strong></h3>
+</section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<h4 id="corporate-automation-drives-large-scale-harms-right-now">Corporate Automation Drives Large-Scale Harms Right Now</h4>
+<p><img data-src="fig/algs-of-oppression.jpg" class="absolute" style="left: 250px; width: 300px; "> <img data-src="fig/noble.jpeg" class="absolute" style="left: 600px; "></p>
+</section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<h4 id="corporate-automation-drives-large-scale-harms-right-now-1">Corporate Automation Drives Large-Scale Harms Right Now</h4>
+<p><img data-src="fig/race-after-tech.jpg" class="absolute" style="left: 250px; width: 300px; "> <img data-src="fig/benjamin.jpeg" class="absolute" style="left: 600px; width: 200px; "></p>
+</section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+<h4 id="corporate-automation-drives-large-scale-harms-right-now-2">Corporate Automation Drives Large-Scale Harms Right Now</h4>
+<p><img data-src="fig/coded-bias.jpg" class="absolute" style="left: 250px; width: 300px; "> <img data-src="fig/buolamwini.jpeg" class="absolute" style="left: 600px; width: 200px; "></p>
+<div class="absolute" style="top: 450px; left: 550px; ">
+<p>Dr.&nbsp;Joy Buolamwini</p>
+</div>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<h4 id="corporate-automation-drives-large-scale-harms-right-now-3">Corporate Automation Drives Large-Scale Harms Right Now</h4>
+<p><img data-src="fig/automating-eubanks.jpeg" class="absolute" style="top: 125px; left: 150px; width: 700px; "></p>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<h4 id="corporate-automation-drives-large-scale-harms-right-now-4">Corporate Automation Drives Large-Scale Harms Right Now</h4>
+<p><img data-src="fig/DAIR.png" class="absolute" style="left: 250px; width: 300px; "> <img data-src="fig/gebru.webp" class="absolute" style="left: 600px; width: 200px; "></p>
+<div class="absolute" style="top: 475px; left: 550px; ">
+<p>Dr.&nbsp;Timnit Gebru</p>
+</div>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<p><br> <br> <br></p>
+<p><strong>Situation</strong>: [LLMs and other forms of machine learning are powerful tools that are promoted by large corporations in service of their profit motive. These tools are likely to concentrate wealth, degrade information ecosystems, and consume precious environmental resources.]</p>
+<p><strong>Question</strong>: How can we support our students in cultivating critical perspective?</p>
+<p>How can we help students synthesize in a world of disinformation?</p>
+<p>How can we help them form reflective relationships with their learning process?</p>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
 <p>Think of commercial AI products as fossil fuels.</p>
 <ul>
 <li>Fossil fuels are powerful but corrosive to the environmental fabric.</li>
@@ -569,41 +702,12 @@ Dr.&nbsp;<span class="speaker-highlight">Phil Chodrow</span> <br>Department of C
 <li>How can we teach students to be critical synthesizers of information in a world of disinformation?</li>
 </ul>
 </section>
-<section id="section-8" class="slide level2 split-33 bg0">
+<section id="section-28" class="slide level2">
 <h2></h2>
-<div class="column">
-<p><img data-src="fig/water.jpeg"></p>
-</div>
-<div class="column">
-<p><br></p>
-<p><span class="font-larger fragment semi-fade-out"><em>ChatGPT needs to “drink” a <strong>500ml bottle of <span class="alert">[fresh]</span> water</strong> for a simple conversation of roughly 20-50 questions and answers, depending on when and where ChatGPT is deployed</em>.</span></p>
-<p><span class="fragment">Roughly 1B visitors interacted with with the ChatGPT website in July, for 7 mins on average.</span></p>
-<p><span class="fragment">If each one submitted <strong>one query</strong>, that’s roughly 350K-850K liters of water per day.</span></p>
-<p><span class="fragment">This is the drinking water need for roughly 100K-300K people.</span></p>
-<p><span class="footnote">Li et al, arXiv preprint (2023)<br> <a href="https://www.similarweb.com/website/chat.openai.com/#overview">https://www.similarweb.com/website/chat.openai.com/#overview</a></span></p>
-</div>
-</section>
-<section id="section-9" class="slide level2 split-33">
-<h2></h2>
-<div class="column">
-<p><em>Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.</em></p>
-</div>
-<div class="column">
-<p><img data-src="fig/lazar-nelson.png" width="500"></p>
-<!--  -->
-</div>
-</section>
-<section id="powerful-people-are-lying-to-you" class="slide level2">
-<h2>Powerful People are Lying To You</h2>
-
-<img data-src="fig/bar-performance.png" class="r-stretch"></section>
-<section id="section-10" class="slide level2">
-<h2></h2>
-
 <!-- ::: {.column .bg0}  -->
 <!-- more -->
 <!-- ::: -->
-<img data-src="fig/bengali.png" class="r-stretch"><div class="footer footer-default">
+<div class="footer footer-default">
 
 </div>
 </section>

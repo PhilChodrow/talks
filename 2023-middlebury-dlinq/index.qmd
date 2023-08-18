@@ -55,51 +55,63 @@ I like...
 
 :::
 
-## Animating Questions for Today
-
-1. What are large language models **actually trained to do**? 
-2. Who is **harmed** by large language models? 
-3. Who **benefits** from LLMs? Who benefits from *you* believing **hype** about LLMs? 
-
-
-
-
 
 ## {.split-50}
 
+### Towards a Critical View
+
+**Situation**: Large language models (LLMs) are now powerful and widely available. 
+
+::: {.column} 
+
+<br> <br> <br> <br> <br> 
+[Are students going to use this technology to cheat?]{.fragment .semi-fade-out fragment-index=1} 
+
+[Should I create assignments involving LLMs?]{.fragment .semi-fade-out fragment-index=1} 
+
+[How can I use this in my scholarship?]{.fragment .semi-fade-out fragment-index=1}  
+
+[Should Middlebury leverage LLMs in developing our scholarly identity in the languages?]{.fragment .semi-fade-out fragment-index=1}  
+:::
 
 ::: {.column}
 
-![](fig/perceptron-nyt.jpeg){width=600}
+<br> <br> <br> <br> <br> 
+[Why? Who benefits from the spread of artificial text generators?]{.fragment .fade-in fragment-index=2} 
 
-\- NYT, 1958
+[What information can I trust about the abilities of these models?]{.fragment .fade-in fragment-index=3} 
 
+[What is the actual social impact of LLMs? How does it compare to the rhetoric of motivated actors?]{.fragment .fade-in fragment-index=4} 
+
+[How can we help students cultivate critical perspectives on the role of technology in society and in their learning?]{.fragment .fade-in fragment-index=5} 
 :::
 
-:::: {.column}
-
-<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
-
-\- Herbert Simon, 1958 -->
 
 
 
-::: {.fragment}
 
-<br> 
+## My Claims For You Today
 
-![](fig/linear-classifier.png)
+<br> <br> <br> 
 
-*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
+[Large language models are trained to [**generate constructive, human-like text**]{.alert} via prediction and reinforcement.]{.fragment .fade-in-then-semi-out} 
 
-*This model is called the **perceptron***. 
+[People with profit and power motives are [**routinely lying to you**]{.alert-2} about their capabilities.]{.fragment .fade-in-then-semi-out} 
 
-
-:::
-
-::::
+[These models are driving [**large-scale degradation**]{.alert-3} in online information ecosystems, labor stability, care resources, artistic production, and the environment.]{.fragment .fade-in-then-semi-out} 
 
 
+
+[**LLMs are not inevitable**. Critical scholars -- especially women of color -- are showing the way towards a responsible, critical, and social relationship with technology.]{.fragment .fade-in-then-semi-out}  
+
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### Large language models are trained to [**generate constructive, human-like text**]{.alert} via prediction and reinforcement. 
+
+ 
 ## {.split-60}
 
 :::: {.column}
@@ -110,19 +122,22 @@ I like...
 
 :::{.font-larger} 
 
-A **language model** is an algorithm that aims to generate [constructive]{.alert} [human-like]{.alert-2} text via two primary mechanisms: 
+A (generative) ***language model*** is an algorithm that generates text in partially random ways.
+
+A language model is "***large***" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
+
+Most language models aim to produce text that is [human-like]{.alert-2} and [constructive]{.alert}, using: 
 
 - **[Next-token prediction]{.alert-2}**
 - **[Reinforcement learning with human feedback (RLHF)]{.alert}**
 
-A language model is "large" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
 
 :::
 ::::
 
 ::: {.column}
 
-![](fig/mayo.jpeg)
+![](fig/google-search.png){.absolute width=600 left=0 top=100}
 
 :::
 
@@ -164,6 +179,7 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 [2. "Now add a bit of black [**paint**]{.alert-2}"]{.font-larger}
 
+<br> 
 
 [Reinforcement learning with human feedback (RLHF) encourages the model distinguish high-quality (helpful, non-offensive) responses.]{.fragment .fade-in .font-larger}
 
@@ -173,6 +189,9 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 *Image source: [Chip Huyen](https://huyenchip.com/2023/05/02/rlhf.html)*
 
+
+
+
 ## {.split-40}
 
 ::: {.column}
@@ -181,13 +200,18 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 *ChatGPT seems so human because it was trained by an AI that was mimicking humans who were rating an AI that was mimicking humans who were pretending to be a better version of an AI that was trained on human writing.*
 
+Google research estimates "**millions**" of annotation workers.
+
 :::
 
 ::: {.column}
 
-![](fig/ai-is-work-verge.png){height = 800}
+![](fig/ai-is-work-verge.png)
 
 :::
+
+![](fig/wsj-moderation-workforce.png){.fragment .absolute top=0}
+
 
 ## 
 
@@ -201,67 +225,161 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 
 
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### People with profit motives are [**routinely lying to you**]{.alert} about the capabilities of LLMs.
 
 
+## 
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### Yes, LLMs are extremely impressive
+
+## 
+
+![](fig/peanut-butter-sandwich.png){.absolute left=50 top=0}
+
+
+## {.split-50}
+
+
+::: {.column}
+
+![](fig/perceptron-nyt.jpeg){width=600}
+
+\- NYT, 1958
+
+:::
+
+:::: {.column}
+
+<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
+
+\- Herbert Simon, 1958 -->
+
+::: {.fragment}
+
+<br> 
+
+![](fig/linear-classifier.png)
+
+*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
+
+*This model is called the **perceptron***. 
+
+
+:::
+:::
 
 
 
 ## 
 
+![](fig/bar-performance.png){.absolute top=20 height=700}
+
+## 
+
+![](fig/mit-curriculum.png)
 
 
-![](fig/the%20future-comic.jpeg){.absolute top=50 left=300 height=600 }  
+## 
 
-\@siyann_stuff
+![](fig/impossible-question.png){.absolute top=150 width=400 left=50}
 
-![](fig/wapo-jobs.png){.fragment .absolute top=20 fragment-index=2}
-
-![](fig/eating-disorder-1.png){.fragment .absolute top=20 width=800 fragment-index=3}
-
-![](fig/eating-disorder-2.png){.fragment .absolute top=300 width=800 fragment-index=3}
-
-![](fig/eating-disorder-3.png){.fragment .absolute top=450 width=800 fragment-index=3}
-
-
-## {.bg0}
-
-### Outline
-
-Introduction: 
-
-- Me
-- The phenomenon of LLMs
-
-How LLMs work
-
-- Next token prediction
-- RLHF
-
-Hype-people are lying to you
-
-- Bengali
-- MIT curriculum
-- Lawyer
-
-Social Impacts
-
-- Labor
-- Environment
-- Artistic production
-- Cultural representation
-
-Think of commercial AI products as fossil fuels. 
-
-- Fossil fuels are powerful but corrosive to the environmental fabric. 
-- AI products are powerful but corrosive to the social fabric
-
-Resist
-
-- How can we teach students to resist the systems of power that are reinforced by AI systems?
-- How can we teach students to be critical synthesizers of information in a world of disinformation?
+![](fig/raunak-chowdhuri.png){.fragment .absolute top=150 width=500 left=450}
 
 
 
+
+
+##
+
+![](fig/bengali-1.png){.absolute top=20 width=400 left=300}
+![](fig/bengali-2.png){.absolute .fragment top=20 width=400 left=300}
+
+
+
+## {.split-33}
+
+::: {.column}
+
+<br> <br> <br> 
+
+*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
+
+:::
+
+
+::: {.column}
+
+![](fig/lazar-nelson.png){width=500}
+
+<!--  -->
+:::
+
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### LLMs are driving [**large-scale degradation**]{.alert} in online information ecosystems, labor stability, care resources, artistic production, and the environment.
+
+## {background-image="fig/openai-governance-doc.png"}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+![](fig/openai-governance-excerpt.png){.absolute left=0 width=1500}
+
+
+## Online Information
+
+![](fig/stack-overflow-question.png)
+![](fig/stack-overflow-answer.png){.fragment .absolute top=100 left=10}
+
+## 
+
+
+
+![](fig/stack-overflow-traffic.png){.absolute left=100 width=800}
+
+[*Data visualization by [Ayhan Fuat Çelik](https://observablehq.com/@ayhanfuat/the-fall-of-stack-overflow)*]{.absolute left=300 } 
+
+## Labor Stability
+
+![](fig/longer-vacations.png){.absolute .fragment top=100 left=150 height=600 .fade-out}  
+
+<!-- ![](fig/the%20future-comic.jpeg){.absolute top=50 left=600 height=600 }   -->
+
+<!-- \@siyann_stuff -->
+
+
+
+![](fig/wapo-jobs.png){.fragment .absolute top=70 left=150 fragment-index=2}
+
+
+<!-- ![](fig/threatened-jobs.png){.fragment .absolute top=70 left=150 fragment-index=3} -->
+
+
+
+## Care Resources
+
+![](fig/altman-tweet.png){.absolute left=150 width=650}
+
+
+## Care Resources
+
+<br> <br> 
+
+![](fig/eating-disorder-1.png)
+
+
+## Artistic Production: Clarkesworld
+
+![](fig/clarkesworld.png)
+
+*All of this nonsense has cost us time, money, and mental health.* - Neil Clarke
 
 ## {.split-33 .bg0}  
 
@@ -279,39 +397,97 @@ Resist
 
 [Roughly 1B visitors interacted with with the ChatGPT website in July, for 7 mins on average.]{.fragment}  
 
-[If each one submitted **one query**, that's roughly 350K-850K liters of water per day.]{.fragment} 
+[If each user submitted **one query**, that's roughly 350K-850K liters of water per day.]{.fragment} 
 
-[This is the drinking water need for roughly 100K-300K people.]{.fragment} 
+[This is daily drinking water for roughly 100K-300K people.]{.fragment} 
 
 
 [Li et al, arXiv preprint (2023)<br>
 [https://www.similarweb.com/website/chat.openai.com/#overview](https://www.similarweb.com/website/chat.openai.com/#overview)]{.footnote}
 :::
 
-## {.split-33}
+## {background-color="#EF476F"}
 
-::: {.column}
+<br> <br> <br> <br> <br> <br> <br> 
 
-*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
-
-:::
-
-
-::: {.column}
-
-![](fig/lazar-nelson.png){width=500}
-
-<!--  -->
-:::
-
-
-## Powerful People are Lying To You
-
-![](fig/bar-performance.png)
+### **An LLM future is [not inevitable]{.alert}.**
 
 ## 
 
-![](fig/bengali.png)
+#### Corporate Automation Drives Large-Scale Harms Right Now
+
+![](fig/algs-of-oppression.jpg){.absolute left=250 width=300}
+![](fig/noble.jpeg){.absolute left=600}
+
+##
+
+#### Corporate Automation Drives Large-Scale Harms Right Now
+
+![](fig/race-after-tech.jpg){.absolute left=250 width=300}
+![](fig/benjamin.jpeg){.absolute left=600 width=200}
+
+## 
+
+#### Corporate Automation Drives Large-Scale Harms Right Now
+
+![](fig/coded-bias.jpg){.absolute left=250 width=300}
+![](fig/buolamwini.jpeg){.absolute left=600 width=200}
+
+::: {.absolute left=550 top=450}
+
+Dr. Joy Buolamwini
+
+:::
+
+## 
+
+#### Corporate Automation Drives Large-Scale Harms Right Now
+
+![](fig/automating-eubanks.jpeg){.absolute left=150 top=125 width=700}
+
+
+## 
+
+#### Corporate Automation Drives Large-Scale Harms Right Now
+
+![](fig/DAIR.png){.absolute left=250 width=300}
+![](fig/gebru.webp){.absolute left=600 width=200}
+
+::: {.absolute left=550 top=475}
+
+Dr. Timnit Gebru
+
+:::
+
+
+## 
+
+<br> <br> <br> 
+
+
+**Situation**: [LLMs and other forms of machine learning are powerful tools that are promoted by large corporations in service of their profit motive. These tools are likely to concentrate wealth, degrade information ecosystems, and consume precious environmental resources.]
+
+**Question**: How can we support our students in cultivating critical perspective? 
+
+How can we help students synthesize in a world of disinformation? 
+
+How can we help them form reflective relationships with their learning process? 
+
+
+## 
+
+Think of commercial AI products as fossil fuels. 
+
+- Fossil fuels are powerful but corrosive to the environmental fabric. 
+- AI products are powerful but corrosive to the social fabric
+
+Resist
+
+- How can we teach students to resist the systems of power that are reinforced by AI systems?
+- How can we teach students to be critical synthesizers of information in a world of disinformation?
+
+
+## 
 
 
 
