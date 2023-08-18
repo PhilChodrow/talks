@@ -55,49 +55,14 @@ I like...
 
 :::
 
-## Animating Questions for Today
+## My Claims For You Today
 
-1. What are large language models **actually trained to do**? 
-2. Who is **harmed** by large language models? 
-3. Who **benefits** from LLMs? Who benefits from *you* believing **hype** about LLMs? 
+<br> <br> <br> 
 
-
-
-
-
-## {.split-50}
-
-
-::: {.column}
-
-![](fig/perceptron-nyt.jpeg){width=600}
-
-\- NYT, 1958
-
-:::
-
-:::: {.column}
-
-<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
-
-\- Herbert Simon, 1958 -->
-
-
-
-::: {.fragment}
-
-<br> 
-
-![](fig/linear-classifier.png)
-
-*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
-
-*This model is called the **perceptron***. 
-
-
-:::
-
-::::
+1. Large language models are trained to generate constructive, human-like text via prediction and reinforcement. 
+3. People with profit and power motives are routinely lying to you about their capabilities. 
+4. These models are driving large-scale degradation in online information ecosystems, labor stability, care resources, artistic production, and the environment.
+5. Critical scholars -- especially Black women -- are showing the way 
 
 
 ## {.split-60}
@@ -110,12 +75,12 @@ I like...
 
 :::{.font-larger} 
 
-A **language model** is an algorithm that aims to generate [constructive]{.alert} [human-like]{.alert-2} text via two primary mechanisms: 
+A ***language model*** is an algorithm that aims to generate [constructive]{.alert} [human-like]{.alert-2} text via two primary mechanisms: 
 
 - **[Next-token prediction]{.alert-2}**
 - **[Reinforcement learning with human feedback (RLHF)]{.alert}**
 
-A language model is "large" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
+A language model is "***large***" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").
 
 :::
 ::::
@@ -164,6 +129,7 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 [2. "Now add a bit of black [**paint**]{.alert-2}"]{.font-larger}
 
+<br> 
 
 [Reinforcement learning with human feedback (RLHF) encourages the model distinguish high-quality (helpful, non-offensive) responses.]{.fragment .fade-in .font-larger}
 
@@ -172,6 +138,9 @@ A language model is "large" when it is difficult to explain all of its behaviors
 ![](fig/1-chatgpt-training.png)
 
 *Image source: [Chip Huyen](https://huyenchip.com/2023/05/02/rlhf.html)*
+
+
+
 
 ## {.split-40}
 
@@ -189,6 +158,8 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 :::
 
+![](fig/wsj-moderation-workforce.png){.fragment .absolute top=0}
+
 ## 
 
 <br> <br> <br> <br> <br> <br> 
@@ -199,11 +170,110 @@ A language model is "large" when it is difficult to explain all of its behaviors
 
 :::
 
+## {.split-50}
+
+::: {.center}
+
+### 65 Years of AI Hype
+
+:::
+
+## {.split-40} 
+
+::: {.column}
+
+<br> <br> <br> <br> <br> 
+
+### Yes, LLMs are extremely impressive
+
+:::
+
+::: {.column}
+
+![](fig/peanut-butter-sandwich.png)
+
+:::
+
+## {.split-50}
+
+
+::: {.column}
+
+![](fig/perceptron-nyt.jpeg){width=600}
+
+\- NYT, 1958
+
+:::
+
+:::: {.column}
+
+<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
+
+\- Herbert Simon, 1958 -->
+
+::: {.fragment}
+
+<br> 
+
+![](fig/linear-classifier.png)
+
+*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
+
+*This model is called the **perceptron***. 
+
+
+:::
+:::
+
+
+
+## 
+
+![](fig/bar-performance.png){.absolute top=20 height=700}
+
+## 
+
+![](fig/mit-curriculum.png){.absolute left=30 width=500}
+
+
+![](fig/impossible-question.png){.absolute .fragment top=50 width=400 left=600}
+
+![](fig/raunak-chowdhuri.png){.fragment .absolute bottom=50 width=500 left=300}
 
 
 
 
 
+##
+
+![](fig/bengali-1.png){.absolute top=20 width=400 left=300}
+![](fig/bengali-2.png){.absolute .fragment top=20 width=400 left=300}
+
+
+
+## {.split-33}
+
+::: {.column}
+
+<br> <br> <br> 
+
+*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
+
+:::
+
+
+::: {.column}
+
+![](fig/lazar-nelson.png){width=500}
+
+<!--  -->
+:::
+
+
+## {background-image="fig/openai-governance-doc.png"}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+![](fig/openai-governance-excerpt.png){.absolute left=0 width=1500}
 
 
 ## 
@@ -288,30 +358,6 @@ Resist
 [https://www.similarweb.com/website/chat.openai.com/#overview](https://www.similarweb.com/website/chat.openai.com/#overview)]{.footnote}
 :::
 
-## {.split-33}
-
-::: {.column}
-
-*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
-
-:::
-
-
-::: {.column}
-
-![](fig/lazar-nelson.png){width=500}
-
-<!--  -->
-:::
-
-
-## Powerful People are Lying To You
-
-![](fig/bar-performance.png)
-
-## 
-
-![](fig/bengali.png)
 
 
 
