@@ -137,8 +137,8 @@ filter: blur(15px);
 filter: none;
 }
 .reveal .slides section .fragment.bold {
-opacity: 1;
-visibility: inherit;
+    opacity: 1;
+    visibility: inherit;
 }
 
 .reveal .slides section .fragment.bold.current-fragment{
