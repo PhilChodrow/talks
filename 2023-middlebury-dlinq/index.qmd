@@ -253,30 +253,46 @@ Google research estimates "**millions**" of annotation workers.
 
 ## {.split-50}
 
+### Towards a Critical View
+
+**Situation**: Large language models (LLMs) are now powerful and widely available. 
+
+::: {.column} 
+
+<br> <br> <br> <br> <br> 
+[Are students going to use this technology to cheat?]{.fragment .semi-fade-out fragment-index=1} 
+
+[Should I create assignments involving LLMs?]{.fragment .semi-fade-out fragment-index=1} 
+
+[How can I use this in my scholarship?]{.fragment .semi-fade-out fragment-index=1}  
+
+[Should Middlebury leverage LLMs in developing our scholarly identity in the languages?]{.fragment .semi-fade-out fragment-index=1}  
+:::
 
 ::: {.column}
 
-![](fig/perceptron-nyt.jpeg){width=600}
+<br> <br> <br> <br> <br> 
+[Why? Who benefits from the spread of artificial text generators?]{.fragment .fade-in fragment-index=2} 
 
-\- NYT, 1958
+[What information can I trust about the abilities of these models?]{.fragment .fade-in fragment-index=3} 
 
+[What is the actual social impact of LLMs? How does it compare to the rhetoric of motivated actors?]{.fragment .fade-in fragment-index=4} 
+
+[How can we help students cultivate critical perspectives on the role of technology in society and in their learning?]{.fragment .fade-in fragment-index=5} 
 :::
 
-:::: {.column}
-
-<!-- *It is not my aim to surprise or shock you—but the simplest way I can summarize is to say that there are now in the world machines that think,...*
-
-\- Herbert Simon, 1958 -->
 
 ::: {.fragment}
 
-<br> 
+## My Claims For You Today
 
-![](fig/linear-classifier.png)
+<br> <br> <br> 
 
-*Image credit: [Wikipedia](https://en.wikipedia.org/wiki/Linear_classifier)* 
+[Large language models are trained to [**generate constructive, human-like text**]{.alert} via prediction and reinforcement.]{.fragment .fade-in-then-semi-out} 
 
-*This model is called the **perceptron***. 
+[People with profit and power motives are [**routinely lying to you**]{.alert-2} about their capabilities.]{.fragment .fade-in-then-semi-out} 
+
+[These models are driving [**large-scale degradation**]{.alert-3} in online information ecosystems, labor stability, care resources, artistic production, and the environment.]{.fragment .fade-in-then-semi-out} 
 
 
 :::
@@ -417,7 +433,7 @@ Google research estimates "**millions**" of annotation workers.
 
 ## {.split-33}
 
-::: {.column}
+<br> <br> <br> <br> <br> <br> <br> 
 
 <br> <br> <br> 
 
