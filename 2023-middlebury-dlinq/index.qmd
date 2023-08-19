@@ -89,22 +89,6 @@ I like...
 
 
 
-<!-- 
-## My Claims For You Today
-
-<br> <br> <br> 
-
-[Large language models are trained to [**generate constructive, human-like text**]{.alert} via prediction and reinforcement.]{.fragment .fade-in-then-semi-out} 
-
-[People with profit and power motives are [**routinely lying to you**]{.alert-2} about their capabilities.]{.fragment .fade-in-then-semi-out} 
-
-[These models are driving [**large-scale degradation**]{.alert-3} in online information ecosystems, labor stability, care resources, artistic production, and the environment.]{.fragment .fade-in-then-semi-out} 
-
-
-
-[**LLMs are not inevitable**. Critical scholars -- especially women of color -- are showing the way towards a responsible, critical, and social relationship with technology.]{.fragment .fade-in-then-semi-out}   -->
-
-
 ## {background-color="#EF476F"}
 
 <br> <br> <br> <br> <br> 
@@ -251,52 +235,8 @@ Google research estimates "**millions**" of annotation workers.
 ![](fig/peanut-butter-sandwich.png){.absolute left=50 top=0}
 
 
-## {.split-50}
-
-### Towards a Critical View
-
-**Situation**: Large language models (LLMs) are now powerful and widely available. 
-
-::: {.column} 
-
-<br> <br> <br> <br> <br> 
-[Are students going to use this technology to cheat?]{.fragment .semi-fade-out fragment-index=1} 
-
-[Should I create assignments involving LLMs?]{.fragment .semi-fade-out fragment-index=1} 
-
-[How can I use this in my scholarship?]{.fragment .semi-fade-out fragment-index=1}  
-
-[Should Middlebury leverage LLMs in developing our scholarly identity in the languages?]{.fragment .semi-fade-out fragment-index=1}  
-:::
-
-::: {.column}
-
-<br> <br> <br> <br> <br> 
-[Why? Who benefits from the spread of artificial text generators?]{.fragment .fade-in fragment-index=2} 
-
-[What information can I trust about the abilities of these models?]{.fragment .fade-in fragment-index=3} 
-
-[What is the actual social impact of LLMs? How does it compare to the rhetoric of motivated actors?]{.fragment .fade-in fragment-index=4} 
-
-[How can we help students cultivate critical perspectives on the role of technology in society and in their learning?]{.fragment .fade-in fragment-index=5} 
-:::
 
 
-::: {.fragment}
-
-## My Claims For You Today
-
-<br> <br> <br> 
-
-[Large language models are trained to [**generate constructive, human-like text**]{.alert} via prediction and reinforcement.]{.fragment .fade-in-then-semi-out} 
-
-[People with profit and power motives are [**routinely lying to you**]{.alert-2} about their capabilities.]{.fragment .fade-in-then-semi-out} 
-
-[These models are driving [**large-scale degradation**]{.alert-3} in online information ecosystems, labor stability, care resources, artistic production, and the environment.]{.fragment .fade-in-then-semi-out} 
-
-
-:::
-:::
 
 
 
@@ -433,7 +373,9 @@ Google research estimates "**millions**" of annotation workers.
 
 ## {.split-33}
 
-<br> <br> <br> <br> <br> <br> <br> 
+::: {.column}
+
+
 
 <br> <br> <br> 
 
@@ -460,6 +402,15 @@ Google research estimates "**millions**" of annotation workers.
 :::
 
 
+## Critical Scholarship in AI
+
+Many "newer people" are helping us ask fundamental questions: 
+
+<br> <br> 
+
+1. How do modern automated information systems differently impact people according to race, class, gender, and ability? 
+2. What ideologies underly the push to develop and popularize these tools? 
+3. What can we do?  
 
 
 
@@ -468,8 +419,11 @@ Google research estimates "**millions**" of annotation workers.
 
 #### Critical Scholarship in AI
 
-![](fig/algs-of-oppression.jpg){.absolute left=250 width=300}
-![](fig/noble.jpeg){.absolute left=600}
+![](fig/algs-of-oppression.jpg){.absolute left=250 width=250}
+![](fig/noble.jpeg){.absolute left=550}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+Modern automated information systems reproduce **harmful representations** of marginalized identities. 
 
 ::: {.absolute left=530 top=450}
 
@@ -490,6 +444,11 @@ Ruha Benjamin
 
 :::
 
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+Modern automated information systems reinforce ideologies of white supremacy and colonialism. 
+
+
 ## 
 
 #### Critical Scholarship in AI
@@ -503,11 +462,14 @@ Joy Buolamwini
 
 :::
 
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+Modern automated information systems serve and impact people of color (esp. women of color) in harsher ways. 
+
 ## 
 
 #### Critical Scholarship in AI
 
-![](fig/automating-eubanks.jpeg){.absolute left=150 top=125 width=700}
+![](fig/automating-eubanks.jpeg){.absolute left=225 top=125 width=550}
 
 
 ::: {.absolute left=800 top=300}
@@ -516,6 +478,10 @@ Virginia Eubanks
 
 :::
 
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+Many modern automation systems are **explicitly** designed to control marginalized populations. 
+
 ## 
 
 #### Critical Scholarship in AI
@@ -523,11 +489,15 @@ Virginia Eubanks
 ![](fig/DAIR.png){.absolute left=250 width=300}
 ![](fig/gebru.webp){.absolute left=600 width=200}
 
-::: {.absolute left=550 top=475}
+::: {.absolute left=550 top=450}
 
 Timnit Gebru
 
 :::
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+
+Rhetoric from contemporary tech leaders continues intellectual lineages with roots in eugenics. 
 
 
 ## {.split-50}
