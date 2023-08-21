@@ -305,7 +305,11 @@ Google research estimates "**millions**" of annotation workers.
 
 
 
-![](fig/wapo-jobs.png){.fragment .absolute top=100 left=150 width=600 fragment-index=1}
+![](fig/wapo-jobs.png){.fragment .fade-in-then-out .absolute top=100 left=150 width=600 fragment-index=1}
+
+![](fig/jobs.png){.fragment .absolute top=100 left=150 width=600 fragment-index=2}
+
+![](fig/wages.png){.fragment .absolute top=100 left=150 width=600 fragment-index=3}
 
 
 <!-- ![](fig/threatened-jobs.png){.fragment .absolute top=70 left=150 fragment-index=3} -->
