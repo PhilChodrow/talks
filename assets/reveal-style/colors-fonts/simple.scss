@@ -115,6 +115,10 @@ $background-color: #ffffff;
     color: $alert-color-3;
 }
 
+.alert-4 { 
+    color: $alert-color-4;
+}
+
 .bg2 .alert {
     color: $alert-color;
 }
@@ -137,6 +141,10 @@ $background-color: #ffffff;
 
 .bg0 .alert-2 {
     color: $alert-color-4;
+}
+
+.bg0 .alert-4 {
+    color: $alert-color-3;
 }
 
 .bg0 .highlight {

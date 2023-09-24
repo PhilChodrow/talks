@@ -1,0 +1,656 @@
+---
+title: "From Global to Local Structure in Hypergraph Data Science"  
+subtitle: "Vermont-KIAS Workshop |  September 28th, 2023"  
+date: ""
+author: '<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B"  
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/simple.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
+
+::: {.column .bg0}  
+     
+#### Hi everyone! 
+
+I'm Phil Chodrow. I'm an applied mathematician by training. These days my interests include: 
+
+<br> 
+
+- [**Network models + algorithms**]{.alert}
+- [**Dynamics on networks**]{.alert-2}
+- [**Data science for social justice**]{.alert-3}
+- [**Undergraduate pedagogy**]{.alert-4} 
+
+
+:::
+
+::: {.column .bg0}
+
+#### [Hi everyone!]{.hide}
+
+I'm a new(ish) assistant professor of computer science at Middlebury College in Middlebury, Vermont.  
+
+![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
+
+Middlebury is a small primarily-undergraduate institution (PUI) about 50 minutes south of here. 
+
+:::
+
+
+## {.split-50}
+
+<br> 
+
+::: {.column .bg1}
+
+#### Hypergraphs
+
+<br> <br> 
+
+A hypergraph is a generalization of a graph in which edges may contain an arbitrary number of nodes. 
+
+
+
+:::
+
+::: {.column .bg0}
+
+![](fig/hypergraph-example-skinny.png)
+
+[XGI let's gooooo]{.footnote}
+
+:::
+
+
+## {.split-50}
+
+<br> 
+
+::: {.column .bg1}
+
+#### Dynamics on Hypergraphs are Different
+
+<br> 
+
+Nonlinear interactions on edges allow qualitatively distinct behavior when compared to the graph case. 
+
+Sorry I missed so many cool talks this week on this topic...
+
+:::
+
+::: {.column .bg0}
+
+![](fig/opinion-dynamics-phase-transition.png){width=350}
+
+[Schawe + Hernandez (2022). Higher order interactions destroy phase transitions in Deffuant opinion dynamics model. *Nature Communications Physics*]{.footnote}
+
+:::
+
+## {.split-50}
+
+<br> 
+
+::: {.column .bg1}
+
+#### What about...just the structure? 
+
+<br> 
+
+What is special, distinctive, or unusual about the hypergraph itself? 
+
+What can we learn from the hypergraph that we couldn't learn from a dyadic graph?
+
+[Very often, this question has been interpreted in terms of [*generalization*]{.alert}: how can we usefully extend a familiar graph technique to the hypergraph setting?]{.fragment}
+
+:::
+
+::: {.column .bg0}
+
+![](fig/hypergraph-example-skinny.png)
+
+[XGI let's gooooo]{.footnote}
+
+:::
+
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+### "*X* but for hypergraphs"
+
+
+
+*Global* analyses aim to say something about the macroscopic structure of the *entire* graph. 
+
+- Centrality
+- Core-periphery
+- Community detection/clustering
+- Embedding
+
+Many of the global questions we ask about hypergraphs are the same as the global questions we ask about graphs! 
+
+:::
+
+::: {.column .bg0}
+
+![](fig/hypergraph-example-skinny.png)
+
+[XGI let's gooooo]{.footnote}
+
+:::
+
+
+
+## 
+
+#### "*X* but for hypergraphs"
+
+![](fig/benson-eigenvector-centrality.png)
+
+[Benson (2019). Three hypergraph eigenvector centralities. *SIAM Journal on Mathematics of Data Science*]{.footnote}
+
+## 
+
+#### "*X* but for hypergraphs"
+
+![](fig/tudisco-higham-core-periphery.png)
+
+[Tudisco + Higham (2023). Core-Periphery Detection in Hypergraphs. *SIAM Journal on Mathematics of Data Science*]{.footnote}
+
+
+## 
+
+#### "*X* but for hypergraphs"
+
+![](fig/chodrow-configuration-models.png){height=390}
+
+[Chodrow (2020). Configuration models of random hypergraphs. *Journal of Complex Networks*]{.footnote}
+
+##
+ 
+
+#### "*X* but for hypergraphs"
+
+![](fig/chodrow-veldt-benson-generative.png)
+
+[Chodrow et al. (2021). Generative hypergraph clustering: from blockmodels to modularity. *Science Advances*]{.footnote}
+
+## 
+
+#### "*X* but for hypergraphs"
+
+<br> 
+
+![](fig/chodrow-eikmeier-haddock-spectral.png)
+
+[Chodrow et al. (2023). Nonbacktracking spectral clustering of nonuniform hypergraphs. *SIAM Journal on Mathematics of Data Science*]{.footnote}
+
+##
+
+### Beyond "*X* but for hypergraphs"
+
+<br> 
+
+So many of our global techniques for hypergraphs are direct generalizations of graph techniques. 
+
+Can we move beyond this paradigm?     
+
+
+
+## 
+
+### Motifs in Graphs
+
+
+![](fig/motifs.jpeg){height=400 fig-align="center"}
+
+[Milo et al. (2002). Network Motifs: Simple Building Blocks of Complex Networks. *Science*]{.footnote}
+
+## 
+
+### Motifs in Graphs
+
+
+![](fig/motifs-highlighted.jpeg){height=400 fig-align="center"}
+
+[Milo et al. (2002). Network Motifs: Simple Building Blocks of Complex Networks. *Science*]{.footnote}
+
+## 
+
+### 2-edge motifs in undirected graphs
+
+![](fig/undirected-graph-motifs.svg)
+
+
+## 
+
+### Hypergraph Motifs
+
+**Claim**: *What's special about hypergraphs is that they have diverse, undirected, two-edge motifs: [**intersections**]{.alert}.* 
+
+![](fig/hypergraph-2-edge-motifs.svg){fig-align="center" height=400}
+
+##
+
+### Furthermore...
+
+Large intersections are much more common in empirical data than would be expected by chance. 
+
+![](fig/intersections-diseasome.png){.absolute left=50 height=350 top=200}
+
+![](fig/intersections-model-no-edge-retention.png){.absolute right=50 height=350 top=200}
+
+[Benson et al. (2018). Simplicial closure and higher-order link prediction. *PNAS*<br> Chodrow (2020). Configuration models of random hypergraphs. *JCN* <br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. arXiv:2308.13918]{.footnote .absolute bottom=0} 
+
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+### Ongoing work with...
+
+
+![](fig/xie-he.jpeg){.absolute height=200 top=150} 
+
+[Xie He <br> Mathematics <br> Dartmouth College]{.absolute top=200 left=275} 
+
+![](fig/mucha.jpeg){.absolute height=200 top=400} 
+
+[Peter Mucha <br> Mathematics <br> Dartmouth College]{.absolute top=450 left=275} 
+
+
+::: 
+
+::: {.column}
+
+
+
+<br> <br> 
+
+Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
+
+![](fig/hypergraph-sequence-4-annotated.svg)
+
+:::
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### In each timestep...
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-0.svg)
+
+:::
+
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Select a random edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-1.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Select random nodes from edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-2.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Add nodes from hypergraph
+
+### Add novel nodes
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-3.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Form edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Repeat
+ 
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-5.svg)
+
+:::
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+### Repeat
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-6.svg)
+
+:::
+
+## {.split-30}
+
+
+::: {.column}
+
+### Formally
+
+In each timestep $t$: 
+
+- Start with an empty edge $f = \emptyset$. 
+- Select an edge $e \in H$. 
+- Accept each node from $e$ into $f$ with probability $\alpha$ (condition on at least one).  
+- Add $\mathrm{Poisson}(\beta)$ novel nodes. 
+- Add $\mathrm{Poisson}(\gamma)$ nodes from $H \setminus e$. 
+
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4-annotated.svg)
+
+:::
+
+## {.split-40}
+
+### What can we learn? 
+
+::: {.column}
+
+
+<br> <br> <br> <br> 
+
+A node is selected in this model by first being selected through edge sampling. 
+
+So, the edge-selection process samples nodes *in proportion to their degrees*. 
+
+Sound familiar...?
+
+:::
+
+::: {.column}
+
+<br> 
+
+![](fig/hypergraph-sequence-4-annotated.svg)
+
+:::
+
+## {.split-40}
+
+### What can we learn? 
+
+::: {.column}
+
+
+<br> <br> <br> <br> 
+
+**Proposition** (He, Chodrow, Mucha '23): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
+$$
+p = 1 + \frac{1-\alpha +\beta +\gamma }{1-\alpha(1 + \beta + \gamma )}\;.
+$$
+**Proof**: We derived this with approximate master equations; formal proof should follow standard techniques. 
+
+:::
+
+::: {.column}
+
+<br> <br> <br> 
+
+![](fig/hypergraph-degree-distribution-experiment.png)
+
+:::
+
+
+## {background-image="fig/intersections-model-no-edge-retention.png" background-size="contain"}
+
+
+
+
+## {background-image="fig/intersections-model-edge-retention.png" background-size="contain"}
+
+
+## {background-image="fig/intersections-diseasome.png" background-size="contain"}
+
+## {.split-50}
+
+::: {.column} 
+
+![](fig/intersections-model-no-edge-retention.png){.absolute top=20 width=400}
+![](fig/intersections-model-edge-retention.png){.absolute top=350 width=400}
+
+:::
+
+::: {.column}
+
+![](fig/intersections-diseasome.png){.absolute top=350 width=400}
+
+[Modeling mechanistic processes helps us get closer to realistic local intersection features. ]{.absolute top=150}
+
+:::
+
+## 
+
+### Qualitative Differences
+
+Here's one way to describe the idea that some models have smaller intersections than others: 
+
+**Definition** (vanishing intersections): A sequence of hypergraphs has *vanishing $h$-intersections with rate $g$* if, when $e$ and $f$ are random edges chosen from $H_t$, 
+
+$$
+\mathbb{P}(\lvert e\cap f \rvert \geq h) \in \Theta(g(H_t))
+$$
+
+as $t\rightarrow \infty$. 
+
+## {.split-50}
+
+::: {.column}
+
+### Some Formal Conjectures
+
+**Conjecture (HCM '23)**: most models with no edge-retention mechanism have vanishing $h$ intersections with rate $g(H_t) = n_t^{-h}$. 
+
+<br> <br> <br> 
+
+In contrast, our model with edge-retention has vanishing $h$ intersections with rate $g(H_t) = n_t^{-1}$ for any $h$. 
+
+:::
+
+
+::: {.column} 
+
+![](fig/intersections-model-no-edge-retention.png){.absolute top=20 width=400}
+![](fig/intersections-model-edge-retention.png){.absolute top=350 width=400}
+
+:::
+
+
+## {.split-50}
+
+::: {.column}
+
+### Some Formal Conjectures
+
+Let $r_{ijk}^{(t)} = \mathbb{P}(\lvert e\cap f \rvert = t \text{ given that } \lvert e\rvert = i, \lvert f\rvert = j )$.  
+
+**Conjecture (HCM '23)**: There exists a linear map $M$ with eigenvector $\mathbf{p}$ such that $\mathbf{r}^{(t)}n_t \rightarrow \mathbf{p}$ as $t\rightarrow \infty$.   
+
+**Strategy**: This comes out of a recurrence for $\mathbb{E}[r_{ijk}^{(t)}]$ but we have lots more work to do...
+
+:::
+
+
+::: {.column} 
+
+
+![](fig/intersections-model-no-edge-retention.png){.absolute top=20 width=400}
+![](fig/intersections-model-edge-retention.png){.absolute top=350 width=400}
+
+:::
+
+## {.split-50}
+
+
+::: {.column}
+
+#### Ok, but can you learn the model?
+
+**Aim**: given the sequence of edges $e_t$, estimate: 
+
+- $\alpha$, the edge retention rate. 
+- $\beta$, the expected number of novel nodes. 
+- $\gamma$, the expected number of nodes from $H$. 
+
+**Expectation maximization:**
+
+1. For each edge $e_t$, form a belief about which prior edge $e \in H_{t-1}$ $e_t$ was sampled from. 
+2. Maximize the expected complete log-likelihood under this belief. 
+
+:::
+
+
+::: {.column}
+
+![](fig/em-convergence.png){.absolute top=20 width=400}
+![](fig/ROC-email-enron.png){.absolute top=350 width=400}
+
+:::
+
+## {.split-40}
+
+::: {.column}
+
+### But...
+
+We only did the first $t = 1,000$ edges because the E-step requires forming and manipulating a $t\times t$ matrix. This isn't tractable for $t > 10,000$ or so. 
+
+In *stochastic* EM, we sample a few edges at a time and update a moving-average of the parameter estimates. 
+
+*Work in progress...*
+
+::: 
+
+::: {.column}
+
+<br> 
+
+![](fig/sem-example.png)
+
+::: 
+
+
+## {.split-40}
+
+
+::: {.column .bg1}
+
+### Summing Up
+
+Hypergraphs are locally distinct from graphs in that they have interesting two-edge motifs (intersections). 
+
+Large intersections are much more prevalent than would be expected by chance. 
+
+[**Tractable**]{.alert}, [**learnable**]{.alert-2} models of hypergraph formation give us one route towards understanding this phenomenon. 
+
+#### [Thanks everyone!]{.fragment}
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4-annotated.svg){.absolute bottom=50 width=400 left=130}
+
+![](fig/xie-he.jpeg){.absolute top=10 height=200}
+[Xie He <br> Dartmouth College]{.absolute top=250}
+
+![](fig/mucha.jpeg){.absolute top=10 right=70 height=200}
+[Peter Mucha <br> Dartmouth College]{.absolute top=250 right=35}
+
+:::
