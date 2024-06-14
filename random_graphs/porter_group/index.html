@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Random Graphs for Data Science</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Phil Chodrow (MIT → UCLA)" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style/css/DJN_xaringan_theme.css" type="text/css" />
+    <link rel="stylesheet" href="style/css/DJN_style.css" type="text/css" />
+    <link rel="stylesheet" href="style/css/pc_custom_style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <p>Random Graphs for Data Science</p>
+### Phil Chodrow (MIT → UCLA)
+
+---
+
+
+
+
+&lt;!-- This file was retrieved from file was retrieved from Danielle J. Navarro's repository "Robust Tools for Psychological Science" (https://github.com/djnavarro/robust-tools) */ --&gt;
+
+
+
+&lt;!-- layout: true --&gt;
+
+&lt;!-- &lt;div class="my-footer"&gt; --&gt;
+&lt;!-- &lt;span&gt; --&gt;
+&lt;!-- &lt;a href="https://djnavarro.link/robust-tools" target="_blank"&gt;djnavarro.link/robust-tools&lt;/a&gt; --&gt;
+&lt;!-- &lt;/span&gt; --&gt;
+&lt;!-- &lt;/div&gt; --&gt;
+
+&lt;!-- --- --&gt;
+
+---
+
+# The 30-Second Talk
+
+
+
+1. Interpreting measurements in network science often requires .embolden[null random graph modeling].
+2. Null modeling is a bit of a science and a bit of an art. 
+3. Doing it .embolden[rigorously] raises some interesting math problems. 
+4. Careful solutions to these problems can alter our perspectives on existing questions and pose interesting new ones. Two extended examples: 
+  - Random hypergraphs.
+  - Moments of uniform random graphs.
+  
+
+---
+
+# A Universal Workflow for Complex Networks
+
+1) Obtain some network data. 
+
+--
+
+2) Measure a thing. 
+- Degree distribution
+- Triadic closure
+- Max modularity
+
+--
+
+3) .embolden[Explain] the measurement. 
+
+--
+
+3.5) Call the network "complex." 
+
+--
+
+4) Publish!1!!
+
+---
+
+class: middle, standout
+
+.large[Measurements need explaining when they indicate structure over and above our **expectations.**] 
+
+---
+
+# A Familiar Example
+
+.pull-left[.midi[
+&lt;br&gt;
+.embolden[Expectation]: networks can be small-world XOR locally clustered.&lt;sup&gt;*&lt;/sup&gt; 
+
+.embolden[Measurement]: many networks are small-world AND locally clustered.
+
+.embolden[Explanation]: Watts-Strogatz random graph model. 
+]
+]
+
+.pull-right[
+![](img/watts_strogatz.png)
+]
+
+.footnote[&lt;sup&gt;*&lt;/sup&gt;From random graph theory at the time.]
+
+---
+
+# Another Example
+
+.pull-left[.midi[
+
+.embolden[Modularity Maximization]
+
+`\(Q_{\text{max}} \approx 0.25\)` in an ER random graph. 
+
+`\(\rightarrow\)` High modularity isn't always even *prima facie* evidence of community structure. 
+]]
+.pull-right[
+.centered-image[
+![:scale 100%](img/ER_modularity.png)
+]]
+
+--
+
+How to tell if a modularity score is "real" or "interesting"? 
+
+
+
+
+&lt;!-- ---
+
+background-color: #000000
+background-image: url(img/context.jpg)
+background-size: contain
+ --&gt;
+---
+
+# Random Graph Nulls
+
+To see if your result needs explaining, compare it to a random graph - **a probability distribution over graphs.** 
+
+This probability distribution should be "boring" but not "too boring."
+
+- ER: "too boring." 
+- Configuration models: often "just boring enough."
+- Lots of other options. 
+- Choice should be guided by domain knowledge. 
+
+---
+
+class: middle, standout
+
+.large[
+
+How do we **choose** "good" random graph benchmarks for a given data set?
+
+How can we practically do **data science** with these models?]
+
+---
+
+# "Good" Random Graph Models
+
+**Relevance**: The support of the model (set of possible realizations) should be close to the support of the hypothesized generating process. 
+
+.highlight[Tractability]: We can sample from and compute moments of the distribution. 
+
+--
+
+We often need to balance these against each other. 
+
+---
+
+# Today
+
+&lt;br&gt; 
+
+.embolden[Configuration Models of Random Hypergraphs.] 
+- Mostly about **relevance** in the context of polyadic data. 
+
+.embolden[Moments of Uniformly Random Multigraphs with Fixed Degree Sequences] 
+- Mostly about .highlight[tractability] in the context of dyadic data. 
+
+---
+
+class: section, middle
+
+# .midi[.large[Configuration Models of Random Hypergraphs]]
+
+---
+
+# Polyadic Networks
+
+Lots of systems we care about contain interactions between embolden[groups] of agents: 
+
+- **Collaboration / coauthorship**: Congressional cosponsorship, the network of scholars studying the network of...
+- **Co-presence**: drug combinations, patent classifications,
+- **Communication**: emails, tweets, etc.
+
+---
+
+background-image: url(img/projection.png)
+background-size: contain
+
+# The Dyadic Projection
+
+*"Polyadic structures are hard, but I know about graphs..."*
+
+
+---
+
+# Dyadic Configuration Models (Graphs)
+
+Observe a graph with degree sequence `\(\mathbf{d} \in \mathbb{Z}^n\)`. 
+
+The (vertex-labeled&lt;sup&gt;1&lt;/sup&gt;) *configuration model* is the uniform probability distribution `\(\eta_\mathbf{d}\)` over the space 
+`$$\mathcal{G}_\mathbf{d} = \{G:\mathrm{deg}(G) = \mathbf{d}\}\;.$$`
+
+.embolden[Common pattern]: project, use `\(\mathbf{d}\)` from projected graph, randomize with configuration model. 
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+---
+
+
+# Problems with the Dyadic Projection
+
+![](img/projection.png)
+
+Projection distorts meaningful quantities: number of edges, degree.
+
+Fails the **relevance** criterion: never generates multiway interactions. (A world of only 2-author papers)
+
+---
+
+# Representing Polyadic Networks
+
+
+- .embolden[Bipartite graphs]
+  - .midi[Flexible.]
+  - .midi[Some probability distributions are hard to formulate.]
+- .embolden[Simplicial complexes]
+  - .midi[Good data compression and topological properties.]  
+  - .midi[Face inclusion is appropriate for some (not all) data generating processes.]  
+- .embolden[Hypergraphs]
+  - .midi[Flexible and intuitive.]
+  - .midi[Few existing null models...]
+
+.footnote[Survey in PSC, "Configuration Models of Random Hypergraphs", `arXiv:1902.09302` (2020)]
+
+---
+
+# Hypergraphs
+
+.pull-left[
+- `\(H = (V,E)\)`
+- Edges can have *any number* of nodes. 
+- Parallel edges are ok `\((\{a,b,c\}, \{a,b,c\})\)`
+- Degenerate edges are not `\((\{a,a,b,\ldots\})\)`
+]
+
+.pull-right[&lt;br&gt;![](img/hypergraph.png)]
+
+.footnote[Image from Wikipedia]
+
+---
+
+# Configuration Models (Hypergraphs)
+
+Observe a hypergraph with degree sequence `\(\mathbf{d} \in \mathbb{Z}^n\)` and **dimension sequence** `\(\mathbf{k} \in \mathbb{Z}^m\)`. 
+
+The (vertex-labeled) *configuration model* is the uniform probability distribution `\(\eta_{\mathbf{d}, \mathbf{k}}\)` over the space 
+`$$\mathcal{H}_{\mathbf{d}, \mathbf{k}} = \{H:\mathrm{deg}(H) = \mathbf{d}\;,\;\color{#0F4C81}{\mathrm{dim}(H) = \mathbf{k}}\}\;.$$`
+
+---
+
+# MCMC Sampling
+
+**Idea**: sample from `\(\eta_{\mathbf{d}, \mathbf{k}}\)` by crawling through `\(\mathcal{H}_{\mathbf{d}, \mathbf{k}}\)`. 
+
+1. .highlight[Sample]: Pick two edges `\(\Delta\)` and `\(\Gamma\)` u.a.r.
+2. .highlight[Proposal]: Randomly resample nodes between `\(\Delta\)` and `\(\Gamma\)` while avoiding degeneracy
+3. .highlight[Transition]: With probability `\(m_{\Delta}^{-1}m_{\Gamma}^{-1}\)`, accept swap, otherwise start over. 
+
+**Theorem**: This Markov chain is ergodic and its invariant measure is the configuration model `\(\eta_{\mathbf{d}, \mathbf{k}}\)`.  To sample, run this chain a "for long time." 
+
+.footnote[PSC, `arXiv:1902.09302` (2020)]
+
+---
+
+class: standout, middle
+
+.large[**Let's look at some data.**]
+
+---
+
+# Triadic Closure
+
+`$$\bar{C} = \frac{1}{n}\sum_{v \in \mathcal{V}} \frac{T_v}{W_v}$$`
+
+- `\(T_v\)`: number of triangles incident to `\(v\)`. 
+- `\(W_v\)`: number of wedges at `\(v\)`. 
+
+Conventional wisdom since Watts-Strogatz (1998): many empirical networks are more clustered than can be explained by (dyadic) configuration models. 
+ 
+What about hypergraph configuration models?
+
+---
+
+# Triadic Closure 
+
+|                                |   `\(C\)`    | `\(&lt;C&gt;_h\)` | `\(&lt;C&gt;_{2}\)` |
+| ------------------------------ | :------: | :-----: | :-------: |
+| **congress-bills**             |   0.61   |  0.60   |   0.45    | 
+| **coauth-Geology**             |   0.82   |  0.82   |   0.00    | 
+| .highlight[email-Enron]        |   0.66   |  0.84   |   0.64    | 
+| .highlight[email-Eu]           |   0.54   |  0.57   |   0.40    | 
+| .highlight[tags-ask-ubuntu]    |   0.57   |  0.61   |   0.18    | 
+| .highlight[threads-math-sx]    |   0.29   |  0.44   |   0.09    | 
+
+.footnote[Data from Benson et al. "Simplicial Closure and Higher-Order Link Prediction," *PNAS* (2018)]
+
+
+---
+
+## Triadic Closure
+
+.midi[
+|                                |   `\(C\)`    | `\(&lt;C&gt;_h\)` | `\(&lt;C&gt;_{2}\)` |
+| ------------------------------ | :------: | :-----: | :-------: |
+| **congress-bills**             |   0.61   |  0.60   |   0.45    | 
+| **coauth-Geology**             |   0.82   |  0.82   |   0.00    | 
+| .highlight[email-Enron]        |   0.66   |  0.84   |   0.64    | 
+| .highlight[email-Eu]           |   0.54   |  0.57   |   0.40    | 
+| .highlight[tags-ask-ubuntu]    |   0.57   |  0.61   |   0.18    | 
+| .highlight[threads-math-sx]    |   0.29   |  0.44   |   0.09    | 
+]
+
+Hypergraph configuration model distinguishes **collaboration** networks from .highlight[communication] networks.  
+
+&lt;!-- --- --&gt;
+
+&lt;!-- background-color: #000000 --&gt;
+&lt;!-- background-image: url(img/context.jpg) --&gt;
+&lt;!-- background-size: contain --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- background-color: #000000 --&gt;
+&lt;!-- background-image: url(img/context_hypergraph.png) --&gt;
+&lt;!-- background-size: contain --&gt;
+
+---
+
+# The Intersection Profile
+
+How "similar" are two interactions?
+
+Intersection profile: 
+
+`$$r(j) = \langle \mathbb{I}(\Delta \cap \Gamma) = j\rangle$$`
+
+"Among all pairs of edges, what proportion have intersection of size `\(j\)`?"
+
+Measures repeated interactions:  productive **teams** of researchers, chatty **groups** on email, etc.   
+
+.footnote[PSC,  `arXiv:1902.09302` (2020)]
+
+---
+
+
+# Enron Intersection Profile 
+
+![](img/intersection_profile_single.png)
+
+---
+
+# Approximate Intersection Profiles
+
+Computing null intersection profiles can be very difficult for large data sets. 
+Fortunately, we can approximate: 
+
+**Theorem:**&lt;sup&gt;*&lt;/sup&gt; With high probability as `\(n\)` grows large, 
+
+.midi[$$r_\eta(j) = (1 + O(n^{-1}))j!\left \langle
+\binom{\vert \Delta\vert}{j}\right\rangle^2 \left(\frac{1}{n} \frac{\mathbb{E}[D^2] - \mathbb{E}[D]}{\mathbb{E}[D]^2}\right)^j$$]
+
+*Terms and conditions apply. 
+
+.footnote[PSC,  `arXiv:1902.09302` (2020)]
+
+---
+
+background-image: url(img/large_intersections.png)
+background-size: contain
+
+# Profiles for Big Data™
+
+.footnote[PSC,  `arXiv:1902.09302` (2020)]
+
+---
+
+# Summing Up
+
+.embolden[Polyadic data should be benchmarked using polyadic nulls.] 
+
+When the data generating process generates hypergraph-like data, hypergraph configuration models can be a good choice. 
+
+Using these models, we can 
+
+1. Ask old questions in new ways (triadic closure).
+2. As new questions (intersection profiles). 
+
+
+
+.footnote[PSC,`arXiv:1902.09302` (2020)]
+
+---
+
+class: section, middle
+
+# Moments of Uniformly Random Multigraphs with Fixed Degree Sequences
+
+---
+
+class: top
+
+# .midi[Our Good Friend, Modularity...]
+
+`$$Q(\mathbf{G}) = \frac{1}{2m}\sum_{ij}\left[W_{ij} - \color{#C49377}{\frac{d_id_j}{2m}}\right]\delta(g_i, g_j)$$`
+
+.highlight[Second term]: expected number of edges between nodes `\(i\)` and `\(j\)`, fixing the degree sequence `\(d\)`. 
+
+Maximize `\(Q(\mathbf{G})\)` to find communities in networks (terms and conditions apply).
+
+.footnote[Newman + Girvan, "Finding and Evaluating Community Structure in Networks." *PRE*, (2003)]
+
+---
+
+# A Folk Theorem
+
+.alert[
+*The expected number of edges `\(w_{ij}\)` between two nodes in **"random"** graph **"with degree sequence `\(\mathbf{d}\)`"** is *
+
+$$ \omega_{ij} = \frac{d_id_j}{2m} + \text{small terms}\;.$$
+]
+
+--
+
+This is right if you choose your random graph model .highlight[conveniently].
+
+- Chung-Lu model (**d** fixed in expectation)
+- Stub-matching (biased, not entropy-maximizing)
+
+---
+
+class: top
+
+# Which random graph?... 
+
+We .highlight[say]: "(entropy-maximizing) random graph." 
+
+We .highlight[mean]: "random graph that makes calculations convenient."
+
+--
+
+.footnote[Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+What if we *actually* used the entropy-maximizing random graph for calculations?
+
+---
+class: middle
+
+# .large[The Uniform Model]
+
+---
+
+# Which Random Graph?
+
+
+
+Let `\(\mathcal{G}_\mathbf{d}\)` be the set of all .embolden[multigraphs] with fixed degree sequence `\(\mathbf{d}\)`. 
+
+The **uniform random graph model** `\(\eta_\mathbf{d}\)` is a probability distribution that assigns equal weight to each element of `\(\mathcal{G}_\mathbf{d}\)`. 
+
+`\(\eta_\mathbf{d}\)` is the entropy-maximizing random graph with fixed degree sequence `\(\mathbf{d}\)`. 
+
+---
+
+# Edge-Swap Monte Carlo
+
+
+
+![](img/swaps.png)
+
+We can sample from `\(\eta_\mathbf{d}\)` by crawling through `\(\mathcal{G}_\mathbf{d}\)`.
+
+(This is just the dyadic version of the Markov chain we saw for hypergraphs)
+
+
+.footnote[Image from Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+---
+
+# Edge-Swap Monte Carlo
+
+![](img/swaps.png)
+
+1. .embolden[Sample edges] `\((i,j)\)` and `\((k,\ell)\)` with random orientations. 
+2. .embolden[Propose swap] `\((i,j), (k,\ell) \mapsto (i,\ell), (k,j)\)`.  
+3. .embolden[Accept swap] with probability `\(w_{ij}^{-1}w_{k\ell}^{-1}\)`. 
+
+
+**Theorem:** This works.&lt;sup&gt;1&lt;/sup&gt; 
+
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+---
+
+class: middle, standout
+
+Estimating `\(\omega_{ij} = \mathbb{E}[W_{ij}]\)` via Edge-Swap Monte Carlo is **expensive** (~3 days on my laptop). 
+
+How can we estimate efficiently expectations under `\(\eta\)`? 
+
+---
+
+class: top
+
+# Approach
+
+
+Edge-Swap Monte Carlo is a stochastic process with known equilibrium distribution `\(\eta_\mathbf{d}\)`. 
+
+At equilibrium, all **expectations** are fixed. 
+
+`$$\mathbb{E}_\eta[f(G_{t+1}) - f(G_t)] = 0\;.$$` 
+
+If we choose `\(f(G) = w_{ij}^p\)` for `\(p = 1,\ldots\)` and handle .embolden[a lot] of algebra, we can get analytical approximations. 
+
+
+.footnote[PSC, "Moments of Uniformly Random Multigraphs with Fixed Degree Sequences, `arxiv:1909.09037` (2020)]
+---
+
+# Expected Number of Neighbors
+
+Let `\(\beta_i = \mathbb{E}_\eta[\text{# of distinct neighbors of } i]\)`.
+
+.alert[
+**Theorem**: `$$\chi_{ij}\triangleq \mathbb{E}_\eta[\mathbb{I}(W_{ij} &gt; 0)] = \frac{\beta_i\beta_j}{\sum_\ell \beta_\ell} + \text{small terms}$$`
+]
+
+.footnote[PSC,  `arxiv:1909.09037` (2020)]
+
+---
+
+# A Parallel
+
+.funding[.embolden[Folk Theorem]
+`$$\omega_{ij} \triangleq \mathbb{E}_\eta[W_{ij}] \stackrel{?}{=} \frac{d_id_j}{\sum_\ell d_\ell} + \text{small terms}$$`
+]
+
+.alert[
+**Actual Theorem**: `$$\chi_{ij}\triangleq \mathbb{E}_\eta[\mathbb{I}(W_{ij} &gt; 0)] = \frac{\beta_i\beta_j}{\sum_\ell \beta_\ell} + \text{small terms}$$`
+]
+
+
+
+---
+
+# Expected Edge Densities
+
+
+
+.alert[
+**Theorem**: `$$\omega_{ij}\triangleq \mathbb{E}_\eta[W_{ij}] = \frac{\chi_{ij}}{1 - \chi_{ij}} + \text{small terms}$$` 
+]
+
+Can also get higher-order moments: variances, etc. 
+
+.footnote[PSC,  `arxiv:1909.09037` (2020)]
+
+---
+
+# Determining `\(\beta\)`
+.midi[
+The vector `\(\beta\)` approximately solves
+
+`$$\sum_{j}\frac{\beta_i\beta_j}{\sum_\ell\beta_\ell - \beta_i\beta_j} = d_i \quad \forall i\;.$$`
+
+.alert[
+**Theorem**: Solution (if it exists) is unique on the set 
+`$$\mathcal{B} = \left\{\beta: \beta \geq \mathbf{0},\; \beta_i^2 &lt; \sum_\ell \beta_\ell \quad \forall i\right\}\;.$$`
+] 
+]
+
+
+.footnote[PSC,  `arxiv:1909.09037` (2020)]
+---
+
+# Proof Sketch
+.midi[
+Let `\(h(\beta)_i = \sum_{j}\frac{\beta_i\beta_j}{\sum_\ell\beta_\ell - \beta_i\beta_j}\)`. We want to solve `\(\mathbf{h}(\beta) = \mathbf{d}\)`. 
+Equivalently, `$$\mathcal{L}(\beta) \triangleq \lVert \mathbf{h}(\beta) - \mathbf{d} \rVert^2 = \mathbf{0}$$`
+
+1. The Jacobian `\(\mathbf{J}\)` of `\(\mathbf{h}\)` has strictly positive eigenvalues on `\(\mathcal{B}\)` (linear algebra tricks).
+2. The Hessian `\(\mathcal{H}\)` of `\(\mathcal{L}\)` is positive-definite at all critical points of `\(\mathcal{L}\)` `\(\implies\)` all critical points are isolated local minima (more linear algebra tricks). 
+3. .embolden[Mountain Pass Theorem]:&lt;sup&gt;1&lt;/sup&gt; If two or more, `\(\exists\)` a third which is not a local minimum. 
+4. So, `\(\exists\)` at most one local minimizer of `\(\mathcal{L}\)` on `\(\mathcal{B}\)`. 
+]
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;For a review, see Bisgard, "Mountain Passes and Saddle Points," *SIREV* (2015)]
+---
+
+class: middle, standout
+
+# .large[Experiments]
+
+---
+
+# High School Contact Data
+
+Collected by the SocioPatterns project. 
+
+.centered-image[![](img/sociopatterns.jpg)]
+
+.footnote[Mastrandrea et al. (2015), Benson et al. (2018)]
+
+---
+
+background-image: url(img/eval_figs.png)
+background-size: contain
+
+## Evaluating Approximations
+
+.footnote[PSC, `arxiv:1909.09037` (2020)]
+
+---
+
+
+
+background-image: url(img/error_matrices.png)
+background-size: contain
+
+## Estimating `\(\mathbb{E}[W]\)`
+
+.footnote[PSC, `arxiv:1909.09037` (2020)]
+
+---
+
+background-image: url(img/modularity_high_school.png)
+background-size: contain
+
+## Downstream Consequences: Modularity Maximization
+
+.footnote[PSC, `arxiv:1909.09037` (2020)]
+
+---
+
+# Summing Up
+
+
+**Rigor** means 
+- Carefully articulating our models 
+- Checking that our heuristics work. 
+
+Entropy-maximizing random graphs with fixed degree sequences break our standard heuristics. 
+
+Using a dynamical approach, we can get **rigorous approximations** with **excellent performance** on real data. 
+
+---
+
+# The 30-Second Talk
+
+1. Interpreting measurements in network science often requires .embolden[null random graph modeling].
+2. Null modeling is a bit of a science and a bit of an art. 
+3. Doing it .embolden[rigorously] raises some interesting math problems. 
+4. Careful solutions to these problems can alter our perspectives on existing questions and pose interesting new ones. 
+  
+
+---
+
+
+# Thanks! See you soon....?
+
+.pull-left-narrow[.thanks[
+.centered-image[![:scale 100%](img/bio-photo.jpg)]
+Phil &lt;br&gt; Chodrow
+.small[
+  MIT `\(\rightarrow\)` UCLA
+  
+  [philchodrow.com](https://www.philchodrow.com)
+
+  [@philchodrow](https://twitter.com/PhilChodrow)
+]]]
+
+.pull-right-wide[.alert[
+
+Configuration Models `arXiv:1902.09302`
+
+Moments of Multigraphs `arxiv:1909.09037`
+]
+.funding[
+![:scale 120px](img/nsf_logo.png)
+![:scale 220px](img/mit_logo.png)
+]]
+
+
+---
+
+
+class: standout, middle
+
+# Supplementary Slides
+
+
+---
+
+
+# A Note on Stub-Matching
+
+.pull-left[.midi[
+
+Sometimes, "the configuration model" is defined via a stub-matching process. 
+
+This is related to the uniform model for .embolden[simple] graphs and hypergraphs.
+
+**Very few data sets are natively simple.**
+
+]] 
+
+.pull-right[
+
+![](img/stub-matching.png)
+]
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="style/js/macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

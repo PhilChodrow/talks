@@ -1,0 +1,529 @@
+---
+title: "A <span style='color:#EF476F'>Critical Citizen's</span> Guide to Large Language Models"  
+subtitle: "Middlebury College DLINQ |  August 21st, 2023"  
+date: ""
+author: 'Dr. <span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B"  
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/simple.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+
+
+## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
+
+::: {.column .bg0}  
+     
+#### Hi! I'm Phil. 
+
+I am an  [applied mathematician]{.alert}, <br>[data scientist]{.alert-2},<br> and [STEM educator]{.alert-3}.  
+
+I like...
+
+- Math models of social systems
+- Statistics and machine learning
+- Equity-oriented data science
+- [Critical lenses on tech]{.fragment .bold}
+- Traditional martial arts
+- Tea
+- *Star Trek: Deep Space 9*
+- Effective pedagogy 
+
+:::
+
+::: {.column .bg0}
+
+
+![](fig/phil.jpeg){.absolute top=-10 left=100 bottom=-20 height=940}
+
+:::
+
+
+## {.split-50}
+
+### Towards a Critical View
+
+**Situation**: Large language models (LLMs) are now powerful and widely available. 
+
+::: {.column} 
+
+<br> <br> <br> <br> <br> 
+[Are students going to use this technology to cheat?]{.fragment .semi-fade-out fragment-index=1} 
+
+[Should I create assignments involving LLMs?]{.fragment .semi-fade-out fragment-index=1} 
+
+[How can I use this in my scholarship?]{.fragment .semi-fade-out fragment-index=1}  
+
+[Should Middlebury leverage LLMs in developing our scholarly identity in the languages?]{.fragment .semi-fade-out fragment-index=1}  
+:::
+
+::: {.column}
+
+<br> <br> <br> <br> <br> 
+[Why? [**Who benefits**]{.alert-2} from the spread of artificial text generators?]{.fragment .fade-in fragment-index=2} 
+
+[[**What information can I trust**]{.alert-2} about the abilities of these models?]{.fragment .fade-in fragment-index=3} 
+
+[What is the actual [**social impact**]{.alert-2} of LLMs? How does it compare to the rhetoric of motivated actors?]{.fragment .fade-in fragment-index=4} 
+
+[How can we help students [**cultivate critical perspectives**]{.alert-2} on the role of technology in society and in their learning?]{.fragment .fade-in fragment-index=5} 
+:::
+
+
+
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### Large language models [**generate "helpful"**]{.alert}, [**human-like text**]{.alert} via prediction and reinforcement. 
+
+ 
+## {.split-60}
+
+:::: {.column}
+
+### Large Language Models
+
+<br>
+
+:::{.font-larger} 
+
+A (generative) ***language model*** is an algorithm that generates text in partially random ways.
+
+[A language model is "***large***" when it is difficult to explain all of its behaviors purely in terms of structure and training ("*emergence*").]{.fragment fragment-index=2}
+
+::: {.fragment fragment-index=3}
+
+Most language models aim to produce text that is [human-like]{.alert-2} and [constructive]{.alert}, using: 
+
+- **[Next-token prediction]{.alert-2}**
+- **[Reinforcement learning with human feedback (RLHF)]{.alert}**
+
+:::
+:::
+::::
+
+::: {.column}
+
+![](fig/google-search.png){.fragment .absolute width=600 left=0 top=100 fragment-index=1}
+
+![](fig/chatgpt-gangster.webp){.fragment .absolute width=600 left=0 top=50 fragment-index=2}
+
+:::
+
+##
+
+### Next-token prediction
+
+<br> 
+
+::: {.center}
+
+||||||
+-|-|-|-|-|-|-
+&nbsp;    | [artichoke]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[the]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[subtract]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[college]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[black]{.fragment .highlight-current-red fragment-index=6 .font-larger}   | [paint]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [boldly]{.fragment .semi-fade-out fragment-index=2 .font-larger} | [a]{.fragment .highlight-current-red fragment-index=3 .font-larger}  |[small]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[but]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[pinch]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [pepper]{.fragment .highlight-current-red fragment-index=7 .font-larger} 
+[Now]{.fragment .highlight-current-red fragment-index=1 .font-larger}  | [bubble]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[Phil]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[more]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[add]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[drink]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [river]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [triangle]{.fragment .semi-fade-out fragment-index=2 .font-larger} |[draw]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[bit]{.fragment .highlight-current-red fragment-index=4 .font-larger}  |[raisin]{.fragment .semi-fade-out fragment-index=5 .font-larger} |[cumin]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [pinch]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+&nbsp;    | [add]{.fragment .highlight-current-red fragment-index=2 .font-larger} | [escape]{.fragment .semi-fade-out fragment-index=3 .font-larger} |[lies]{.fragment .semi-fade-out fragment-index=4 .font-larger} |[of]{.fragment .highlight-current-red fragment-index=5 .font-larger}  |[jogging]{.fragment .semi-fade-out fragment-index=6 .font-larger} | [ice]{.fragment .semi-fade-out fragment-index=7 .font-larger} 
+: {.borderless}
+
+<br> 
+
+||||||
+-|-|-|-|-|-|-
+[**Now**]{.fragment fragment-index=1 .font-larger}  | [**add**]{.fragment .fade-in  fragment-index=2 .font-larger} |[**a**]{.fragment .fade-in  fragment-index=3 .font-larger} |[**bit**]{.fragment .fade-in  fragment-index=4 .font-larger} |[**of**]{.fragment .fade-in  fragment-index=5 .font-larger} |[**black**]{.fragment .fade-in  fragment-index=6 .font-larger} | [**pepper**]{.fragment .fade-in  fragment-index=7 .font-larger} 
+
+:::
+
+<!-- ## {background-iframe="https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/"} -->
+
+##
+
+### Which response is better?
+
+
+<br> 
+
+[1. "[**Buzz Aldrin**]{.alert} took the first steps on the moon in [**1967**]{.alert}."]{.font-larger}
+
+[2. "[**Neil Armstrong**]{.alert-2} took the first steps on the moon in [**1969**]{.alert-2}."]{.font-larger}
+
+<br> 
+
+[Reinforcement learning with human feedback (RLHF) encourages the model to produce high-quality (helpful, correct, non-offensive) responses.]{.fragment .fade-in .font-larger}
+
+## 
+
+![](fig/1-chatgpt-training.png)
+
+*Image source: [Chip Huyen](https://huyenchip.com/2023/05/02/rlhf.html)*
+
+
+
+
+## {.split-40}
+
+::: {.column}
+
+<br> <br> <br> 
+
+*ChatGPT seems so human because it was trained by an AI that was mimicking humans who were rating an AI that was mimicking humans who were pretending to be a better version of an AI that was trained on human writing.*
+
+Google research estimates "**millions**" of annotation workers.
+
+:::
+
+::: {.column}
+
+![](fig/ai-is-work-verge.png)
+
+:::
+
+![](fig/wsj-moderation-workforce.png){.fragment .absolute top=0}
+
+
+## 
+
+<br> <br> <br> <br> <br> 
+
+::: {.center}
+
+[LLMs use [**next-token prediction**]{.alert} to create human-like sentences.]{.font-larger}
+
+[LLMs use [**reinforcement learning with human feedback**]{.alert-2} (RLHF) to make those sentences desirable (true, relevant, helpful, non-harmful).]{.font-larger}
+
+
+
+:::
+
+
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### People with profit motives are [**routinely misleading you**]{.alert} about the capabilities of LLMs. 
+
+
+## 
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### Yes, LLMs are extremely impressive 
+
+## 
+
+![](fig/peanut-butter-sandwich.png){.absolute left=50 top=0}
+
+
+
+
+
+
+
+## 
+
+![](fig/bar-performance.png){.absolute top=20 height=700}
+
+## 
+
+![](fig/mit-curriculum.png)
+
+
+## 
+
+![](fig/impossible-question.png){.absolute top=150 width=400 left=50}
+
+![](fig/raunak-chowdhuri.png){.fragment .absolute top=150 width=500 left=450}
+
+
+
+
+
+##
+
+![](fig/bengali-1.png){.absolute top=20 width=400 left=300}
+![](fig/bengali-2.png){.absolute .fragment top=20 width=400 left=300}
+
+
+
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> 
+
+### LLMs are driving [**large-scale degradation**]{.alert} in online information ecosystems, labor stability, and the environment.
+
+## {background-image="fig/openai-governance-doc.png"}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+![](fig/openai-governance-excerpt.png){.absolute left=0 width=1500}
+
+##
+
+### Online Information
+
+![](fig/stack-overflow-question.png)
+![](fig/stack-overflow-answer.png){.fragment .absolute top=100 left=10}
+
+## 
+
+
+
+![](fig/stack-overflow-traffic.png){.absolute left=100 width=800}
+
+[*Data visualization by [Ayhan Fuat Çelik](https://observablehq.com/@ayhanfuat/the-fall-of-stack-overflow)*]{.absolute left=300 } 
+
+##
+
+### Labor Stability
+
+![](fig/longer-vacations.png){.absolute .fragment top=100 left=150 height=600 .fade-out fragment-index=1}  
+
+<!-- ![](fig/the%20future-comic.jpeg){.absolute top=50 left=600 height=600 }   -->
+
+<!-- \@siyann_stuff -->
+
+
+
+![](fig/wapo-jobs.png){.fragment .fade-in-then-out .absolute top=100 left=150 width=600 fragment-index=1}
+
+![](fig/jobs.png){.fragment .absolute top=100 left=150 width=600 fragment-index=2}
+
+![](fig/wages.png){.fragment .absolute top=100 left=150 width=600 fragment-index=3}
+
+
+<!-- ![](fig/threatened-jobs.png){.fragment .absolute top=70 left=150 fragment-index=3} -->
+
+
+
+##
+
+### Labor Stability
+
+![](fig/altman-tweet.png){.absolute left=150 width=650}
+
+##
+
+### Labor Stability
+
+<br> 
+
+![](fig/eating-disorder-1.png)
+
+
+<!-- ## Artistic Production: Clarkesworld
+
+![](fig/clarkesworld.png)
+
+*All of this nonsense has cost us time, money, and mental health.* - Neil Clarke -->
+
+## {.split-33 .bg0}  
+
+::: {.column}
+
+![](fig/water.jpeg)
+
+:::
+
+::: {.column}
+
+<br> 
+
+[*ChatGPT needs to “drink” a **500ml bottle of [[fresh]]{.alert} water** for a simple conversation of roughly 20-50 questions and answers, depending on when and where ChatGPT is deployed*.]{.font-larger .fragment .semi-fade-out}
+
+[Roughly 1B visitors interacted with with the ChatGPT website in July, for 7 mins on average.]{.fragment}  
+
+[If each user submitted **one prompt**, that's roughly 350K-850K liters of water per day.]{.fragment} 
+
+[This is daily drinking water for roughly 100K-300K people.]{.fragment} 
+
+
+[Li et al, arXiv preprint (2023)<br>
+[https://www.similarweb.com/website/chat.openai.com/#overview](https://www.similarweb.com/website/chat.openai.com/#overview)]{.footnote}
+:::
+
+## {background-color="#EF476F"}
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+### We have a responsibility to take a [critical perspective]{.alert} on tech. 
+
+*Whose values? Whose benefits? Whose ideology? Whose identity?* 
+
+
+
+
+
+
+## {.split-33}
+
+::: {.column}
+
+
+
+<br> <br> <br> 
+
+*Years of sociotechnical research show that advanced digital technologies, left unchecked, are used to pursue power and profit at the expense of human rights, social justice, and democracy.*
+
+:::
+
+
+::: {.column}
+
+![](fig/lazar-nelson.png){width=500}
+
+<!--  -->
+:::
+
+## 
+
+![](fig/dudes.png){.absolute left=200 top=10}
+
+::: {.absolute right=0 top=500}
+
+*Business Insider*
+
+:::
+
+
+## Critical Scholarship in AI
+
+Many "newer people" are helping us ask fundamental questions: 
+
+<br> <br> 
+
+1. How do modern automated information systems differently impact people according to race, class, gender, and ability? 
+2. What ideologies underly the push to develop and popularize these tools? 
+3. What can we do?  
+
+
+
+
+## 
+
+#### Critical Scholarship in AI
+
+![](fig/algs-of-oppression.jpg){.absolute left=250 width=250}
+![](fig/noble.jpeg){.absolute left=550}
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+Modern automated information systems reproduce **harmful representations** of marginalized identities. 
+
+::: {.absolute left=530 top=450}
+
+Safiya Umoja Noble
+
+:::
+
+##
+
+#### Critical Scholarship in AI
+
+![](fig/race-after-tech.jpg){.absolute left=250 width=300}
+![](fig/benjamin.jpeg){.absolute left=600 width=200}
+
+::: {.absolute left=530 top=450}
+
+Ruha Benjamin
+
+:::
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+Modern automated information systems reinforce ideologies of white supremacy and colonialism. 
+
+
+## 
+
+#### Critical Scholarship in AI
+
+![](fig/coded-bias.jpg){.absolute left=250 width=300}
+![](fig/buolamwini.jpeg){.absolute left=600 width=200}
+
+::: {.absolute left=550 top=450}
+
+Joy Buolamwini
+
+:::
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+Modern automated information systems serve and impact people of color (esp. women of color) in harsher ways. 
+
+## 
+
+#### Critical Scholarship in AI
+
+![](fig/automating-eubanks.jpeg){.absolute left=225 top=125 width=550}
+
+
+::: {.absolute left=800 top=300}
+
+Virginia Eubanks
+
+:::
+
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+Many modern automation systems are **explicitly** designed to control marginalized populations. 
+
+## 
+
+#### Critical Scholarship in AI
+
+![](fig/DAIR.png){.absolute left=250 width=300}
+![](fig/gebru.webp){.absolute left=600 width=200}
+
+::: {.absolute left=550 top=450}
+
+Timnit Gebru
+
+:::
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+
+Rhetoric from contemporary tech leaders continues intellectual lineages with roots in eugenics. 
+
+
+## {.split-50}
+
+### Towards a Critical View
+
+**Situation**: *Large language models (LLMs) are now powerful and widely available.*
+ 
+<br> 
+
+
+Why? [**Who benefits**]{.alert-2} from the spread of artificial text generators?
+
+[**What information can I trust**]{.alert-2} about the abilities of these models?
+
+What is the actual [**social impact**]{.alert-2} of LLMs? How does it compare to the rhetoric of motivated actors?
+
+How can we help students [**cultivate critical perspectives**]{.alert-2} on the role of technology in society and in their learning?
+
+<br> 
+
+***Thanks y'all!***
+
+
+

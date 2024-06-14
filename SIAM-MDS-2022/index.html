@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Nonbacktracking Spectral Clustering of Nonuniform Hypergraphs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Phil Chodrow   Department of Computer Science   Middlebury College" />
+    <link rel="stylesheet" href="../assets/ninpo.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/ninjutsu.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/shinobi.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/pc_custom.css" type="text/css" />
+    <link rel="stylesheet" href="css/pc_custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Nonbacktracking Spectral Clustering of Nonuniform Hypergraphs
+## SIAM Conference on Mathematics of Data Science <br> September 30th, 2022
+### <span class="author-highlight">Phil Chodrow</span> <br> Department of Computer Science <br> Middlebury College
+
+---
+
+exclude: true   
+&lt;style type="text/css"&gt;
+code.r{ 
+  font-size: 16px; 
+}
+pre {
+  font-size: 16px !important;  
+}
+&lt;/style&gt;
+
+
+
+
+
+---
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+  ### The Hypergraph Clustering Problem 
+
+  Given some hypergraph data, assign each node to a .alert[*cluster*] of related nodes. 
+  &lt;br&gt; &lt;br&gt;
+  Emphasis for today: .alert[spectral algorithms] and conjectured .alert[theoretical limits]. 
+
+  .alert2[Preprint]: &lt;br&gt;
+  &lt;b&gt;PSC&lt;/b&gt;, N. Eikmeier, J. Haddock, (2022). Nonbacktracking spectral clustering of nonuniform hypergraphs, &lt;i&gt;arXiv:2204.13586&lt;/i&gt;
+
+  
+  
+]
+
+  
+]
+.column[.content.vmiddle[.stretch[
+  &lt;img src="../img-lib/detection-1.png" width=100%&gt;
+]]]
+
+---
+
+class: split-two
+
+.column.bg-main1[
+  ### What We Know About Graphs
+
+Random graph (stochastic blockmodel) with two groups. 
+
+Nodes have on average `\(a\)` neighbors within-cluster and `\(b\)` neighbors between clusters. 
+
+.alert[Theorem]: Finding clusters correlated with ground-truth is possible as number of nodes `\(n\rightarrow \infty\)` iff
+
+`$$\frac{1}{2}\frac{(a - b)^2}{a + b} &gt; 1\;.$$`
+
+.footnote[
+  Conjecture by Decelle et al., *PRE* 2012. &lt;br&gt;
+  Proof by Mossel et al., *Combinatorica* 2018. 
+]
+
+]
+.column[.content.stretch[
+  &lt;br&gt; 
+  &lt;img src="img/SBM.png" width=85%&gt;
+  &lt;img src="img/detectability-threshold.png" width=90%&gt;
+  
+]
+.footnote[
+  Images from Nadakuditi + Newman, *PRE* 2012 &lt;br&gt; Abbe et al., *IEEE Trans. Info. Theory* 2014. 
+]
+]
+
+---
+
+class: 
+
+### A Testbed for Sparse Hypergraph Clustering
+
+&lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;
+
+
+---
+
+class: split-two
+layout: true
+
+.column[
+
+## Synthetic Testbed
+
+&lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;   
+]
+
+.column[.stretch[ 
+  {{content}}
+]]
+
+
+---
+
+&lt;img src="../img-lib/hmod-paper.png" width=100%&gt;   
+
+---
+
+## Louvain-Type Algorithm
+
+&lt;br&gt;
+&lt;img src="../img-lib/louvain-detection.png" width=80%&gt;   
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+
+
+
+---
+class: split-50 bg-main1 
+layout: false 
+ 
+.row[ 
+.split-three[
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/eikmeier-3.png" width=90%&gt; 
+]
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/jamie_portrait.jpeg" width=90%&gt; 
+  ]
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/phil_portrait.jpeg" width=90%&gt;   
+] 
+
+]
+]
+.row[ 
+.split-three[
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Nicole Eikmeier&lt;/nobr&gt;]]
+   Computer Science &lt;br&gt; Grinnell College      
+   .alert2[@NicoleEikmeier]
+]
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Jamie Haddock&lt;/nobr&gt;]]
+  &lt;nobr&gt;Mathematics&lt;/nobr&gt; &lt;br&gt; Harvey Mudd College      
+  .alert2[@jamie_hadd]
+]  
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Phil Chodrow&lt;/nobr&gt;]]
+  &lt;nobr&gt;Computer Science&lt;/nobr&gt; &lt;br&gt; Middlebury College
+  &lt;br&gt; .alert2[@PhilChodrow] &lt;br&gt;
+]
+]
+]
+
+---
+
+
+class: split-two
+layout: false
+
+.column.bg-main1[
+
+### Matrices for Hypergraphs? 
+
+We could transform the hypergraph into a graph.
+- .alert[Problem]: loses multi-way information.
+
+We could construct a set of adjacency tensors `\(\mathbf{A}^{(2)}\)`, `\(\mathbf{A}^{(3)}\)`, `\(\mathbf{A}^{(4)}\)`...
+
+`$$a^{(3)}_{ijk} = \begin{cases} 1 &amp;\quad (i,j,k)\in \mathcal{E} \\ 0 &amp;\quad \text{otherwise...}\end{cases}$$`
+
+- .alert[Problem]: we know eigenvectors of tensors, but not .alert[*sets*] of tensors.
+
+So, what should we do?....
+
+
+]
+
+.column[
+  &lt;br&gt; &lt;br&gt;
+  &lt;img src="../img-lib/graph-hypergraph.png" width=100%&gt;
+]
+
+
+---
+
+class: split-two
+layout: false
+
+
+.column.bg-main1[
+## The Nonbacktracking Operator
+
+&lt;!-- The adjacency matrix is `\(n\times n\)` and  operates on nodes.  --&gt;
+
+The .alert[nonbacktracking operator] `\(\mathbf{B}\)` is a matrix that operates on *edge-node pairs*. 
+
+Define relation `\((e_1, v_1) \rightarrow (e_2, v_2)\)`: 
+
+- `\(v_1 \in e_1\)` and `\(v_2 \in e_2\)`
+- `\(v_1 \in e_2 \setminus v_2\)`
+- `\(e_1 \neq e_2\)`
+
+.font_smaller[ .font_smaller[
+`$$\mathbf{B}[(e_1, v_1), (e_2, v_2)] = \begin{cases} 1 &amp;\quad (e_1, v_1) \rightarrow (e_2, v_2) \\ 
+0 &amp;\quad \text{otherwise.}\end{cases}$$`
+]]
+.footnote[.font_smaller[
+  Proposed for hypergraphs by Storm (2006). "The zeta function of a hypergraph," *The Electronic Journal of Combinatorics*. 
+]]
+]
+
+
+
+.column[
+&lt;br&gt;
+&lt;img src="../img-lib/hypergraph-nonbacktracking.png" width=100%&gt;
+
+"I can get to `\(v_2 \in e_2\)` from `\(e_1\)` by passing through `\(v_1\)`. I can get to `\(v_3 \in e_3\)` from `\(e_2\)` by passing through `\(v_2\)`..."
+
+]
+
+???
+
+The important intuition here is: 
+
+- We can imagine a walk stepping from a node to a hyperedge and on to a new node, and on to a new hyperedge, and so on. 
+- The conditions ensure that we never hit the *same* node or the *same* hyperedge in consecutive steps. 
+
+---
+
+class: split-two
+
+
+
+.column.bg-main1[
+
+&lt;br&gt; &lt;br&gt; 
+**Theorem (PSC, JH, NE '22)**: In a random graph (stochastic blockmodel) with two equal-sized clusters, within-cluster `\(k\)`-degree `\(c_k^{\mathrm{in}}\)` and between-cluster `\(k\)`-degree `\(c_k^{\mathrm{out}}\)`, the nonbacktracking operator `\(\mathbf{B}\)` has, in expectation, an eigenpair `\((\beta, \mathbf{v})\)` where 
+
+$$
+\beta = \frac{1}{2}\sum_{k \in \text{edge sizes}} (a_k - b_k)\;,
+$$
+such that `\(\mathbf{v}\)` is correlated with clusters. 
+
+
+
+.footnote[
+    Stronger version for uniform hypergraphs proven by &lt;br&gt; 
+    Stephan and Zhu (2022) Sparse random hypergraphs: Non-backtracking spectra and community detection, &lt;i&gt; arXiv:2203.07346&lt;/i&gt;
+]
+]
+
+.column[
+  &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+&lt;img src="../img-lib/eigen-illustration.png" width=100%&gt;
+]
+
+
+---
+
+class: split-two
+layout: true
+
+.column[
+
+## Synthetic Testbed
+
+&lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;   
+]
+
+.column[.stretch[ 
+  {{content}}
+]]
+
+
+---
+
+## Louvain-Type Algorithm
+
+&lt;br&gt;
+&lt;img src="../img-lib/louvain-detection.png" width=80%&gt;   
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+
+---
+
+## Spectral Algorithm
+
+&lt;br&gt;
+&lt;img src="../img-lib/vanilla-heatmap.png" width=80%&gt;   
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+---
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+
+### The Belief-Propagation Jacobian
+
+&lt;br&gt; 
+.alert[Belief-propagation] is a method for learning probabilistic machine learning models, but it's very expensive on hypergraphs. 
+
+We can approximate BP by computing eigenvectors of the .alert[Jacobian matrix], evaluated at an uninformative fixed point.  
+
+Eigenvectors of the Jacobian (sometimes) give useful cluster information.  
+
+.footnote[
+  Discussion of graph case in
+  Krzakala et al., *PNAS* 2013
+]
+
+]
+.column[
+  
+
+### &amp;nbsp; 
+
+&lt;br&gt; 
+**Theorem (PSC, JH, NE '22)**: In a sparse random hypergraph stochastic blockmodel with communities of equal expected degrees, 
+
+  `$$\mathcal{J} = \sum_{k = 1}^{\bar{k}} \mathbf{C}_k \otimes \mathbf{B}_k + O(n^{-1})\;,$$`
+
+  - `\(\mathbf{C}_k\)` is a matrix of parameters that depends on the affinity function `\(\Omega\)`. 
+  - `\(\mathbf{B}_k\)` is our friend the nonbacktracking operator, restricted to edges of size `\(k\)`. 
+  - `\(\otimes\)` is the matrix Kronecker product. 
+
+
+&lt;!-- .footnote[
+  .alert2[Shown for graphs by]: &lt;br&gt; Krzakala et al. (2013)  Spectral redemption in clustering sparse networks, &lt;i&gt;PNAS&lt;/i&gt; 110 (52) 20935-20940
+] --&gt;
+]
+
+---
+
+class: split-two
+
+## An Ihara-Bass Theorem for the BP Jacobian
+
+`\(\mathbf{J} = \sum_k \mathbf{C}_k\otimes\mathbf{B}_k \approx \mathcal{J}\)` can be a very large matrix `\(\implies\)` slow eigenvalue computations. 
+
+**Theorem (PSC, JH, NE '22)**: Under mild conditions, if `\(\lambda\)` is an "interesting" eigenvalue of `\(\mathbf{J},\)` then `\(\lambda\)` is also an eigenvalue of the `\(2n\ell\bar{k} \times 2n\ell\bar{k}\)` matrix
+
+.font_smaller[.font_smaller[
+`$$\mathbf{J}' = (\mathbf{I}_2 \otimes \mathbf{G}\otimes \mathbf{I}_n) \left[\begin{matrix} 
+\mathbf{0} &amp; \mathbf{I}_\ell \otimes \mathbb{D} \\ 
+\mathbf{0} &amp; \mathbf{I}_\ell \otimes \mathbb{A}
+\end{matrix}\right] - (\mathbf{I}_2 \otimes \mathbf{H}\otimes \mathbf{I}_n)  \left[\begin{matrix} 
+\mathbf{0} &amp; \mathbf{I}_{\ell k n} \\ 
+\mathbf{I}_\ell \otimes (\mathbf{K} - \mathbf{I}_{\kappa}) \otimes \mathbf{I}_n  &amp; \mathbf{I}_\ell \otimes (\mathbf{K} - 2\mathbf{I}_{\kappa})\otimes \mathbf{I}_n
+\end{matrix}\right]$$`
+]
+]
+
+- `\(\ell\)` is the number of clusters and `\(\kappa\)` the number of distinct edge sizes. 
+- `\(\mathbf{G}\)`, `\(\mathbf{H}\)` hold statistical parameters
+- `\(\mathbb{D}\)` is a degree operator,  `\(\mathbb{A}\)` is an adjacency operator,  and `\(\mathbf{K}\)` is a diagonal matrix containing the possible edge sizes.   
+
+.footnote[
+  Similar in spirit to a famous result by Bass, *Int. J. Math* 1992.  
+]
+
+&lt;!-- ---
+
+
+
+class: split-two
+
+.column.bg-main1[
+
+### Belief-Propagation Spectral Clustering
+
+&lt;br&gt; 
+
+1. Start with a guess about `\(\mathbf{C}_k\)` and form `\(\mathbf{J}'\)`. 
+2. Compute the .alert[leading eigenvectors] of `\(\mathbf{J}'\)` with real eigenvalues. 
+3. For each eigenvector `\(\mathbf{v} = (\alpha, \beta)\)`, compute `\(u_{i\ell} = \mathbb{1}\left(\sum_{k = 1}^{\bar{k}} \alpha_{ik}^{(\ell)} &gt; 0\right)\)`. 
+4. Use a .alert2[Euclidean clustering algorithm] (like `\(k\)`-means) in the space spanned by the vectors `\(\{\mathbf{u}\}\)`. 
+5. Re-estimate `\(\mathbf{C}_k\)` and repeat...
+
+]
+
+
+
+.column[.vmiddle[.center[
+
+&lt;img src="../img-lib/PCA-synthetic.png" width=90%&gt; 
+
+]]]
+
+
+
+ --&gt;
+
+
+---
+
+background-image: url(../img-lib/algorithm-demo.png)
+background-size: contain
+
+### Belief-Propagation Spectral Clustering
+
+
+---
+
+class: split-two
+layout: true
+
+.column[
+
+## Synthetic Testbed
+
+&lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/testbed-narrow.png" width=100%&gt;   
+]
+
+.column[.stretch[ 
+  {{content}}
+]]
+
+
+---
+
+class: 
+
+## Plain Spectral
+
+&lt;br&gt;
+&lt;img src="../img-lib/vanilla-heatmap.png" width=80%&gt;   
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+???
+
+Recall that we wanted to *fill in the gaps*. 
+
+---
+
+class: 
+
+## BP Spectral
+
+&lt;br&gt;
+&lt;img src="../img-lib/heatmap-exp-1-no-curve.png" width=80%&gt;
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+???
+
+Oops! Uh, new gaps. Time to take a detour for some more advanced machinery. 
+
+---
+
+class: 
+
+## BP Spectral
+
+
+&lt;br&gt;
+&lt;img src="../img-lib/heatmap-exp-1.png" width=80%&gt;
+
+Adjusted Rand Index (ARI): 
+
+- ARI = 1: perfect clustering. 
+- ARI = 0: random noise.
+
+
+---
+
+layout: false
+class: split-two
+
+.column.bg-main1[
+### Detectability (Algorithmic)
+
+.font_smaller[
+**Conjecture**: In a 2-group blockmodel with edge sizes `\(k_1,k_2,\ldots\)` and `\(c_k\)` edges of size `\(k\)` per node, .alert[spectral clustering] fails to detect clusters in the ellipsoid with centroid `\((x_{k_1},x_{k_2},\ldots)\)` and radii `\((r_{k_1},r_{k_1}\ldots)\)`, where: 
+
+
+$$
+`\begin{align}
+x_k &amp;= \frac{1-f_k}{2-f_k}  \\ 
+r_k &amp;= \frac{\sqrt{(k-1)c_k}}{2-f_k} \\
+f_k &amp;= \frac{1-2^{2-k}}{1-2^{1-k}}\;.
+\end{align}`
+$$
+]
+
+.footnote[Proof requires controlling spectrum of Hashimoto operator, possibly generalizing approach used by Bordenave et al., *Annals of Probability* 2018
+]
+
+]
+
+.column[.stretch[
+.center[ &lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/4-heatmaps.png" width=100%&gt;
+]
+]
+]
+
+---
+
+class: split-two
+
+.column.bg-main1[
+### Detectability (Fundamental)
+
+.font_smaller[
+**Conjecture**: In a 2-group blockmodel with edge sizes `\(k_1,k_2,\ldots\)` and `\(c_k\)` edges of size `\(k\)` per node, .alert[any algorithm] fails to detect clusters in the ellipsoid with centroid `\((x_{k_1},x_{k_2},\ldots)\)` and radii `\((r_{k_1},r_{k_1}\ldots)\)`, where: 
+
+
+$$
+`\begin{align}
+x_k &amp;= \frac{1-f_k}{2-f_k}  \\ 
+r_k &amp;= \frac{\sqrt{(k-1)c_k}}{2-f_k} \\
+f_k &amp;= \frac{1-2^{2-k}}{1-2^{1-k}}\;.
+\end{align}`
+$$
+]
+
+.footnote[Generalizes recent theorem for graph blockmodels by Mossel et al., *Combinatorica* 2018
+]
+
+]
+
+.column[.stretch[
+.center[ &lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/4-heatmaps.png" width=100%&gt;
+]
+]
+]
+
+---
+
+layout: false 
+background-image: url("img/clustering-math.png")
+background-size: contain
+
+Clustering Math StackExchange
+
+
+
+---
+
+class: split-two
+layout: false
+
+.column.bg-main1[
+
+## Summing Up
+
+&lt;br&gt;
+
+Belief-propagation spectral clustering can help us form conjectures about when detecting clusters is .alert[even possible].  
+
+Proving these conjectures is likely to require some powerful machinery from random matrix theory and discrete probability. 
+
+The structure of the nonbacktracking operator enables us to make useful simplifications towards fast computations. 
+
+]
+
+.column[.stretch[
+.center[ &lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;img src="../img-lib/4-heatmaps.png" width=100%&gt;
+]
+]
+]
+
+
+
+
+---
+
+class: split-two
+
+.column.bg-main1[
+# **Thanks!**
+.row[ 
+.split-two[
+.column[.lil-stretch[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+  &lt;img src="../img-lib/eikmeier-3.png" width=80%&gt; 
+  .alert[**Nicole Eikmeier**] &lt;br&gt; Grinnell 
+  ]
+  ]
+.column[
+  .lil-stretch[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/jamie_portrait.jpeg" width=80%&gt; 
+  .alert[**Jamie Haddock**] &lt;br&gt; Harvey Mudd 
+  ]
+]]]
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;PSC&lt;/b&gt;, N. Eikmeier, J. Haddock, (2022). Nonbacktracking spectral clustering of nonuniform hypergraphs, &lt;i&gt;arXiv:2204.13586&lt;/i&gt;
+]
+
+
+.column[ 
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+
+# Questions?
+
+(maybe you want to see this algorithm on [more real data](#data-slide)...?)
+
+]
+
+---
+
+class: middle bg-main4  
+
+# Extra slides
+
+
+---
+
+name: data-slide
+
+## High School Social Contacts 
+
+&lt;br&gt; 
+
+  `\(n = 327\)` students (nodes) in a French high school. 
+
+  `\(m = 7,818\)` social contact events (edges) measured by wearable 
+  sensors.   
+
+  Average number of participants in interaction `\(\langle k \rangle = 2.3\)` 
+
+  Cluster labels are the classes to which students are assigned. 
+
+
+
+
+  &lt;div class="footnote"&gt;
+    Data originally from: &lt;br&gt;
+    R. Mastrandrea et al. (2015), Contact patterns in a high school: A comparison between data collected using wearable sensors, contact diaries, and friendship surveys. &lt;i&gt;PLoS One&lt;/i&gt; 10:9, e0136497
+    &lt;br&gt; &lt;br&gt; 
+    Prepared by 
+    A. R. Benson et al. (2018), Simplicial closure and higher-order link prediction. &lt;i&gt;Proceedings of the National Academy of Sciences&lt;/i&gt; 10.1073/pnas.1800683115  
+  &lt;/div&gt;
+
+---
+background-image: url(../img-lib/contact-high-school-classes.png)
+background-size: contain
+
+## High School Social Contacts 
+
+---
+
+## On the Other Hand...Senate Bills
+
+&lt;br&gt; 
+
+  `\(n = 293\)` U.S. senators (nodes) cosponsoring bills.
+
+  `\(m = 20,006\)` bills (edges) in period 1973-2016.
+
+  Average number of cosponsors `\(\langle k \rangle = 7.3\)`.
+
+  Cluster labels are Democrat/Republican. 
+
+
+&lt;div class="footnote"&gt;
+  Data originally from: &lt;br&gt;
+  J. Fowler (2006), Legislative cosponsorship networks in the U.S. House and Senate. &lt;i&gt;Social Networks&lt;/i&gt; 28:4, 454--465
+  &lt;br&gt; &lt;br&gt; 
+  Prepared by 
+  A. R. Benson et al. (2018), Simplicial closure and higher-order link prediction. &lt;i&gt;Proceedings of the National Academy of Sciences&lt;/i&gt; 10.1073/pnas.1800683115  
+&lt;/div&gt;
+
+
+---
+background-image: url(../img-lib/SN-congress-bills.png)
+background-size: contain
+
+## Senate Bills
+
+---
+class: bg-main2
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;  
+### .alert[Big Picture]: you want hypergraph methods when edges of different sizes give you different information about the cluster structure.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

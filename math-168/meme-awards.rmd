@@ -1,0 +1,237 @@
+---
+title: "The Math 168 Meme Awards!!"                 
+subtitle: "MATH 168"
+author: "Woohoo!!"           
+date: "June 1st, 2022"              
+output:                         
+  xaringan::moon_reader:         
+    lib_dir: libs             
+    css: ["../assets/ninpo.css",  "../assets/ninjutsu.css",   "../assets/shinobi.css", "../assets/pc_custom.css", "css/colors-fonts.css"]    
+    seal: true   
+    self_contained: false  
+    nature: 
+      ratio: "3:2"
+      highlightStyle: github     
+      highlightLines: true 
+      countIncrementalSlides: false  
+---
+
+background-image: url("img/why-not.jpeg")
+background-size: contain
+
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> 
+## Award For Communication of a Network Concept
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> 
+## Award For Communication of a Network Concept
+
+## .alert[Nora Liu]
+
+]
+
+.column[
+
+<br> <br> <br> <br> <br>
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/b0b9c018-f67a-4c82-9d50-e047b6e83b32/meme2.jpeg" width=100%></img>
+
+
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "Made the Professor Giggle" Award
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "Made the Professor Giggle" Award
+
+## .alert[Reiya Downs]
+
+]
+
+.column[
+
+<br> <br> <br> <br> <br>
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/f5c89516-4c5c-4c84-bcde-0f749effd9bd/6h90tp.jpg" width=100%></img>
+
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "I'm in This Picture and I Don't Like It" Award
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "I'm in This Picture and I Don't Like It" Award
+
+## .alert[Ashwin Ranade]
+
+]
+
+.column[
+
+<br> <br> <br> <br>
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/ac31cdbf-c871-4d02-88e7-d5f5a60d5dce/meme2.jpeg" width=100%></img>
+
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "Very Topical" Award
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The "Very Topical" Award
+
+## .alert[Hunter Crosland]
+
+]
+
+.column[
+
+<br> <br> <br><br> <br> <br> <br> 
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/2f739d98-466e-48a5-9248-fb10917a1719/6h8wxh.jpeg" width=90%></img>
+
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> <br> 
+## Best Roast Award
+
+]
+
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> <br>
+## Best Roast Award
+
+## .alert[Amy Tang]
+
+]
+
+.column[
+
+<br> <br> <br>
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/9013f26d-f0c6-4641-b21b-06a94a9fc6c1/6h5pgf.jpeg" width=90%></img>
+
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The People's Choice Awards 
+
+]
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The People's Choice Awards 
+
+## .alert[Zheng Tan]
+
+]
+
+.column[
+
+<br> <br> <br>
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/d9c98809-a114-44c4-a8a1-c87bc2074f30/Meme1.jpg" width=90%></img>
+
+
+]
+
+
+
+---
+class: split-40 
+layout: false 
+
+.column.bg-main1[
+
+<br> <br> <br> <br> <br> <br> 
+## The People's Choice Awards 
+
+## .alert[Nancy Zhang]
+
+]
+
+.column[
+
+<img src="https://campuspro-uploads.s3.us-west-2.amazonaws.com/ebccf234-5450-4f5b-ada7-52e8bcf476a6/17c488cc-95b7-4ec3-8250-51e0d3de7c25/Screen%20Shot%202022-05-22%20at%206.51.29%20PM.png" width=90%></img>
+
+]
+

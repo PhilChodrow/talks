@@ -1,0 +1,607 @@
+---
+title: "Dynamics of Female Gender Representation in Mathematics"
+subtitle: "ICERM  |  Monday, June 27th, 2022"  
+date: ""
+author: |
+  Dr. <span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College     
+format:
+  revealjs:
+    theme: 
+      - default
+      - layouts.css
+      - custom.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false
+message: false
+cache: true 
+---
+
+ 
+```{r}
+#| echo: false
+ 
+library(tidyverse)   
+library(colorspace)
+library(tidygraph)  
+library(ggraph)   
+source("../../R/plot-theme.R")
+
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "../../mgp.db")
+
+academic <- con %>% tbl("academic") %>% as_tibble()
+advisors <- con %>% tbl("advisors") %>% as_tibble()
+students <- con %>% tbl("students") %>% as_tibble()
+schools <- con %>% tbl("schools") %>% as_tibble()
+gender_preds <- con %>% tbl("pred") %>% as_tibble()
+
+gender_pred <- con %>% 
+	tbl("pred") %>% 
+	as_tibble() %>% 
+	distinct(name_x, .keep_all = T) %>% 
+	rename(inferred_gender = rule_3_pred) 
+```
+
+
+::: {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> 
+
+#### Math has a 
+
+::: {.incremental}
+
+- Race...
+- Gender...
+- Class...
+- Ability...
+- Etc... 
+
+:::
+
+#### problem.
+
+
+:::
+
+::: {.column}
+
+<br> 
+ 
+```{r}
+knitr::include_graphics("assets/SA-article.png")
+```
+
+:::
+:::
+
+
+## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> 
+
+#### Math has a 
+
+
+
+- Race...
+- [Gender]{.alert-2}...
+- Class...
+- Ability...    
+- Etc... 
+
+ 
+
+#### problem.
+
+
+:::
+::: {.column}
+
+<br> 
+ 
+```{r}
+knitr::include_graphics("assets/SA-article.png")
+```
+
+:::
+:::
+
+
+## 
+
+::: {.split-50}
+::: {.column .bg1}
+
+<br> <br> <br> <br> 
+
+### Gender is 
+
+- Nonbinary
+- Multifaceted
+- Not defined by names, pronouns, appearance. 
+
+
+
+[*Image*: [The Genderbread Person](https://www.genderbread.org) by hues, a global justice collective.]{.footnote}  
+:::
+
+::: {.column .stretch}      
+```{r}
+knitr::include_graphics("https://www.genderbread.org/wp-content/uploads/2018/10/Genderbread-Person-v4.png")
+```
+:::
+:::
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> <br>  
+
+##### This is not a project about    
+
+##### [gender diversity]{.alert-2} 
+
+##### in [math]{.alert-2}. 
+
+:::
+
+::: {.column}
+
+<br> <br> <br> <br> <br> <br>  
+
+
+::: 
+
+
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> <br>  
+
+##### This is not a project about    
+
+##### [gender diversity]{.alert-2} 
+
+##### in [math]{.alert-2}. 
+
+:::
+
+::: {.column}
+
+<br> <br> <br> <br> <br> <br>  
+
+##### This is a project about 
+
+##### [female gender representation]{.alert} 
+
+##### in [PhD-granting mathematics departments]{.alert}. 
+
+::: 
+
+
+
+
+## {background-color="#293b49"}
+
+<br> <br> <br> <br> <br> <br> 
+
+::: {.message}
+Why do certain [parts]{.alert-2} of math (subfields/departments) achieve higher female gender representation than others? 
+:::
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+### Data
+
+<br> <br> 
+
+Complete scrape of the [Mathematics Genealogy Project](https://www.mathgenealogy.org) (MGP) -- summer, 2021. 
+
+"Gender inference": female/male gender guessed based on names (and in some cases country location): 
+
+- `gender-guesser`, a Python package.  
+- [genderize.io](https://genderize.io)
+- [GenderAPI](https://gender-api.com)
+
+[MGP is managed by the Department of Mathematics at North Dakota State University]{.footnote} 
+
+:::
+::: {.column}
+
+### Tables
+
+<br> <br> 
+
+- `academic`: names, theses, 
+- `advisor` relationships between academics. 
+- `schools`: country locations
+- `gender_pred` : predictions from inference services. 
+
+:::
+
+
+
+## 
+
+::: {.split-33} 
+
+::: {.column .bg1} 
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+```{r}
+academic_gender <- academic %>% 
+	left_join(gender_pred, by = c("name" = "name_x")) %>% 
+	filter(year >= 1900, year <= 2010) 
+
+proportion_guessed <- academic_gender %>% 
+	summarize(mean(!is.na(inferred_gender)))
+```
+
+#### Overall counts
+
+Gender guessed for `r round(100*proportion_guessed,0)`% of all academics in data set. 
+
+:::
+
+::: {.column .bg0}         
+
+```{r}
+#| fig-height: 7
+#| fig-width: 7
+
+
+
+academic_gender %>% 
+	group_by(year, inferred_gender) %>% 
+	summarize(n = n()) %>% 
+	ggplot() + 
+	aes(group = inferred_gender, color = inferred_gender, x = year, y = n) +
+	geom_line(size = 1) + 
+	guides(color = guide_legend(title = "Guessed gender")) + 
+	scale_color_manual(values = c("#293b49", "#ffb371", "#dbdbd7")) + 
+	xlab("Year of thesis") + 
+	ylab("Number of mathematicians") + 
+	theme(legend.position = "bottom") 
+```
+
+
+:::
+:::
+
+##
+
+::: {.split-33} 
+
+::: {.column .bg1} 
+
+<br> <br> <br> <br> <br> <br> <br>
+
+#### Proportions
+
+Gender guessed for `r round(100*proportion_guessed,0)`% of all academics in data set. 
+
+:::
+
+::: {.column .bg0}         
+
+```{r}
+#| fig-height: 7
+#| fig-width: 7
+
+academic %>% 
+	left_join(gender_pred, by = c("name" = "name_x")) %>% 
+	filter(year >= 1900, year <= 2010) %>% 
+	group_by(year, inferred_gender) %>% 
+	summarize(n = n()) %>% 
+	mutate(p = n / sum(n)) %>%  
+	ggplot() + 
+	aes(group = inferred_gender, color = inferred_gender, x = year, y = p) +
+	geom_line(size = 1) + 
+	guides(color = guide_legend(title = "Guessed gender")) + 
+	scale_color_manual(values = c("#293b49", "#ffb371", "#dbdbd7")) + 
+	xlab("Year of thesis") + 
+	ylab("Proportion of mathematicians") + 
+	theme(legend.position = "bottom") + 
+	scale_y_continuous(labels = scales::label_percent())
+```
+
+
+:::
+:::
+
+
+##
+
+```{r}
+percentages <- academic %>% 
+	left_join(gender_pred, by = c("name" = "name_x")) %>% 
+	filter(year >= 1950, year <= 2015) %>% 
+	count(inferred_gender) %>% 
+	mutate(p = (n / sum(n) * 100) %>% round()) %>% 
+	select(p) %>% 
+	unlist()
+
+names(percentages) <- c("female", "male", "unknown")
+
+p <- academic %>% 
+	filter(year >= 1950, year <= 2015) %>% 
+	summarise(p = 100*mean(academic$MSC != -1)) %>% 
+	unlist() %>% 
+	round(0) 
+```
+
+
+::: {.split-33} 
+
+::: {.column .bg1} 
+
+<br> <br> <br> <br> <br> <br> <br>
+We also have 2-digit MSC numbers for `r p `% of all records in this timespan.
+
+So we can do some analysis by subfield. 
+
+:::
+
+::: {.column .bg0}
+
+```{r}
+#| fig-height: 7
+#| fig-width: 7
+
+academic %>%  
+	left_join(gender_pred, by = c("name" = "name_x")) %>% 
+	filter(year >= 1950, year <= 2010) %>% 
+	group_by(year, inferred_gender) %>% 
+	filter(!is.na(inferred_gender), MSC != -1) %>% 
+	group_by(MSC) %>% 
+	filter(n() > 1500) %>% 
+	group_by(MSC, year) %>% 
+	summarise(p_female = mean(inferred_gender == "female")) %>% 
+	mutate(highlight = MSC == 92 | MSC == 81 | MSC == 97) %>% 
+	ggplot() + 
+	aes(x = year, y = p_female, color = highlight, group = MSC) + 
+	# geom_line() + 
+	geom_smooth(se = F) + 
+	scale_color_manual(values = c("grey", "black")) + 
+	guides(color = F) +
+	scale_y_continuous(labels=scales::percent) +
+	xlab("Year PhD Granted") + 
+	ylab("Estimated % Female (smoothed)") +
+	annotate("text", x = 2003, y = 0.33, label = "92 (math bio)") + 
+	annotate("text", x = 2000, y = 0.05, label = "81 (quantum theory)") + 
+	annotate("text", x = 2002, y = 0.45, label = "97 (math education)")
+```
+
+:::
+:::
+
+## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> 
+
+### Other Questions We Can Ask
+
+:::
+
+::: {.column}
+
+<br> <br> <br> <br> <br>       
+
+- Who did their PhD at school $A$ and subsequently advised a thesis at school $B$? (proxy for hiring)
+- Which mathematicians were at school $B$ at approximately the time that a given scholar was hired?
+- Approximately how many female mathematicians were in the group of advisor $i$ at the time that a given student joined their group?
+
+
+:::
+
+
+
+
+
+
+
+## 
+
+#### Flows between elite institutions, by decade
+
+
+```{r}
+flows <- academic %>% 
+	filter(year > 1950) %>% 
+	inner_join(advisors, by = c("mid" = "advisor")) %>% 
+	left_join(academic, by = c("student" = "mid"), suffix = c("", "_new")) %>% 
+	select(mid, name, school, school_new, MSC, year) %>% 
+	distinct(name, school_new, .keep_all = TRUE)
+
+productive_schools <- flows %>% 
+	group_by(school) %>% 
+	summarise(n = n()) %>% 
+	mutate(rank = rank(-n)) %>% 
+	filter(rank < 15)
+
+flows <- flows %>% 
+	left_join(gender_preds, by = c("name" = "name_x")) 
+
+g <- flows %>% 	
+	select(mid, name, school, school_new, MSC, genderize, year) %>% 
+	filter(school_new != "", nchar(school_new) > 4) %>% 
+	group_by(school, school_new, year, genderize, MSC) %>% 
+	filter(school %in% productive_schools$school, 
+	       school_new %in% productive_schools$school) %>% 
+	summarize(n = n()) %>% 
+	filter(!is.na(genderize)) %>% 
+	
+	mutate(decade = 10*round(year/10)) %>% 
+	as_tbl_graph(source = "school", target = "school_new") 
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 6
+
+g %>% 
+	activate(nodes) %>% 
+	left_join(productive_schools, by = c("name" = "school")) %>% 
+ 	activate(edges) %>% 
+	filter(decade %in% c(1950, 1980, 2000)) %>% 
+	# ggraph(x = 0, y = n) + 
+	ggraph() + 
+	geom_node_point(size = 3, color = "slategray") + 
+	geom_edge_arc(aes(color = genderize), 
+				  arrow = arrow(length = unit(2, 'mm')),
+				  end_cap = circle(3, 'mm'),
+				  start_cap = circle(3, 'mm'),
+				  strength = 0.01, 
+				  alpha = 0.5) +
+	theme(legend.position = "bottom") +
+	ggraph::facet_edges(genderize~decade) + 
+	scale_edge_alpha_manual(values = c(1, .2)) %>% 
+	guides(edge_color = guide_legend(title = "Genderize.io Prediction"),
+	       alpha = "none") + 
+	scale_edge_color_manual(values = c("#293b49", "#ffb371"))
+```
+
+##
+
+#### By subfield
+
+```{r}
+#| fig-width: 12
+#| fig-height: 6
+
+
+productive_schools <- flows %>% 
+	group_by(school) %>% 
+	summarise(n = n()) %>% 
+	mutate(rank = rank(-n)) %>% 
+	filter(rank < 10)
+
+g <- flows %>% 
+	select(mid, name, school, school_new, MSC, genderize, year) %>% 
+	filter(school_new != "", nchar(school_new) > 4) %>% 
+	group_by(school, school_new, year, genderize, MSC) %>% 
+	filter(school %in% productive_schools$school, 
+	       school_new %in% productive_schools$school) %>% 
+	summarize(n = n()) %>% 
+	filter(!is.na(genderize))  %>% 
+	as_tbl_graph(source = "school", target = "school_new") 
+
+g %>% 
+ 	activate(edges) %>% 
+	filter(MSC %in% c(68, 91)) %>% 
+	ggraph() + 
+	geom_node_point(size = 3, color = "slategray") + 
+	geom_edge_arc(aes(color = genderize), 
+				  arrow = arrow(length = unit(2, 'mm')),
+				  end_cap = circle(3, 'mm'),
+				  start_cap = circle(3, 'mm'),
+				  strength = 0.01, 
+				  width = .2) +
+	theme(legend.position = "bottom") +
+	ggraph::facet_edges(MSC~genderize) + 
+	guides(edge_color = guide_legend(title = "Genderize.io Prediction"),
+	       alpha = "none") + 
+	scale_edge_color_manual(values = c("#293b49", "#ffb371"))     
+```
+
+##
+
+::: {.split-33} 
+
+::: {.column .bg1} 
+
+<br> <br> <br> 
+  
+#### Homophily effects 
+
+Do female advisors tend to recruit female students? 
+
+Do departments with high female gender representation attract more female faculty or students? 
+
+:::
+
+::: {.column .bg0}
+
+```{r}
+#| fig-height: 7
+#| fig-width: 7
+
+advisors %>% 
+	left_join(academic, by = c("advisor" = "mid")) %>% 
+	select(advisor, student, name, year) %>% 
+	left_join(academic, by = c("student" = "mid"), suffix = c("_advisor", "_student")) %>% 
+	select(name_advisor, name_student, year = year_advisor) %>% 
+	left_join(gender_pred, by = c("name_advisor" = "name_x")) %>% 
+	left_join(gender_pred, by = c("name_student" = "name_x"), suffix = c("_advisor", "_student")) %>% 
+	select(rule_2_advisor, rule_2_student, year) %>% 
+	group_by(year, rule_2_advisor) %>% 
+	summarise(pct_female = mean(rule_2_student == "female", na.rm = T)) %>% 
+	filter(!is.na(rule_2_advisor)) %>% 
+	filter(year >= 1950, year <= 2010) %>% 
+	ggplot() + 
+	aes(x = year, y = pct_female, color = rule_2_advisor) + 
+	geom_point() + 
+	scale_color_manual(values = c("#293b49", "#ffb371")) +
+	theme(legend.position = "bottom") + 
+	guides(color = guide_legend(title = "Estimated Advisor Gender")) + 
+	ylab("% Estimated Female PhD Advisees") + 
+	xlab("Year of Thesis") + 
+	scale_y_continuous(labels = scales::label_percent()) 
+```
+
+:::
+:::
+
+## {.split-33}
+
+::: {.column .bg1}
+
+<br> <br> <br> <br> <br> <br> <br>
+
+#### We want you! 
+
+:::
+
+::: {.column}
+
+<br> 
+
+::: {.incremental}
+
+- **Data analysis** 
+	- Wrangling
+	- Visualization
+	- Statistics
+	- Network analysis
+- **Modeling** 
+	- Compartmental
+	- Agent-based
+	- Network models
+- **Domain expertise** 
+	- EDI work in math departments
+	- Related models/techniques in other fields
+
+:::
+
+:::
+
+
+
+

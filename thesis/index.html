@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Structure, Dynamics, and Inference in Networks</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Phil Chodrow (MIT)" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style/css/DJN_xaringan_theme.css" type="text/css" />
+    <link rel="stylesheet" href="style/css/DJN_style.css" type="text/css" />
+    <link rel="stylesheet" href="style/css/pc_custom_style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <p>Structure, Dynamics, and Inference in Networks</p>
+### Phil Chodrow (MIT)
+
+---
+
+
+
+
+&lt;!-- This file was retrieved from file was retrieved from Danielle J. Navarro's repository "Robust Tools for Psychological Science" (https://github.com/djnavarro/robust-tools) */ --&gt;
+
+
+
+&lt;!-- layout: true --&gt;
+
+&lt;!-- &lt;div class="my-footer"&gt; --&gt;
+&lt;!-- &lt;span&gt; --&gt;
+&lt;!-- &lt;a href="https://djnavarro.link/robust-tools" target="_blank"&gt;djnavarro.link/robust-tools&lt;/a&gt; --&gt;
+&lt;!-- &lt;/span&gt; --&gt;
+&lt;!-- &lt;/div&gt; --&gt;
+
+&lt;!-- --- --&gt;
+
+
+
+---
+background-color: #000000
+background-image: url(img/picard_thanks.jpg)
+background-size: contain
+
+
+
+---
+
+# ...and you, and you, and... 
+
+### Advisors
+
+- Marta González (UC Berkeley)
+- Patrick Jaillet (MIT) 
+
+### Committee
+
+- David Gamarnik (MIT)
+- Peter Mucha (UNC Chapel Hill)
+
+### NSF (funding)
+
+.embolden[\+ Family, friends, collaborators, supporters, mentors...]
+
+---
+
+
+# Research Streams
+
+.large[
+.pink-bg[
+  .embolden[Random graphs in data science]
+  ]
+  
+.yellow-bg[
+  Structure and dynamics of spatial networks
+  ]
+  
+  .blue-bg[
+  Nonlinear and adaptive network models
+  ]
+]
+
+---
+
+# Chapters
+.midi[
+
+.pink-bg[
+
+.embolden[Configuration models of random hypergraphs] (2020). *Forthcoming: Journal of Complex Networks.*
+
+.embolden[Moments of uniformly random multigraphs with fixed degree sequences] (2020). *R&amp;R, SIAM Journal on Mathematics of Data Science*
+
+]
+
+.yellow-bg[
+.embolden[Structure and information in spatial segregation] (2017), *Proceedings of the National Academy of Sciences.*
+]
+
+.blue-bg[
+.embolden[Local symmetry and global structure in adaptive voter models] (2020). *SIAM Journal on Applied Mathematics.* *.embolden[(With Peter Mucha)]*
+]
+]
+
+---
+
+# Other Papers
+
+.midi[
+
+.pink-bg[
+.embolden[Annotated hypergraphs: Models and applications]. **PSC** and Andy Mellor, (2020). *Applied Network Science*.
+]
+
+.yellow-bg[
+.embolden[Demand and congestion in multiplex networks]. **PSC**, Zeyad al-Awwad, Shan Jiang, Marta González,  (2016). *PLoS ONE*
+
+.embolden[Heterogeneous spatial evolution of large metropolitan areas]. Emanuele Strano, **PSC** et al., (2020). *R&amp;R, Physical Review E*
+]
+.blue-bg[
+.embolden[Emergence of hierarchy in networked endorsement dynamics]. Mari Kawakatsu, Nicole Eikmeier,  **PSC**, and Dan Larremore,  *In preparation.*]
+
+]
+
+---
+
+# Messages for Today &lt;br&gt; .midi[(or, *What I Learned In My PhD*)]
+
+
+.large[
+.teal-bg[
+.embolden[\#MethodsMatter] in network science.
+]
+.teal-bg[
+Getting our methods right `\(\rightarrow\)` nontrivial mathematical problems. 
+]
+.teal-bg[
+These problems are fun, rich, and impactful. 
+]
+]
+
+
+---
+
+
+class: section, middle
+
+# Configuration Models of Random Hypergraphs
+
+### .right[.pink[PSC, *Forthcoming @ JCN* 2020]]
+
+---
+background-image: url(img/complex.png)
+background-size: contain
+
+.white-bg[
+
+# Null Modeling in Networks
+
+Suppose I measure the clustering coefficient of a social network `\(-\)` the tendency of my friends to know each other. I find `\(C = 0.3\)`.  
+
+Is that...high? Low? Interesting? Boring?
+
+.pink-highlight[
+How should we .embolden[benchmark] network measurements?
+]
+
+.embolden[Null hypothesis testing]: compare the measurement to its distribution under a **null model.** 
+]
+
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+.white-bg[
+# Classical Network Nulls
+
+.embolden[Erdős–Rényi]: place an edge with probability `\(p \in [0,1]\)` between every pair of nodes. 
+
+.embolden[Chung-Lu]: place an edge between nodes `\(i\)` and `\(j\)` w. p. `\(\propto \theta_i\theta_j\)`. Allows flexible specification of expected degrees. 
+
+.embolden[Configuration model]: sample uniformly from the space `\(\mathcal{G}_\mathbf{d}\)` of graphs with fixed degree sequence `\(\mathbf{d}\)`. 
+
+.pink-highlight[
+.embolden[Contribution of this chapter]: extend configuration model to ***hypergraphs***.
+] 
+]
+
+---
+
+# &lt;span style="background-color: #FFFFFF"&gt; Hypergraphs &lt;/span&gt;
+
+.centered-image[
+  ![:scale 60%](img/complex_dark.png)
+]
+
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+# Why Hypergraphs?
+
+.white-bg[
+Lots of systems we care about contain interactions between .embolden[groups] of agents: 
+
+- **Collaboration / coauthorship**: Congressional cosponsorship, networks of scholars;
+- **Co-presence**: drug combinations, patent classifications;
+- **Communication**: emails, tweets, etc.
+- ...
+]
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+# .midi[Configuration Models (Hypergraphs)]
+
+.white-bg[
+Observe a hypergraph with degree sequence `\(\mathbf{d} \in \mathbb{Z}^n\)` and **dimension sequence** `\(\mathbf{k} \in \mathbb{Z}^m\)`. 
+
+The  *configuration model* is the uniform probability distribution `\(\eta_{\mathbf{d}, \mathbf{k}}\)` over the space 
+`$$\mathcal{H}_{\mathbf{d}, \mathbf{k}} = \{H:\mathrm{deg}(H) = \mathbf{d}\;,\;\color{#0F4C81}{\mathrm{dim}(H) = \mathbf{k}}\}\;.$$`
+
+Definitions are cheap. How do we .embolden[sample]??
+]
+
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+.white-bg[
+# Markov Chain Sampling
+
+**Idea**: sample from `\(\eta_{\mathbf{d}, \mathbf{k}}\)` by crawling through `\(\mathcal{H}_{\mathbf{d}, \mathbf{k}}\)`. 
+
+.pink-bg[
+1. .embolden[Sample]: Pick two uniformly random edges `\(\Delta\)` and `\(\Gamma\)`.
+2. .embolden[Proposal]: Randomly resample nodes between `\(\Delta\)` and `\(\Gamma\)` while avoiding degeneracy.
+3. .embolden[Transition]: With probability `\(m_{\Delta}^{-1}m_{\Gamma}^{-1}\)`, record the resampled edges, otherwise start over. 
+]
+]
+
+.white-bg[
+**Theorem** (PSC 2020): This Markov chain is ergodic and its invariant measure is the configuration model `\(\eta_{\mathbf{d}, \mathbf{k}}\)`.
+]
+
+---
+background-image: url(img/complex.png)
+background-size: contain
+
+.white-bg[
+# Experiment 1: Triadic Closure
+
+`$$\bar{C} = \frac{1}{n}\sum_{v \in \mathcal{V}} \frac{T_v}{W_v}$$`
+
+- `\(T_v\)`: number of triangles incident to `\(v\)`. 
+- `\(W_v\)`: number of wedges at `\(v\)`. 
+
+Conventional wisdom since Watts-Strogatz (1998): many empirical networks are more clustered than can be explained by (dyadic) configuration models. 
+ 
+What about hypergraph configuration models?
+]
+
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+.white-bg[
+# Triadic Closure 
+
+|                                |   `\(C\)`    | `\(&lt;C&gt;_h\)` | `\(&lt;C&gt;_{2}\)` |
+| ------------------------------ | :------: | :-----: | :-------: |
+| **congress-bills**             |   0.61   |  0.60   |   0.45    | 
+| **coauth-Geology**             |   0.82   |  0.82   |   0.00    | 
+| .highlight[email-Enron]        |   0.66   |  0.84   |   0.64    | 
+| .highlight[email-Eu]           |   0.54   |  0.57   |   0.40    | 
+| .highlight[tags-ask-ubuntu]    |   0.57   |  0.61   |   0.18    | 
+| .highlight[threads-math-sx]    |   0.29   |  0.44   |   0.09    | 
+
+.footnote[Data from Benson et al. "Simplicial Closure and Higher-Order Link Prediction," *PNAS* (2018)]
+]
+---
+background-image: url(img/complex.png)
+background-size: contain
+
+# .midi[Experiment 2: The Intersection Profile]
+
+.white-bg[
+How "similar" are two interactions?
+
+Intersection profile: 
+
+`$$r(j) = \langle \mathbb{I}(\Delta \cap \Gamma) = j\rangle$$`
+
+"Among all pairs of edges, what proportion have intersection of size `\(j\)`?"
+
+Measures repeated interactions:  productive **teams** of researchers, chatty **groups** on email, etc.   
+]
+
+---
+
+
+# Enron Intersection Profile 
+
+.centered-image[
+![:scale 90%](img/intersection_profile_single.png)
+]
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+
+# Approximate Intersection Profiles
+
+.white-bg[
+Computing null intersection profiles can be very difficult for large data sets. 
+Fortunately, we can approximate: 
+
+.pink-bg[
+.embolden[Theorem ](PSC 2020):&lt;sup&gt;*&lt;/sup&gt; With high probability as `\(n\)` grows large, 
+
+.midi[$$r_\eta(j) = (1 + O(n^{-1}))j!\left \langle
+\binom{\vert \Delta\vert}{j}\right\rangle^2 \left(\frac{1}{n} \frac{\mathbb{E}[D^2] - \mathbb{E}[D]}{\mathbb{E}[D]^2}\right)^j$$]
+]
+
+*Terms and conditions apply. 
+]
+---
+
+background-image: url(img/large_intersections.png)
+background-size: contain
+
+# Profiles for Big Data™
+
+---
+
+background-image: url(img/complex.png)
+background-size: contain
+
+# Takeaways
+
+.white-bg[
+
+.pink-bg[
+.embolden[Polyadic data should be benchmarked using polyadic nulls.] 
+]
+
+Using polyadic models, we can 
+
+1. Revisit received wisdom in network science (triadic closure).
+2. Ask new, intrinsically polyadic questions  (intersection profiles). 
+
+`https://github.com/PhilChodrow/hypergraph`
+]
+
+
+---
+
+class: section, middle
+
+# Moments of Uniformly Random Multigraphs with Fixed Degree Sequences 
+
+## .right[.pink[PSC, R&amp;R @ *SIMODS*, 2020]]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+
+
+.white-bg[
+# .midi[Modularity]
+An objective function for .embolden[finding communities] in networks (terms and conditions apply). 
+
+Usually .embolden[defined] as: 
+
+`$$Q(\mathbf{G}) = \frac{1}{2m}\sum_{ij}\left[W_{ij} - \color{#0F4C81}{\mathbb{E}_\eta[W_{ij}]}\right]\delta(g_i, g_j)$$`
+
+- `\(\mathbf{G}\)`: a partition of nodes into groups. 
+- `\(\mathbf{W}\)`: a weighted adjacency matrix of a graph. 
+- `\(\color{#0F4C81}{\eta}\)`: "a random graph with degree sequence `\(\mathbf{d}\)`." 
+]
+
+.footnote[Newman + Girvan, "Finding and Evaluating Community Structure in Networks." *PRE*, (2003)]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+.white-bg[
+# .midi[Modularity]
+
+An objective function for  .embolden[finding communities] in networks (terms and conditions apply). 
+
+Usually .embolden[computed] as: 
+
+`$$Q(\mathbf{G}) = \frac{1}{2m}\sum_{ij}\left[W_{ij} - \color{#0F4C81}{\frac{d_id_j}{2m}}\right]\delta(g_i, g_j)$$`
+
+- `\(\mathbf{G}\)`: a partition of nodes into groups. 
+- `\(\mathbf{W}\)`: a weighted adjacency matrix of a graph. 
+- `\(\color{#0F4C81}{\eta}\)`: "a random graph with degree sequence `\(\mathbf{d}\)`." 
+]
+
+.footnote[Newman + Girvan, "Finding and Evaluating Community Structure in Networks." *PRE*, (2003) (12K citations)]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# A Folk Theorem
+
+.white-bg[
+.pink-highlight[
+The expected number of edges `\(\omega_{ij}\)` between two nodes in a .embolden["random"] graph .embolden["with degree sequence d]" is 
+
+$$ \omega_{ij} = \frac{d_id_j}{2m} + \text{small terms}\;.$$
+]
+
+This is right if you choose your random graph model .embolden[conveniently].
+
+- Chung-Lu model (.embolden[d] fixed in expectation)
+- Stub-matching (biased, not entropy-maximizing)
+]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+class: top
+
+# Which random graph?... 
+
+.white-bg[
+We .embolden[say]: "(entropy-maximizing) random graph." 
+
+We .embolden[mean]: "random graph that makes calculations convenient."
+
+
+.footnote[Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+.pink-bg[
+What if we *actually* used an entropy-maximizing random graph for calculations?]
+]
+
+---
+class: top
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+.white-bg[
+# The Uniform Random Graph
+
+Let `\(\mathcal{G}_\mathbf{d}\)` be the set of all .embolden[multigraphs] with fixed degree sequence `\(\mathbf{d}\)`. 
+
+The .embolden[uniform random graph model] `\(\eta_\mathbf{d}\)` is the probability distribution that assigns equal weight to each element of `\(\mathcal{G}_\mathbf{d}\)`. 
+
+`\(\eta_\mathbf{d}\)` is the entropy-maximizing random graph with fixed degree sequence `\(\mathbf{d}\)`. 
+]
+
+---
+
+# Edge-Swap Monte Carlo
+
+
+
+![](img/swaps.png)
+
+We can sample from `\(\eta_\mathbf{d}\)` by crawling through `\(\mathcal{G}_\mathbf{d}\)`.
+
+(This is just the dyadic version of the Markov chain we saw for hypergraphs)
+
+
+.footnote[Image from Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+---
+
+# Edge-Swap Monte Carlo
+
+![](img/swaps.png)
+
+1. .embolden[Sample edges] `\((i,j)\)` and `\((k,\ell)\)` with random orientations. 
+2. .embolden[Propose swap] `\((i,j), (k,\ell) \mapsto (i,\ell), (k,j)\)`.  
+3. .embolden[Accept swap] with probability `\(w_{ij}^{-1}w_{k\ell}^{-1}\)`. 
+
+.embolden[Theorem]&lt;sup&gt;1&lt;/sup&gt;: This successfully samples from `\(\eta_\mathbf{d}\)`.
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+
+---
+
+class: top
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# Analytical Approach
+
+.white-bg[
+Edge-Swap Monte Carlo is a stochastic process with known equilibrium distribution `\(\eta_\mathbf{d}\)`. 
+
+At equilibrium, .embolden[all expectations are fixed.] 
+
+`$$\mathbb{E}_\eta[f(G_{t+1}) - f(G_t)] = 0\;.$$` 
+
+If we choose `\(f(G) = w_{ij}^p\)` for `\(p = 1,\ldots\)` and handle .embolden[a lot] of algebra, we can get analytical approximations. 
+]
+---
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# Existence of an Edge
+
+.white-bg[
+Let `\(\beta_i = \mathbb{E}_\eta[\text{# of distinct neighbors of } i]\)`.
+
+.alert[
+.embolden[Theorem] (PSC 2020): `$$\chi_{ij}\triangleq \mathbb{E}_\eta[\mathbb{I}(W_{ij} &gt; 0)] = \left(1 + O(\beta^{-1})\right)\frac{\beta_i\beta_j}{\sum_\ell \beta_\ell}$$`
+]
+]
+
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# A Parallel
+
+.white-bg[
+.yellow-bg[.embolden[Folk Theorem]
+`$$\omega_{ij} \triangleq \mathbb{E}_\eta[W_{ij}] \stackrel{?}{=} \frac{d_id_j}{\sum_\ell d_\ell} + \text{small terms}$$`
+]
+
+.pink-bg[
+.embolden[Actual Theorem]: `$$\chi_{ij}\triangleq \mathbb{E}_\eta[\mathbb{I}(W_{ij} &gt; 0)] = \frac{\beta_i\beta_j}{\sum_\ell \beta_\ell} + \text{small terms}$$`
+]
+]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# Expected Edge Densities
+
+&lt;br&gt;
+
+.white-bg[
+.pink-bg[
+.embolden[Theorem] (PSC 2020): `$$\omega_{ij}\triangleq \mathbb{E}_\eta[W_{ij}] = \left(1 + O(\beta^{-1/2})\right)\frac{\chi_{ij}}{1 - \chi_{ij}}$$` 
+]
+
+Can also get higher-order moments: variances, etc. 
+]
+
+
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+# Computing `\(\beta\)` from `\(\mathbf{d}\)`
+
+.white-bg[
+
+The vector `\(\beta\)` approximately solves
+
+`$$h_i(\beta) \triangleq \sum_{j\neq i}\frac{\beta_i\beta_j}{\sum_\ell\beta_\ell - \beta_i\beta_j} = d_i \quad \forall i\;.$$`
+
+.alert[
+.embolden[Theorem] (PSC 2020): Solution of `\(\mathbb{h}(\beta) = \mathbb{d}\)` (if it exists) is unique on the set 
+`$$\mathcal{B} = \left\{\beta: \beta \geq \mathbf{0},\; \beta_i^2 &lt; \sum_\ell \beta_\ell \quad \forall i\right\}\;.$$`
+ 
+]
+]
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+.white-bg[
+# Proof Sketch
+We want to solve `\(\mathbf{h}(\beta) = \mathbf{d}\)`. 
+Equivalently, `$$\mathcal{L}(\beta) \triangleq \lVert \mathbf{h}(\beta) - \mathbf{d} \rVert^2 = \mathbf{0}$$`
+
+1. The Jacobian `\(\mathbf{J}\)` of `\(\mathbf{h}\)` has strictly positive eigenvalues on `\(\mathcal{B}\)` (linear algebra tricks).
+2. The Hessian `\(\mathcal{H}\)` of `\(\mathcal{L}\)` is positive-definite at all critical points of `\(\mathcal{L}\)` `\(\implies\)` all critical points are isolated local minima (more linear algebra tricks). 
+3. .embolden[Mountain Pass Theorem]:&lt;sup&gt;1&lt;/sup&gt; If two or more isolated local minima, `\(\exists\)` a third which is not a local minimum. 
+4. So, `\(\exists\)` at most one local minimizer of `\(\mathcal{L}\)` on `\(\mathcal{B}\)`. 
+
+.footnote[Bisgard, "Mountain Passes and Saddle Points," *SIREV* (2015)]
+]
+
+
+
+
+---
+
+# .midi[Experiments: High School Contact Data]
+
+.centered-image[![](img/sociopatterns.jpg)]
+
+.footnote[.embolden[SocioPatterns project]: Mastrandrea et al. (2015), Benson et al. (2018)]
+
+---
+
+background-image: url(img/eval_figs.png)
+background-size: contain
+
+### .midi[Evaluating Approximations]
+
+---
+
+background-image: url(img/error_matrices.png)
+background-size: contain
+
+## Estimating `\(\mathbb{E}[W]\)`
+
+---
+
+background-image: url(img/modularity_high_school.png)
+background-size: contain
+
+## Downstream Consequences: Modularity Maximization
+
+---
+
+background-image: url(img/Social_Network_Analysis_Visualization.png)
+background-size: contain
+
+.white-bg[
+# Takeaways
+
+Deploying random graph models requires that we 
+
+- Carefully articulate which ones we're using
+- Checking that our heuristics work
+
+Entropy-maximizing random graphs with fixed degree sequences break our standard heuristics, but we can get rigorous approximations. 
+
+.midi[`https://github.com/PhilChodrow/multigraph_moments`]
+]
+
+.large[[.hidden[LINK TO END]](#53)]
+
+
+---
+
+class: section, middle
+
+# Structure and Information in Spatial Segregation 
+
+### .right[.pink[PSC, *PNAS* 2017]]
+
+---
+
+background-image: url(img/detroit_zoom.png)
+background-size: cover
+
+.white-bg[
+# Spatial Segregation
+
+Segregation in the spaces inhabited or used by members of differing demographic classes. 
+
+Ongoing debate: How should we .embolden[measure] segregation?
+
+This chapter offers: 
+
+- A .embolden[unification] of many extant measures under the calculus of Bregman divergences. 
+- An accompanying suite of .embolden[analysis methods], using elementary information geometry and machine learning. 
+
+]
+
+
+---
+
+background-image: url(img/detroit_zoom.png)
+background-size: cover
+
+.white-bg[
+# .midi[Core Contributions]
+
+.yellow-highlight[
+.midi[
+
+`$$\lim_{r\rightarrow 0}I(X,Y|\lvert X - \mathbf{x}_0\rvert \leq r) = \frac{1}{4\pi} \text{Tr} (\nabla \alpha (\mathbf{x}_0)^T \mathcal{H}f_{\alpha(\mathbf{x}_0)} \nabla \alpha(\mathbf{x}_0))$$`
+
+A *resolution-independent* measurement of micro-scale segregation.
+]]
+
+![:scale 100%](img/detroit_joint.png)
+]
+---
+
+background-image: url(img/detroit_zoom.png)
+background-size: cover
+
+.white-bg[
+# .midi[Core Contributions]
+.yellow-highlight[
+Measurements of .embolden[extent] and .embolden[characteristic scale] of segregation in US cities. 
+]
+.centered-image[![:scale 70%](img/unevenness_density.png)]
+]
+
+---
+background-image: url(img/detroit_zoom.png)
+background-size: cover
+
+.white-bg[
+# Core Contributions
+
+.yellow-highlight[
+Information-maximization heuristics for .embolden[algorithmically identifying hierarchical spatial organization].
+]
+.centered-image[![:scale 80%](img/chicago_joint.png)]
+
+]
+---
+
+background-image: url(img/detroit_zoom.png)
+background-size: cover
+
+# Takeaways
+
+&lt;br&gt; 
+
+.large[
+.white-bg[
+Spatial segregation costs lives and treasure, but with the right theory it can cause fewer mathematical headaches for scholars and decision-makers. 
+
+.large[[.hidden[LINK TO END]](#53)]
+]]
+
+---
+
+class: section, middle
+
+# Local Symmetry and Global Structure in Adaptive Voter Models 
+
+### .right[.pink[PSC + Peter J. Mucha, *SIAP* 2020]]
+
+---
+
+background-image: url(img/network_sample.png)
+background-size: cover 
+
+# Adaptive Voter Models
+
+.white-bg[
+
+Nonlinear network models of opinion-based fragmentation. 
+
+- Nodes have opinions `\(\in \{0,1\}\)`. 
+- Nodes respond to disagreement by either  .embolden[changing their mind] or .embolden[changing their  social connections].
+
+.embolden[Long-run behavior:] either persistent disagreement or complete fragmentation, separated by a first-order phase transition. 
+]
+---
+
+background-image: url(img/phase_transition_basic.png)
+background-size: contain
+
+---
+
+# Approximations
+
+Extant approximations are often computationally challenging and predictively disappointing. 
+.pull-left[.midi[Approximate Master Equations ]
+
+![](img/AME.png)]
+.pull-right[.midi[Pair Approximation] 
+
+![](img/PA_approx.png)]
+
+
+---
+
+# Approximations
+
+.blue-bg[
+.embolden[Contribution]: We derived low-dimensional, accurate approximations using Markovian approximations to non-Markovian processes.
+]
+
+.centered-image[![:scale 110%](img/arch_top_row.png)]
+
+Performance depends on model variant, but is generally competitive with best extant approaches. 
+
+---
+
+background-image: url(img/network_sample.png)
+background-size: cover 
+
+# Takeaways
+
+.white-bg[
+.large[
+It is possible to achieve excellent approximation performance in these models.  
+
+However, universal methods for wide .embolden[classes] of models remain to be found.]
+]
+
+---
+
+class: section, middle
+
+# Wrapping Up
+
+
+---
+
+# Messages for Today &lt;br&gt; .midi[(or, *What I Learned In My PhD*)]
+
+.large[
+.teal-bg[
+.embolden[\#MethodsMatter] in network science.
+]
+.teal-bg[
+Getting our methods right `\(\rightarrow\)` nontrivial mathematical problems. 
+]
+.teal-bg[
+These problems are fun, rich, and impactful. 
+]
+]
+---
+
+# Future Work &lt;br&gt; .midi[(@UCLA and Beyond)]
+
+.pink-bg[
+Hypergraph mining (SBMs and modularity)
+]
+.blue-bg[
+Inference in generative models of interaction networks
+]
+.blue-bg[
+Bounded-confidence opinion models
+]
+
+
+---
+
+# Thanks again! 
+
+### Advisors
+
+- Marta González (UC Berkeley)
+- Patrick Jaillet (MIT)
+
+### Committee
+
+- David Gamarnik (MIT)
+- Peter Mucha (UNC Chapel Hill)
+
+### NSF (funding)
+
+\+ Family, friends, collaborators, supporters, mentors...
+
+---
+
+
+class: section, middle
+
+# Supplementary Slides
+
+
+---
+
+# Images
+
+Images depicting hypergraphs and simplicial complexes retrieved from Wikipedia.
+
+Image used as background for slides in "Multigraph Moments" section retrieved fro Wikipedia and created by 
+
+Martin Grandjean - Grandjean, Martin (2014). "La connaissance est un réseau". Les Cahiers du Numérique 10 (3): 37-54. DOI:10.3166/LCN.10.3.37-54.
+
+---
+
+# A Note on Stub-Matching
+
+.pull-left[.midi[
+
+Sometimes, "the configuration model" is defined via a stub-matching process. 
+
+This is related to the uniform model for .embolden[simple] graphs and hypergraphs.
+
+**Very few data sets are natively simple.**
+
+]] 
+
+.pull-right[
+
+![](img/stub-matching.png)
+]
+
+.footnote[&lt;sup&gt;1&lt;/sup&gt;Fosdick et al., "Configuring Random Graph Models with Fixed Degree Sequences", *SIAM Review* (2018)]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="style/js/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "3:2",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

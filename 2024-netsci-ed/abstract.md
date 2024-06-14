@@ -1,0 +1,5 @@
+## So, What Do I Do Now? Reflecting on Two Years a Small Liberal Arts College
+
+Many junior scholars in network science aim to pursue long-term careers in academia. The transition into a stable academic position often involves a shift in professional focus towards teaching. In this talk, I'll share some reflections on this shift in focus. My reflections are based on my personal experience after two years on the tenure track at a small liberal arts college (SLAC) in the US. My primary aims are to help early-career network scientists learn about the distinctive features of SLAC jobs; decide whether or not to pursue them; and prepare themselves for the job market and the first several years. Towards these aims, I'll briefly describe about how I navigated the job market; how I developed my teaching skills; how I've approached the incorporation of teaching as a major part of my professional identity; and how I'm thinking about my evolving research program at this stage in my career. 
+
+*This talk is primarily aimed at junior scholars who are thinking about their next academic career stage, as well as their graduate and postdoctoral mentors.* 

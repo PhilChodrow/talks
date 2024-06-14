@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Smoothly Nonlinear Opinion Dynamics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Heather Zinn Brooks (Harvey Mudd) Phil Chodrow (UCLA) Mason Porter (UCLA)" />
+    <link rel="stylesheet" href="../assets/ninpo.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/ninjutsu.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/shinobi.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/pc_custom.css" type="text/css" />
+    <link rel="stylesheet" href="css/colors-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Smoothly Nonlinear Opinion Dynamics
+## AMS Eastern Sectional<br>March 19th, 2022
+### Heather Zinn Brooks (Harvey Mudd)<br><span class="author-highlight">Phil Chodrow</span> (UCLA)<br>Mason Porter (UCLA)
+
+---
+
+exclude: true   
+&lt;style type="text/css"&gt;
+code.r{ 
+  font-size: 16px; 
+}
+pre {
+  font-size: 16px !important;  
+}
+&lt;/style&gt;
+
+
+---
+class: split-50 bg-main1 
+layout: false 
+ 
+.row[ 
+.split-three[
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/heather.jpeg" width=90%&gt; 
+  ]
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/mason.jpeg" width=90%&gt; 
+]
+.column[&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/phil_portrait.jpeg" width=90%&gt;   
+] 
+
+]
+]
+.row[ 
+.split-three[
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Heather Z. Brooks&lt;/nobr&gt;]]
+  &lt;nobr&gt;Mathematics&lt;/nobr&gt; &lt;br&gt; Harvey Mudd
+  .alert2[@HZinnbrooks]
+]  
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Mason Porter&lt;/nobr&gt;]]
+   Mathematics &lt;br&gt; UCLA      
+   .alert2[@masonporter]
+]
+.column[&lt;br&gt;
+  .font_large[.alert-no-bold[&lt;nobr&gt;Phil Chodrow&lt;/nobr&gt;]]
+  &lt;nobr&gt;Mathematics&lt;/nobr&gt; &lt;br&gt; UCLA
+  &lt;br&gt; .alert2[@PhilChodrow] &lt;br&gt;
+]
+]
+]
+
+---
+
+class: bg-main1
+layout: false
+
+
+.font_larger[.font_larger[&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+  *"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+
+---
+
+class: split-40
+layout: true
+
+
+.column.bg-main1[
+
+## Opinion Models
+&lt;br&gt; &lt;br&gt; &lt;br&gt; 
+- Each agent `\(i\)` has an opinion `\(x_i\)`. 
+- Agent `\(i\)` interacts with other agents `\(j_1,\ldots,j_k\)`. 
+- Agent `\(i\)` updates opinion `\(x_j\)` as a function of `\(x_{j_1},\ldots,x_{j_k}\)`. 
+- Interactions often structured by a social network. 
+
+Updates are usually **nonstrategic**, unlike in evolutionary games on graphs.  
+
+]
+
+.column[.vmiddle[
+  {{content}}
+  
+]]
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-1.jpeg" width=100%&gt;&lt;/img&gt; 
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%&gt;&lt;/img&gt; 
+
+---
+
+class: split-40
+layout: false
+
+
+.column.bg-main1[
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+According to the NYT Editorial Board, this is a violation of Riker's ***fundamental right*** to have his toxic opinions platformed at all times. 
+
+]
+
+.column[.vmiddle[
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/social-interaction-2.jpeg" width=100%&gt;&lt;/img&gt; 
+]]
+
+---
+
+class: split-two
+layout: true
+
+.column.bg-main1[
+
+## A Class of Networked Opinion Models
+
+&lt;br&gt; 
+Each agent `\(i\)` has opinion `\(x_i \in [-1, 1]\)`. 
+
+For today, we'll assume two .alert2[zealots] `\(x_- = -1\)` and `\(x_+ = 1\)` whose opinions don't change. 
+
+Continuous-time update: 
+
+
+`$$\dot{x}_i = \frac{\sum_{j \sim i}\color{#FFE1A8}{w}(x_i,x_j)(x_j - x_i)}{\sum_{j \sim i}\color{#FFE1A8}{w}(x_i, x_j)}$$`
+
+Here, `\(\color{#FFE1A8}{w}\)` is an .alert[influence kernel] that controls how nodes respond to other nodes based on their opinions.  
+
+
+
+]
+.column[
+  {{content}}
+]
+
+---
+
+---
+
+class: 
+
+## Consensus Dynamics 
+
+Set `\(w(x_i, x_j) = 1\)`, giving 
+
+`$$\dot{x}_i = \frac{1}{d_i}\sum_{j \sim i}(x_j - x_i)\;.$$`
+
+
+Unique, stable stationary state (harmonic function with poles at zealots). 
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=70% class="centered"&gt;
+
+&lt;div class="footnote-padded"&gt;    
+R. P. Abelson (1964), Mathematical models of the distribution of attitudes under controversy, &lt;i&gt;Contributions to Mathematical Psychology&lt;/i&gt;.
+&lt;/div&gt;
+
+---
+
+class: 
+
+## Bounded Confidence
+
+Set 
+$$
+w(x_i, x_j) = 
+`\begin{cases}
+  1 &amp; \quad \left|x_j - x_i\right| &lt; c\\
+  0 &amp; \quad \text{otherwise.}
+\end{cases}`
+$$ 
+
+Agents only interact with other agents if they are sufficiently close in opinion ("bounded confidence"). 
+
+This is **continuous-time Hegselmann-Krause (HK) dynamics.**
+
+&lt;div class="footnote-padded"&gt;    
+R. Hegselmann and U. Krause (2019), Consensus and fragmentation of opinions with a focus on bounded confidence, &lt;i&gt;The American Mathematical Monthly&lt;/i&gt;. 
+&lt;/div&gt;
+
+---
+
+class: 
+
+## Bounded Confidence
+
+Set 
+
+$$
+w(x_i, x_j) = 
+`\begin{cases}
+  1 &amp; \quad \left|x_j - x_i\right| &lt; c\\
+  0 &amp; \quad \text{otherwise.}
+\end{cases}`
+$$ 
+
+**Arbitrarily many** neutrally stable states for small `\(c\)`. 
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%&gt;
+
+
+---
+
+class: 
+
+## A Limitation
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+
+- Consensus dynamics: no entrenched disagreement. 
+- HK dynamics: lots of neutrally stable stationary states, can be arbitrarily poorly aligned with network structure. 
+
+
+&lt;div class="footnote-padded"&gt;
+  Still possible to tell some stories about fragmentation, see e.g. &lt;br&gt; &lt;br&gt; 
+
+  H. Z. Brooks and M. A. Porter (2020), A model for the influence of media on the ideology of content in online social networks, &lt;i&gt;Physical Review Research&lt;/i&gt;. 
+&lt;/div&gt;
+
+
+---
+
+layout: true
+
+## Interpolating the Influence Function
+
+{{content}}
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/influence-function-interp-0.png" width=90%&gt;
+
+---
+
+&lt;img src="../img-lib/nonlinear-opinion-dynamics/influence-function-interp-1.png" width=90%&gt;
+
+---
+
+layout: false 
+class: split-40
+
+.column.bg-main1[
+
+  ### Sigmoid Interpolation
+
+  &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+
+  `$$w(x_i, x_j) = \frac{1}{1 + e^{\color{#FFE1A8}{\gamma}(x_i - x_j)^2 - \color{#FFE1A8}{\gamma}\color{#73C3C4}{\delta}}}$$`
+
+  - `\(\color{#FFE1A8}{\gamma}\)` controls the .alert[steepness] of the curve. 
+  - `\(\color{#73C3C4}{\delta}\)` is analogous to the .alert2[confidence threshold] in the HK model. 
+
+
+]
+
+.column[
+  &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/influence-function-interp-1.png" width=100%&gt;
+]
+
+---
+class: bg-main1
+
+# Technical Questions
+
+
+.font_large[
+1. For .alert[small] `\(\color{#FFE1A8}{\gamma}\)`, do the stationary states resemble those of consensus dynamics? 
+{{content}}
+]
+--
+  - Yes! 
+{{content}}
+--
+1. For &lt;span class="alert"&gt;large&lt;/span&gt; `\(\color{#FFE1A8}{\gamma}\)`, do the stationary states resemble those of Hegselmann-Krause? 
+{{content}}
+--
+  - Mostly!  
+{{content}}
+--
+3. What happens &lt;span class="alert2"&gt; in between&lt;/span&gt;?
+{{content}}
+--
+  - Fun stuff!  
+{{content}}
+--
+  - Including some special cases that speak to the stability/echo chamber question. 
+---
+
+
+
+## Small `\(\gamma\)` behaves like consensus dynamics
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+.font_large[
+**Theorem (HZB, PSC, MAP '22)**: For sufficiently small `\(\gamma \geq 0\)`, there is a unique stationary state `\(\mathbf{\bar{x}}(\gamma)\)`, and this state is continuous as a function of `\(\gamma\)`. 
+
+**Proof**: Direct  from  implicit function theorem (everything in sight is smooth). 
+]
+
+---
+
+layout: false
+background-image: url(../img-lib/nonlinear-opinion-dynamics/karate.png)
+background-size: contain
+
+---
+
+## Large `\(\gamma\)` behaves like Hegselmann-Krause
+
+&lt;br&gt;
+
+.font_large[
+**Theorem (HZB, PSC, MAP '22)**: As `\(\gamma \rightarrow \infty\)`, it holds that any stationary state of our model can be made arbitrarily close to some HK stationary state. 
+
+**Lemma (HZB, PSC, MAP '22)**: Only HK states in which each node has a neighbor within opinion distance `\(\sqrt{\delta}\)` can be approximated by ***stable*** stationary states of our model. 
+
+
+
+]
+
+
+---
+class: 
+layout: true
+
+
+.split-three[
+  .column[
+  ### Small `\(\gamma\)`
+
+  &lt;br&gt; 
+  Consensus-like.
+
+  Unique stationary state.
+
+  &lt;br&gt; &lt;br&gt; 
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-harmonic.png" width=90%&gt;
+  ]
+  .column[.content[
+  ### In between &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+  **Bifurcations ahoy!** 
+
+  &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+  *But we'll focus on one specific case.*
+  ]
+  ]
+  .column[
+  ### Large `\(\gamma\)`
+  &lt;br&gt; 
+  Bounded-confidence-like.
+
+  Many stationary states.
+
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-random-1.png" width=90%&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/karate-random-2.png" width=90%&gt;
+  ] 
+]
+
+
+---
+class: hide-col2
+---
+class:
+
+---
+
+class: bg-main1 middle
+layout: false  
+
+
+.font_large[
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]
+
+
+---
+
+layout: true 
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt; 
+
+**Theorem (HZB, PSC, MAP '22)**: Let `\(u = w(0, 0)\)` and `\(v= w(0,1)\)`. Suppose that every node is connected to both zealots, and suppose that the graph of persuadable nodes is regular (all nodes have same degree). Then: 
+- `\(\bar{\mathbf{x}} = \mathbf{0}\)` is a stable stationary state. 
+- The space of unstable directions at `\(\bar{\mathbf{x}}\)` is spanned by the eigenvectors of the graph Laplacian with eigenvalues satisfying 
+
+`$$\lambda \leq - \frac{2v(1 - 2\gamma(1-v))}{u}\;.$$` 
+
+{{content}}
+
+---
+class: 
+
+**Proof**: Relatively direct (though slightly grubby) computation of the Jacobian at `\(\bar{\mathbf{x}}\)`. 
+
+---
+class: 
+
+Unstable directions that emerge first: 
+
+1. `\(\mathbf{v}_1 = \mathbf{1}\)` perturbs all nodes equally in the direction of one of the two zealots. 
+2. `\(\mathbf{v}_2\)` is the *Fiedler eigenvector* that is often interpreted as containing community structure. 
+
+The *persistent disagreement* state that emerges first is aligned with `\(\mathbf{v}_2\)`.     
+
+---
+
+layout: false
+background-image: url(../img-lib/nonlinear-opinion-dynamics/paired-cliques-misaligned.png)
+background-size: contain
+
+---
+
+background-image: url(../img-lib/nonlinear-opinion-dynamics/paired-cliques-aligned.png)
+background-size: contain
+layout: false
+
+---
+
+class: split-20 
+layout: false  
+
+.row[
+.font_large[&lt;br&gt; 
+*"Fragmented social networks reinforce the stability of entrenched disagreement."*
+]]
+.row[.split-50[
+  .column[
+    &lt;br&gt;&lt;br&gt;&lt;br&gt; 
+
+  In our model, in this special case, when opinion groupings are aligned with graph topology; 
+
+  1. The consensus solution is linearly unstable in the direction of polarization in a larger region of parameter space. 
+  2. There are more stable polarized solutions in larger regions of parameter space. 
+
+
+    ]
+  .column[.centered-image[.stretch[
+    &lt;img src="../img-lib/nonlinear-opinion-dynamics/aligned-excerpt.png" width=100%&gt;
+    ]]]
+]
+]
+
+---
+
+class: split-40
+
+.column.bg-main1[
+# Summing Up
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+We used a simple logistic sigmoid to interpolate the influence kernels in two well-known opinion models. 
+]
+
+.column[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/influence-function-interp-1.png" width=100%&gt;
+]
+
+---
+
+class: split-40
+
+.column.bg-main1[
+# Summing Up
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+This interpolation recovers equilibrium behavior of both extremal models in suitable limits. 
+]
+
+.column[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/karate.png" width=100%&gt;
+]
+
+---
+
+class: split-40
+
+.column.bg-main1[
+# Summing Up
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+]
+
+.column[&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.centered[
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/aligned-excerpt.png" width=90%&gt;
+]
+]
+
+
+---
+
+class: split-40
+
+.column.bg-main1[
+# Summing Up
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; 
+This interpolation also allows analytic treatment of the relationship between .alert[graph topology] and .alert2[dynamical stability] of opinion states. 
+
+There's some complex structure in the equilibria of even simple cases. Lots more to learn! 
+]
+
+.column[&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.centered[
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/aligned-excerpt.png" width=90%&gt;
+]
+]
+
+---
+
+class: split-50
+
+.column.bg-main1[
+# Thanks!
+
+
+
+.alert[Awesome organizers]:
+
+- Olivia Chu
+- Daniel Cooney
+- Chadi Saad-Roy
+
+.alert[Awesome collaborators]:
+
+.split-two[
+.column[.lil-stretch[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/heather.jpeg" width=90%&gt; 
+  .alert[**Heather Zinn Brooks**] &lt;br&gt; Harvey Mudd 
+  ]
+  ]
+.column[
+  .lil-stretch[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;img src="../img-lib/nonlinear-opinion-dynamics/mason.jpeg" width=90%&gt; 
+  .alert[**Mason Porter**] &lt;br&gt; UCLA
+  ]
+]]
+]
+
+.column[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# Questions?
+
+.footnote[
+  Preprint coming, uh...sometime. Soon? Let's say soon!
+]
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
