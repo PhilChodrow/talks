@@ -145,13 +145,13 @@ One answer for today: **2-edge motifs**.
 
 ### How common are large intersections in empirical hypergraphs? 
 
-One way to measure this is to define an temporal *intersection profile*
+For the remainder of this talk, we'll consider hypergraphs in which each edge has a discrete time-index: $e_0, \; e_1, \ldots, e_t,\ldots$.
+
+One way to measure the prevalence of intersections is to define an temporal *intersection profile*
 
 $$r_k^{(t)} \triangleq \eta_t(\lvert e\cap f \rvert = k)\;,$$
 
 where $\eta_t$ is the empirical law of the hypergraph $H^{(t)}$ containing only edges with indices up to $t$ and $e$, $f$ are sampled uniformly from $H^{(t)}$.
-
-For the remainder of this talk, we'll consider hypergraphs in which each edge has a discrete time-index: $e_0, \; e_1, \ldots, e_t,\ldots$.
 
 [Sometimes there is a natural indexing of edges via temporal timestamps; other times we need to assign indices arbitrarily.]{.footnote}
 
@@ -161,9 +161,9 @@ For the remainder of this talk, we'll consider hypergraphs in which each edge ha
 ::: {.column}
 
 
-In empirical temporal hypergraphs, the intersection profile often $r_k^{(t)}$ decays at rates close to $t^{-1}$, *regardless of $k$*. 
+In empirical temporal hypergraphs, the intersection profile often $r_k^{(t)}$ decays at rates which are independent of $k$ and close to $t^{-1}$, *regardless of $k$*. 
 
-This is interesting because a fully random null model of hypergraph growth would predict that $k$-intersections decay at rate $t^{-k}$. 
+This is interesting because an growing Erdős–Rényi hypergraph would have $k$-intersections which decay at rate $t^{-k}$. 
 
 [Benson et al. (2018). Simplicial closure and higher-order link prediction. *PNAS*<br> Chodrow (2020). Configuration models of random hypergraphs. *JCN* <br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. *EPJ Data Sci.*]{.footnote .absolute bottom=0} 
 
@@ -176,7 +176,7 @@ Can we model this?
 ![](fig/empirical-intersections.png){fig-align="center" height=500}
 
 
-[Dashed line gives slope of $m^{-1}$ decay.]{.footnote}
+[Dashed line gives slope of $t^{-1}$ decay.]{.footnote}
 
 :::
 
@@ -365,7 +365,7 @@ In each timestep $t$:
 
 <br> <br> <br>
 
-**Claim** (He, Chodrow, Mucha '23): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
+**Proposition** (He, Chodrow, Mucha '23): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
 $$
 p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
 $$
@@ -394,7 +394,7 @@ Reminders:
 ::: {.column}
 
 <br> <br> <br> <br> 
-**Claim**: There exist constants $q_k$ such that, as $m\rightarrow \infty$, 
+**Proposition**: There exist constants $q_k$ such that, as $m\rightarrow \infty$, 
 
 $$
 \begin{aligned}
@@ -464,7 +464,7 @@ Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with
 ::: {.font_smaller}
 ::: {.font_smaller}
 
-|          	| $n$    	| $m$    	| TECH AUC   	| NHP AUC | LHP AUC    	|
+|          	| $n$    	| $m$    	| Our Model   | NHP AUC | LHP AUC    	|
 |----------	|--------	|--------	|-----------	|--------	|-----------	|
 | iAF1260b 	| 1,668  	| 2,084  	| **0.643** 	| 0.582  	| 0.639     	|
 | iJO1366  	| 1,805  	| 2,253  	| **0.769** 	| 0.599  	| 0.638     	|
@@ -475,7 +475,7 @@ Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with
 :::
 :::
 
-
+We are competitive with neural networks using an 11-parameter model!
 
 
 ## {.split-40}

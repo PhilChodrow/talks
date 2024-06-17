@@ -424,17 +424,17 @@
 <section id="section-7" class="slide level2">
 <h2></h2>
 <h3 id="how-common-are-large-intersections-in-empirical-hypergraphs">How common are large intersections in empirical hypergraphs?</h3>
-<p>One way to measure this is to define an temporal <em>intersection profile</em></p>
+<p>For the remainder of this talk, we’ll consider hypergraphs in which each edge has a discrete time-index: <span class="math inline">\(e_0, \; e_1, \ldots, e_t,\ldots\)</span>.</p>
+<p>One way to measure the prevalence of intersections is to define an temporal <em>intersection profile</em></p>
 <p><span class="math display">\[r_k^{(t)} \triangleq \eta_t(\lvert e\cap f \rvert = k)\;,\]</span></p>
 <p>where <span class="math inline">\(\eta_t\)</span> is the empirical law of the hypergraph <span class="math inline">\(H^{(t)}\)</span> containing only edges with indices up to <span class="math inline">\(t\)</span> and <span class="math inline">\(e\)</span>, <span class="math inline">\(f\)</span> are sampled uniformly from <span class="math inline">\(H^{(t)}\)</span>.</p>
-<p>For the remainder of this talk, we’ll consider hypergraphs in which each edge has a discrete time-index: <span class="math inline">\(e_0, \; e_1, \ldots, e_t,\ldots\)</span>.</p>
 <p><span class="footnote">Sometimes there is a natural indexing of edges via temporal timestamps; other times we need to assign indices arbitrarily.</span></p>
 </section>
 <section id="section-8" class="slide level2 split-40">
 <h2></h2>
 <div class="column">
-<p>In empirical temporal hypergraphs, the intersection profile often <span class="math inline">\(r_k^{(t)}\)</span> decays at rates close to <span class="math inline">\(t^{-1}\)</span>, <em>regardless of <span class="math inline">\(k\)</span></em>.</p>
-<p>This is interesting because a fully random null model of hypergraph growth would predict that <span class="math inline">\(k\)</span>-intersections decay at rate <span class="math inline">\(t^{-k}\)</span>.</p>
+<p>In empirical temporal hypergraphs, the intersection profile often <span class="math inline">\(r_k^{(t)}\)</span> decays at rates which are independent of <span class="math inline">\(k\)</span> and close to <span class="math inline">\(t^{-1}\)</span>, <em>regardless of <span class="math inline">\(k\)</span></em>.</p>
+<p>This is interesting because an growing Erdős–Rényi hypergraph would have <span class="math inline">\(k\)</span>-intersections which decay at rate <span class="math inline">\(t^{-k}\)</span>.</p>
 <p><span class="footnote absolute" style="bottom: 0px; ">Benson et al.&nbsp;(2018). Simplicial closure and higher-order link prediction. <em>PNAS</em><br> Chodrow (2020). Configuration models of random hypergraphs. <em>JCN</em> <br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. <em>EPJ Data Sci.</em></span></p>
 <p>Can we model this?</p>
 </div>
@@ -444,7 +444,7 @@
 <p><img data-src="fig/empirical-intersections.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
-<p><span class="footnote">Dashed line gives slope of <span class="math inline">\(m^{-1}\)</span> decay.</span></p>
+<p><span class="footnote">Dashed line gives slope of <span class="math inline">\(t^{-1}\)</span> decay.</span></p>
 </div>
 </section>
 <section id="section-9" class="slide level2 split-50">
@@ -556,7 +556,7 @@
 <h3 id="power-law-heavy-tailed-degree-distribution"><del>Power-Law</del> Heavy-Tailed Degree Distribution</h3>
 <div class="column">
 <p><br> <br> <br></p>
-<p><strong>Claim</strong> (He, Chodrow, Mucha ’23): As <span class="math inline">\(t\)</span> grows large, the degrees of <span class="math inline">\(H_t\)</span> converge in distribution to a power law with exponent<br>
+<p><strong>Proposition</strong> (He, Chodrow, Mucha ’23): As <span class="math inline">\(t\)</span> grows large, the degrees of <span class="math inline">\(H_t\)</span> converge in distribution to a power law with exponent<br>
 <span class="math display">\[
 p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
 \]</span></p>
@@ -576,7 +576,7 @@ p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X
 <h2></h2>
 <h3 id="edge-intersections">Edge Intersections</h3>
 <div class="column">
-<p><br> <br> <br> <br> <strong>Claim</strong>: There exist constants <span class="math inline">\(q_k\)</span> such that, as <span class="math inline">\(m\rightarrow \infty\)</span>,</p>
+<p><br> <br> <br> <br> <strong>Proposition</strong>: There exist constants <span class="math inline">\(q_k\)</span> such that, as <span class="math inline">\(m\rightarrow \infty\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
 r_{k}(t) \simeq \begin{cases}
@@ -635,7 +635,7 @@ r_{k}(t) \simeq \begin{cases}
 <th></th>
 <th><span class="math inline">\(n\)</span></th>
 <th><span class="math inline">\(m\)</span></th>
-<th>TECH AUC</th>
+<th>Our Model</th>
 <th>NHP AUC</th>
 <th>LHP AUC</th>
 </tr>
@@ -671,6 +671,7 @@ r_{k}(t) \simeq \begin{cases}
 </div>
 </div>
 </div>
+<p>We are competitive with neural networks using an 11-parameter model!</p>
 </section>
 <section id="section-22" class="slide level2 split-40">
 <h2></h2>
