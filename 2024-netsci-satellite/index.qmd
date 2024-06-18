@@ -109,7 +109,7 @@ One answer for today: **2-edge motifs**.
 
 ## 
 
-### Motifs in Graphs
+### Motifs in graphs
 
 
 ![](fig/motifs.jpeg){height=400 fig-align="center"}
@@ -118,7 +118,7 @@ One answer for today: **2-edge motifs**.
 
 ## 
 
-### Motifs in Graphs
+### Motifs in graphs
 
 
 ![](fig/motifs-highlighted.jpeg){height=400 fig-align="center"}
@@ -134,7 +134,7 @@ One answer for today: **2-edge motifs**.
 
 ## 
 
-### 2-Edge Motifs in Hypergraphs
+### 2-edge motifs in hypergraphs
 
 **Claim**: *What's special about the structure of hypergraphs is that they have diverse, undirected, two-edge motifs: [**intersections**]{.alert}.* 
 
@@ -143,11 +143,11 @@ One answer for today: **2-edge motifs**.
 
 ##
 
-### How common are large intersections in empirical hypergraphs? 
+#### How common are large intersections in empirical hypergraphs? 
 
 For the remainder of this talk, we'll consider hypergraphs in which each edge has a discrete time-index: $e_0, \; e_1, \ldots, e_t,\ldots$.
 
-One way to measure the prevalence of intersections is to define an temporal *intersection profile*
+One way to measure the prevalence of intersections is to define an temporal *intersection profile*: the probability of an intersection of size $k$ when picking two uniformly random edges. 
 
 $$r_k^{(t)} \triangleq \eta_t(\lvert e\cap f \rvert = k)\;,$$
 
@@ -160,14 +160,13 @@ where $\eta_t$ is the empirical law of the hypergraph $H^{(t)}$ containing only 
 
 ::: {.column}
 
+#### Intersections
 
-In empirical temporal hypergraphs, the intersection profile often $r_k^{(t)}$ decays at rates which are independent of $k$ and close to $t^{-1}$, *regardless of $k$*. 
+In empirical temporal hypergraphs, the intersection profile $r_k^{(t)}$ often decays at rates close to $t^{-1}$ or $t^{-2}$, *regardless of $k$*. 
 
 This is interesting because an growing Erdős–Rényi hypergraph would have $k$-intersections which decay at rate $t^{-k}$. 
 
-[Benson et al. (2018). Simplicial closure and higher-order link prediction. *PNAS*<br> Chodrow (2020). Configuration models of random hypergraphs. *JCN* <br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. *EPJ Data Sci.*]{.footnote .absolute bottom=0} 
-
-Can we model this?
+[Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. *PNAS*<br> <br> Chodrow (2020). Configuration models of random hypergraphs. *JCN* <br><br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. *EPJ Data Sci.*]{.footnote .absolute bottom=0}  
 
 :::
 
@@ -176,7 +175,7 @@ Can we model this?
 ![](fig/empirical-intersections.png){fig-align="center" height=500}
 
 
-[Dashed line gives slope of $t^{-1}$ decay.]{.footnote}
+[Dashed lines give slope of $t^{-1}$ and $t^{-2}$ decay.]{.footnote}
 
 :::
 
@@ -188,7 +187,7 @@ Can we model this?
 
 ::: {.column .bg1}
 
-### Ongoing work with...
+#### Ongoing work with...
 
 
 ![](fig/xie-he.jpeg){.absolute height=200 top=150} 
@@ -214,6 +213,21 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 :::
 
+## 
+
+<br> <br> <br> <br> <br> <br> 
+
+##### Motivation: New edges are usually pretty similar to some older edges. 
+
+
+[
+Benson, Kumar, and Tomkins (2018). Sequences of Sets. *KDD* 
+<br> <br> 
+Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. *PNAS*
+]{.footnote}
+
+
+
 
 ## {.split-30}
 
@@ -221,7 +235,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### In each timestep...
+#### In each timestep...
 
 :::
 
@@ -239,7 +253,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Select a random edge
+#### Select a random edge
 
 :::
 
@@ -255,7 +269,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Select random nodes from edge
+#### Select random nodes from edge
 
 :::
 
@@ -271,9 +285,9 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Add nodes from hypergraph
+#### Add nodes from hypergraph
 
-### Add novel nodes
+#### Add novel nodes
 
 :::
 
@@ -289,7 +303,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Form edge
+#### Form edge
 
 :::
 
@@ -305,7 +319,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Repeat
+#### Repeat
  
 :::
 
@@ -322,7 +336,7 @@ Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 <br> <br> <br> 
 
-### Repeat
+#### Repeat
 
 :::
 
@@ -358,12 +372,12 @@ In each timestep $t$:
 
 ## {.split-50}
 
-### ~~Power-Law~~ Heavy-Tailed Degree Distribution
+#### ~~Power-law~~ heavy-tailed degree distribution
 
 ::: {.column}
 
 
-<br> <br> <br>
+<br> <br> 
 
 **Proposition** (He, Chodrow, Mucha '23): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
 $$
@@ -381,20 +395,29 @@ Reminders:
 
 ::: {.column}
 
-<br> <br> <br> 
+<br> <br> 
 
 ![](fig/hypergraph-degree-distribution-experiment.png)
 
+
+[Some connections to preferential attachment hypergraphs: 
+<br> <br> 
+Avin, Lotker, Nahum, and Peleg (2019). Random preferential attachment hypergraph. *ASONAM* 
+<br> <br> 
+Roh and Goh (2023) Growing hypergraphs with preferential linking. *J. Korean Phys. Soc.*
+]{.footnote}
+
 :::
 
-## {.split-40}
 
-### Edge Intersections 
+## 
 
-::: {.column}
+### Edge intersections 
 
-<br> <br> <br> <br> 
-**Proposition**: There exist constants $q_k$ such that, as $m\rightarrow \infty$, 
+
+
+<br> 
+**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
 
 $$
 \begin{aligned}
@@ -405,7 +428,39 @@ r_{k}(t) \simeq \begin{cases}
 \end{aligned}
 $$
 
-Furthermore, the constants $\{q_k\}$ can be found by solving an eigenproblem $\mathbf{A}\mathbf{q} = \mathbf{q}$, where the matrix $\mathbf{A}$ is determined by the model parameters. 
+Here, $q_k = \sum_{ij} q_{ijk}$ and $\{q_{ijk}\}$ solve the system 
+
+$$
+q_{ijk} = \begin{cases}
+  \frac{1}{2}\sum_{\ell} \left(q_{\ell j 0} \alpha_{i0|\ell j0} + q_{j \ell 0} \alpha_{i0|j\ell 0}\right) & \quad  k = 0\\
+  \frac{1}{2}\beta_{ik|j} \sum_{\ell} (q_{\ell j0} + q_{j\ell 0}) + \frac{1}{2}\sum_{\ell, h\geq k}  \left(q_{\ell j h} \alpha_{ik|\ell jh} + q_{j \ell h} \alpha_{ik|j\ell h}\right) &\quad k \geq 1\;,
+\end{cases}
+$$
+
+where $\alpha_{ik|\ell jh}$ and $\beta_{ik|j}$ are constants determined by the model parameters. 
+
+[These come out of linearized compartmental equations.]{.footnote}
+
+
+
+## {.split-40}
+
+### Edge intersections 
+
+::: {.column}
+
+<br> <br> <br> <br> <br> <br> 
+**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
+
+$$
+\begin{aligned}
+r_{k}(t) \simeq \begin{cases}
+  q_k & \quad \text{if } k \leq k_0\\
+  t^{-1} q_k &\quad \mathrm{otherwise}\;.
+\end{cases}
+\end{aligned}
+$$
+
 
 :::
 
@@ -413,7 +468,9 @@ Furthermore, the constants $\{q_k\}$ can be found by solving an eigenproblem $\m
 
 <br> 
 
-![](fig/intersection-asymptotics-no-theory.png){.absolute top=100 left=50 width=500}
+
+
+![](fig/intersection-asymptotics-no-theory.png){.absolute top=100 left=50 width=500 .fragment}
 ![](fig/intersection-asymptotics.png){.absolute top=100 left=50 width=500 .fragment}
 
 :::
@@ -423,7 +480,7 @@ Furthermore, the constants $\{q_k\}$ can be found by solving an eigenproblem $\m
 
 ::: {.column}
 
-#### Learning From Data
+#### Learning from data
 
 **Aim**: given the sequence of edges $\{e_t\}$, estimate: 
 
@@ -433,7 +490,7 @@ Furthermore, the constants $\{q_k\}$ can be found by solving an eigenproblem $\m
 
 **Expectation maximization:**
 
-1. For each edge $e_t$, form a belief about which prior edge $e \in H_{t-1}$ $e_t$ was sampled from. 
+1. For each edge $e_t$, form a belief about which prior edge $f \in H_{t-1}$ $e_t$ was sampled from. 
 2. Maximize the expected complete log-likelihood with respect to $\alpha$, $p_X$, and $p_Y$ under this belief. 
 
 :::
@@ -451,12 +508,12 @@ Furthermore, the constants $\{q_k\}$ can be found by solving an eigenproblem $\m
 
 ##
 
-##### Simple Models Can Be Predictive!
+##### Simple models can be predictive!
 
-We computed AUC scores for a link prediction task in which our model learns parameters on 20% training data from three metabolic and organic reaction data sets. We compared these against previously-reported AUC scores for two dedicated **neural** network hypergraph link prediction algorithms. 
+We computed AUC scores for a link prediction task in which our model learns parameters on 20% training data from three metabolic and organic reaction data sets with edges up to size 5. We compared these against previously-reported AUC scores on the same task for two dedicated **neural** network hypergraph link prediction algorithms. 
 
-[Yadati et al. (2020) NHP: Neural Hypergraph Link Prediction. *CIKM* <br> 
-Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with Applications*]{.footnote}
+[Yadati et al. (2020) NHP: Neural Hypergraph Link Prediction. *CIKM* <br> <br> 
+Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with Applications*]{.footnote}  
 
 
 ::: {.font_smaller}
@@ -464,7 +521,7 @@ Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with
 ::: {.font_smaller}
 ::: {.font_smaller}
 
-|          	| $n$    	| $m$    	| Our Model   | NHP AUC | LHP AUC    	|
+|          	| $n$    	| $m$    	| Our model   | NHP AUC | LHP AUC    	|
 |----------	|--------	|--------	|-----------	|--------	|-----------	|
 | iAF1260b 	| 1,668  	| 2,084  	| **0.643** 	| 0.582  	| 0.639     	|
 | iJO1366  	| 1,805  	| 2,253  	| **0.769** 	| 0.599  	| 0.638     	|
@@ -482,7 +539,7 @@ We are competitive with neural networks using an 11-parameter model!
 
 ::: {.column .bg1}
 
-### Summing Up
+### Summing up
 
 Hypergraphs are locally distinct from graphs in that they have interesting two-edge motifs (intersections). 
 

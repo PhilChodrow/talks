@@ -388,7 +388,7 @@
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<h3 id="motifs-in-graphs">Motifs in Graphs</h3>
+<h3 id="motifs-in-graphs">Motifs in graphs</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="fig/motifs.jpeg" class="quarto-figure quarto-figure-center" height="400"></p>
@@ -398,7 +398,7 @@
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<h3 id="motifs-in-graphs-1">Motifs in Graphs</h3>
+<h3 id="motifs-in-graphs-1">Motifs in graphs</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="fig/motifs-highlighted.jpeg" class="quarto-figure quarto-figure-center" height="400"></p>
@@ -413,7 +413,7 @@
 <img data-src="fig/undirected-graph-motifs.svg" class="r-stretch"></section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<h3 id="edge-motifs-in-hypergraphs">2-Edge Motifs in Hypergraphs</h3>
+<h3 id="edge-motifs-in-hypergraphs">2-edge motifs in hypergraphs</h3>
 <p><strong>Claim</strong>: <em>What’s special about the structure of hypergraphs is that they have diverse, undirected, two-edge motifs: <span class="alert"><strong>intersections</strong></span>.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -423,9 +423,9 @@
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<h3 id="how-common-are-large-intersections-in-empirical-hypergraphs">How common are large intersections in empirical hypergraphs?</h3>
+<h4 id="how-common-are-large-intersections-in-empirical-hypergraphs">How common are large intersections in empirical hypergraphs?</h4>
 <p>For the remainder of this talk, we’ll consider hypergraphs in which each edge has a discrete time-index: <span class="math inline">\(e_0, \; e_1, \ldots, e_t,\ldots\)</span>.</p>
-<p>One way to measure the prevalence of intersections is to define an temporal <em>intersection profile</em></p>
+<p>One way to measure the prevalence of intersections is to define an temporal <em>intersection profile</em>: the probability of an intersection of size <span class="math inline">\(k\)</span> when picking two uniformly random edges.</p>
 <p><span class="math display">\[r_k^{(t)} \triangleq \eta_t(\lvert e\cap f \rvert = k)\;,\]</span></p>
 <p>where <span class="math inline">\(\eta_t\)</span> is the empirical law of the hypergraph <span class="math inline">\(H^{(t)}\)</span> containing only edges with indices up to <span class="math inline">\(t\)</span> and <span class="math inline">\(e\)</span>, <span class="math inline">\(f\)</span> are sampled uniformly from <span class="math inline">\(H^{(t)}\)</span>.</p>
 <p><span class="footnote">Sometimes there is a natural indexing of edges via temporal timestamps; other times we need to assign indices arbitrarily.</span></p>
@@ -433,10 +433,10 @@
 <section id="section-8" class="slide level2 split-40">
 <h2></h2>
 <div class="column">
-<p>In empirical temporal hypergraphs, the intersection profile often <span class="math inline">\(r_k^{(t)}\)</span> decays at rates which are independent of <span class="math inline">\(k\)</span> and close to <span class="math inline">\(t^{-1}\)</span>, <em>regardless of <span class="math inline">\(k\)</span></em>.</p>
+<h4 id="intersections">Intersections</h4>
+<p>In empirical temporal hypergraphs, the intersection profile <span class="math inline">\(r_k^{(t)}\)</span> often decays at rates close to <span class="math inline">\(t^{-1}\)</span> or <span class="math inline">\(t^{-2}\)</span>, <em>regardless of <span class="math inline">\(k\)</span></em>.</p>
 <p>This is interesting because an growing Erdős–Rényi hypergraph would have <span class="math inline">\(k\)</span>-intersections which decay at rate <span class="math inline">\(t^{-k}\)</span>.</p>
-<p><span class="footnote absolute" style="bottom: 0px; ">Benson et al.&nbsp;(2018). Simplicial closure and higher-order link prediction. <em>PNAS</em><br> Chodrow (2020). Configuration models of random hypergraphs. <em>JCN</em> <br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. <em>EPJ Data Sci.</em></span></p>
-<p>Can we model this?</p>
+<p><span class="footnote absolute" style="bottom: 0px; ">Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. <em>PNAS</em><br> <br> Chodrow (2020). Configuration models of random hypergraphs. <em>JCN</em> <br><br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. <em>EPJ Data Sci.</em></span></p>
 </div>
 <div class="column">
 <div class="quarto-figure quarto-figure-center">
@@ -444,13 +444,13 @@
 <p><img data-src="fig/empirical-intersections.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
-<p><span class="footnote">Dashed line gives slope of <span class="math inline">\(t^{-1}\)</span> decay.</span></p>
+<p><span class="footnote">Dashed lines give slope of <span class="math inline">\(t^{-1}\)</span> and <span class="math inline">\(t^{-2}\)</span> decay.</span></p>
 </div>
 </section>
 <section id="section-9" class="slide level2 split-50">
 <h2></h2>
 <div class="column bg1">
-<h3 id="ongoing-work-with">Ongoing work with…</h3>
+<h4 id="ongoing-work-with">Ongoing work with…</h4>
 <p><img data-src="fig/xie-he.jpeg" class="absolute" style="top: 150px; height: 200px; "></p>
 <p><span class="absolute" style="top: 200px; left: 275px; ">Xie He <br> Mathematics <br> Dartmouth College</span></p>
 <p><img data-src="fig/mucha.jpeg" class="absolute" style="top: 400px; height: 200px; "></p>
@@ -462,78 +462,84 @@
 <p><img data-src="fig/hypergraph-sequence-4-annotated.svg"></p>
 </div>
 </section>
-<section id="section-10" class="slide level2 split-30">
+<section id="section-10" class="slide level2">
 <h2></h2>
-<div class="column">
-<p><br> <br> <br></p>
-<h3 id="in-each-timestep">In each timestep…</h3>
-</div>
-<div class="column">
-<p><img data-src="fig/hypergraph-sequence-0.svg"></p>
-</div>
+<p><br> <br> <br> <br> <br> <br></p>
+<h5 id="motivation-new-edges-are-usually-pretty-similar-to-some-older-edges.">Motivation: New edges are usually pretty similar to some older edges.</h5>
+<p><span class="footnote">Benson, Kumar, and Tomkins (2018). Sequences of Sets. <em>KDD</em> <br> <br> Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. <em>PNAS</em></span></p>
 </section>
 <section id="section-11" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="select-a-random-edge">Select a random edge</h3>
+<h4 id="in-each-timestep">In each timestep…</h4>
 </div>
 <div class="column">
-<p><img data-src="fig/hypergraph-sequence-1.svg"></p>
+<p><img data-src="fig/hypergraph-sequence-0.svg"></p>
 </div>
 </section>
 <section id="section-12" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="select-random-nodes-from-edge">Select random nodes from edge</h3>
+<h4 id="select-a-random-edge">Select a random edge</h4>
 </div>
 <div class="column">
-<p><img data-src="fig/hypergraph-sequence-2.svg"></p>
+<p><img data-src="fig/hypergraph-sequence-1.svg"></p>
 </div>
 </section>
 <section id="section-13" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="add-nodes-from-hypergraph">Add nodes from hypergraph</h3>
-<h3 id="add-novel-nodes">Add novel nodes</h3>
+<h4 id="select-random-nodes-from-edge">Select random nodes from edge</h4>
 </div>
 <div class="column">
-<p><img data-src="fig/hypergraph-sequence-3.svg"></p>
+<p><img data-src="fig/hypergraph-sequence-2.svg"></p>
 </div>
 </section>
 <section id="section-14" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="form-edge">Form edge</h3>
+<h4 id="add-nodes-from-hypergraph">Add nodes from hypergraph</h4>
+<h4 id="add-novel-nodes">Add novel nodes</h4>
 </div>
 <div class="column">
-<p><img data-src="fig/hypergraph-sequence-4.svg"></p>
+<p><img data-src="fig/hypergraph-sequence-3.svg"></p>
 </div>
 </section>
 <section id="section-15" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="repeat">Repeat</h3>
+<h4 id="form-edge">Form edge</h4>
 </div>
 <div class="column">
-<p><img data-src="fig/hypergraph-sequence-5.svg"></p>
+<p><img data-src="fig/hypergraph-sequence-4.svg"></p>
 </div>
 </section>
 <section id="section-16" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <p><br> <br> <br></p>
-<h3 id="repeat-1">Repeat</h3>
+<h4 id="repeat">Repeat</h4>
+</div>
+<div class="column">
+<p><img data-src="fig/hypergraph-sequence-5.svg"></p>
+</div>
+</section>
+<section id="section-17" class="slide level2 split-30">
+<h2></h2>
+<div class="column">
+<p><br> <br> <br></p>
+<h4 id="repeat-1">Repeat</h4>
 </div>
 <div class="column">
 <p><img data-src="fig/hypergraph-sequence-6.svg"></p>
 </div>
 </section>
-<section id="section-17" class="slide level2 split-30">
+<section id="section-18" class="slide level2 split-30">
 <h2></h2>
 <div class="column">
 <h3 id="formally">Formally</h3>
@@ -551,11 +557,11 @@
 <p><img data-src="fig/hypergraph-sequence-4-annotated.svg"></p>
 </div>
 </section>
-<section id="section-18" class="slide level2 split-50">
+<section id="section-19" class="slide level2 split-50">
 <h2></h2>
-<h3 id="power-law-heavy-tailed-degree-distribution"><del>Power-Law</del> Heavy-Tailed Degree Distribution</h3>
+<h4 id="power-law-heavy-tailed-degree-distribution"><del>Power-law</del> heavy-tailed degree distribution</h4>
 <div class="column">
-<p><br> <br> <br></p>
+<p><br> <br></p>
 <p><strong>Proposition</strong> (He, Chodrow, Mucha ’23): As <span class="math inline">\(t\)</span> grows large, the degrees of <span class="math inline">\(H_t\)</span> converge in distribution to a power law with exponent<br>
 <span class="math display">\[
 p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
@@ -568,15 +574,15 @@ p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X
 </ul>
 </div>
 <div class="column">
-<p><br> <br> <br></p>
+<p><br> <br></p>
 <p><img data-src="fig/hypergraph-degree-distribution-experiment.png"></p>
+<p><span class="footnote">Some connections to preferential attachment hypergraphs: <br> <br> Avin, Lotker, Nahum, and Peleg (2019). Random preferential attachment hypergraph. <em>ASONAM</em> <br> <br> Roh and Goh (2023) Growing hypergraphs with preferential linking. <em>J. Korean Phys. Soc.</em></span></p>
 </div>
 </section>
-<section id="section-19" class="slide level2 split-40">
+<section id="section-20" class="slide level2">
 <h2></h2>
-<h3 id="edge-intersections">Edge Intersections</h3>
-<div class="column">
-<p><br> <br> <br> <br> <strong>Proposition</strong>: There exist constants <span class="math inline">\(q_k\)</span> such that, as <span class="math inline">\(m\rightarrow \infty\)</span>,</p>
+<h3 id="edge-intersections">Edge intersections</h3>
+<p><br> <strong>Proposition</strong>: There exist constants <span class="math inline">\(q_k\)</span> such that, as <span class="math inline">\(t\rightarrow \infty\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
 r_{k}(t) \simeq \begin{cases}
@@ -585,17 +591,39 @@ r_{k}(t) \simeq \begin{cases}
 \end{cases}
 \end{aligned}
 \]</span></p>
-<p>Furthermore, the constants <span class="math inline">\(\{q_k\}\)</span> can be found by solving an eigenproblem <span class="math inline">\(\mathbf{A}\mathbf{q} = \mathbf{q}\)</span>, where the matrix <span class="math inline">\(\mathbf{A}\)</span> is determined by the model parameters.</p>
+<p>Here, <span class="math inline">\(q_k = \sum_{ij} q_{ijk}\)</span> and <span class="math inline">\(\{q_{ijk}\}\)</span> solve the system</p>
+<p><span class="math display">\[
+q_{ijk} = \begin{cases}
+  \frac{1}{2}\sum_{\ell} \left(q_{\ell j 0} \alpha_{i0|\ell j0} + q_{j \ell 0} \alpha_{i0|j\ell 0}\right) &amp; \quad  k = 0\\
+  \frac{1}{2}\beta_{ik|j} \sum_{\ell} (q_{\ell j0} + q_{j\ell 0}) + \frac{1}{2}\sum_{\ell, h\geq k}  \left(q_{\ell j h} \alpha_{ik|\ell jh} + q_{j \ell h} \alpha_{ik|j\ell h}\right) &amp;\quad k \geq 1\;,
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha_{ik|\ell jh}\)</span> and <span class="math inline">\(\beta_{ik|j}\)</span> are constants determined by the model parameters.</p>
+<p><span class="footnote">These come out of linearized compartmental equations.</span></p>
+</section>
+<section id="section-21" class="slide level2 split-40">
+<h2></h2>
+<h3 id="edge-intersections-1">Edge intersections</h3>
+<div class="column">
+<p><br> <br> <br> <br> <br> <br> <strong>Proposition</strong>: There exist constants <span class="math inline">\(q_k\)</span> such that, as <span class="math inline">\(t\rightarrow \infty\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+r_{k}(t) \simeq \begin{cases}
+  q_k &amp; \quad \text{if } k \leq k_0\\
+  t^{-1} q_k &amp;\quad \mathrm{otherwise}\;.
+\end{cases}
+\end{aligned}
+\]</span></p>
 </div>
 <div class="column">
 <p><br></p>
-<p><img data-src="fig/intersection-asymptotics-no-theory.png" class="absolute" style="top: 100px; left: 50px; width: 500px; "> <img data-src="fig/intersection-asymptotics.png" class="absolute fragment" style="top: 100px; left: 50px; width: 500px; "></p>
+<p><img data-src="fig/intersection-asymptotics-no-theory.png" class="absolute fragment" style="top: 100px; left: 50px; width: 500px; "> <img data-src="fig/intersection-asymptotics.png" class="absolute fragment" style="top: 100px; left: 50px; width: 500px; "></p>
 </div>
 </section>
-<section id="section-20" class="slide level2 split-50">
+<section id="section-22" class="slide level2 split-50">
 <h2></h2>
 <div class="column">
-<h4 id="learning-from-data">Learning From Data</h4>
+<h4 id="learning-from-data">Learning from data</h4>
 <p><strong>Aim</strong>: given the sequence of edges <span class="math inline">\(\{e_t\}\)</span>, estimate:</p>
 <ul>
 <li><span class="math inline">\(\alpha\)</span>, the edge retention rate.</li>
@@ -604,7 +632,7 @@ r_{k}(t) \simeq \begin{cases}
 </ul>
 <p><strong>Expectation maximization:</strong></p>
 <ol type="1">
-<li>For each edge <span class="math inline">\(e_t\)</span>, form a belief about which prior edge <span class="math inline">\(e \in H_{t-1}\)</span> <span class="math inline">\(e_t\)</span> was sampled from.</li>
+<li>For each edge <span class="math inline">\(e_t\)</span>, form a belief about which prior edge <span class="math inline">\(f \in H_{t-1}\)</span> <span class="math inline">\(e_t\)</span> was sampled from.</li>
 <li>Maximize the expected complete log-likelihood with respect to <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(p_X\)</span>, and <span class="math inline">\(p_Y\)</span> under this belief.</li>
 </ol>
 </div>
@@ -612,11 +640,11 @@ r_{k}(t) \simeq \begin{cases}
 <p><img data-src="fig/em-convergence.png" class="absolute" style="top: 20px; width: 400px; "> <img data-src="fig/ROC-email-enron.png" class="absolute" style="top: 350px; width: 400px; "></p>
 </div>
 </section>
-<section id="section-21" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
-<h5 id="simple-models-can-be-predictive">Simple Models Can Be Predictive!</h5>
-<p>We computed AUC scores for a link prediction task in which our model learns parameters on 20% training data from three metabolic and organic reaction data sets. We compared these against previously-reported AUC scores for two dedicated <strong>neural</strong> network hypergraph link prediction algorithms.</p>
-<p><span class="footnote">Yadati et al.&nbsp;(2020) NHP: Neural Hypergraph Link Prediction. <em>CIKM</em> <br> Yang et al.&nbsp;(2023) LHP: Logical hypergraph link prediction. <em>Expert Systems with Applications</em></span></p>
+<h5 id="simple-models-can-be-predictive">Simple models can be predictive!</h5>
+<p>We computed AUC scores for a link prediction task in which our model learns parameters on 20% training data from three metabolic and organic reaction data sets with edges up to size 5. We compared these against previously-reported AUC scores on the same task for two dedicated <strong>neural</strong> network hypergraph link prediction algorithms.</p>
+<p><span class="footnote">Yadati et al.&nbsp;(2020) NHP: Neural Hypergraph Link Prediction. <em>CIKM</em> <br> <br> Yang et al.&nbsp;(2023) LHP: Logical hypergraph link prediction. <em>Expert Systems with Applications</em></span></p>
 <div class="font_smaller">
 <div class="font_smaller">
 <div class="font_smaller">
@@ -635,7 +663,7 @@ r_{k}(t) \simeq \begin{cases}
 <th></th>
 <th><span class="math inline">\(n\)</span></th>
 <th><span class="math inline">\(m\)</span></th>
-<th>Our Model</th>
+<th>Our model</th>
 <th>NHP AUC</th>
 <th>LHP AUC</th>
 </tr>
@@ -673,10 +701,10 @@ r_{k}(t) \simeq \begin{cases}
 </div>
 <p>We are competitive with neural networks using an 11-parameter model!</p>
 </section>
-<section id="section-22" class="slide level2 split-40">
+<section id="section-24" class="slide level2 split-40">
 <h2></h2>
 <div class="column bg1">
-<h3 id="summing-up">Summing Up</h3>
+<h3 id="summing-up">Summing up</h3>
 <p>Hypergraphs are locally distinct from graphs in that they have interesting two-edge motifs (intersections).</p>
 <p><strong>Learnable, mechanistic</strong> models of hypergraph formation allow us to both model this phenomenon and achieve competitive performance on link prediction problems.</p>
 <p><em>arXiv coming soon</em> 😬😬😬</p>
