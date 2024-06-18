@@ -379,7 +379,7 @@ In each timestep $t$:
 
 <br> <br> 
 
-**Proposition** (He, Chodrow, Mucha '23): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
+**Proposition** (He, Chodrow, Mucha '24): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
 $$
 p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
 $$
@@ -417,7 +417,7 @@ Roh and Goh (2023) Growing hypergraphs with preferential linking. *J. Korean Phy
 
 
 <br> 
-**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
+**Proposition** (He, Chodrow, Mucha '24): There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
 
 $$
 \begin{aligned}
