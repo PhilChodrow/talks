@@ -1,0 +1,566 @@
+---
+title: "Edge-Correlated Growing Hypergraphs"  
+subtitle: "Conference on Network Science, Québec City |  June 19th, 2024"  
+date: ""
+author: '<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#23395B"  
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/simple.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
+
+::: {.column .bg0}  
+     
+#### Hi everyone! 
+
+I'm Phil Chodrow. I'm an applied mathematician by training. These days my interests include:  
+
+<br> 
+
+- Network models + algorithms
+- Dynamics on networks
+- Data science for social justice
+- Undergraduate pedagogy
+
+
+:::
+
+::: {.column .bg0}
+
+#### [Hi everyone!]{.hide}
+
+I'm a new(ish) assistant professor of computer science at Middlebury College in Middlebury, Vermont.  
+
+![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
+
+Middlebury is a small primarily-undergraduate institution (PUI) in Vermont, USA. 
+
+:::
+
+
+## {.split-50}
+
+<br> 
+
+::: {.column .bg0}
+
+#### Hypergraphs
+
+<br> <br> 
+
+A hypergraph is a generalization of a graph in which edges may contain an arbitrary number of nodes. 
+
+:::
+
+::: {.column .bg0}
+
+![](fig/hypergraph-example-skinny.png)
+
+[XGI let's gooooo]{.footnote}
+
+:::
+
+
+## {.split-50}
+
+<br> 
+
+::: {.column .bg0}
+
+#### What's special about hypergraphs?
+
+<br> 
+
+What can we observe or learn in hypergraph structure that we couldn't observe or learn in a dyadic graph?
+
+One answer for today: **2-edge motifs**. 
+
+:::
+
+::: {.column .bg0}
+
+![](fig/hypergraph-example-skinny.png)
+
+[XGI let's gooooo]{.footnote}
+
+:::
+
+
+
+
+
+## 
+
+### Motifs in graphs
+
+
+![](fig/motifs.jpeg){height=400 fig-align="center"}
+
+[Milo et al. (2002). Network Motifs: Simple Building Blocks of Complex Networks. *Science*]{.footnote}
+
+## 
+
+### Motifs in graphs
+
+
+![](fig/motifs-highlighted.jpeg){height=400 fig-align="center"}
+
+[Milo et al. (2002). Network Motifs: Simple Building Blocks of Complex Networks. *Science*]{.footnote}
+
+## 
+
+### 2-edge motifs in undirected graphs
+
+![](fig/undirected-graph-motifs.svg)
+
+
+## 
+
+### 2-edge motifs in hypergraphs
+
+**Claim**: *What's special about the structure of hypergraphs is that they have diverse, undirected, two-edge motifs: [**intersections**]{.alert}.* 
+
+![](fig/hypergraph-2-edge-motifs.svg){fig-align="center" height=400}
+
+
+##
+
+#### How common are large intersections in empirical hypergraphs? 
+
+For the remainder of this talk, we'll consider hypergraphs in which each edge has a discrete time-index: $e_0, \; e_1, \ldots, e_t,\ldots$.
+
+One way to measure the prevalence of intersections is to define an temporal *intersection profile*: the probability of an intersection of size $k$ when picking two uniformly random edges. 
+
+$$r_k^{(t)} \triangleq \eta_t(\lvert e\cap f \rvert = k)\;,$$
+
+where $\eta_t$ is the empirical law of the hypergraph $H^{(t)}$ containing only edges with indices up to $t$ and $e$, $f$ are sampled uniformly from $H^{(t)}$.
+
+[Sometimes there is a natural indexing of edges via temporal timestamps; other times we need to assign indices arbitrarily.]{.footnote}
+
+
+## {.split-40}
+
+::: {.column}
+
+#### Intersections
+
+In empirical temporal hypergraphs, the intersection profile $r_k^{(t)}$ often decays at rates close to $t^{-1}$ or $t^{-2}$, *regardless of $k$*. 
+
+This is interesting because an growing Erdős–Rényi hypergraph would have $k$-intersections which decay at rate $t^{-k}$. 
+
+[Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. *PNAS*<br> <br> Chodrow (2020). Configuration models of random hypergraphs. *JCN* <br><br> Landry, Young, and Eikmeier (2023). The simpliciality of higher-order networks. *EPJ Data Sci.*]{.footnote .absolute bottom=0}  
+
+:::
+
+::: {.column}
+
+![](fig/empirical-intersections.png){fig-align="center" height=500}
+
+
+[Dashed lines give slope of $t^{-1}$ and $t^{-2}$ decay.]{.footnote}
+
+:::
+
+
+
+
+## {.split-50}
+
+
+::: {.column .bg1}
+
+#### Ongoing work with...
+
+
+![](fig/xie-he.jpeg){.absolute height=200 top=150} 
+
+[Xie He <br> Mathematics <br> Dartmouth College]{.absolute top=200 left=275} 
+
+![](fig/mucha.jpeg){.absolute height=200 top=400} 
+
+[Peter Mucha <br> Mathematics <br> Dartmouth College]{.absolute top=450 left=275} 
+
+
+::: 
+
+::: {.column}
+
+
+
+<br> <br> 
+
+Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
+
+![](fig/hypergraph-sequence-4-annotated.svg)
+
+:::
+
+## 
+
+<br> <br> <br> <br> <br> <br> 
+
+##### Motivation: New edges are usually pretty similar to some older edges. 
+
+
+[
+Benson, Kumar, and Tomkins (2018). Sequences of Sets. *KDD* 
+<br> <br> 
+Benson, Abebe, Schaub, and Kleinberg (2018). Simplicial closure and higher-order link prediction. *PNAS*
+]{.footnote}
+
+
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### In each timestep...
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-0.svg)
+
+:::
+
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Select a random edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-1.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Select random nodes from edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-2.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Add nodes from hypergraph
+
+#### Add novel nodes
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-3.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Form edge
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4.svg)
+
+:::
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Repeat
+ 
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-5.svg)
+
+:::
+
+
+## {.split-30}
+
+::: {.column}
+
+<br> <br> <br> 
+
+#### Repeat
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-6.svg)
+
+:::
+
+## {.split-30}
+
+
+::: {.column}
+
+### Formally
+
+In each timestep $t$: 
+
+- Start with an empty edge $f = \emptyset$. 
+- Select an edge $e \in H$. 
+- Accept each node from $e$ into $f$ with probability $\alpha$ (condition on at least one).  
+- Add $X$ novel nodes. 
+- Add $Y$ nodes from $H \setminus e$. 
+
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4-annotated.svg)
+
+:::
+
+## {.split-50}
+
+#### ~~Power-law~~ heavy-tailed degree distribution
+
+::: {.column}
+
+
+<br> <br> 
+
+**Proposition** (He, Chodrow, Mucha '24): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
+$$
+p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
+$$
+
+
+Reminders: 
+
+- *$\alpha$: retention rate of nodes in sampled edge*. 
+- *$X$: number of novel nodes added to edge*. 
+- *$Y$: number of nodes from $H$ added to edge*.
+
+:::
+
+::: {.column}
+
+<br> <br> 
+
+![](fig/hypergraph-degree-distribution-experiment.png)
+
+
+[Some connections to preferential attachment hypergraphs: 
+<br> <br> 
+Avin, Lotker, Nahum, and Peleg (2019). Random preferential attachment hypergraph. *ASONAM* 
+<br> <br> 
+Roh and Goh (2023) Growing hypergraphs with preferential linking. *J. Korean Phys. Soc.*
+]{.footnote}
+
+:::
+
+
+## 
+
+### Edge intersections 
+
+
+
+<br> 
+**Proposition** (He, Chodrow, Mucha '24): There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
+
+$$
+\begin{aligned}
+r_{k}(t) \simeq \begin{cases}
+  q_k & \quad \text{if } k \leq k_0\\
+  t^{-1} q_k &\quad \mathrm{otherwise}\;.
+\end{cases}
+\end{aligned}
+$$
+
+Here, $q_k = \sum_{ij} q_{ijk}$ and $\{q_{ijk}\}$ solve the system 
+
+$$
+q_{ijk} = \begin{cases}
+  \frac{1}{2}\sum_{\ell} \left(q_{\ell j 0} \alpha_{i0|\ell j0} + q_{j \ell 0} \alpha_{i0|j\ell 0}\right) & \quad  k = 0\\
+  \frac{1}{2}\beta_{ik|j} \sum_{\ell} (q_{\ell j0} + q_{j\ell 0}) + \frac{1}{2}\sum_{\ell, h\geq k}  \left(q_{\ell j h} \alpha_{ik|\ell jh} + q_{j \ell h} \alpha_{ik|j\ell h}\right) &\quad k \geq 1\;,
+\end{cases}
+$$
+
+where $\alpha_{ik|\ell jh}$ and $\beta_{ik|j}$ are constants determined by the model parameters. 
+
+[These come out of linearized compartmental equations.]{.footnote}
+
+
+
+## {.split-40}
+
+### Edge intersections 
+
+::: {.column}
+
+<br> <br> <br> <br> <br> <br> 
+**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
+
+$$
+\begin{aligned}
+r_{k}(t) \simeq \begin{cases}
+  q_k & \quad \text{if } k \leq k_0\\
+  t^{-1} q_k &\quad \mathrm{otherwise}\;.
+\end{cases}
+\end{aligned}
+$$
+
+
+:::
+
+::: {.column}
+
+<br> 
+
+
+
+![](fig/intersection-asymptotics-no-theory.png){.absolute top=100 left=50 width=500 .fragment}
+![](fig/intersection-asymptotics.png){.absolute top=100 left=50 width=500 .fragment}
+
+:::
+
+
+## {.split-50}
+
+::: {.column}
+
+#### Learning from data
+
+**Aim**: given the sequence of edges $\{e_t\}$, estimate: 
+
+- $\alpha$, the edge retention rate. 
+- $p_X$, the distribution of the number of novel nodes added to each edge. 
+- $p_Y$, distribution of the number of pre-existing nodes added to each edge. 
+
+**Expectation maximization:**
+
+1. For each edge $e_t$, form a belief about which prior edge $f \in H_{t-1}$ $e_t$ was sampled from. 
+2. Maximize the expected complete log-likelihood with respect to $\alpha$, $p_X$, and $p_Y$ under this belief. 
+
+:::
+
+
+::: {.column}
+
+![](fig/em-convergence.png){.absolute top=20 width=400}
+![](fig/ROC-email-enron.png){.absolute top=350 width=400}
+
+:::
+
+
+
+
+##
+
+##### Simple models can be predictive!
+
+We computed AUC scores for a link prediction task in which our model learns parameters on 20% training data from three metabolic and organic reaction data sets with edges up to size 5. We compared these against previously-reported AUC scores on the same task for two dedicated **neural** network hypergraph link prediction algorithms. 
+
+[Yadati et al. (2020) NHP: Neural Hypergraph Link Prediction. *CIKM* <br> <br> 
+Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with Applications*]{.footnote}  
+
+
+::: {.font_smaller}
+::: {.font_smaller}
+::: {.font_smaller}
+::: {.font_smaller}
+
+|          	| $n$    	| $m$    	| Our model   | NHP AUC | LHP AUC    	|
+|----------	|--------	|--------	|-----------	|--------	|-----------	|
+| iAF1260b 	| 1,668  	| 2,084  	| **0.643** 	| 0.582  	| 0.639     	|
+| iJO1366  	| 1,805  	| 2,253  	| **0.769** 	| 0.599  	| 0.638     	|
+| USPTO    	| 16,293 	| 11,433 	| 0.550     	| 0.662  	| **0.733** 	|
+
+:::
+:::
+:::
+:::
+
+We are competitive with neural networks using an 11-parameter model!
+
+
+## {.split-40}
+
+::: {.column .bg1}
+
+### Summing up
+
+Hypergraphs are locally distinct from graphs in that they have interesting two-edge motifs (intersections). 
+
+**Learnable, mechanistic** models of hypergraph formation allow us to both model this phenomenon and achieve competitive performance on link prediction problems. 
+
+*arXiv coming soon* 😬😬😬 
+
+#### [Thanks everyone!]{.fragment}
+
+:::
+
+::: {.column}
+
+![](fig/hypergraph-sequence-4-annotated.svg){.absolute bottom=50 width=400 left=130}
+
+![](fig/xie-he.jpeg){.absolute top=10 height=200}
+[Xie He <br> Dartmouth College]{.absolute top=250}
+
+![](fig/mucha.jpeg){.absolute top=10 right=70 height=200}
+[Peter Mucha <br> Dartmouth College]{.absolute top=250 right=35}
+
+
+
+:::
