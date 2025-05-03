@@ -1,6 +1,6 @@
 ---
 title: "Edge-Correlated Growing Hypergraphs"  
-subtitle: "Conference on Network Science, Québec City |  June 19th, 2024"  
+subtitle: "Montréal Network Science Workshop  <span class='speaker-highlight'><b>|</b></span>  May 6th, 2025"  
 date: ""
 author: '<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
 title-slide-attributes:
@@ -68,13 +68,15 @@ Middlebury is a small primarily-undergraduate institution (PUI) in Vermont, USA.
 
 A hypergraph is a generalization of a graph in which edges may contain an arbitrary number of nodes. 
 
+[Image created with Python and [XGI](https://xgi.readthedocs.io/en/stable/).]{.footnote}
+
 :::
 
 ::: {.column .bg0}
 
 ![](fig/hypergraph-example-skinny.png)
 
-[XGI let's gooooo]{.footnote}
+
 
 :::
 
@@ -93,13 +95,14 @@ What can we observe or learn in hypergraph structure that we couldn't observe or
 
 One answer for today: **2-edge motifs**. 
 
+[Image created with Python and [XGI](https://xgi.readthedocs.io/en/stable/).]{.footnote}
+
 :::
 
 ::: {.column .bg0}
 
 ![](fig/hypergraph-example-skinny.png)
 
-[XGI let's gooooo]{.footnote}
 
 :::
 
@@ -187,7 +190,7 @@ This is interesting because an growing Erdős–Rényi hypergraph would have $k$
 
 ::: {.column .bg1}
 
-#### Ongoing work with...
+#### Recent work with...
 
 
 ![](fig/xie-he.jpeg){.absolute height=200 top=150} 
@@ -203,13 +206,11 @@ This is interesting because an growing Erdős–Rényi hypergraph would have $k$
 
 ::: {.column}
 
-
-
-<br> <br> 
-
 Mechanistic, *interpretable*, *learnable* models of growing hypergraphs.
 
 ![](fig/hypergraph-sequence-4-annotated.svg)
+
+arXiv:2502.02386: "Hypergraph Link Prediction via Hyperedge Copying" (2025)
 
 :::
 
@@ -357,10 +358,9 @@ In each timestep $t$:
 
 - Start with an empty edge $f = \emptyset$. 
 - Select an edge $e \in H$. 
-- Accept each node from $e$ into $f$ with probability $\alpha$ (condition on at least one).  
-- Add $X$ novel nodes. 
-- Add $Y$ nodes from $H \setminus e$. 
-
+- Accept each node from $e$ into $f$ with probability $\eta$ (condition on at least one).  
+- Add $X \sim \boldsymbol{\beta}$ novel nodes. 
+- Add $Y \sim \boldsymbol{\gamma}$ nodes from $H \setminus e$. 
 
 :::
 
@@ -372,7 +372,7 @@ In each timestep $t$:
 
 ## {.split-50}
 
-#### ~~Power-law~~ heavy-tailed degree distribution
+#### Analytic Degree and Edge-Size Distributions
 
 ::: {.column}
 
@@ -381,23 +381,25 @@ In each timestep $t$:
 
 **Proposition** (He, Chodrow, Mucha '24): As $t$ grows large, the degrees of $H_t$ converge in distribution to a power law with exponent  
 $$
-p = 1 + \frac{1-\alpha +\mathbb{E}[X] +\mathbb{E}[Y] }{1-\alpha(1 + \mathbb{E}[X] + \mathbb{E}[Y] )}\;.
+\zeta = 1 + \frac{1-\eta +\mu_{\boldsymbol{\beta}} +\mu_{\boldsymbol{\gamma}}}{1-\eta(1 + \mu_{\boldsymbol{\beta}} +\mu_{\boldsymbol{\gamma}} )}\;.
 $$
 
 
 Reminders: 
 
-- *$\alpha$: retention rate of nodes in sampled edge*. 
-- *$X$: number of novel nodes added to edge*. 
-- *$Y$: number of nodes from $H$ added to edge*.
+- *$\eta$: retention rate of nodes in sampled edge*. 
+- *$\boldsymbol{\beta}$: distribution of number of novel nodes added to edge*. 
+- *$\boldsymbol{\gamma}$: distribution of number of extant nodes added to edge*. 
+
+
 
 :::
 
 ::: {.column}
 
-<br> <br> 
+<br> <br>
 
-![](fig/hypergraph-degree-distribution-experiment.png)
+It is also possible to compute the stationary density of edges of specified size by solving an eigenvalue problem.
 
 
 [Some connections to preferential attachment hypergraphs: 
@@ -407,7 +409,18 @@ Avin, Lotker, Nahum, and Peleg (2019). Random preferential attachment hypergraph
 Roh and Goh (2023) Growing hypergraphs with preferential linking. *J. Korean Phys. Soc.*
 ]{.footnote}
 
+
 :::
+
+
+## 
+
+<br> 
+
+![](fig/degree-and-edge-sizes.png)
+
+
+
 
 
 ## 
@@ -417,12 +430,11 @@ Roh and Goh (2023) Growing hypergraphs with preferential linking. *J. Korean Phy
 
 
 <br> 
-**Proposition** (He, Chodrow, Mucha '24): There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
-
+**Proposition** (He, Chodrow, Mucha '25): There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
 $$
 \begin{aligned}
-r_{k}(t) \simeq \begin{cases}
-  q_k & \quad \text{if } k \leq k_0\\
+r_{k}(t) = \text{Fraction of pairs of edges with intersection of size $k$ at time $t$}\simeq \begin{cases}
+  q_k & \quad \text{if } k = 0\\
   t^{-1} q_k &\quad \mathrm{otherwise}\;.
 \end{cases}
 \end{aligned}
@@ -443,66 +455,68 @@ where $\alpha_{ik|\ell jh}$ and $\beta_{ik|j}$ are constants determined by the m
 
 
 
-## {.split-40}
+## 
 
 ### Edge intersections 
 
-::: {.column}
-
-<br> <br> <br> <br> <br> <br> 
-**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, 
-
-$$
+**Proposition**: There exist constants $q_k$ such that, as $t\rightarrow \infty$, $r_{k}(t) \simeq \begin{cases} q_k & \quad \text{if } k = k_0\\ t^{-1} q_k &\quad \mathrm{otherwise}\;. \end{cases}$
+<!-- $$
 \begin{aligned}
-r_{k}(t) \simeq \begin{cases}
-  q_k & \quad \text{if } k \leq k_0\\
-  t^{-1} q_k &\quad \mathrm{otherwise}\;.
-\end{cases}
+
 \end{aligned}
-$$
+$$ -->
 
 
-:::
-
-::: {.column}
-
-<br> 
+![](fig/intersection-asymptotics-2-panel.png){fig-align="center"}
 
 
 
-![](fig/intersection-asymptotics-no-theory.png){.absolute top=100 left=50 width=500 .fragment}
-![](fig/intersection-asymptotics.png){.absolute top=100 left=50 width=500 .fragment}
-
-:::
 
 
 ## {.split-50}
 
-::: {.column}
+::: {.column .font_smaller .font_smaller}
 
 #### Learning from data
 
 **Aim**: given the sequence of edges $\{e_t\}$, estimate: 
 
-- $\alpha$, the edge retention rate. 
-- $p_X$, the distribution of the number of novel nodes added to each edge. 
-- $p_Y$, distribution of the number of pre-existing nodes added to each edge. 
+- $\eta$, the edge retention rate. 
+- $\beta$, the distribution of the number of novel nodes added to each edge. 
+- $\gamma$, distribution of the number of pre-existing nodes added to each edge. 
 
-**Expectation maximization:**
 
-1. For each edge $e_t$, form a belief about which prior edge $f \in H_{t-1}$ $e_t$ was sampled from. 
-2. Maximize the expected complete log-likelihood with respect to $\alpha$, $p_X$, and $p_Y$ under this belief. 
+1. Pick an edge $e_t$ and form a belief about which prior edge $e_t$ was sampled from. 
+2. Update a vector of expected sufficient statistics $\theta_t$. 
+3. Update the current parameter estimates $\bar{\eta}$, $\bar{\beta}$, and $\bar{\gamma}$ using the expected sufficient statistics $\theta_t$.
+4. Repeat until tired. 
+
 
 :::
 
 
 ::: {.column}
 
-![](fig/em-convergence.png){.absolute top=20 width=400}
-![](fig/ROC-email-enron.png){.absolute top=350 width=400}
+<br> <br> <br> 
+![](fig/sem-1-panel){.absolute width=700 left=0}
+
 
 :::
 
+
+
+##
+
+<br>
+
+
+![](fig/PARAMETERS.png)
+
+<span style="color:#6b8ecf">**Communication networks**</span> tend to have high copy and lower rates of novel and extant node addition. 
+
+<span style="color:#f0a565">**Coauthorship networks**</span>  have lower copy rates and higher rates of both novel and extant node addition.
+
+<span style="color:#6c8c25">**Tagging/thread networks**</span>  have varying copy rates and higher rates of both novel and extant node addition.
 
 
 
@@ -521,18 +535,45 @@ Yang et al. (2023) LHP: Logical hypergraph link prediction. *Expert Systems with
 ::: {.font_smaller}
 ::: {.font_smaller}
 
-|          	| $n$    	| $m$    	| Our model   | NHP AUC | LHP AUC    	|
-|----------	|--------	|--------	|-----------	|--------	|-----------	|
-| iAF1260b 	| 1,668  	| 2,084  	| **0.643** 	| 0.582  	| 0.639     	|
-| iJO1366  	| 1,805  	| 2,253  	| **0.769** 	| 0.599  	| 0.638     	|
-| USPTO    	| 16,293 	| 11,433 	| 0.550     	| 0.662  	| **0.733** 	|
+|          	| $n$    	| $m$    	| Our model   | NHP     | LHP       	|
+|:----------|--------:|--------:|------------:|--------:|------------:|
+| iAF1260b 	| 1,668  	| 2,084  	| 0.605 	    | 0.582  	| **0.639**   |
+| iJO1366  	| 1,805  	| 2,253  	| **0.774** 	| 0.599  	| 0.638     	|
+| USPTO    	| 16,293 	| 11,433 	| 0.515     	| 0.662  	| **0.733** 	|
 
 :::
 :::
 :::
 :::
 
-We are competitive with neural networks using an 11-parameter model!
+We are competitive with  neural networks (on some data sets) using an 11-parameter model!
+
+## {.split-30}
+
+::: {.column .bg1}
+
+### Recent Extension
+
+
+<img class="portrait" src="fig/violet-ross.jpg"><br>
+Violet Ross '25, Middlebury College
+
+*Next: CS PhD at CU Boulder!*
+
+
+:::
+
+::: {.column}
+
+Nodes with ***attribute labels***: different rates of node copying, extant node addition, and novel node addition by label of selected node $u$. 
+
+Example: US `senate-bills` hypergraph. Nodes are bill cosponsors, edges are bills, and labels are political party affiliation.
+
+![](fig/senate-bills.png)
+
+Evidence of party homophily, especially in the incorporation of new cosponsors into bills.  
+
+:::
 
 
 ## {.split-40}
@@ -545,7 +586,7 @@ Hypergraphs are locally distinct from graphs in that they have interesting two-e
 
 **Learnable, mechanistic** models of hypergraph formation allow us to both model this phenomenon and achieve competitive performance on link prediction problems. 
 
-*arXiv coming soon* 😬😬😬 
+arXiv:2502.02386: "Hypergraph Link Prediction via Hyperedge Copying" (2025)
 
 #### [Thanks everyone!]{.fragment}
 
@@ -560,7 +601,5 @@ Hypergraphs are locally distinct from graphs in that they have interesting two-e
 
 ![](fig/mucha.jpeg){.absolute top=10 right=70 height=200}
 [Peter Mucha <br> Dartmouth College]{.absolute top=250 right=35}
-
-
 
 :::
