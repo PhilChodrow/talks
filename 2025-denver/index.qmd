@@ -1,0 +1,670 @@
+---
+title: "Dynamics of Gender Representation in Academic Mathematics"  
+subtitle: "SIAM Conference on Applications of Dynamical Systems || Denver, CO <br> May 13th, 2025"  
+date: ""
+author: '<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
+title-slide-attributes:
+  data-background-opacity: "0.0"  
+  data-background-color: "#3a2d4b"  
+format:
+  revealjs:
+    menu: false
+    theme: 
+      - default      
+      - ../assets/reveal-style/layouts.css 
+      - ../assets/reveal-style/components.css 
+      - ../assets/reveal-style/colors-fonts/mgp.scss
+    slide-level: 2
+    margin: 0.00
+    self-contained: false
+warning: false 
+message: false
+cache: true 
+from: markdown+emoji
+---
+
+## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
+
+::: {.column .bg0}  
+     
+#### Hi everyone! 
+
+I'm Phil Chodrow. I'm an applied mathematician by training. These days my interests include:  
+
+<br> 
+
+- Network models + algorithms
+- Dynamics on networks
+- Data science for social justice
+- Undergraduate pedagogy
+
+
+:::
+
+::: {.column .bg0}
+
+#### [Hi everyone!]{.hide}
+
+I'm a new(ish) assistant professor of computer science at Middlebury College in Middlebury, Vermont.  
+
+![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
+
+Middlebury is a small primarily-undergraduate institution (PUI) in Vermont, USA. 
+
+:::
+
+## 
+
+
+
+
+#### The Team
+
+<table style="padding:0px;border-bottom:0pxmargin: 0px auto; ">
+<tr style="border:0px;padding:0px;margin:0px;">
+<td style="padding:0px;border-bottom:0px"> 
+![](fig/brooks.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Heather Brooks** <br> Harvey Mudd</p>
+</td>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/lee.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Harlin Lee** <br> UNC Chapel Hill</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/porter.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Mason Porter** <br> UCLA</p>
+</td>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/restrepo.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Juan G. Restrepo** <br> CU Boulder</p>
+</td>
+
+</tr>
+
+<tr>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/haensch.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Anna Haensch** <br> Tufts</p>
+</td>
+
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/chodrow.jpg){.portrait-small} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Phil Chodrow** <br> Middlebury</p>
+</td>
+
+</tr>
+
+</table>
+
+## 
+
+### Some early caveats
+
+<br>
+
+:::{.textblock .fragment .semi-fade-out fragment-index=1}
+This talk represents **work-in-progress** using data about our mathematics community. [**All results are preliminary!**]{.alert}
+:::
+
+:::{.textblock .fragment .fade-in-then-semi-out fragment-index=1}
+[**Gender is not binary**]{.alert}, but unfortunately our data (and therefore our story and our model) are.
+:::
+
+
+:::{.textblock .fragment .fade-in}
+
+[**Quantitative work complements, but never replaces**]{.alert}: voices of marginalized scholars, qualitative research and critical theory, activism, and implementation of initiatives and policies. 
+
+:::
+
+
+## 
+
+<br>
+
+![](fig/bar-chart-pipeline.png){fig-align="center"}
+
+
+[]{.footnote}
+
+## 
+
+### Representation varies across mathematical subfields
+
+
+![](fig/trajectory-panels-selection.png){fig-align="center" }
+
+## 
+
+### Some hypotheses
+
+<br> <br> 
+
+<table>
+
+<tr>
+<td style="padding:0.5rem;border-bottom:0px">
+
+:::{.textblock-vertical .fragment .semi-fade-out fragment-index=1}
+
+[**Representation**]{.alert}
+
+“We need more female senior faculty to provide role-modeling and mentorship.”
+:::
+
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+:::{.textblock-vertical .fragment .fade-in-then-semi-out fragment-index=1}
+
+[**Belonging**]{.alert }
+
+Greater representation in the grad student community attracts women to programs and subfields. 
+:::
+
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+:::{.textblock-vertical .fragment .fade-in-then-semi-out fragment-index=2}
+[**Pipelines**]{.alert}
+
+“We need more women choosing math grad school.”
+
+:::
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+:::{.textblock-vertical .fragment .fade-in fragment-index=3}
+[**Leadership**]{.alert}
+
+“A small number of influential women can dramatically change the culture of a department or research community.”
+
+:::
+</td>
+</tr>
+
+</table>
+
+## {.split-50}
+
+
+::: {.column}
+
+### Our data
+
+<br>
+
+![](fig/juan-mgp.png)
+
+:::
+
+::: {.column}
+
+![](fig/nmqg.png){.absolute left=50 top=20 width=80%}
+![](fig/wgnd.jpeg){.absolute left=250 top=20}
+
+![](fig/ben-brill.jpg){.absolute width=40% top=300}
+
+[Ben Brill, UCLA '21]{.absolute width=30% top=350 left=300}
+
+
+[Total of 116,306 advisor-student pairs in the US since 1950, representing 21,781 distinct advisors. 
+We observe or estimate math subfields for 94% of these pairs (predictions based on thesis titles). 
+We estimate gender for 95% of PhD students and 97% of advisors. ]{.footnote}
+
+:::
+
+## 
+
+### Data issues..
+
+![](fig/data-gaps.png){fig-align="center"}
+
+:::{.textblock-vertical .absolute left=300 top=150}
+
+Misgendering
+
+Incorrect MSCs inferred 
+
+Nonrandom missing data
+
+Various shenanigans
+
+:::
+
+## 
+
+![](fig/edit-gombay.png){fig-align="center"}
+
+##
+
+![](fig/basic-counts-and-trajectories.png)
+
+## 
+
+#### We have more than counts -- we have *relationships*
+
+![](fig/tree.png){fig-align="center"}
+
+:::{.textblock .fragment}
+
+We *could* treat this as a branching process and read off parameters, but this would assume that we are already at stationarity -- we would predict no changes
+
+:::
+
+## 
+
+### Two-prong modeling strategy 
+
+
+<br>
+
+::: {.textblock}
+
+[**Advisor production**]{.alert} 
+
+Model the *number of graduate students produced* by a given advisor. 
+
+*Technique: maximum likelihood estimation in a bespoke stochastic model.* 
+
+:::
+
+<br> 
+
+::: {.textblock}
+
+[**Student gender**]{.alert} 
+
+Model the gender of students produced by a given advisor.  
+
+*Technique: logistic regression.* 
+
+:::
+
+##
+
+### Generative model of advisor production
+
+
+
+![](fig/generative-model.png){fig-align="center"}
+
+
+
+**Assumptions**: 
+
+- Startup depends on subfield. 
+- Career length depends on gender. 
+- \# students per year depends on subfield and gender.
+
+##
+
+#### Latent variable model
+
+We model an observed sequence of students $\color{#086788}{\mathbf{S}} = (\color{#086788}{S}_1, \color{#086788}{S}_2, \ldots, \color{#086788}{S}_T)$ produced by an advisor as a function of an *unobserved* advisor career $\color{#07A0C3}{C}$ specified by the startup period length and retirement year. 
+
+::: {.big-equation}
+
+$$
+\begin{aligned}
+  p(\color{#086788}{\mathbf{S}};\color{#F25C54}{\boldsymbol{\theta}}) &= \sum_{\color{#07A0C3}{C}\in\mathcal{C}} p(\color{#086788}{\mathbf{S}}|\color{#07A0C3}{C};\color{#F25C54}{\boldsymbol{\theta}})p(\color{#07A0C3}{C};\color{#F25C54}{\boldsymbol{\theta}}) 
+\end{aligned}
+$$
+
+:::
+
+The vector $\color{#F25C54}{\boldsymbol{\theta}}$ contains the parameters to be estimated. 
+
+We do this using a hybrid expectation-maximization algorithm: some parameters can be estimated efficiently via EM, while others must be estimated by hill-climbing. 
+
+##
+
+#### Men have estimated careers ~4 years longer
+
+![](fig/career-distributions.png){fig-align="center"}
+
+## 
+
+##### Longer careers $\times$ more students per year = more students per career
+
+![](fig/career-production-rates.png){fig-align="center"}
+
+:::{.textblock .fragment}
+
+We hypothesize that greater student production per year reflects unequal access to research resources; cf. Zhang et al. (2022)
+
+:::
+
+## 
+
+### Logistic model for advisee gender
+
+Estimate the odds that the next student produced by an advsior is female based on subfield, advisor gender, and representation of women in advisor group and subfield.
+
+::: {.bigger-equation}
+
+$$
+\begin{aligned}
+  \log (\text{odds F}) = & \beta_0 + \beta_a \times (\text{advisor gender}) + \beta_f \times (\text{subfield}) \\
+                         & \beta_g \times (\text{proportion F advisees in group}) + \\ 
+                         & \gamma_{p} \times (\text{proportion F in subfield}) 
+\end{aligned}
+$$  
+
+:::
+
+*We tried a lot of other models with other features (e.g. decade, nonlinear transformations, etc) but this one was best in cross-validation*. 
+
+## 
+
+##### Homophily effects: advisor-student and student-student
+
+![](fig/gender-model-predictions-all-selection-annotated.png){fig-align="center"}
+
+## {.split-40}
+
+::: {.column}
+
+##### Numerical estimation of stationary proportion
+
+If $p^*$ is the stationary proportion of women in the subfield, then $p^*$ approximately satisfies the equation
+$$
+\begin{aligned}
+  p^* = \color{#ffaf03}{w_f}\color{#ffaf03}{\sigma_f}(p^*) + \color{#5b427c}{w_m} \color{#5b427c}{\sigma_m}(p^*)  
+\end{aligned}
+$$
+
+- $\sigma_g(p^*)$: probability that the next student of an advisor of gender $g$ is female. 
+- $w_g$: proportion of students in subfield advised by advisors of gender $g$ (estimated from advisor production model).
+
+
+[Mean-field assumption: advisor groups represent the subfield as a whole.]{.footnote} 
+
+
+
+:::
+
+::: {.column}
+
+
+
+![](fig/gender-model-predictions-single.png)
+
+:::
+
+
+## {.split-40}
+
+
+
+##### Long-run behavior
+
+
+
+::: {.column}
+
+<br> <br> <br> <br> 
+
+Two strategies: compute the numerical stationary proportion of female advisors **or** simulate the model forwards. 
+
+We can do both of these either with or without parameter uncertainty. 
+
+:::
+
+::: {.column}
+
+<br> 
+
+![](fig/stationarity-advisor-intervals.png)
+
+:::
+
+##
+
+##### Long-run behavior
+
+![](fig/stationary-predictions-with-series-subfields.png){fig-align="center"}
+
+## 
+
+### What could we do to make math a more inclusive profession? 
+
+A few candidate interventions:
+
+::: {.textblock .fragment}
+
+**[Improve retention and resourcing of female advisors]{.alert}**
+
+We can model this by setting the career and student production parameters of women equal to men in the advisor production model. 
+
+
+:::
+
+
+
+::: {.textblock .fragment}
+
+**[Train men as equally-appealing mentors for female PhD students]{.alert}**:
+
+We can model this by setting the propensity of men to produce female PhD advisees equal to women in the advisee gender model. 
+
+:::
+
+
+::: {.fragment}
+***Limitations of scenario modeling***: we are not explicitly modeling the *supply* of female students entering graduate school ("the pipeline"). 
+:::
+
+
+
+## 
+
+### Some hypotheses
+
+<br> 
+
+<table>
+
+<tr>
+<td style="padding:0.5rem;border-bottom:0px">
+
+
+:::{.textblock-vertical .fragment .semi-fade-out fragment-index=3}
+
+[**Representation**]{.alert}
+
+“We need more female senior faculty to provide role-modeling and mentorship.”
+:::
+
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+
+::: {.fragment .semi-fade-out fragment-index=5}
+
+:::{.textblock-vertical .fragment .fade-in fragment-index=3}
+
+[**Belonging**]{.alert }
+
+Greater representation in the grad student community attracts women to programs and subfields. 
+:::
+:::
+
+
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+::: {.fragment .semi-fade-out fragment-index=7}
+
+:::{.textblock-vertical .fragment .fade-in fragment-index=5}
+[**Pipelines**]{.alert}
+
+“We need more women choosing math grad school.”
+
+:::
+
+:::
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+
+:::{.textblock-vertical .fragment .fade-in fragment-index=7}
+[**Leadership**]{.alert}
+
+“A small number of influential women can dramatically change the culture of a department or research community.”
+
+:::
+</td>
+</tr>
+
+<tr>
+
+
+<td style="padding:0.5rem;border-bottom:0px">
+::: {.textblock-vertical-inverse .fragment .fade-in-then-semi-out fragment-index=2}
+
+[**Yes, but...**]{.alert}
+
+Resourcing and retaining female faculty is an inclusive, equitable goal to pursue but may not lead to large-scale change.
+
+
+
+:::
+</td>
+
+<td style="padding:0.5rem;border-bottom:0px">
+::: {.textblock-vertical-inverse .fragment .fade-in-then-semi-out fragment-index=4}
+
+[**Yes!**]{.alert}
+
+Subfields/advisor groups with greater representation of women tend to attract more women. 
+
+:::
+</td>
+
+<td style="padding:0.5rem;border-bottom:0px">
+::: {.textblock-vertical-inverse .fragment .fade-in-then-semi-out fragment-index=6}
+
+[**No comment**]{.alert}
+
+This is definitely important but is largely beyond the scope of our model. 
+
+
+:::
+</td>
+
+<td style="padding:0.5rem;border-bottom:0px">
+::: {.textblock-vertical-inverse .fragment .fade-in fragment-index=8}
+
+[**We're exploring...**]{.alert}
+
+We're developing models and data analysis to try to detect these effects in our data set. 
+
+
+:::
+</td>
+
+</tr>
+
+</table>
+
+## 
+
+#### Thanks everyone!
+
+<br> 
+
+<table style="padding:0px;border-bottom:0pxmargin: 0px auto; ">
+<tr style="border:0px;padding:0px;margin:0px;">
+<td style="padding:0px;border-bottom:0px"> 
+![](fig/brooks.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Heather Brooks** <br> Harvey Mudd</p>
+</td>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/lee.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Harlin Lee** <br> UNC Chapel Hill</p>
+</td>
+
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/porter.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Mason Porter** <br> UCLA</p>
+</td>
+</tr>
+
+<tr>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/restrepo.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Juan G. Restrepo** <br> CU Boulder</p>
+</td>
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/haensch.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">**Anna Haensch** <br> Tufts</p>
+</td>
+
+
+<td style="vertical-align: middle;padding:0px;border-bottom:0px"> 
+![](fig/ben-brill.jpg){.portrait-smaller} 
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">***Ben Brill*** <br> *UCLA '22*</p>
+</td>
+
+</tr>
+
+
+</table>
+
+
+<table>
+<tr>
+<td style="padding:0px;border-bottom:0px">
+![](fig/nsf-logo.jpeg){.portrait-small}
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px"> National Science Foundation <br> Various grants</p>
+</td>
+<td style="padding:0px;border-bottom:0px">
+![](fig/icerm.jpeg){.portrait-small}
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px"> ICERM \@Brown <br> Two summer programs!</p>
+</td>
+</tr>
+</table>
+
+*Preprint coming soon* 😬😬😬
