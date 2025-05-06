@@ -181,7 +181,7 @@ This talk represents **work-in-progress** using data about our mathematics commu
 
 [**Belonging**]{.alert }
 
-Greater representation in the grad student community attracts women to programs and subfields. 
+"Greater representation in the grad student community attracts women to programs and subfields." 
 :::
 
 </td>
@@ -515,7 +515,8 @@ We can model this by setting the propensity of men to produce female PhD advisee
 
 [**Belonging**]{.alert }
 
-Greater representation in the grad student community attracts women to programs and subfields. 
+"Greater representation in the grad student community attracts women to programs and subfields." 
+
 :::
 :::
 
