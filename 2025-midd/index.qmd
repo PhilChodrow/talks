@@ -326,13 +326,15 @@ Prestige is measured by a *score function* $\sigma: \mathbf{A}^{(t)} \mapsto \ma
 
 Each agent $i$ computes a *utility* of endorsing agent $j$ in terms of the score vector $\mathbf{r}^{(t)}$. Our utility is: 
 $$
-u_{ij}(\mathbf{r}) = \beta_1 s_j + \beta_2 (r_i - r_j)^2. 
+u_{ij}(\mathbf{r}) = \beta_1 r_j + \beta_2 (r_i - r_j)^2. 
 $$
 
-Agent $i$ endorses $j$ at time $t+1$ with probability 
+Agent $i$ endorses $j$ at time $t+1$ w. p. 
 $$
 p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
 $$
+
+($m\in \Z$ endorsements per round.)
 
 :::
 
@@ -350,7 +352,6 @@ $$]{.fragment}
 
 :::
 
-[We allow $m\in \Z$ endorsements per round.]{.footnote}
 
 ## {.split-50}
 
@@ -364,15 +365,15 @@ Prestige is measured by a *score function* $\sigma: \mathbf{A}^{(t)} \mapsto \ma
 
 Each agent $i$ computes a *utility* of endorsing agent $j$ in terms of the score vector $\mathbf{r}^{(t)}$. Our utility is: 
 $$
-u_{ij}(\mathbf{r}) = \color{#FFD447}{\beta_1} s_j + \color{#59C9A5}{\beta_2} (r_i - r_j)^2. 
+u_{ij}(\mathbf{r}) = \color{#FFD447}{\beta_1} r_j + \color{#59C9A5}{\beta_2} (r_i - r_j)^2. 
 $$
 
-Agent $i$ endorses $j$ at time $t+1$ with probability 
+Agent $i$ endorses $j$ at time $t+1$ w. p. 
 $$
 p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
 $$
 
-[We allow $m\in \Z$ endorsements per round.]{.footnote}
+($m\in \Z$ endorsements per round.)
 
 :::
 

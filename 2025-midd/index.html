@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-e04f5249aea98d23e34243a46efbdaaa.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-2b1ad73023191772538939616fb0b55e.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -484,19 +484,19 @@ $$
 <p>Agents endorse other agents that they perceive as being of high prestige.</p>
 <p>Prestige is measured by a <em>score function</em> <span class="math inline">\(\sigma: \mathbf{A}^{(t)} \mapsto \mathbf{r}^{(t)} \in \mathbb{R}^n\)</span>.</p>
 <p>Each agent <span class="math inline">\(i\)</span> computes a <em>utility</em> of endorsing agent <span class="math inline">\(j\)</span> in terms of the score vector <span class="math inline">\(\mathbf{r}^{(t)}\)</span>. Our utility is: <span class="math display">\[
-u_{ij}(\mathbf{r}) = \beta_1 s_j + \beta_2 (r_i - r_j)^2.
+u_{ij}(\mathbf{r}) = \beta_1 r_j + \beta_2 (r_i - r_j)^2.
 \]</span></p>
-<p>Agent <span class="math inline">\(i\)</span> endorses <span class="math inline">\(j\)</span> at time <span class="math inline">\(t+1\)</span> with probability <span class="math display">\[
+<p>Agent <span class="math inline">\(i\)</span> endorses <span class="math inline">\(j\)</span> at time <span class="math inline">\(t+1\)</span> w. p.&nbsp; <span class="math display">\[
 p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
 \]</span></p>
+<p>(<span class="math inline">\(m\in \mathbb{Z}\)</span> endorsements per round.)</p>
 </div><div class="column bg0">
 <p><br> <br></p>
 <p><img data-src="img/fig_1.png"></p>
 <p><span class="fragment">All new endorsements get collected into update matrix <span class="math inline">\(\Delta^{(t)}\)</span>. Then we do our main update: <span class="math display">\[
 \mathbf{A}^{(t+1)} = \lambda \mathbf{A}^{(t)} + (1-\lambda) \Delta^{(t)}\;.
 \]</span></span></p>
-</div><p><span class="footnote">We allow <span class="math inline">\(m\in \mathbb{Z}\)</span> endorsements per round.</span></p>
-</section>
+</div></section>
 <section id="section-12" class="slide level2 split-50">
 <h2></h2>
 <div class="column bg1">
@@ -504,12 +504,12 @@ p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{
 <p>Agents endorse other agents that they perceive as being of high prestige.</p>
 <p>Prestige is measured by a <em>score function</em> <span class="math inline">\(\sigma: \mathbf{A}^{(t)} \mapsto \mathbf{r}^{(t)} \in \mathbb{R}^n\)</span>.</p>
 <p>Each agent <span class="math inline">\(i\)</span> computes a <em>utility</em> of endorsing agent <span class="math inline">\(j\)</span> in terms of the score vector <span class="math inline">\(\mathbf{r}^{(t)}\)</span>. Our utility is: <span class="math display">\[
-u_{ij}(\mathbf{r}) = \color{#FFD447}{\beta_1} s_j + \color{#59C9A5}{\beta_2} (r_i - r_j)^2.
+u_{ij}(\mathbf{r}) = \color{#FFD447}{\beta_1} r_j + \color{#59C9A5}{\beta_2} (r_i - r_j)^2.
 \]</span></p>
-<p>Agent <span class="math inline">\(i\)</span> endorses <span class="math inline">\(j\)</span> at time <span class="math inline">\(t+1\)</span> with probability <span class="math display">\[
+<p>Agent <span class="math inline">\(i\)</span> endorses <span class="math inline">\(j\)</span> at time <span class="math inline">\(t+1\)</span> w. p.&nbsp; <span class="math display">\[
 p_{ij}^{(t)} = \frac{e^{u_{ij}(\mathbf{r}^{(t)})}}{\sum_j e^{u_{ij}(\mathbf{r}^{(t)})}}
 \]</span></p>
-<p><span class="footnote">We allow <span class="math inline">\(m\in \mathbb{Z}\)</span> endorsements per round.</span></p>
+<p>(<span class="math inline">\(m\in \mathbb{Z}\)</span> endorsements per round.)</p>
 </div><div class="column bg0">
 <p><br> <br> <br> <br></p>
 <p><span class="highlight"><span class="math inline">\(\beta_1\)</span></span> encodes a preference to endorse high-prestige agents. Higher value: more likely for endorsements to concentrate at the top.</p>

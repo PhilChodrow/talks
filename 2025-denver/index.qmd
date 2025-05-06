@@ -478,6 +478,13 @@ We can model this by setting the propensity of men to produce female PhD advisee
 :::
 
 
+##
+
+##### Estimating the effect of interventions on long-run proportions
+
+![](fig/stationary-predictions-with-series-subfields-scenarios.png){fig-align="center"}
+
+
 
 ## 
 
