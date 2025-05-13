@@ -23,37 +23,17 @@ cache: true
 from: markdown+emoji
 ---
 
-## {.split-40} 
-
-<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
-
-::: {.column .bg0}  
-     
-#### Hi everyone! 
-
-I'm Phil Chodrow. I'm an applied mathematician by training. These days my interests include:  
-
-<br> 
-
-- Network models + algorithms
-- Dynamics on networks
-- Data science for social justice
-- Undergraduate pedagogy
 
 
-:::
+## 
 
-::: {.column .bg0}
 
-#### [Hi everyone!]{.hide}
 
-I'm a new(ish) assistant professor of computer science at Middlebury College in Middlebury, Vermont.  
+![](fig/bar-chart-pipeline.png){fig-align="center"}
 
-![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
 
-Middlebury is a small primarily-undergraduate institution (PUI) in Vermont, USA. 
+[]{.footnote}
 
-:::
 
 ## 
 
@@ -79,10 +59,20 @@ What could the effects of [**interventions**]{.alert} be on long-term gender rep
 
 :::
 
+
 ## 
 
+##### Inspiration From... 
+
+![](fig/gender-retention.png){.absolute left=50 top=100 width=40% align=left}
+
+![](fig/labor-advantages.png){.absolute right=50 top=100 width=40% align=right}
+
+![](fig/quantifying-hierarchy.png){.absolute width=50% top=400 left=300}
 
 
+
+## 
 
 #### The Team
 
@@ -168,19 +158,11 @@ This talk focuses on the [**production of PhD graduates**]{.alert} and therefore
 :::
 
 
-## 
 
-<br>
-
-![](fig/bar-chart-pipeline.png){fig-align="center"}
-
-
-[]{.footnote}
 
 ## 
 
 ### Representation varies across mathematical subfields
-
 
 ![](fig/trajectory-panels-selection.png){fig-align="center" }
 
@@ -236,6 +218,8 @@ This talk focuses on the [**production of PhD graduates**]{.alert} and therefore
 
 </table>
 
+
+
 ## {.split-50}
 
 
@@ -248,6 +232,32 @@ This talk focuses on the [**production of PhD graduates**]{.alert} and therefore
 ![](fig/juan-mgp.png)
 
 :::
+
+
+::: {.column}
+
+![](fig/tunable-eigenvector.png){width=80%}
+
+![](fig/emergence-of-hierarchy.png){width=80%}
+
+![](fig/temporal-dynamics.png){width=80%}
+
+
+:::
+
+## {.split-50}
+
+
+::: {.column}
+
+### Our data
+
+<br>
+
+![](fig/juan-mgp.png)
+
+:::
+
 
 ::: {.column}
 
@@ -264,6 +274,9 @@ We observe or estimate math subfields for 94% of these pairs (predictions based 
 We estimate gender for 95% of PhD students and 97% of advisors. ]{.footnote}
 
 :::
+
+
+
 
 ## 
 
@@ -478,7 +491,7 @@ We can do both of these either with or without parameter uncertainty.
 
 ## 
 
-### What could we do to make math a more inclusive profession? 
+#### What could we do to make math a more inclusive profession? 
 
 Two candidate interventions: 
 
@@ -519,7 +532,6 @@ We can model this by setting the propensity of men to produce female PhD advisee
 
 ### Some hypotheses
 
-<br> 
 
 <table>
 
@@ -556,7 +568,7 @@ We can model this by setting the propensity of men to produce female PhD advisee
 
 ::: {.fragment .semi-fade-out fragment-index=7}
 
-:::{.textblock-vertical .fragment .fade-in fragment-index=5}
+:::{.textblock-vertical .fragment .fade-in fragment-index=6}
 [**Attrition**]{.alert}
 
 *Addressing disparities in career attrition for female faculty would help to close the gender gap.* 
@@ -567,7 +579,7 @@ We can model this by setting the propensity of men to produce female PhD advisee
 </td>
 <td style="padding:0.5rem;border-bottom:0px">
 
-:::{.textblock-vertical .fragment .fade-in fragment-index=7}
+:::{.textblock-vertical .fragment .fade-in fragment-index=10}
 [**Leadership**]{.alert}
 
 *A small number of influential women can dramatically change the culture of a department or research community.*
@@ -602,7 +614,7 @@ Subfields/advisor groups with greater representation of women tend to attract mo
 </td>
 
 <td style="padding:0.5rem;border-bottom:0px">
-::: {.textblock-vertical-inverse .fragment .fade-in-then-semi-out fragment-index=6}
+::: {.textblock-vertical-inverse .fragment .fade-in-then-semi-out fragment-index=7}
 
 [**Yes, but...**]{.alert}
 
@@ -613,7 +625,7 @@ Resourcing and retaining female faculty is an inclusive, equitable goal to pursu
 </td>
 
 <td style="padding:0.5rem;border-bottom:0px">
-::: {.textblock-vertical-inverse .fragment .fade-in fragment-index=8}
+::: {.textblock-vertical-inverse .fragment .fade-in fragment-index=10}
 
 [**We're exploring...**]{.alert}
 
@@ -626,6 +638,11 @@ We're developing models and data analysis to try to detect these effects in our 
 </tr>
 
 </table>
+
+![](fig/gender-model-predictions-single.png){.absolute .fragment fragment-index=5 top=430  width=20% left=180}
+
+![](fig/prediction-single.png){.absolute .fragment fragment-index=8 top=430  width=20% left=532}
+
 
 ## 
 
@@ -694,7 +711,7 @@ We're developing models and data analysis to try to detect these effects in our 
 ![](fig/nsf-logo.jpeg){.portrait-small}
 </td>
 <td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
-<p style="padding:0px"> National Science Foundation <br> Various grants</p>
+<p style="padding:0px"> National Science Foundation </p>
 </td>
 <td style="padding:0px;border-bottom:0px">
 ![](fig/icerm.jpeg){.portrait-small}
