@@ -62,13 +62,15 @@ What could the effects of [**interventions**]{.alert} be on long-term gender rep
 
 ## 
 
-##### Inspiration From... 
+##### Inspiration from... 
 
 ![](fig/gender-retention.png){.absolute left=50 top=100 width=40% align=left}
 
 ![](fig/labor-advantages.png){.absolute right=50 top=100 width=40% align=right}
 
-![](fig/quantifying-hierarchy.png){.absolute width=50% top=400 left=300}
+![](fig/quantifying-hierarchy.png){.absolute width=40% top=400 right=50}
+
+![](fig/clifton.png){.absolute width=50% top=400 left=50}
 
 
 
