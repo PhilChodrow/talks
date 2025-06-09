@@ -26,6 +26,40 @@ from: markdown+emoji
 
 
 
+## {.split-40} 
+
+<!-- quarto preview 2023-middlebury-dlinq/index.qmd-->
+
+::: {.column .bg0}  
+     
+#### Hi everyone! 
+
+I'm Phil Chodrow. I'm a new-ish assistant professor of computer science at Middlebury College, a small primarily-undergraduate institution (PUI) in Vermont, USA.  I did at PhD in operations research at MIT and a postdoc with Mason Porter in math at UCLA.  
+ 
+
+
+- Network models + algorithms
+- Higher-order network modeling, hypergraphs
+- Dynamics on networks
+- Data science for social justice
+
+
+:::
+
+::: {.column .bg0}
+
+#### [Hi everyone!]{.hide}
+
+<br> 
+
+![](https://nescac.com/images/2020/8/3/MID_Campus_SA.jpg)
+
+
+
+:::
+
+
+
 ## 
 
 
