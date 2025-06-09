@@ -662,7 +662,7 @@ Resourcing and retaining female faculty is an inclusive, equitable goal to pursu
 </td>
 
 <td style="padding:0.5rem;border-bottom:0px">
-::: {.textblock-vertical-inverse .fragment .fade-in fragment-index=10}
+::: {.textblock-vertical-inverse .fragment .fade-in fragment-index=11}
 
 [**We're exploring...**]{.alert}
 
@@ -760,3 +760,5 @@ We're developing models and data analysis to try to detect these effects in our 
 </table>
 
 *Preprint coming soon* 😬😬😬
+
+## {background-image="fig/tree.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
