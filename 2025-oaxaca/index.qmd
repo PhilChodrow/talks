@@ -1,6 +1,6 @@
 ---
 title: "Dynamics of Gender Representation in Academic Mathematics"  
-subtitle: "Workshop on Collective Social Phenomena: Dynamics and Data <br> Casa Matemática Oaxaca<br>Oaxaca City, MX  || June 10th, 2025"  
+subtitle: "Workshop on Collective Social Phenomena: Dynamics and Data <br> Casa Matemática Oaxaca<br>Oaxaca City, MX  || June 9th, 2025"  
 date: ""
 author: '<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College'    
 title-slide-attributes:
