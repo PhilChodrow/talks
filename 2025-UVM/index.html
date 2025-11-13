@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Phil Chodrow  Department of Computer Science Middlebury College">
+  <title>Dynamics of Gender Representation in Academic Mathematics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-1a150949b36109f1fe1e035ccd3bd37c.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#3a2d4b" data-background-opacity="0.0" class="quarto-title-block center">
+  <h1 class="title">Dynamics of Gender Representation in Academic Mathematics</h1>
+  <p class="subtitle">UVM Complex Systems Institute <br> November 17th, 2025</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span class="speaker-highlight">Phil Chodrow</span> <br>Department of Computer Science<br>Middlebury College 
+</div>
+</div>
+</div>
+
+</section>
+<section id="section" class="slide level2 split-50" data-background-image="fig/midd-campus.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+<h2></h2>
+<h4 id="hi-everyone">Hi everyone!</h4>
+<p>I’m <strong>Phil Chodrow</strong>. I’m a new-ish assistant professor of computer science at Middlebury College, your neighbor ~1 hour south. I did my PhD in operations research at MIT and a postdoc with Mason Porter in math at UCLA.</p>
+<div class="column">
+<p><br><br><br><br><br></p>
+<h5 id="i-like-to-work-on">I like to work on…</h5>
+<ul>
+<li>Higher-order networks, hypergraphs</li>
+<li>Math models of social systems: opinion dynamics, hierarchy formation, segregation</li>
+<li>Data science for social justice</li>
+</ul>
+<h5 id="i-teach">I teach…</h5>
+<ul>
+<li>Machine learning</li>
+<li>Network science</li>
+<li>Discrete math</li>
+</ul>
+</div><div class="column">
+<p><br><br><br><br><br></p>
+<h5 id="i-also-like">I also like…</h5>
+<ul>
+<li>Aikido</li>
+<li>Hiking, cycling</li>
+<li>Tea</li>
+<li>Chess</li>
+<li>Books (scifi, fantasy, history)</li>
+</ul>
+<div class="fragment absolute" style="top: 320px; right: 50px; ">
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&amp;href=https%3A%2F%2Fwww.facebook.com%2Faikidoofchamplainvalley%2Fvideos%2F648819024947801%2F&amp;show_text=false&amp;width=560&amp;t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+</iframe>
+</div>
+</div></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="fig/bar-chart-pipeline.png" class="quarto-figure quarto-figure-center r-stretch"><p><span class="footnote"></span></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<h4 id="questions-for-today">Questions for today</h4>
+<p><br> <br></p>
+<div class="textblock fragment">
+<p>What <span class="alert"><strong>mechanisms</strong></span> drive (lack of) gender representation in academic mathematics?</p>
+</div>
+<div class="textblock fragment">
+<p><span class="alert"><strong>What can we expect</strong></span> to happen if these mechanisms continue to operate as is?</p>
+</div>
+<div class="textblock fragment">
+<p>What could the effects of <span class="alert"><strong>interventions</strong></span> be on long-term gender representation?</p>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<h4 id="the-team">The Team</h4>
+<table style="padding:0px;border-bottom:0pxmargin: 0px auto; ">
+<tbody><tr style="border:0px;padding:0px;margin:0px;">
+<td style="padding:0px;border-bottom:0px">
+<img data-src="fig/brooks.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Heather Brooks</strong> <br> Harvey Mudd
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/lee.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Harlin Lee</strong> <br> UNC Chapel Hill
+</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/porter.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Mason Porter</strong> <br> UCLA
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/restrepo.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Juan G. Restrepo</strong> <br> CU Boulder
+</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/haensch.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Anna Haensch</strong> <br> Tufts
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/chodrow.jpg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Phil Chodrow</strong> <br> Middlebury
+</p>
+</td>
+</tr>
+</tbody></table>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<h5 id="inspiration-from">Inspiration from…</h5>
+<p><img data-src="fig/gender-retention.png" class="absolute" style="top: 100px; left: 50px; width: 40%; " data-align="left"></p>
+<p><img data-src="fig/labor-advantages.png" class="absolute" style="top: 100px; right: 50px; width: 40%; " data-align="right"></p>
+<p><img data-src="fig/quantifying-hierarchy.png" class="absolute" style="top: 400px; right: 50px; width: 40%; "></p>
+<p><img data-src="fig/clifton.png" class="absolute" style="top: 400px; left: 50px; width: 50%; "></p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<h3 id="some-early-caveats">Some early caveats</h3>
+<p><br></p>
+<div class="textblock fragment semi-fade-out" data-fragment-index="1">
+<p>This talk represents <strong>work-in-progress</strong> using data about our mathematics community. <span class="alert"><strong>All results are preliminary!</strong></span></p>
+</div>
+<div class="textblock fragment fade-in-then-semi-out" data-fragment-index="1">
+<p>This talk focuses on the <span class="alert"><strong>production of PhD graduates</strong></span> and therefore almost exclusively considers doctoral universities.</p>
+</div>
+<div class="textblock fragment fade-in-then-semi-out" data-fragment-index="2">
+<p><span class="alert"><strong>Gender is not binary</strong></span>, but unfortunately our data (and therefore our story and our model) are.</p>
+</div>
+<div class="textblock fragment fade-in">
+<p><span class="alert"><strong>Quantitative work complements, but never replaces</strong></span>: voices of marginalized scholars, qualitative research and critical theory, activism, and implementation of initiatives and policies.</p>
+</div>
+</section>
+<section id="section-6" class="slide level2 split-50">
+<h2></h2>
+<div class="column">
+<h3 id="our-data">Our data</h3>
+<p><br></p>
+<p><img data-src="fig/juan-mgp.png"></p>
+</div><div class="column">
+<p><img data-src="fig/tunable-eigenvector.png" style="width:80.0%"></p>
+<p><img data-src="fig/emergence-of-hierarchy.png" style="width:80.0%"></p>
+<p><img data-src="fig/temporal-dynamics.png" style="width:80.0%"></p>
+</div></section>
+<section id="section-7" class="slide level2 split-50">
+<h2></h2>
+<div class="column">
+<h3 id="our-data-1">Our data</h3>
+<p><br></p>
+<p><img data-src="fig/juan-mgp.png"></p>
+</div><div class="column">
+<p><img data-src="fig/nmqg.png" class="absolute" style="top: 20px; left: 50px; width: 80%; "> <img data-src="fig/wgnd.jpeg" class="absolute" style="top: 20px; left: 250px; "></p>
+<p><img data-src="fig/ben-brill.jpg" class="absolute" style="top: 300px; width: 40%; "></p>
+<p><span class="absolute" style="top: 350px; left: 300px; width: 30%; ">Ben Brill, UCLA ’22</span></p>
+<p><span class="footnote">Total of 116,306 advisor-student pairs in the US since 1950, representing 21,781 distinct advisors.&nbsp; We observe or estimate math subfields for 94% of these pairs (predictions based on thesis titles).&nbsp; We estimate gender for 95% of PhD students and 97% of advisors.&nbsp;</span></p>
+</div></section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<h3 id="data-issues..">Data issues..</h3>
+
+<img data-src="fig/data-gaps.png" class="quarto-figure quarto-figure-center r-stretch"><div class="textblock-vertical absolute fragment" style="top: 150px; left: 300px; ">
+<p>Misgendering</p>
+<p>Incorrect MSCs inferred</p>
+<p>Nonrandom missing data</p>
+<p>Various shenanigans</p>
+</div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+
+<img data-src="fig/edit-gombay.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-10" class="slide level2" data-background-image="fig/basic-counts-and-trajectories.png" data-background-size="contain" data-background-position="center">
+<h2></h2>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<h3 id="some-hypotheses">Some hypotheses</h3>
+<p><br> <br></p>
+<table>
+<tbody><tr>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment semi-fade-out" data-fragment-index="1">
+<p><span class="alert"><strong>Mentorship</strong></span></p>
+<p><em>Female advisors are more effective in attracting or retaining female graduate students.</em></p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment fade-in-then-semi-out" data-fragment-index="1">
+<p><span class="alert"><strong>Belonging</strong></span></p>
+<p><em>Greater representation in the grad student community attracts women to programs and subfields.</em></p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment fade-in-then-semi-out" data-fragment-index="2">
+<p><span class="alert"><strong>Attrition</strong></span></p>
+<p><em>Addressing disparities in career attrition for female faculty would help to close the gender gap.</em></p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment fade-in" data-fragment-index="3">
+<p><span class="alert"><strong>Leadership</strong></span></p>
+<p><em>A small number of influential women can dramatically change the culture of a department or research community.</em></p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</section>
+<section id="section-12" class="slide level2" data-background-image="fig/phase-portrait-binned.png" data-background-size="contain" data-background-position="center">
+<h2></h2>
+<p><span class="absolute" style="top: 100px; right: 75px; ">Many math subfields are on <br> qualitatively similar trajectories.</span></p>
+<p><span class="absolute" style="bottom: 100px; right: 150px; "><em>Six largest subfields<br>by record count.</em></span></p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<h3 id="two-prong-modeling-strategy">Two-prong modeling strategy</h3>
+<p><br></p>
+<div class="textblock">
+<p><span class="alert"><strong>Advisor production</strong></span></p>
+<p>Model the <em>number of graduate students produced</em> by a given advisor.</p>
+<p><em>Technique: maximum likelihood estimation in a bespoke stochastic model.</em></p>
+</div>
+<p><br></p>
+<div class="textblock">
+<p><span class="alert"><strong>Student gender</strong></span></p>
+<p>Model the gender of students produced by a given advisor.</p>
+<p><em>Technique: logistic regression.</em></p>
+</div>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<h3 id="generative-model-of-advisor-production">Generative model of advisor production</h3>
+
+<img data-src="fig/generative-model.png" class="quarto-figure quarto-figure-center r-stretch"><p><strong>Assumptions</strong>:</p>
+<ul>
+<li>Startup depends on subfield.</li>
+<li>Career length depends on gender.</li>
+<li># students per year depends on subfield and gender.</li>
+</ul>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<h4 id="latent-variable-model">Latent variable model</h4>
+<p>We model an observed sequence of students <span class="math inline">\(\color{#086788}{\mathbf{S}} = (\color{#086788}{S}_1, \color{#086788}{S}_2, \ldots, \color{#086788}{S}_T)\)</span> produced by an advisor as a function of an <em>unobserved</em> advisor career <span class="math inline">\(\color{#07A0C3}{C}\)</span> specified by the startup period length and retirement year.</p>
+<div class="big-equation">
+<p><span class="math display">\[
+\begin{aligned}
+  p(\color{#086788}{\mathbf{S}};\color{#F25C54}{\boldsymbol{\theta}}) &amp;= \sum_{\color{#07A0C3}{C}\in\mathcal{C}} p(\color{#086788}{\mathbf{S}}|\color{#07A0C3}{C};\color{#F25C54}{\boldsymbol{\theta}})p(\color{#07A0C3}{C};\color{#F25C54}{\boldsymbol{\theta}})
+\end{aligned}
+\]</span></p>
+</div>
+<p>The vector <span class="math inline">\(\color{#F25C54}{\boldsymbol{\theta}}\)</span> contains the parameters to be estimated.</p>
+<p>We do this using a hybrid expectation-maximization algorithm: some parameters can be estimated efficiently via EM, while others must be estimated by hill-climbing.</p>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<h4 id="men-have-estimated-careers-4-years-longer">Men have estimated careers ~4 years longer</h4>
+
+<img data-src="fig/career-distributions.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<h5 id="longer-careers-times-more-students-per-year-more-students-per-career">Longer careers <span class="math inline">\(\times\)</span> more students per year = more students per career</h5>
+
+<img data-src="fig/career-production-rates.png" class="quarto-figure quarto-figure-center r-stretch"><div class="textblock fragment">
+<p>We hypothesize that greater student production per year reflects unequal access to research resources; cf.&nbsp;Zhang et al.&nbsp;(2022)</p>
+</div>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<h3 id="logistic-model-for-advisee-gender">Logistic model for advisee gender</h3>
+<p>Estimate the odds that the next student produced by an advsior is female based on subfield, advisor gender, and representation of women in advisor group and subfield.</p>
+<div class="bigger-equation">
+<p><span class="math display">\[
+\begin{aligned}
+  \log (\text{odds F}) = &amp; \beta_0 + \\
+                         &amp; \rho \times (\text{advisor is F}) + \\
+                         &amp; \gamma_1 \times (\text{proportion F advisees in group}) + \\
+                         &amp; \gamma_2   \times (\text{proportion F advisees in group})^2 +\\
+                         &amp; \eta_{1} \times (\text{proportion F in subfield}) + \\
+                         &amp; \eta_{2} \times (\text{proportion F in subfield})^2
+\end{aligned}
+\]</span></p>
+</div>
+<p><em>We tried a lot of other models with other features (e.g.&nbsp;decade, nonlinear transformations, etc) but this one was best in cross-validation among those without an explicit term for the topic of the subfield</em>.</p>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<h3 id="logistic-model-for-advisee-gender-1">Logistic model for advisee gender</h3>
+<p>Estimate the odds that the next student produced by an advisor is female based on subfield, advisor gender, and representation of women in advisor group and subfield.</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \log (\text{odds F}) = &amp; \beta_0 + &amp;\quad \beta_0 &amp;= -3.30 \; (0.05)\\
+                         &amp; \rho \times (\text{advisor is F}) + &amp;\quad\rho &amp;= \phantom{-}0.42 \;(0.02)\\
+                         &amp; \gamma_1 \times (\text{proportion F advisees in group}) + &amp;\quad \gamma_1 &amp;= \phantom{-}1.49\; (0.16)\\
+                         &amp; \gamma_2   \times (\text{proportion F advisees in group})^2 + &amp;\quad \gamma_2 &amp;= -0.51 \;(0.24)\\
+                         &amp; \eta_{1} \times (\text{proportion F in subfield}) + &amp;\quad \eta_1 &amp;= \phantom{-}4.16 \; (0.33)\\
+                         &amp; \eta_{2} \times (\text{proportion F in subfield})^2 &amp;\quad \eta_2 &amp;= \phantom{-}1.53 \; (0.51)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="section-20" class="slide level2 split-40">
+<h2></h2>
+<div class="column">
+<h5 id="homophily-effects-advisor-student-and-student-student">Homophily effects: advisor-student and student-student</h5>
+<p>Both the gender of a students’ specific advisor <em>and</em> the overall proportion of female advisors in the subfield’s population contribute to the likelihood that the student is female.</p>
+<p><em>High uncertainty in the model predictions for large <span class="math inline">\(p_F\)</span> reflects the fact that we have very little data in that region.</em></p>
+</div><div class="column">
+<p><br><br></p>
+<p><img data-src="fig/gender-model-prediction-illustration-1.png" class="absolute" style="top: 100px; right: 50px; width: 140%; "></p>
+</div></section>
+<section id="section-21" class="slide level2 split-40">
+<h2></h2>
+<div class="column">
+<h5 id="numerical-estimation-of-stationary-proportion">Numerical estimation of stationary proportion</h5>
+<p>If <span class="math inline">\(p^*\)</span> is the stationary proportion of graduates in the subfield, then <span class="math inline">\(p^*\)</span> approximately satisfies <span class="math display">\[
+\begin{aligned}
+  p^* = \color{#ffaf03}{w_f}\color{#ffaf03}{\sigma_f}(p^*) + \color{#5b427c}{w_m} \color{#5b427c}{\sigma_m}(p^*)  
+\end{aligned}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\sigma_g(p^*)\)</span>: prob. next student of an advisor of gender <span class="math inline">\(g\)</span> is female.</li>
+<li><span class="math inline">\(w_g\)</span>: proportion of students in subfield advised by advisors of gender <span class="math inline">\(g\)</span> (estimated from advisor production model).</li>
+</ul>
+<p><span class="footnote">Mean-field assumption: advisor groups represent the subfield as a whole.</span></p>
+</div><div class="column">
+<p><br><br></p>
+<p><img data-src="fig/gender-model-prediction-illustration-2.png" class="absolute" style="top: 100px; right: 50px; width: 140%; "></p>
+<p><img data-src="fig/gender-model-prediction-illustration-3.png" class="absolute fragment" style="top: 100px; right: 50px; width: 140%; "></p>
+<p><img data-src="fig/gender-model-prediction-illustration-4.png" class="absolute fragment" style="top: 100px; right: 50px; width: 140%; "></p>
+<p><img data-src="fig/gender-model-prediction-illustration-5-annotated.png" class="absolute fragment" style="top: 100px; right: 50px; width: 140%; "></p>
+</div></section>
+<section id="section-22" class="slide level2 split-30">
+<h2></h2>
+<h5 id="what-might-we-expect-near-term">What might we expect near-term?</h5>
+<div class="column">
+<p><br> <br> <br> <br> <br> <br> <br> <em>10 simulations initialized with 1,000 active advisors, 20% female.</em></p>
+</div><div class="column">
+<p><br></p>
+<p><img data-src="fig/production-model-scenario-no-intervention.png" class="absolute fragment" style="top: 100px; right: 50px; width: 90%; "></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+</div></section>
+<section id="section-23" class="slide level2 split-50">
+<h2></h2>
+<h4 id="what-could-we-do-to-make-math-a-more-inclusive-profession">What could we do to make math a more inclusive profession?</h4>
+<div class="column">
+<p><br> <br> <br> <br></p>
+<div class="textblock fragment">
+<p><strong><span class="alert">Attrition Hypothesis</span></strong></p>
+<p><em>Addressing disparities in career attrition for female faculty would help to close the gender gap.</em></p>
+</div>
+<div class="textblock fragment">
+<p><strong><span class="alert">Approach</span></strong></p>
+<p>We can model equalizing career lengths and student production per year.</p>
+</div>
+</div><div class="column">
+<p><img data-src="fig/production-model-scenario-no-intervention.png" class="absolute fragment" style="top: 175px; right: 50px; width: 90%; "></p>
+<p><img data-src="fig/production-model-scenario-comparison.png" class="absolute fragment" style="top: 175px; right: 50px; width: 90%; "></p>
+</div></section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<h3 id="some-hypotheses-1">Some hypotheses</h3>
+<table>
+<tbody><tr>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment semi-fade-out" data-fragment-index="3">
+<p><span class="alert"><strong>Mentorship</strong></span></p>
+<p><em>Female advisors are more effective in attracting or retaining female graduate students.</em></p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="fragment semi-fade-out" data-fragment-index="5">
+<div class="textblock-vertical fragment fade-in" data-fragment-index="3">
+<p><span class="alert"><strong>Belonging</strong></span></p>
+<p><em>Greater representation in the grad student community attracts women to programs and subfields.</em></p>
+</div>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="fragment semi-fade-out" data-fragment-index="7">
+<div class="textblock-vertical fragment fade-in" data-fragment-index="6">
+<p><span class="alert"><strong>Attrition</strong></span></p>
+<p><em>Addressing disparities in career attrition for female faculty would help to close the gender gap.</em></p>
+</div>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical fragment fade-in" data-fragment-index="10">
+<p><span class="alert"><strong>Leadership</strong></span></p>
+<p><em>A small number of influential women can dramatically change the culture of a department or research community.</em></p>
+</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical-inverse fragment fade-in-then-semi-out" data-fragment-index="2">
+<p><span class="alert"><strong>Yes!</strong></span></p>
+<p>Female advisors are substantially more likely than male advisors to produce female PhD graduates.</p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical-inverse fragment fade-in-then-semi-out" data-fragment-index="4">
+<p><span class="alert"><strong>Yes!</strong></span></p>
+<p>Subfields/advisor groups with greater representation of women tend to attract more women.</p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical-inverse fragment fade-in-then-semi-out" data-fragment-index="7">
+<p><span class="alert"><strong>Yes!</strong></span></p>
+<p>This is an intrinsically inclusive, equitable goal AND may also accelerate progress by 10-20 years.</p>
+</div>
+</td>
+<td style="padding:0.5rem;border-bottom:0px">
+<div class="textblock-vertical-inverse fragment fade-in" data-fragment-index="11">
+<p><span class="alert"><strong>We’re exploring…</strong></span></p>
+<p>We’re developing models and data analysis to try to detect these effects in our data set.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+<p><img data-src="fig/gender-model-prediction-illustration-1.png" class="absolute fragment" style="top: 430px; left: 180px; width: 20%; " data-fragment-index="5"></p>
+<p><img data-src="fig/production-model-scenario-comparison.png" class="absolute fragment" style="top: 430px; left: 532px; width: 20%; " data-fragment-index="8"></p>
+</section>
+<section id="section-25" class="slide level2" data-background-image="fig/tree.png" data-background-size="contain" data-background-position="center" data-background-repeat="no-repeat">
+<h2></h2>
+<h3 id="next">Next?</h3>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<h4 id="thanks-everyone">Thanks everyone!</h4>
+<p><br></p>
+<table style="padding:0px;border-bottom:0pxmargin: 0px auto; ">
+<tbody><tr style="border:0px;padding:0px;margin:0px;">
+<td style="padding:0px;border-bottom:0px">
+<img data-src="fig/brooks.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Heather Brooks</strong> <br> Harvey Mudd
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/lee.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Harlin Lee</strong> <br> UNC Chapel Hill
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/porter.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Mason Porter</strong> <br> UCLA
+</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/restrepo.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Juan G. Restrepo</strong> <br> CU Boulder
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/haensch.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong>Anna Haensch</strong> <br> Tufts
+</p>
+</td>
+<td style="vertical-align: middle;padding:0px;border-bottom:0px">
+<img data-src="fig/ben-brill.jpg" class="portrait-smaller">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+<strong><em>Ben Brill</em></strong> <br> <em>UCLA ’22</em>
+</p>
+</td>
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td style="padding:0px;border-bottom:0px">
+<img data-src="fig/nsf-logo.jpeg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+National Science Foundation
+</p>
+</td>
+<td style="padding:0px;border-bottom:0px">
+<img data-src="fig/icerm.jpeg" class="portrait-small">
+</td>
+<td style="vertical-align: middle;white-space:nowrap;padding:0px;border-bottom:0px">
+<p style="padding:0px">
+ICERM @Brown <br> Two summer programs!
+</p>
+</td>
+</tr>
+</tbody></table>
+<p><em>Preprint coming soon</em> 😬😬😬</p>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
