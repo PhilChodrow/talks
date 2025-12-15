@@ -495,7 +495,7 @@ The [**score function**]{.alert} $\sigma$ maps the matrix of endorsements $\math
 
 :::
 
-::: {.column .bg1}
+::: {.column .bg0}
 
 
 ::: {.font_smaller}
@@ -943,7 +943,9 @@ Some systems are [near criticality]{.alert}: small interventions could help to p
 
 <br> 
 
-![](img/plagiarized.png)
+![](img/plagiarized.png){.fragment fragment-index="1"}
+![](img/plagiarized-2.png){.fragment fragment-index="2" .absolute left=50 top=150}
+![](img/plagiarized-3.png){.fragment fragment-index="3" .absolute left=75 top=150}
 
 
 ::: 
@@ -952,7 +954,7 @@ Some systems are [near criticality]{.alert}: small interventions could help to p
 
 <br> <br> 
 
-[Yang, X.; Wu, Z.; Javaid, S. RETRACTED: An Adaptive Hierarchical Network Model for Studying the Structure of Economic Network. *Entropy* 2022, 24, 702.]{.absolute left=10 top=200 width=250}
+[Yang, X.; Wu, Z.; Javaid, S. RETRACTED: An Adaptive Hierarchical Network Model for Studying the Structure of Economic Network. *Entropy* 2022, 24, 702.]{.absolute left=10 top=200 width=250 .fragment fragment-index="1"}
 
 :::
 
