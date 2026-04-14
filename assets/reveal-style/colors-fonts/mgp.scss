@@ -10,7 +10,7 @@
 /*-- scss:defaults --*/
 
 $bg-main0: #ffffff;
-$color-main0: #000;
+$color-main0: #303030;
 $bg-main1: #EF476F;
 $bg-main2: #3a2d4b;
 $block-bg: #5b427c;
@@ -22,6 +22,9 @@ $alert-color-2: #00c486;
 $alert-color-3: #23395B;
 $alert-color-4: #e70b3e;
 $background-color: #ffffff;
+$block-bg-1: #5b427c;
+$block-bg-2: #5b427c;
+$block-bg-3: #5b427c;
 
 // $link-color: #42affa;
 
@@ -291,6 +294,21 @@ section.has-dark-background a, section.has-dark-background a:hover {
 }
 
 
+
+.textblock-inverse { 
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.4rem;
+    color: $bg-main2;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: $alert-color;
+    border-radius: 1rem;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .textblock-vertical { 
     font-family: 'Figtree', sans-serif;
     color: $bg-main0;
@@ -299,6 +317,16 @@ section.has-dark-background a, section.has-dark-background a:hover {
     border-radius: 1rem;
     width: 13rem;
     height:13rem;
+    padding: 0.05rem;
+}
+
+.textblock-vertical-inverse-flex { 
+    font-family: 'Figtree', sans-serif;
+    color: $bg-main2;
+    text-align: left;
+    background-color: $alert-color;
+    border-radius: 1rem;
+    width: 13rem;
     padding: 0.05rem;
 }
 
@@ -314,9 +342,17 @@ section.has-dark-background a, section.has-dark-background a:hover {
 }
 
 
+.textblock-vertical-inverse-flex p { 
+    padding: 0.0rem;
+    font-size: 1rem;
+    padding: 0px;
+    margin:0.75rem;
+}
+
 .textblock-vertical p { 
     padding: 0.0rem;
     font-size: 1rem;
+    padding: 0px;
 }
 
 .textblock-vertical-inverse p { 
@@ -331,3 +367,23 @@ section.has-dark-background a, section.has-dark-background a:hover {
 .textblock p { 
     padding: 0px;
 }
+
+.textblock-inverse p { 
+    padding: 0px;
+}
+
+.textblock-inverse .alert { 
+    color: $bg-main2;
+}
+
+
+.textblock-var-1 { 
+    background-color: $alert-color-2;
+    color: $bg-main0;
+}
+
+.bg-beige {
+    background-color: #f5f5dc;
+    color: $color-main0;
+}
+
