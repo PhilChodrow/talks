@@ -87,17 +87,29 @@ Postdoc: Math at UCLA (with Mason Porter)
 
 <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
 
+## {.split-50 background-image="fig/midd-banner-light.jpg" background-size="cover" background-position="center" background-repeat="no-repeat"} 
 
-::: {.fragment}
-
-*Also: aikido, hiking, cycling, tea, chess, gardening, books (scifi, fantasy, history)*
-
-:::
+#### Also: *aikido, hiking, cycling, tea, chess, gardening, reading, cats*
 
 
-## {.split-50 background-image="fig/midd-banner.jpg" background-size="cover" background-position="center" background-repeat="no-repeat"} 
 
-### *Yes, it really does look like this* 😁😁😁
+![](fig/aikido.png){.absolute left=50 top=150 width=27%}
+
+![](fig/tea.jpeg){.absolute left=450 top=130 width=29%}
+
+![](fig/cats.jpeg){.absolute left=150 bottom=10 width=30%}
+
+![](fig/cycling.jpeg){.absolute right=200 bottom=50 width=30%}
+
+
+![](fig/garden.jpeg){.absolute right=50 bottom=300 width=20%}
+
+
+
+
+<!-- ## {.split-50 background-image="fig/midd-banner.jpg" background-size="cover" background-position="center" background-repeat="no-repeat"} 
+
+### *Yes, it really does look like this* 😁😁😁 -->
 
 
 
